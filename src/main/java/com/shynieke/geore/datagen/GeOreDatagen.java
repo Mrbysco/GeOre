@@ -172,11 +172,11 @@ public class GeOreDatagen {
 		}
 
 		private void smeltToIngot(GeOreBlockReg blockReg, float xp, Item item, Consumer<FinishedRecipe> recipeConsumer) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().get().getRegistryName().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().get().getRegistryName().getPath()));
