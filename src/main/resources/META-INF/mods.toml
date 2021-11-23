@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[37,)"
+issueTrackerURL="https://github.com/Mrbysco/GeOre/issues"
+license="MIT"
+
+[[mods]]
+modId="geore"
+version="${file.jarVersion}"
+displayName="GeOre"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/geore"
+logoFile="logo.png"
+authors="ShyNieke, Mrbysco"
+description='''
+This mod takes heavy inspiration of the vanilla amethyst geode feature and applies it to other valuables to.
+'''
+[[dependencies.geore]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.17.1,1.18)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.geore]]
+modId="forge"
+mandatory=true
+versionRange="[37.0.31,38)"
+ordering="NONE"
+side="BOTH"

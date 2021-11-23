@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:lapis_lazuli_from_blasting_lapis_shard"
+    ]
+  },
+  "criteria": {
+    "has_lapisgeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:lapis_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:lapis_lazuli_from_blasting_lapis_shard"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_lapisgeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "parent": "minecraft:item/generated",
+  "display": {
+    "head": {
+      "translation": [
+        0,
+        14,
+        -5
+      ]
+    }
+  },
+  "textures": {
+    "layer0": "geore:block/coal_cluster"
+  }
+}

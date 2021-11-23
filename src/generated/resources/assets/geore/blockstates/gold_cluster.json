@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "geore:block/gold_cluster",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "geore:block/gold_cluster"
+    },
+    "facing=north": {
+      "model": "geore:block/gold_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "geore:block/gold_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "geore:block/gold_cluster",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "geore:block/gold_cluster",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:emerald_shard"
+  },
+  "result": "minecraft:emerald",
+  "experience": 1.0,
+  "cookingtime": 100
+}

@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:iron_ingot_from_blasting_iron_shard"
+    ]
+  },
+  "criteria": {
+    "has_irongeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:iron_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:iron_ingot_from_blasting_iron_shard"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_irongeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

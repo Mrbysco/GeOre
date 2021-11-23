@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:copper_block"
+    ]
+  },
+  "criteria": {
+    "has_coppergeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:copper_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:copper_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_coppergeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

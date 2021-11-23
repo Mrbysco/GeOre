@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "geore:redstone_block",
+    "geore:budding_redstone",
+    "geore:coal_block",
+    "geore:budding_coal",
+    "geore:copper_block",
+    "geore:budding_copper",
+    "geore:diamond_block",
+    "geore:budding_diamond",
+    "geore:emerald_block",
+    "geore:budding_emerald",
+    "geore:gold_block",
+    "geore:budding_gold",
+    "geore:iron_block",
+    "geore:budding_iron",
+    "geore:lapis_block",
+    "geore:budding_lapis",
+    "geore:quartz_block",
+    "geore:budding_quartz",
+    "geore:redstone_block",
+    "geore:budding_redstone"
+  ]
+}

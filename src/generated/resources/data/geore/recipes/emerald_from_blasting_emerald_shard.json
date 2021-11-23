@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:emerald_shard"
+  },
+  "result": "minecraft:emerald",
+  "experience": 1.0,
+  "cookingtime": 200
+}

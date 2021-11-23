@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "geore:block/redstone_cluster",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "geore:block/redstone_cluster"
+    },
+    "facing=north": {
+      "model": "geore:block/redstone_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "geore:block/redstone_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "geore:block/redstone_cluster",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "geore:block/redstone_cluster",
+      "x": 90,
+      "y": 90
+    }
+  }
+}
