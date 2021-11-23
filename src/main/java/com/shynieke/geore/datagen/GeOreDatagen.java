@@ -21,10 +21,7 @@ import net.minecraft.tags.Tag;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.item.crafting.SimpleCookingSerializer;
 import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -195,7 +192,7 @@ public class GeOreDatagen {
 		protected void addTranslations() {
 			add("itemGroup.geore", "GeOre");
 
-			generateLang("Iron", COAL_GEORE);
+			generateLang("Coal", COAL_GEORE);
 			generateLang("Copper", COPPER_GEORE);
 			generateLang("Diamond", DIAMOND_GEORE);
 			generateLang("Emerald", EMERALD_GEORE);
@@ -375,15 +372,15 @@ public class GeOreDatagen {
 			super(generator, Reference.MOD_ID, existingFileHelper);
 		}
 
-		public static final Tag.Named<Block> CARDBOARD_BLACKLIST = mekanismTag("cardboard_blacklist");
+		public static final Tag.Named<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
 
-		private static Tag.Named<Block> mekanismTag(String name) {
-			return BlockTags.bind(new ResourceLocation("mekanism", name).toString());
+		private static Tag.Named<Block> forgeTag(String name) {
+			return BlockTags.bind(new ResourceLocation("forge", name).toString());
 		}
 
 		@Override
 		protected void addTags() {
-			this.tag(CARDBOARD_BLACKLIST)
+			this.tag(RELOCATION_NOT_SUPPORTED)
 					.add(COAL_GEORE.getBudding().get())
 					.add(COPPER_GEORE.getBudding().get())
 					.add(DIAMOND_GEORE.getBudding().get())
