@@ -44,8 +44,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fmllegacy.RegistryObject;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -54,7 +54,16 @@ import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static com.shynieke.geore.registry.GeOreRegistry.*;
+import static com.shynieke.geore.registry.GeOreRegistry.BLOCKS;
+import static com.shynieke.geore.registry.GeOreRegistry.COAL_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.COPPER_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.DIAMOND_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.EMERALD_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.GOLD_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.IRON_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.LAPIS_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.QUARTZ_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.REDSTONE_GEORE;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GeOreDatagen {
@@ -88,7 +97,7 @@ public class GeOreDatagen {
 			);
 		}
 
-		public class GeOreBlockTables extends BlockLoot {
+		public static class GeOreBlockTables extends BlockLoot {
 
 			@Override
 			protected void addTables() {
@@ -105,13 +114,12 @@ public class GeOreDatagen {
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
 				this.dropSelf(blockReg.getBlock().get());
-				this.add(blockReg.getCluster().get(), (block) -> {
-					return createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get())
-							.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
-							.apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-							.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
-							.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F))))));
-				});
+				this.add(blockReg.getCluster().get(), (block) ->
+						createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get())
+						.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
+						.apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+						.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+						.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
 				this.dropWhenSilkTouch(blockReg.getSmallBud().get());
 				this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 				this.dropWhenSilkTouch(blockReg.getLargeBud().get());

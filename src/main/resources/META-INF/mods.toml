@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[37,)"
+loaderVersion="[38,)"
 issueTrackerURL="https://github.com/Mrbysco/GeOre/issues"
 license="MIT"
 
@@ -16,12 +16,12 @@ This mod takes heavy inspiration of the vanilla amethyst geode feature and appli
 [[dependencies.geore]]
 modId="minecraft"
 mandatory=true
-versionRange="[1.17.1,1.18)"
+versionRange="[1.18,1.19)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.geore]]
 modId="forge"
 mandatory=true
-versionRange="[37.0.31,38)"
+versionRange="[38.0.0,39)"
 ordering="NONE"
 side="BOTH"
