@@ -19,9 +19,3 @@ mandatory=true
 versionRange="[1.18,1.19)"
 ordering="NONE"
 side="BOTH"
-[[dependencies.geore]]
-modId="forge"
-mandatory=true
-versionRange="[38.0.0,39)"
-ordering="NONE"
-side="BOTH"
