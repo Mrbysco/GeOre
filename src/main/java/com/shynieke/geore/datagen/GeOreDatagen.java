@@ -5,6 +5,8 @@ import com.mojang.datafixers.util.Pair;
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.client.renderer.block.model.BlockModel.GuiLight;
+import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.loot.BlockLoot;
@@ -40,6 +42,7 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -177,6 +180,12 @@ public class GeOreDatagen {
 			ShapedRecipeBuilder.shaped(blockReg.getBlock().get())
 					.define('S', blockReg.getShard().get()).pattern("SS").pattern("SS").unlockedBy("has_" + blockReg.getName() + "geore_shard",
 							has(blockReg.getShard().get())).save(recipeConsumer);
+
+			ShapedRecipeBuilder.shaped(blockReg.getSpyglass().get())
+					.define('#', blockReg.getShard().get())
+					.define('X', Items.COPPER_INGOT)
+					.pattern(" # ").pattern(" X ").pattern(" X ").unlockedBy("has_" + blockReg.getName() + "geore_shard",
+							has(blockReg.getShard().get())).save(recipeConsumer);
 		}
 
 		private void smeltToIngot(GeOreBlockReg blockReg, float xp, Item item, Consumer<FinishedRecipe> recipeConsumer) {
@@ -219,6 +228,7 @@ public class GeOreDatagen {
 			addBlock(blockReg.getLargeBud(), "Large  " + name + " Geore Bud");
 			addBlock(blockReg.getCluster(), name + " Geore Cluster");
 			addItem(blockReg.getShard(), name + " Geore Shard");
+			addItem(blockReg.getSpyglass(), name + " Geore Spyglass");
 		}
 	}
 
@@ -332,6 +342,24 @@ public class GeOreDatagen {
 			makeSmallBud(blockReg.getSmallBud().get());
 			makeMediumBud(blockReg.getMediumBud().get());
 			makeLargeBud(blockReg.getLargeBud().get());
+			makeSpyglass(blockReg.getSpyglass());
+		}
+
+		private void makeSpyglass(RegistryObject<Item> spyglass) {
+			String path = spyglass.getId().getPath();
+
+			ModelFile spyglass_gui = withExistingParent(path + "_gui", mcLoc("spyglass"))
+					.texture("layer0", modLoc(ITEM_FOLDER + "/" + path));
+			ModelFile spyglass_hand = withExistingParent(path + "_in_hand", mcLoc("spyglass_in_hand"))
+					.texture("spyglass", modLoc(ITEM_FOLDER + "/" + path + "_model"));
+
+			withExistingParent(path, "forge:item/default")
+					.customLoader(SeparatePerspectiveModelBuilder::begin)
+					.base(nested().parent(spyglass_hand))
+					.perspective(TransformType.GUI, nested().parent(spyglass_gui))
+					.perspective(TransformType.GROUND, nested().parent(spyglass_gui))
+					.perspective(TransformType.FIXED, nested().parent(spyglass_gui))
+					.end();
 		}
 
 		private void makeCluster(Block block) {

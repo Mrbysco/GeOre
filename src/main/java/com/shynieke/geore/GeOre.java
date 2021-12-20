@@ -1,6 +1,7 @@
 package com.shynieke.geore;
 
 import com.shynieke.geore.client.ClientHandler;
+import com.shynieke.geore.client.SpyglassHandler;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.registry.GeOreRegistry;
@@ -36,6 +37,7 @@ public class GeOre {
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             eventBus.addListener(ClientHandler::onClientSetup);
+            MinecraftForge.EVENT_BUS.register(new SpyglassHandler());
         });
     }
 

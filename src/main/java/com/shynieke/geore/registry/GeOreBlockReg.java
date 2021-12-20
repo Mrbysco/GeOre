@@ -1,6 +1,7 @@
 package com.shynieke.geore.registry;
 
 import com.shynieke.geore.block.BuddingGeoreBlock;
+import com.shynieke.geore.item.GeoreSpyglassItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.AmethystBlock;
@@ -23,6 +24,7 @@ public class GeOreBlockReg {
 	private RegistryObject<AmethystClusterBlock> medium_bud;
 	private RegistryObject<AmethystClusterBlock> small_bud;
 	private RegistryObject<Item> shard;
+	private RegistryObject<Item> spyglass;
 
 	@Nonnull
 	public String getName() {
@@ -57,11 +59,15 @@ public class GeOreBlockReg {
 		return shard;
 	}
 
-	public GeOreBlockReg(String name, MaterialColor color) {
-		this(name, color, () -> new Item(new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+	public RegistryObject<Item> getSpyglass() {
+		return spyglass;
 	}
 
-	public GeOreBlockReg(String name, MaterialColor color, Supplier<Item> customShard) {
+	public GeOreBlockReg(String name, MaterialColor color, int spyglassHex) {
+		this(name, color, () -> new Item(new Item.Properties().tab(GeOreTabs.TAB_GEORE)), spyglassHex);
+	}
+
+	public GeOreBlockReg(String name, MaterialColor color, Supplier<Item> customShard, int spyglassHex) {
 		this.name = name;
 		block = GeOreRegistry.BLOCKS.register(name + "_block", () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.AMETHYST, color).strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()));
 		GeOreRegistry.ITEMS.register(getBlock().getId().getPath(), () -> new BlockItem(getBlock().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
@@ -92,5 +98,7 @@ public class GeOreBlockReg {
 		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
 		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);
+
+		spyglass = GeOreRegistry.ITEMS.register(name + "_spyglass", () -> new GeoreSpyglassItem(new Item.Properties().tab(GeOreTabs.TAB_GEORE), spyglassHex));
 	}
 }

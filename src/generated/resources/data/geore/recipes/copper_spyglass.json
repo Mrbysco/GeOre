@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    " X ",
+    " X "
+  ],
+  "key": {
+    "#": {
+      "item": "geore:copper_shard"
+    },
+    "X": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "result": {
+    "item": "geore:copper_spyglass"
+  }
+}
