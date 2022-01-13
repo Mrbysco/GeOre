@@ -2,7 +2,6 @@ package com.shynieke.geore.features;
 
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.Block;

@@ -5,7 +5,6 @@ import com.mojang.datafixers.util.Pair;
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.client.renderer.block.model.BlockModel.GuiLight;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;

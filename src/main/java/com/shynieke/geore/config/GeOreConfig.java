@@ -18,6 +18,7 @@ public class GeOreConfig {
 		public final BooleanValue generateIronGeore;
 		public final BooleanValue generateLapisGeore;
 		public final BooleanValue generateQuartzGeore;
+		public final BooleanValue generateQuartzInNetherGeore;
 		public final BooleanValue generateRedstoneGeore;
 
 		public final IntValue coalGeoreRarity;
@@ -65,6 +66,10 @@ public class GeOreConfig {
 			generateQuartzGeore = builder
 					.comment("Generate Quartz GeOre [Default: true]")
 					.define("generateQuartzGeore", true);
+
+			generateQuartzInNetherGeore = builder
+					.comment("Generate Quartz GeOre in the Nether [Default: true]")
+					.define("generateQuartzInNetherGeore", true);
 
 			generateRedstoneGeore = builder
 					.comment("Generate Redstone GeOre [Default: true]")
