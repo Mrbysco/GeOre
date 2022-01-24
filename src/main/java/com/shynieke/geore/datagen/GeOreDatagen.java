@@ -15,6 +15,7 @@ import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
@@ -42,6 +43,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -77,7 +79,9 @@ public class GeOreDatagen {
 		if (event.includeServer()) {
 			generator.addProvider(new Loots(generator));
 			generator.addProvider(new Recipes(generator));
-			generator.addProvider(new GeoreBlockTags(generator, helper));
+			BlockTagsProvider provider;
+			generator.addProvider(provider = new GeoreBlockTags(generator, helper));
+			generator.addProvider(new GeoreItemTags(generator, provider, helper));
 		}
 		if (event.includeClient()) {
             generator.addProvider(new Language(generator));
@@ -435,7 +439,6 @@ public class GeOreDatagen {
 			this.addMineable(LAPIS_GEORE);
 			this.addMineable(QUARTZ_GEORE);
 			this.addMineable(REDSTONE_GEORE);
-			this.addCrystalSounds(REDSTONE_GEORE);
 
 			this.addCrystalSounds(COAL_GEORE);
 			this.addCrystalSounds(COPPER_GEORE);
@@ -446,6 +449,16 @@ public class GeOreDatagen {
 			this.addCrystalSounds(LAPIS_GEORE);
 			this.addCrystalSounds(QUARTZ_GEORE);
 			this.addCrystalSounds(REDSTONE_GEORE);
+
+			this.addStorage(COAL_GEORE);
+			this.addStorage(COPPER_GEORE);
+			this.addStorage(DIAMOND_GEORE);
+			this.addStorage(EMERALD_GEORE);
+			this.addStorage(GOLD_GEORE);
+			this.addStorage(IRON_GEORE);
+			this.addStorage(LAPIS_GEORE);
+			this.addStorage(QUARTZ_GEORE);
+			this.addStorage(REDSTONE_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -462,6 +475,55 @@ public class GeOreDatagen {
 			this.tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
 					.add(blockReg.getBlock().get())
 					.add(blockReg.getBudding().get());
+		}
+
+		private void addStorage(GeOreBlockReg blockReg) {
+			this.tag(Tags.Blocks.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get());
+		}
+	}
+
+	public static class GeoreItemTags extends ItemTagsProvider {
+		public GeoreItemTags(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
+			super(dataGenerator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+		}
+
+		public static final Tag.Named<Item> GEORE = forgeTag("geore");
+
+		@Override
+		protected void addTags() {
+			this.addGeore(COAL_GEORE);
+			this.addGeore(COPPER_GEORE);
+			this.addGeore(DIAMOND_GEORE);
+			this.addGeore(EMERALD_GEORE);
+			this.addGeore(GOLD_GEORE);
+			this.addGeore(IRON_GEORE);
+			this.addGeore(LAPIS_GEORE);
+			this.addGeore(QUARTZ_GEORE);
+			this.addGeore(REDSTONE_GEORE);
+
+			this.addStorage(COAL_GEORE);
+			this.addStorage(COPPER_GEORE);
+			this.addStorage(DIAMOND_GEORE);
+			this.addStorage(EMERALD_GEORE);
+			this.addStorage(GOLD_GEORE);
+			this.addStorage(IRON_GEORE);
+			this.addStorage(LAPIS_GEORE);
+			this.addStorage(QUARTZ_GEORE);
+			this.addStorage(REDSTONE_GEORE);
+		}
+
+		private void addStorage(GeOreBlockReg blockReg) {
+			this.tag(Tags.Items.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get().asItem());
+		}
+
+		private void addGeore(GeOreBlockReg blockReg) {
+			Tag.Named<Item> georeTag = forgeTag("geore/" + blockReg.getName());
+			this.tag(GEORE).addTag(georeTag);
+			this.tag(georeTag).add(blockReg.getShard().get());
+		}
+
+		private static Tag.Named<Item> forgeTag(String name) {
+			return ItemTags.bind(new ResourceLocation("forge", name).toString());
 		}
 	}
 }

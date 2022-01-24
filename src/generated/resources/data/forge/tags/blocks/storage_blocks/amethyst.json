@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "geore:coal_block",
+    "geore:copper_block",
+    "geore:diamond_block",
+    "geore:emerald_block",
+    "geore:gold_block",
+    "geore:iron_block",
+    "geore:lapis_block",
+    "geore:quartz_block",
+    "geore:redstone_block"
+  ]
+}

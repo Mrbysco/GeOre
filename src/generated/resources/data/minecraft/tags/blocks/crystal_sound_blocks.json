@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "geore:redstone_block",
-    "geore:budding_redstone",
     "geore:coal_block",
     "geore:budding_coal",
     "geore:copper_block",
