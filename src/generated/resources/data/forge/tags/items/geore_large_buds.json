@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:geore_large/coal",
+    "#forge:geore_large/copper",
+    "#forge:geore_large/diamond",
+    "#forge:geore_large/emerald",
+    "#forge:geore_large/gold",
+    "#forge:geore_large/iron",
+    "#forge:geore_large/lapis",
+    "#forge:geore_large/quartz",
+    "#forge:geore_large/redstone"
+  ]
+}

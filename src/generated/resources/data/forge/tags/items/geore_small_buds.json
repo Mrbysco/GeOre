@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:geore_small_bud/coal",
+    "#forge:geore_small_bud/copper",
+    "#forge:geore_small_bud/diamond",
+    "#forge:geore_small_bud/emerald",
+    "#forge:geore_small_bud/gold",
+    "#forge:geore_small_bud/iron",
+    "#forge:geore_small_bud/lapis",
+    "#forge:geore_small_bud/quartz",
+    "#forge:geore_small_bud/redstone"
+  ]
+}

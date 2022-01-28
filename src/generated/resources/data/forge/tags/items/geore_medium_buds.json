@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:geore_medium/coal",
+    "#forge:geore_medium/copper",
+    "#forge:geore_medium/diamond",
+    "#forge:geore_medium/emerald",
+    "#forge:geore_medium/gold",
+    "#forge:geore_medium/iron",
+    "#forge:geore_medium/lapis",
+    "#forge:geore_medium/quartz",
+    "#forge:geore_medium/redstone"
+  ]
+}
