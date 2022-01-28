@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "#forge:geore_shard/coal",
-    "#forge:geore_shard/copper",
-    "#forge:geore_shard/diamond",
-    "#forge:geore_shard/emerald",
-    "#forge:geore_shard/gold",
-    "#forge:geore_shard/iron",
-    "#forge:geore_shard/lapis",
-    "#forge:geore_shard/quartz",
-    "#forge:geore_shard/redstone"
+    "#forge:geore_shards/coal",
+    "#forge:geore_shards/copper",
+    "#forge:geore_shards/diamond",
+    "#forge:geore_shards/emerald",
+    "#forge:geore_shards/gold",
+    "#forge:geore_shards/iron",
+    "#forge:geore_shards/lapis",
+    "#forge:geore_shards/quartz",
+    "#forge:geore_shards/redstone"
   ]
 }

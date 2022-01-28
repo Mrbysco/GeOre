@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "#forge:geore_small_bud/coal",
-    "#forge:geore_small_bud/copper",
-    "#forge:geore_small_bud/diamond",
-    "#forge:geore_small_bud/emerald",
-    "#forge:geore_small_bud/gold",
-    "#forge:geore_small_bud/iron",
-    "#forge:geore_small_bud/lapis",
-    "#forge:geore_small_bud/quartz",
-    "#forge:geore_small_bud/redstone"
+    "#forge:geore_small_buds/coal",
+    "#forge:geore_small_buds/copper",
+    "#forge:geore_small_buds/diamond",
+    "#forge:geore_small_buds/emerald",
+    "#forge:geore_small_buds/gold",
+    "#forge:geore_small_buds/iron",
+    "#forge:geore_small_buds/lapis",
+    "#forge:geore_small_buds/quartz",
+    "#forge:geore_small_buds/redstone"
   ]
 }

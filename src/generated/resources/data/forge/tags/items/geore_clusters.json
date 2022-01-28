@@ -1,14 +1,14 @@
 {
   "replace": false,
   "values": [
-    "#forge:geore_cluster/coal",
-    "#forge:geore_cluster/copper",
-    "#forge:geore_cluster/diamond",
-    "#forge:geore_cluster/emerald",
-    "#forge:geore_cluster/gold",
-    "#forge:geore_cluster/iron",
-    "#forge:geore_cluster/lapis",
-    "#forge:geore_cluster/quartz",
-    "#forge:geore_cluster/redstone"
+    "#forge:geore_clusters/coal",
+    "#forge:geore_clusters/copper",
+    "#forge:geore_clusters/diamond",
+    "#forge:geore_clusters/emerald",
+    "#forge:geore_clusters/gold",
+    "#forge:geore_clusters/iron",
+    "#forge:geore_clusters/lapis",
+    "#forge:geore_clusters/quartz",
+    "#forge:geore_clusters/redstone"
   ]
 }

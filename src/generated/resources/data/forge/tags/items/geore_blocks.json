@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:geore_blocks/coal",
+    "#forge:geore_blocks/copper",
+    "#forge:geore_blocks/diamond",
+    "#forge:geore_blocks/emerald",
+    "#forge:geore_blocks/gold",
+    "#forge:geore_blocks/iron",
+    "#forge:geore_blocks/lapis",
+    "#forge:geore_blocks/quartz",
+    "#forge:geore_blocks/redstone"
+  ]
+}

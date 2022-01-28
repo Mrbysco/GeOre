@@ -507,6 +507,7 @@ public class GeOreDatagen {
 		public static final Tag.Named<Item> GEORE_MEDIUM_BUDS = forgeTag("geore_medium_buds");
 		public static final Tag.Named<Item> GEORE_LARGE_BUDS = forgeTag("geore_large_buds");
 		public static final Tag.Named<Item> GEORE_SHARDS = forgeTag("geore_shards");
+		public static final Tag.Named<Item> GEORE_BLOCKS = forgeTag("geore_blocks");
 
 		@Override
 		protected void addTags() {
@@ -536,25 +537,29 @@ public class GeOreDatagen {
 		}
 
 		private void addGeore(GeOreBlockReg blockReg) {
-			Tag.Named<Item> smallBudsTag = forgeTag("geore_small_bud/" + blockReg.getName());
+			Tag.Named<Item> smallBudsTag = forgeTag("geore_small_buds/" + blockReg.getName());
 			this.tag(GEORE_SMALL_BUDS).addTag(smallBudsTag);
 			this.tag(smallBudsTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> mediumBudsTag = forgeTag("geore_medium/" + blockReg.getName());
+			Tag.Named<Item> mediumBudsTag = forgeTag("geore_medium_buds/" + blockReg.getName());
 			this.tag(GEORE_MEDIUM_BUDS).addTag(mediumBudsTag);
 			this.tag(mediumBudsTag).add(blockReg.getSmallBud().get().asItem());
 
-			Tag.Named<Item> largeBudsTag = forgeTag("geore_large/" + blockReg.getName());
+			Tag.Named<Item> largeBudsTag = forgeTag("geore_large_buds/" + blockReg.getName());
 			this.tag(GEORE_LARGE_BUDS).addTag(largeBudsTag);
 			this.tag(largeBudsTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> clusterTag = forgeTag("geore_cluster/" + blockReg.getName());
+			Tag.Named<Item> clusterTag = forgeTag("geore_clusters/" + blockReg.getName());
 			this.tag(GEORE_CLUSTERS).addTag(clusterTag);
 			this.tag(clusterTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> shardTag = forgeTag("geore_shard/" + blockReg.getName());
+			Tag.Named<Item> shardTag = forgeTag("geore_shards/" + blockReg.getName());
 			this.tag(GEORE_SHARDS).addTag(shardTag);
 			this.tag(shardTag).add(blockReg.getShard().get());
+
+			Tag.Named<Item> blockTag = forgeTag("geore_blocks/" + blockReg.getName());
+			this.tag(GEORE_BLOCKS).addTag(blockTag);
+			this.tag(blockTag).add(blockReg.getBlock().get().asItem());
 		}
 
 		private static Tag.Named<Item> forgeTag(String name) {
