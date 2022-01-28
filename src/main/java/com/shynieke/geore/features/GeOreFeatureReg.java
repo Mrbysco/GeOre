@@ -31,6 +31,8 @@ public class GeOreFeatureReg {
 	protected final Block BUDDING;
 	protected final ConfiguredFeature<GeodeConfiguration, ?> GEODE;
 	protected final Supplier<Integer> RARITY;
+	protected final Supplier<Integer> MIN_Y;
+	protected final Supplier<Integer> MAX_Y;
 
 	public String getName() {
 		return NAME;
@@ -38,14 +40,16 @@ public class GeOreFeatureReg {
 
 	public PlacedFeature getPlacedFeature() {
 		return GEODE.placed(RarityFilter.onAverageOnceEvery(RARITY.get()), GeOreFeatures.RNG_DECORATOR, InSquarePlacement.spread(),
-				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(6), VerticalAnchor.absolute(30)), BiomeFilter.biome());
+				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(MIN_Y.get()), VerticalAnchor.absolute(MAX_Y.get())), BiomeFilter.biome());
 	}
 
-	public GeOreFeatureReg(String name, GeOreBlockReg blockReg, Supplier<Integer> rarityConfig) {
+	public GeOreFeatureReg(String name, GeOreBlockReg blockReg, Supplier<Integer> rarityConfig, Supplier<Integer> minYConfig, Supplier<Integer> maxYConfig) {
 		NAME = name;
 		BLOCK = blockReg.getBlock().get();
 		BUDDING = blockReg.getBudding().get();
 		RARITY = rarityConfig;
+		MIN_Y = minYConfig;
+		MAX_Y = maxYConfig;
 
 		GEODE = FeatureUtils.register(name + "_geode", Feature.GEODE.configured(new GeodeConfiguration(
 				new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), SimpleStateProvider.simple(BLOCK),
