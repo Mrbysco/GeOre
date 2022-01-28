@@ -52,7 +52,7 @@ d468495fa8ad06e2519531c215e827045cf39863 assets/geore/blockstates/small_iron_bud
 5a6d3d94e9ac463e1239b9578b4483ebb96397c3 assets/geore/blockstates/small_lapis_bud.json
 9b5b86d529dd0a5c0580e8bbbf7c30875cbd1585 assets/geore/blockstates/small_quartz_bud.json
 9296a6e7b51462d5ca964d2b033a814bc7292d5e assets/geore/blockstates/small_redstone_bud.json
-3c89f221d479d8db6de112d51cca8303ec526b30 assets/geore/lang/en_us.json
+6d7e08f50723b263a4e98adbfc507c23a874d9a0 assets/geore/lang/en_us.json
 12b7086aec920bc8316402e2a5b840ee71f72045 assets/geore/models/block/budding_coal.json
 f4e07fb751bc1f629bde7a929ddfa7e66bce4b39 assets/geore/models/block/budding_copper.json
 6534ad50803fae5273ee211fe5f184240aae79f8 assets/geore/models/block/budding_diamond.json
@@ -197,6 +197,7 @@ a439001cff9cca2817ab8533f08dd20985c81908 assets/geore/models/item/small_gold_bud
 e638cffc491e176d07cbe73cff3ff08daffc4f83 assets/geore/models/item/small_lapis_bud.json
 63bb37ff836eabe4c6bbbd2af969c207a99daa1f assets/geore/models/item/small_quartz_bud.json
 7e00c1b83474ed8bc6991b95dce2a293773f3126 assets/geore/models/item/small_redstone_bud.json
+27977df5fd6e3c52fb6f730ff78a8b8e59344af8 data/create/tags/blocks/non_movable.json
 27977df5fd6e3c52fb6f730ff78a8b8e59344af8 data/forge/tags/blocks/relocation_not_supported.json
 c3acbb47a035fc04f7ec5cf7212dccc0cafe074a data/forge/tags/blocks/storage_blocks/amethyst.json
 08e025ebd138638964af9c76be798f0e8c21f699 data/forge/tags/items/geore.json

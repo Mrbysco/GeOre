@@ -29,7 +29,6 @@ public class GeOre {
 
         eventBus.addListener(this::setup);
 
-//        GeOreRegistry.DECORATORS.register(eventBus);
         GeOreRegistry.BLOCKS.register(eventBus);
         GeOreRegistry.ITEMS.register(eventBus);
 

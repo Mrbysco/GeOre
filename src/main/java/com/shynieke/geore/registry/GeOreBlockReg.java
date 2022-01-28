@@ -16,15 +16,15 @@ import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public class GeOreBlockReg {
-	private final String name;
-	private RegistryObject<AmethystBlock> block;
-	private RegistryObject<BuddingGeoreBlock> budding;
-	private RegistryObject<AmethystClusterBlock> cluster;
-	private RegistryObject<AmethystClusterBlock> large_bud;
-	private RegistryObject<AmethystClusterBlock> medium_bud;
-	private RegistryObject<AmethystClusterBlock> small_bud;
-	private RegistryObject<Item> shard;
-	private RegistryObject<Item> spyglass;
+	protected final String name;
+	protected final RegistryObject<AmethystBlock> block;
+	protected final RegistryObject<BuddingGeoreBlock> budding;
+	protected final RegistryObject<AmethystClusterBlock> cluster;
+	protected final RegistryObject<AmethystClusterBlock> large_bud;
+	protected final RegistryObject<AmethystClusterBlock> medium_bud;
+	protected final RegistryObject<AmethystClusterBlock> small_bud;
+	protected final RegistryObject<Item> shard;
+	protected final RegistryObject<Item> spyglass;
 
 	@Nonnull
 	public String getName() {
@@ -72,24 +72,20 @@ public class GeOreBlockReg {
 		block = GeOreRegistry.BLOCKS.register(name + "_block", () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.AMETHYST, color).strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()));
 		GeOreRegistry.ITEMS.register(getBlock().getId().getPath(), () -> new BlockItem(getBlock().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
-		large_bud = GeOreRegistry.BLOCKS.register("large_" + name + "_bud", () -> new AmethystClusterBlock(5, 3, BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> {
-			return 4;
-		})));
+		large_bud = GeOreRegistry.BLOCKS.register("large_" + name + "_bud", () -> new AmethystClusterBlock(5, 3,
+				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 4)));
 		GeOreRegistry.ITEMS.register(getLargeBud().getId().getPath(), () -> new BlockItem(getLargeBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
-		medium_bud = GeOreRegistry.BLOCKS.register("medium_" + name + "_bud", () -> new AmethystClusterBlock(4, 3, BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> {
-			return 2;
-		})));
+		medium_bud = GeOreRegistry.BLOCKS.register("medium_" + name + "_bud", () -> new AmethystClusterBlock(4, 3,
+				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 2)));
 		GeOreRegistry.ITEMS.register(getMediumBud().getId().getPath(), () -> new BlockItem(getMediumBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
-		small_bud = GeOreRegistry.BLOCKS.register("small_" + name + "_bud", () -> new AmethystClusterBlock(3, 4, BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> {
-			return 1;
-		})));
+		small_bud = GeOreRegistry.BLOCKS.register("small_" + name + "_bud", () -> new AmethystClusterBlock(3, 4,
+				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 1)));
 		GeOreRegistry.ITEMS.register(getSmallBud().getId().getPath(), () -> new BlockItem(getSmallBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
-		cluster = GeOreRegistry.BLOCKS.register(name + "_cluster", () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> {
-			return 5;
-		})));
+		cluster = GeOreRegistry.BLOCKS.register(name + "_cluster", () -> new AmethystClusterBlock(7, 3,
+				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 5)));
 		GeOreRegistry.ITEMS.register(getCluster().getId().getPath(), () -> new BlockItem(getCluster().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
 		budding = GeOreRegistry.BLOCKS.register("budding_" + name, () ->

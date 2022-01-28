@@ -226,9 +226,9 @@ public class GeOreDatagen {
 		public void generateLang(String name, GeOreBlockReg blockReg) {
 			addBlock(blockReg.getBlock(), "Block Of " + name + " Geore");
 			addBlock(blockReg.getBudding(), "Budding " + name + " Geore");
-			addBlock(blockReg.getSmallBud(), "Small  " + name + " Geore Bud");
-			addBlock(blockReg.getMediumBud(), "Medium  " + name + " Geore Bud");
-			addBlock(blockReg.getLargeBud(), "Large  " + name + " Geore Bud");
+			addBlock(blockReg.getSmallBud(), "Small " + name + " Geore Bud");
+			addBlock(blockReg.getMediumBud(), "Medium " + name + " Geore Bud");
+			addBlock(blockReg.getLargeBud(), "Large " + name + " Geore Bud");
 			addBlock(blockReg.getCluster(), name + " Geore Cluster");
 			addItem(blockReg.getShard(), name + " Geore Shard");
 			addItem(blockReg.getSpyglass(), name + " Geore Spyglass");
@@ -412,14 +412,29 @@ public class GeOreDatagen {
 		}
 
 		public static final Tag.Named<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
+		public static final Tags.IOptionalNamedTag<Block> NON_MOVABLE = optionalTag("create", "non_movable");
 
 		private static Tag.Named<Block> forgeTag(String name) {
 			return BlockTags.bind(new ResourceLocation("forge", name).toString());
 		}
 
+		private static Tags.IOptionalNamedTag<Block> optionalTag(String modid, String name) {
+			return BlockTags.createOptional(new ResourceLocation(modid, name));
+		}
+
 		@Override
 		protected void addTags() {
 			this.tag(RELOCATION_NOT_SUPPORTED)
+					.add(COAL_GEORE.getBudding().get())
+					.add(COPPER_GEORE.getBudding().get())
+					.add(DIAMOND_GEORE.getBudding().get())
+					.add(EMERALD_GEORE.getBudding().get())
+					.add(GOLD_GEORE.getBudding().get())
+					.add(IRON_GEORE.getBudding().get())
+					.add(LAPIS_GEORE.getBudding().get())
+					.add(QUARTZ_GEORE.getBudding().get())
+					.add(REDSTONE_GEORE.getBudding().get());
+			this.tag(NON_MOVABLE)
 					.add(COAL_GEORE.getBudding().get())
 					.add(COPPER_GEORE.getBudding().get())
 					.add(DIAMOND_GEORE.getBudding().get())
