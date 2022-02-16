@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "compatibilityLevel": "JAVA_17",
+  "package": "com.shynieke.geore.mixin",
+  "refmap": "geore.refmap.json",
+  "target": "@env(DEFAULT)",
+  "mixins": [
+	"PlayerMixin"
+  ],
+  "injectors": {
+	"defaultRequire": 1
+  }
+}
