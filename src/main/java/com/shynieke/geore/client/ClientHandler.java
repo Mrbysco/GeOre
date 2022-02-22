@@ -17,6 +17,9 @@ public class ClientHandler {
 		setupLayer(GeOreRegistry.LAPIS_GEORE);
 		setupLayer(GeOreRegistry.QUARTZ_GEORE);
 		setupLayer(GeOreRegistry.REDSTONE_GEORE);
+		setupLayer(GeOreRegistry.RUBY_GEORE);
+		setupLayer(GeOreRegistry.SAPPHIRE_GEORE);
+		setupLayer(GeOreRegistry.TOPAZ_GEORE);
 	}
 
 	public static void setupLayer(GeOreBlockReg blockReg) {
@@ -24,6 +27,5 @@ public class ClientHandler {
 		ItemBlockRenderTypes.setRenderLayer(blockReg.getSmallBud().get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(blockReg.getMediumBud().get(), RenderType.cutout());
 		ItemBlockRenderTypes.setRenderLayer(blockReg.getLargeBud().get(), RenderType.cutout());
-
 	}
 }

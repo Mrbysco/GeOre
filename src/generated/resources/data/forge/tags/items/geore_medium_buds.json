@@ -9,6 +9,9 @@
     "#forge:geore_medium_buds/iron",
     "#forge:geore_medium_buds/lapis",
     "#forge:geore_medium_buds/quartz",
-    "#forge:geore_medium_buds/redstone"
+    "#forge:geore_medium_buds/redstone",
+    "#forge:geore_medium_buds/ruby",
+    "#forge:geore_medium_buds/sapphire",
+    "#forge:geore_medium_buds/topaz"
   ]
 }

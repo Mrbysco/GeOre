@@ -18,6 +18,12 @@
     "geore:quartz_block",
     "geore:budding_quartz",
     "geore:redstone_block",
-    "geore:budding_redstone"
+    "geore:budding_redstone",
+    "geore:ruby_block",
+    "geore:budding_ruby",
+    "geore:sapphire_block",
+    "geore:budding_sapphire",
+    "geore:topaz_block",
+    "geore:budding_topaz"
   ]
 }

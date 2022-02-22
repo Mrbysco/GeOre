@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:ruby_spyglass"
+    ]
+  },
+  "criteria": {
+    "has_rubygeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:ruby_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:ruby_spyglass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_rubygeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

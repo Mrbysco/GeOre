@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/spyglass",
+  "textures": {
+    "layer0": "geore:item/ruby_spyglass"
+  }
+}

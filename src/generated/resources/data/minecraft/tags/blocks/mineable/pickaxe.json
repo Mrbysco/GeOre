@@ -54,6 +54,24 @@
     "geore:medium_redstone_bud",
     "geore:large_redstone_bud",
     "geore:redstone_block",
-    "geore:budding_redstone"
+    "geore:budding_redstone",
+    "geore:ruby_cluster",
+    "geore:small_ruby_bud",
+    "geore:medium_ruby_bud",
+    "geore:large_ruby_bud",
+    "geore:ruby_block",
+    "geore:budding_ruby",
+    "geore:sapphire_cluster",
+    "geore:small_sapphire_bud",
+    "geore:medium_sapphire_bud",
+    "geore:large_sapphire_bud",
+    "geore:sapphire_block",
+    "geore:budding_sapphire",
+    "geore:topaz_cluster",
+    "geore:small_topaz_bud",
+    "geore:medium_topaz_bud",
+    "geore:large_topaz_bud",
+    "geore:topaz_block",
+    "geore:budding_topaz"
   ]
 }

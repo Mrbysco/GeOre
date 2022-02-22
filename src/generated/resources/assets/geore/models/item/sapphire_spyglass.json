@@ -1,0 +1,18 @@
+{
+  "parent": "forge:item/default",
+  "loader": "forge:separate-perspective",
+  "base": {
+    "parent": "geore:item/sapphire_spyglass_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "geore:item/sapphire_spyglass_gui"
+    },
+    "ground": {
+      "parent": "geore:item/sapphire_spyglass_gui"
+    },
+    "fixed": {
+      "parent": "geore:item/sapphire_spyglass_gui"
+    }
+  }
+}

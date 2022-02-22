@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:sapphire_block"
+    ]
+  },
+  "criteria": {
+    "has_sapphiregeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:sapphire_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:sapphire_block"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_sapphiregeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

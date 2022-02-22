@@ -20,6 +20,10 @@ public class GeOreConfig {
 		public final BooleanValue generateQuartzGeore;
 		public final BooleanValue generateQuartzInNetherGeore;
 		public final BooleanValue generateRedstoneGeore;
+		//Mod support
+		public final BooleanValue generateRubyGeore;
+		public final BooleanValue generateSapphireGeore;
+		public final BooleanValue generateTopazGeore;
 
 		public final IntValue coalGeoreRarity;
 		public final IntValue copperGeoreRarity;
@@ -30,6 +34,10 @@ public class GeOreConfig {
 		public final IntValue lapisGeoreRarity;
 		public final IntValue quartzGeoreRarity;
 		public final IntValue redstoneGeoreRarity;
+		//Mod support
+		public final IntValue rubyGeoreRarity;
+		public final IntValue sapphireGeoreRarity;
+		public final IntValue topazGeoreRarity;
 
 		public final IntValue coalGeoreMinY;
 		public final IntValue coalGeoreMaxY;
@@ -49,6 +57,13 @@ public class GeOreConfig {
 		public final IntValue quartzGeoreMaxY;
 		public final IntValue redstoneGeoreMinY;
 		public final IntValue redstoneGeoreMaxY;
+		//Mod support
+		public final IntValue rubyGeoreMinY;
+		public final IntValue rubyGeoreMaxY;
+		public final IntValue sapphireGeoreMinY;
+		public final IntValue sapphireGeoreMaxY;
+		public final IntValue topazGeoreMinY;
+		public final IntValue topazGeoreMaxY;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.comment("Generation settings")
@@ -164,6 +179,45 @@ public class GeOreConfig {
 			redstoneGeoreMaxY = builder
 					.comment("The max Y level that Redstone GeOre will generate at [Default: 30]")
 					.defineInRange("redstoneGeoreMaxY", 30, 0, Integer.MAX_VALUE);
+			builder.pop();
+			builder.comment("Modded Generation settings")
+					.push("ModdedGeneration");
+
+			generateRubyGeore = builder
+					.comment("Generate Ruby GeOre [Default: false]")
+					.define("generateRubyGeore", false);
+
+			rubyGeoreMinY = builder
+					.comment("The Min Y level that Ruby GeOre will generate at (above minimum world height) [Default: 6]")
+					.defineInRange("rubyGeoreMinY", 6, 0, Integer.MAX_VALUE);
+
+			rubyGeoreMaxY = builder
+					.comment("The max Y level that Ruby GeOre will generate at [Default: 30]")
+					.defineInRange("rubyGeoreMaxY", 30, 0, Integer.MAX_VALUE);
+			
+			generateSapphireGeore = builder
+					.comment("Generate Sapphire GeOre [Default: false]")
+					.define("generateSapphireGeore", false);
+
+			sapphireGeoreMinY = builder
+					.comment("The Min Y level that Sapphire GeOre will generate at (above minimum world height) [Default: 6]")
+					.defineInRange("sapphireGeoreMinY", 6, 0, Integer.MAX_VALUE);
+
+			sapphireGeoreMaxY = builder
+					.comment("The max Y level that Sapphire GeOre will generate at [Default: 30]")
+					.defineInRange("sapphireGeoreMaxY", 30, 0, Integer.MAX_VALUE);
+			
+			generateTopazGeore = builder
+					.comment("Generate Topaz GeOre [Default: false]")
+					.define("generateTopazGeore", false);
+
+			topazGeoreMinY = builder
+					.comment("The Min Y level that Topaz GeOre will generate at (above minimum world height) [Default: 6]")
+					.defineInRange("topazGeoreMinY", 6, 0, Integer.MAX_VALUE);
+
+			topazGeoreMaxY = builder
+					.comment("The max Y level that Topaz GeOre will generate at [Default: 30]")
+					.defineInRange("topazGeoreMaxY", 30, 0, Integer.MAX_VALUE);
 
 			builder.pop();
 			builder.comment("Rarity settings")
@@ -204,6 +258,18 @@ public class GeOreConfig {
 			redstoneGeoreRarity = builder
 					.comment("Redstone GeOre Rarity [Default: 240] (The higher the value the rarer)")
 					.defineInRange("redstoneGeoreRarity", 240, 0, Integer.MAX_VALUE);
+
+			rubyGeoreRarity = builder
+					.comment("Ruby GeOre Rarity [Default: 240] (The higher the value the rarer)")
+					.defineInRange("rubyGeoreRarity", 240, 0, Integer.MAX_VALUE);
+
+			sapphireGeoreRarity = builder
+					.comment("Sapphire GeOre Rarity [Default: 240] (The higher the value the rarer)")
+					.defineInRange("sapphireGeoreRarity", 240, 0, Integer.MAX_VALUE);
+
+			topazGeoreRarity = builder
+					.comment("Topaz GeOre Rarity [Default: 240] (The higher the value the rarer)")
+					.defineInRange("topazGeoreRarity", 240, 0, Integer.MAX_VALUE);
 
 			builder.pop();
 		}

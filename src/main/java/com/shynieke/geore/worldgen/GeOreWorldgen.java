@@ -47,6 +47,15 @@ public class GeOreWorldgen {
 			if(GeOreConfig.COMMON.generateQuartzGeore.get()) {
 				builder.addFeature(Decoration.LOCAL_MODIFICATIONS, GeOreFeatures.QUARTZ_GEORE.getPlacedFeature());
 			}
+			if(GeOreConfig.COMMON.generateRubyGeore.get()) {
+				builder.addFeature(Decoration.LOCAL_MODIFICATIONS, GeOreFeatures.RUBY_GEORE.getPlacedFeature());
+			}
+			if(GeOreConfig.COMMON.generateSapphireGeore.get()) {
+				builder.addFeature(Decoration.LOCAL_MODIFICATIONS, GeOreFeatures.SAPPHIRE_GEORE.getPlacedFeature());
+			}
+			if(GeOreConfig.COMMON.generateTopazGeore.get()) {
+				builder.addFeature(Decoration.LOCAL_MODIFICATIONS, GeOreFeatures.TOPAZ_GEORE.getPlacedFeature());
+			}
 		}
 		if(BiomeDictionary.hasType(biomeKey, Type.NETHER)) {
 			if(GeOreConfig.COMMON.generateQuartzInNetherGeore.get()) {

@@ -23,4 +23,8 @@ public class GeOreFeatures {
 	public static GeOreFeatureReg LAPIS_GEORE = new GeOreFeatureReg("lapis", GeOreRegistry.LAPIS_GEORE, GeOreConfig.COMMON.lapisGeoreRarity::get, GeOreConfig.COMMON.lapisGeoreMinY::get, GeOreConfig.COMMON.lapisGeoreMaxY::get);
 	public static GeOreFeatureReg QUARTZ_GEORE = new GeOreFeatureReg("quartz", GeOreRegistry.QUARTZ_GEORE, GeOreConfig.COMMON.quartzGeoreRarity::get, GeOreConfig.COMMON.quartzGeoreMinY::get, GeOreConfig.COMMON.quartzGeoreMaxY::get);
 	public static GeOreFeatureReg REDSTONE_GEORE = new GeOreFeatureReg("redstone", GeOreRegistry.REDSTONE_GEORE, GeOreConfig.COMMON.redstoneGeoreRarity::get, GeOreConfig.COMMON.redstoneGeoreMinY::get, GeOreConfig.COMMON.redstoneGeoreMaxY::get);
+
+	public static GeOreFeatureReg RUBY_GEORE = new GeOreFeatureReg("ruby", GeOreRegistry.RUBY_GEORE, GeOreConfig.COMMON.rubyGeoreRarity::get, GeOreConfig.COMMON.rubyGeoreMinY::get, GeOreConfig.COMMON.rubyGeoreMaxY::get);
+	public static GeOreFeatureReg SAPPHIRE_GEORE = new GeOreFeatureReg("sapphire", GeOreRegistry.SAPPHIRE_GEORE, GeOreConfig.COMMON.sapphireGeoreRarity::get, GeOreConfig.COMMON.sapphireGeoreMinY::get, GeOreConfig.COMMON.sapphireGeoreMaxY::get);
+	public static GeOreFeatureReg TOPAZ_GEORE = new GeOreFeatureReg("topaz", GeOreRegistry.TOPAZ_GEORE, GeOreConfig.COMMON.topazGeoreRarity::get, GeOreConfig.COMMON.topazGeoreMinY::get, GeOreConfig.COMMON.topazGeoreMaxY::get);
 }

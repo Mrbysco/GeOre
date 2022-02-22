@@ -9,6 +9,9 @@
     "geore:iron_block",
     "geore:lapis_block",
     "geore:quartz_block",
-    "geore:redstone_block"
+    "geore:redstone_block",
+    "geore:ruby_block",
+    "geore:sapphire_block",
+    "geore:topaz_block"
   ]
 }

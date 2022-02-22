@@ -1,6 +1,7 @@
 package com.shynieke.geore.datagen;
 
 import com.google.common.collect.ImmutableList;
+import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.registry.GeOreBlockReg;
@@ -8,6 +9,7 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.HashCache;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -44,6 +46,8 @@ import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
 import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.ConditionalRecipe;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -52,22 +56,14 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static com.shynieke.geore.registry.GeOreRegistry.BLOCKS;
-import static com.shynieke.geore.registry.GeOreRegistry.COAL_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.COPPER_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.DIAMOND_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.EMERALD_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.GOLD_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.IRON_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.LAPIS_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.QUARTZ_GEORE;
-import static com.shynieke.geore.registry.GeOreRegistry.REDSTONE_GEORE;
+import static com.shynieke.geore.registry.GeOreRegistry.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GeOreDatagen {
@@ -116,6 +112,9 @@ public class GeOreDatagen {
 				addGeOreTables(LAPIS_GEORE);
 				addGeOreTables(QUARTZ_GEORE);
 				addGeOreTables(REDSTONE_GEORE);
+				addGeOreTables(RUBY_GEORE);
+				addGeOreTables(SAPPHIRE_GEORE);
+				addGeOreTables(TOPAZ_GEORE);
 			}
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
@@ -155,28 +154,37 @@ public class GeOreDatagen {
 			generateRecipes(COAL_GEORE, recipeConsumer);
 
 			generateRecipes(COPPER_GEORE, recipeConsumer);
-			smeltToIngot(COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
+			smeltToOre(COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
 
 			generateRecipes(DIAMOND_GEORE, recipeConsumer);
-			smeltToIngot(DIAMOND_GEORE, 1.0F, Items.DIAMOND, recipeConsumer);
+			smeltToOre(DIAMOND_GEORE, 1.0F, Items.DIAMOND, recipeConsumer);
 
 			generateRecipes(EMERALD_GEORE, recipeConsumer);
-			smeltToIngot(EMERALD_GEORE, 1.0F, Items.EMERALD, recipeConsumer);
+			smeltToOre(EMERALD_GEORE, 1.0F, Items.EMERALD, recipeConsumer);
 
 			generateRecipes(GOLD_GEORE, recipeConsumer);
-			smeltToIngot(GOLD_GEORE, 1.0F, Items.GOLD_INGOT, recipeConsumer);
+			smeltToOre(GOLD_GEORE, 1.0F, Items.GOLD_INGOT, recipeConsumer);
 
 			generateRecipes(IRON_GEORE, recipeConsumer);
-			smeltToIngot(IRON_GEORE, 0.7F, Items.IRON_INGOT, recipeConsumer);
+			smeltToOre(IRON_GEORE, 0.7F, Items.IRON_INGOT, recipeConsumer);
 
 			generateRecipes(LAPIS_GEORE, recipeConsumer);
-			smeltToIngot(LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, recipeConsumer);
+			smeltToOre(LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, recipeConsumer);
 
 			generateRecipes(QUARTZ_GEORE, recipeConsumer);
-			smeltToIngot(QUARTZ_GEORE, 0.2F, Items.QUARTZ, recipeConsumer);
+			smeltToOre(QUARTZ_GEORE, 0.2F, Items.QUARTZ, recipeConsumer);
 
 			generateRecipes(REDSTONE_GEORE, recipeConsumer);
-			smeltToIngot(REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
+			smeltToOre(REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
+
+			generateRecipes(RUBY_GEORE, recipeConsumer);
+			optionalSmeltToOre(RUBY_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.RUBY.get(), "gemsandcrystals", recipeConsumer);
+
+			generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
+			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.SAPPHIRE.get(), "gemsandcrystals", recipeConsumer);
+
+			generateRecipes(TOPAZ_GEORE, recipeConsumer);
+			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.TOPAZ.get(), "gemsandcrystals", recipeConsumer);
 		}
 
 		private void generateRecipes(GeOreBlockReg blockReg, Consumer<FinishedRecipe> recipeConsumer) {
@@ -191,7 +199,7 @@ public class GeOreDatagen {
 							has(blockReg.getShard().get())).save(recipeConsumer);
 		}
 
-		private void smeltToIngot(GeOreBlockReg blockReg, float xp, Item item, Consumer<FinishedRecipe> recipeConsumer) {
+		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, Consumer<FinishedRecipe> recipeConsumer) {
 			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
@@ -199,6 +207,32 @@ public class GeOreDatagen {
 			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().get().getRegistryName().getPath()));
+		}
+
+		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, Consumer<FinishedRecipe> recipeConsumer) {
+			new ConditionalRecipe.Builder()
+					.addCondition(
+							new ModLoadedCondition(modid)
+					)
+					.addRecipe(
+							SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+									::save
+					)
+					.build(recipeConsumer,
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().get().getRegistryName().getPath()));
+
+			new ConditionalRecipe.Builder()
+					.addCondition(
+							new ModLoadedCondition(modid)
+					)
+					.addRecipe(
+							SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+									::save
+					)
+					.build(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().get().getRegistryName().getPath()));
 		}
 	}
@@ -221,6 +255,9 @@ public class GeOreDatagen {
 			generateLang("Lapis", LAPIS_GEORE);
 			generateLang("Quartz", QUARTZ_GEORE);
 			generateLang("Redstone", REDSTONE_GEORE);
+			generateLang("Ruby", RUBY_GEORE);
+			generateLang("Sapphire", SAPPHIRE_GEORE);
+			generateLang("Topaz", TOPAZ_GEORE);
 		}
 
 		public void generateLang(String name, GeOreBlockReg blockReg) {
@@ -251,6 +288,9 @@ public class GeOreDatagen {
 			generateGeoreModels(LAPIS_GEORE);
 			generateGeoreModels(QUARTZ_GEORE);
 			generateGeoreModels(REDSTONE_GEORE);
+			generateGeoreModels(RUBY_GEORE);
+			generateGeoreModels(SAPPHIRE_GEORE);
+			generateGeoreModels(TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -296,6 +336,9 @@ public class GeOreDatagen {
 			generateGeoreModels(LAPIS_GEORE);
 			generateGeoreModels(QUARTZ_GEORE);
 			generateGeoreModels(REDSTONE_GEORE);
+			generateGeoreModels(RUBY_GEORE);
+			generateGeoreModels(SAPPHIRE_GEORE);
+			generateGeoreModels(TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -330,6 +373,9 @@ public class GeOreDatagen {
 			generateGeoreModels(LAPIS_GEORE);
 			generateGeoreModels(QUARTZ_GEORE);
 			generateGeoreModels(REDSTONE_GEORE);
+			generateGeoreModels(RUBY_GEORE);
+			generateGeoreModels(SAPPHIRE_GEORE);
+			generateGeoreModels(TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -433,7 +479,10 @@ public class GeOreDatagen {
 					.add(IRON_GEORE.getBudding().get())
 					.add(LAPIS_GEORE.getBudding().get())
 					.add(QUARTZ_GEORE.getBudding().get())
-					.add(REDSTONE_GEORE.getBudding().get());
+					.add(REDSTONE_GEORE.getBudding().get())
+					.add(RUBY_GEORE.getBudding().get())
+					.add(SAPPHIRE_GEORE.getBudding().get())
+					.add(TOPAZ_GEORE.getBudding().get());
 			this.tag(NON_MOVABLE)
 					.add(COAL_GEORE.getBudding().get())
 					.add(COPPER_GEORE.getBudding().get())
@@ -443,7 +492,10 @@ public class GeOreDatagen {
 					.add(IRON_GEORE.getBudding().get())
 					.add(LAPIS_GEORE.getBudding().get())
 					.add(QUARTZ_GEORE.getBudding().get())
-					.add(REDSTONE_GEORE.getBudding().get());
+					.add(REDSTONE_GEORE.getBudding().get())
+					.add(RUBY_GEORE.getBudding().get())
+					.add(SAPPHIRE_GEORE.getBudding().get())
+					.add(TOPAZ_GEORE.getBudding().get());
 
 			this.addMineable(COAL_GEORE);
 			this.addMineable(COPPER_GEORE);
@@ -454,6 +506,9 @@ public class GeOreDatagen {
 			this.addMineable(LAPIS_GEORE);
 			this.addMineable(QUARTZ_GEORE);
 			this.addMineable(REDSTONE_GEORE);
+			this.addMineable(RUBY_GEORE);
+			this.addMineable(SAPPHIRE_GEORE);
+			this.addMineable(TOPAZ_GEORE);
 
 			this.addCrystalSounds(COAL_GEORE);
 			this.addCrystalSounds(COPPER_GEORE);
@@ -464,6 +519,9 @@ public class GeOreDatagen {
 			this.addCrystalSounds(LAPIS_GEORE);
 			this.addCrystalSounds(QUARTZ_GEORE);
 			this.addCrystalSounds(REDSTONE_GEORE);
+			this.addCrystalSounds(RUBY_GEORE);
+			this.addCrystalSounds(SAPPHIRE_GEORE);
+			this.addCrystalSounds(TOPAZ_GEORE);
 
 			this.addStorage(COAL_GEORE);
 			this.addStorage(COPPER_GEORE);
@@ -474,6 +532,9 @@ public class GeOreDatagen {
 			this.addStorage(LAPIS_GEORE);
 			this.addStorage(QUARTZ_GEORE);
 			this.addStorage(REDSTONE_GEORE);
+			this.addStorage(RUBY_GEORE);
+			this.addStorage(SAPPHIRE_GEORE);
+			this.addStorage(TOPAZ_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -520,6 +581,9 @@ public class GeOreDatagen {
 			this.addGeore(LAPIS_GEORE);
 			this.addGeore(QUARTZ_GEORE);
 			this.addGeore(REDSTONE_GEORE);
+			this.addGeore(RUBY_GEORE);
+			this.addGeore(SAPPHIRE_GEORE);
+			this.addGeore(TOPAZ_GEORE);
 
 			this.addStorage(COAL_GEORE);
 			this.addStorage(COPPER_GEORE);
@@ -530,6 +594,9 @@ public class GeOreDatagen {
 			this.addStorage(LAPIS_GEORE);
 			this.addStorage(QUARTZ_GEORE);
 			this.addStorage(REDSTONE_GEORE);
+			this.addStorage(RUBY_GEORE);
+			this.addStorage(SAPPHIRE_GEORE);
+			this.addStorage(TOPAZ_GEORE);
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {

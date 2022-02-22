@@ -9,6 +9,9 @@
     "#forge:geore_large_buds/iron",
     "#forge:geore_large_buds/lapis",
     "#forge:geore_large_buds/quartz",
-    "#forge:geore_large_buds/redstone"
+    "#forge:geore_large_buds/redstone",
+    "#forge:geore_large_buds/ruby",
+    "#forge:geore_large_buds/sapphire",
+    "#forge:geore_large_buds/topaz"
   ]
 }

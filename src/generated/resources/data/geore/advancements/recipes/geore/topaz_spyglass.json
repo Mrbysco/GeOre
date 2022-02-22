@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "geore:topaz_spyglass"
+    ]
+  },
+  "criteria": {
+    "has_topazgeore_shard": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:topaz_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "geore:topaz_spyglass"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_topazgeore_shard",
+      "has_the_recipe"
+    ]
+  ]
+}

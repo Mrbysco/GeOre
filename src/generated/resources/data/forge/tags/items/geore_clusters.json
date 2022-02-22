@@ -9,6 +9,9 @@
     "#forge:geore_clusters/iron",
     "#forge:geore_clusters/lapis",
     "#forge:geore_clusters/quartz",
-    "#forge:geore_clusters/redstone"
+    "#forge:geore_clusters/redstone",
+    "#forge:geore_clusters/ruby",
+    "#forge:geore_clusters/sapphire",
+    "#forge:geore_clusters/topaz"
   ]
 }

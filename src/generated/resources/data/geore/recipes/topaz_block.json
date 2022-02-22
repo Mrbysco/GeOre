@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "geore:topaz_shard"
+    }
+  },
+  "result": {
+    "item": "geore:topaz_block"
+  }
+}

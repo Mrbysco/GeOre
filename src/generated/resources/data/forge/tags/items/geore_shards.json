@@ -9,6 +9,9 @@
     "#forge:geore_shards/iron",
     "#forge:geore_shards/lapis",
     "#forge:geore_shards/quartz",
-    "#forge:geore_shards/redstone"
+    "#forge:geore_shards/redstone",
+    "#forge:geore_shards/ruby",
+    "#forge:geore_shards/sapphire",
+    "#forge:geore_shards/topaz"
   ]
 }
