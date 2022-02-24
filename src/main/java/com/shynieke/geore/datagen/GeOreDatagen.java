@@ -1,15 +1,14 @@
 package com.shynieke.geore.datagen;
 
 import com.google.common.collect.ImmutableList;
-import com.google.gson.JsonObject;
 import com.mojang.datafixers.util.Pair;
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.datagen.builder.CustomSimpleCookingRecipeBuilder;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.HashCache;
 import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -56,7 +55,6 @@ import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.RegistryObject;
 
 import javax.annotation.Nullable;
-import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
@@ -178,13 +176,13 @@ public class GeOreDatagen {
 			smeltToOre(REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
 
 			generateRecipes(RUBY_GEORE, recipeConsumer);
-			optionalSmeltToOre(RUBY_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.RUBY.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(RUBY_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.RUBY.get(), "gemsandcrystals", recipeConsumer);
 
 			generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
-			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.SAPPHIRE.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.SAPPHIRE.get(), "gemsandcrystals", recipeConsumer);
 
 			generateRecipes(TOPAZ_GEORE, recipeConsumer);
-			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, com.coliwogg.gemsandcrystals.util.RegistryHandler.TOPAZ.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.TOPAZ.get(), "gemsandcrystals", recipeConsumer);
 		}
 
 		private void generateRecipes(GeOreBlockReg blockReg, Consumer<FinishedRecipe> recipeConsumer) {
@@ -203,11 +201,11 @@ public class GeOreDatagen {
 			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
-							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().get().getRegistryName().getPath()));
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
-							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().get().getRegistryName().getPath()));
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 
 		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, Consumer<FinishedRecipe> recipeConsumer) {
@@ -216,24 +214,24 @@ public class GeOreDatagen {
 							new ModLoadedCondition(modid)
 					)
 					.addRecipe(
-							SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+							CustomSimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
 									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 									::save
 					)
 					.build(recipeConsumer,
-							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().get().getRegistryName().getPath()));
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 
 			new ConditionalRecipe.Builder()
 					.addCondition(
 							new ModLoadedCondition(modid)
 					)
 					.addRecipe(
-							SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+							CustomSimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
 									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 									::save
 					)
 					.build(recipeConsumer,
-							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().get().getRegistryName().getPath()));
+							new ResourceLocation(Reference.MOD_ID, item.getRegistryName().getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 	}
 
@@ -342,8 +340,8 @@ public class GeOreDatagen {
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
-			cubeAll(blockReg.getBlock().get().getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBlock().get().getRegistryName().getPath()));
-			cubeAll(blockReg.getBudding().get().getRegistryName().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBudding().get().getRegistryName().getPath()));
+			cubeAll(blockReg.getBlock().getId().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
+			cubeAll(blockReg.getBudding().getId().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
 
 			crossBlock(blockReg.getCluster().get());
 			crossBlock(blockReg.getSmallBud().get());
@@ -379,13 +377,13 @@ public class GeOreDatagen {
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
-			singleTexture(blockReg.getShard().get().getRegistryName().getPath(), new ResourceLocation("item/generated"),
-					"layer0", new ResourceLocation(Reference.MOD_ID, "item/" + blockReg.getShard().get().getRegistryName().getPath()));
+			singleTexture(blockReg.getShard().getId().getPath(), new ResourceLocation("item/generated"),
+					"layer0", new ResourceLocation(Reference.MOD_ID, "item/" + blockReg.getShard().getId().getPath()));
 
-			withExistingParent(blockReg.getBlock().get().getRegistryName().getPath(),
-					new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().get().getRegistryName().getPath()));
-			withExistingParent(blockReg.getBudding().get().getRegistryName().getPath(),
-					new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().get().getRegistryName().getPath()));
+			withExistingParent(blockReg.getBlock().getId().getPath(),
+					new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
+			withExistingParent(blockReg.getBudding().getId().getPath(),
+					new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
 
 			makeCluster(blockReg.getCluster().get());
 			makeSmallBud(blockReg.getSmallBud().get());

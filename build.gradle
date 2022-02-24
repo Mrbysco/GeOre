@@ -120,7 +120,7 @@ dependencies {
 
     implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-    implementation fg.deobf("curse.maven:GemsAndCrystals-334162:3567496")
+    implementation fg.deobf("curse.maven:GemsAndCrystals-334162:3567496") //Most scuffed code I've ever seen, who uses capital letters in lang keys anymore?
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
