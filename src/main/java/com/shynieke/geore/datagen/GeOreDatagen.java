@@ -20,7 +20,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.Tag;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -52,7 +52,9 @@ import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.lwjgl.system.CallbackI.P;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -78,9 +80,9 @@ public class GeOreDatagen {
 			generator.addProvider(new GeoreItemTags(generator, provider, helper));
 		}
 		if (event.includeClient()) {
-            generator.addProvider(new Language(generator));
-            generator.addProvider(new BlockModels(generator, helper));
-            generator.addProvider(new ItemModels(generator, helper));
+			generator.addProvider(new Language(generator));
+			generator.addProvider(new BlockModels(generator, helper));
+			generator.addProvider(new ItemModels(generator, helper));
 			generator.addProvider(new BlockStates(generator, helper));
 		}
 	}
@@ -119,10 +121,10 @@ public class GeOreDatagen {
 				this.dropSelf(blockReg.getBlock().get());
 				this.add(blockReg.getCluster().get(), (block) ->
 						createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get())
-						.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
-						.apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-						.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
-						.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
+								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
+								.apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
+								.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+								.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
 				this.dropWhenSilkTouch(blockReg.getSmallBud().get());
 				this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 				this.dropWhenSilkTouch(blockReg.getLargeBud().get());
@@ -131,7 +133,7 @@ public class GeOreDatagen {
 
 			@Override
 			protected Iterable<Block> getKnownBlocks() {
-				return (Iterable<Block>)BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+				return (Iterable<Block>) BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
 			}
 		}
 
@@ -175,14 +177,25 @@ public class GeOreDatagen {
 			generateRecipes(REDSTONE_GEORE, recipeConsumer);
 			smeltToOre(REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
 
+			//Mod compat
+			String gemsID = "gemsandcrystals";
 			generateRecipes(RUBY_GEORE, recipeConsumer);
-			optionalSmeltToOre(RUBY_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.RUBY.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(RUBY_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "ruby")), gemsID, recipeConsumer);
 
 			generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
-			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.SAPPHIRE.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "sapphire")), gemsID, recipeConsumer);
 
 			generateRecipes(TOPAZ_GEORE, recipeConsumer);
-			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, com.coliwogg.gemsandcrystals.init.ItemInit.TOPAZ.get(), "gemsandcrystals", recipeConsumer);
+			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "topaz")), gemsID, recipeConsumer);
+		}
+
+		public Item getModItem(ResourceLocation itemLocation) {
+			for(Item item : ForgeRegistries.ITEMS) {
+				if(item.getRegistryName().equals(itemLocation)) {
+					return item;
+				}
+			}
+			return null;
 		}
 
 		private void generateRecipes(GeOreBlockReg blockReg, Consumer<FinishedRecipe> recipeConsumer) {
@@ -455,15 +468,15 @@ public class GeOreDatagen {
 			super(generator, Reference.MOD_ID, existingFileHelper);
 		}
 
-		public static final Tag.Named<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
-		public static final Tags.IOptionalNamedTag<Block> NON_MOVABLE = optionalTag("create", "non_movable");
+		public static final TagKey<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
+		public static final TagKey<Block> NON_MOVABLE = modTag("create", "non_movable");
 
-		private static Tag.Named<Block> forgeTag(String name) {
-			return BlockTags.bind(new ResourceLocation("forge", name).toString());
+		private static TagKey<Block> forgeTag(String name) {
+			return BlockTags.create(new ResourceLocation("forge", name));
 		}
 
-		private static Tags.IOptionalNamedTag<Block> optionalTag(String modid, String name) {
-			return BlockTags.createOptional(new ResourceLocation(modid, name));
+		private static TagKey<Block> modTag(String modid, String name) {
+			return BlockTags.create(new ResourceLocation(modid, name));
 		}
 
 		@Override
@@ -561,12 +574,12 @@ public class GeOreDatagen {
 			super(dataGenerator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
 		}
 
-		public static final Tag.Named<Item> GEORE_CLUSTERS = forgeTag("geore_clusters");
-		public static final Tag.Named<Item> GEORE_SMALL_BUDS = forgeTag("geore_small_buds");
-		public static final Tag.Named<Item> GEORE_MEDIUM_BUDS = forgeTag("geore_medium_buds");
-		public static final Tag.Named<Item> GEORE_LARGE_BUDS = forgeTag("geore_large_buds");
-		public static final Tag.Named<Item> GEORE_SHARDS = forgeTag("geore_shards");
-		public static final Tag.Named<Item> GEORE_BLOCKS = forgeTag("geore_blocks");
+		public static final TagKey<Item> GEORE_CLUSTERS = forgeTag("geore_clusters");
+		public static final TagKey<Item> GEORE_SMALL_BUDS = forgeTag("geore_small_buds");
+		public static final TagKey<Item> GEORE_MEDIUM_BUDS = forgeTag("geore_medium_buds");
+		public static final TagKey<Item> GEORE_LARGE_BUDS = forgeTag("geore_large_buds");
+		public static final TagKey<Item> GEORE_SHARDS = forgeTag("geore_shards");
+		public static final TagKey<Item> GEORE_BLOCKS = forgeTag("geore_blocks");
 
 		@Override
 		protected void addTags() {
@@ -602,33 +615,33 @@ public class GeOreDatagen {
 		}
 
 		private void addGeore(GeOreBlockReg blockReg) {
-			Tag.Named<Item> smallBudsTag = forgeTag("geore_small_buds/" + blockReg.getName());
+			TagKey<Item> smallBudsTag = forgeTag("geore_small_buds/" + blockReg.getName());
 			this.tag(GEORE_SMALL_BUDS).addTag(smallBudsTag);
 			this.tag(smallBudsTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> mediumBudsTag = forgeTag("geore_medium_buds/" + blockReg.getName());
+			TagKey<Item> mediumBudsTag = forgeTag("geore_medium_buds/" + blockReg.getName());
 			this.tag(GEORE_MEDIUM_BUDS).addTag(mediumBudsTag);
 			this.tag(mediumBudsTag).add(blockReg.getSmallBud().get().asItem());
 
-			Tag.Named<Item> largeBudsTag = forgeTag("geore_large_buds/" + blockReg.getName());
+			TagKey<Item> largeBudsTag = forgeTag("geore_large_buds/" + blockReg.getName());
 			this.tag(GEORE_LARGE_BUDS).addTag(largeBudsTag);
 			this.tag(largeBudsTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> clusterTag = forgeTag("geore_clusters/" + blockReg.getName());
+			TagKey<Item> clusterTag = forgeTag("geore_clusters/" + blockReg.getName());
 			this.tag(GEORE_CLUSTERS).addTag(clusterTag);
 			this.tag(clusterTag).add(blockReg.getCluster().get().asItem());
 
-			Tag.Named<Item> shardTag = forgeTag("geore_shards/" + blockReg.getName());
+			TagKey<Item> shardTag = forgeTag("geore_shards/" + blockReg.getName());
 			this.tag(GEORE_SHARDS).addTag(shardTag);
 			this.tag(shardTag).add(blockReg.getShard().get());
 
-			Tag.Named<Item> blockTag = forgeTag("geore_blocks/" + blockReg.getName());
+			TagKey<Item> blockTag = forgeTag("geore_blocks/" + blockReg.getName());
 			this.tag(GEORE_BLOCKS).addTag(blockTag);
 			this.tag(blockTag).add(blockReg.getBlock().get().asItem());
 		}
 
-		private static Tag.Named<Item> forgeTag(String name) {
-			return ItemTags.bind(new ResourceLocation("forge", name).toString());
+		private static TagKey<Item> forgeTag(String name) {
+			return ItemTags.create(new ResourceLocation("forge", name));
 		}
 	}
 }

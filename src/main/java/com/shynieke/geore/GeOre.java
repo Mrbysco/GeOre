@@ -1,5 +1,6 @@
 package com.shynieke.geore;
 
+import com.mojang.logging.LogUtils;
 import com.shynieke.geore.client.ClientHandler;
 import com.shynieke.geore.client.SpyglassHandler;
 import com.shynieke.geore.config.GeOreConfig;
@@ -15,32 +16,31 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 
 @Mod(Reference.MOD_ID)
 public class GeOre {
-    public static final Logger LOGGER = LogManager.getLogger();
+	public static final Logger LOGGER = LogUtils.getLogger();
 
-    public GeOre() {
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GeOreConfig.commonSpec);
-        eventBus.register(GeOreConfig.class);
+	public GeOre() {
+		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GeOreConfig.commonSpec);
+		eventBus.register(GeOreConfig.class);
 
-        eventBus.addListener(this::setup);
+		eventBus.addListener(this::setup);
 
-        GeOreRegistry.BLOCKS.register(eventBus);
-        GeOreRegistry.ITEMS.register(eventBus);
+		GeOreRegistry.BLOCKS.register(eventBus);
+		GeOreRegistry.ITEMS.register(eventBus);
 
-        MinecraftForge.EVENT_BUS.register(new GeOreWorldgen());
+		MinecraftForge.EVENT_BUS.register(new GeOreWorldgen());
 
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            eventBus.addListener(ClientHandler::onClientSetup);
-            MinecraftForge.EVENT_BUS.register(new SpyglassHandler());
-        });
-    }
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+			eventBus.addListener(ClientHandler::onClientSetup);
+			MinecraftForge.EVENT_BUS.register(new SpyglassHandler());
+		});
+	}
 
-    private void setup(final FMLCommonSetupEvent event) {
-        GeOreFeatures.initialize();
-    }
+	private void setup(final FMLCommonSetupEvent event) {
+		GeOreFeatures.initialize();
+	}
 }

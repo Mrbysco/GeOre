@@ -30,41 +30,41 @@ public class CustomSimpleCookingRecipeBuilder implements RecipeBuilder {
 	private String group;
 	private final SimpleCookingSerializer<?> serializer;
 
-	private CustomSimpleCookingRecipeBuilder(ItemLike p_126243_, Ingredient p_126244_, float p_126245_, int p_126246_, SimpleCookingSerializer<?> p_126247_) {
-		this.result = p_126243_.asItem();
-		this.ingredient = p_126244_;
-		this.experience = p_126245_;
-		this.cookingTime = p_126246_;
-		this.serializer = p_126247_;
+	private CustomSimpleCookingRecipeBuilder(ItemLike result, Ingredient ingredient, float xp, int time, SimpleCookingSerializer<?> serializer) {
+		this.result = result.asItem();
+		this.ingredient = ingredient;
+		this.experience = xp;
+		this.cookingTime = time;
+		this.serializer = serializer;
 	}
 
-	public static CustomSimpleCookingRecipeBuilder cooking(Ingredient p_126249_, ItemLike p_126250_, float p_126251_, int p_126252_, SimpleCookingSerializer<?> p_126253_) {
-		return new CustomSimpleCookingRecipeBuilder(p_126250_, p_126249_, p_126251_, p_126252_, p_126253_);
+	public static CustomSimpleCookingRecipeBuilder cooking(Ingredient ingredient, ItemLike result, float xp, int time, SimpleCookingSerializer<?> serializer) {
+		return new CustomSimpleCookingRecipeBuilder(result, ingredient, xp, time, serializer);
 	}
 
-	public static CustomSimpleCookingRecipeBuilder campfireCooking(Ingredient p_176785_, ItemLike p_176786_, float p_176787_, int p_176788_) {
-		return cooking(p_176785_, p_176786_, p_176787_, p_176788_, RecipeSerializer.CAMPFIRE_COOKING_RECIPE);
+	public static CustomSimpleCookingRecipeBuilder campfireCooking(Ingredient ingredient, ItemLike result, float xp, int time) {
+		return cooking(ingredient, result, xp, time, RecipeSerializer.CAMPFIRE_COOKING_RECIPE);
 	}
 
-	public static CustomSimpleCookingRecipeBuilder blasting(Ingredient p_126268_, ItemLike p_126269_, float p_126270_, int p_126271_) {
-		return cooking(p_126268_, p_126269_, p_126270_, p_126271_, RecipeSerializer.BLASTING_RECIPE);
+	public static CustomSimpleCookingRecipeBuilder blasting(Ingredient ingredient, ItemLike result, float xp, int time) {
+		return cooking(ingredient, result, xp, time, RecipeSerializer.BLASTING_RECIPE);
 	}
 
-	public static CustomSimpleCookingRecipeBuilder smelting(Ingredient p_126273_, ItemLike p_126274_, float p_126275_, int p_126276_) {
-		return cooking(p_126273_, p_126274_, p_126275_, p_126276_, RecipeSerializer.SMELTING_RECIPE);
+	public static CustomSimpleCookingRecipeBuilder smelting(Ingredient ingredient, ItemLike result, float xp, int time) {
+		return cooking(ingredient, result, xp, time, RecipeSerializer.SMELTING_RECIPE);
 	}
 
-	public static CustomSimpleCookingRecipeBuilder smoking(Ingredient p_176797_, ItemLike p_176798_, float p_176799_, int p_176800_) {
-		return cooking(p_176797_, p_176798_, p_176799_, p_176800_, RecipeSerializer.SMOKING_RECIPE);
+	public static CustomSimpleCookingRecipeBuilder smoking(Ingredient ingredient, ItemLike result, float xp, int time) {
+		return cooking(ingredient, result, xp, time, RecipeSerializer.SMOKING_RECIPE);
 	}
 
-	public CustomSimpleCookingRecipeBuilder unlockedBy(String p_126255_, CriterionTriggerInstance p_126256_) {
-		this.advancement.addCriterion(p_126255_, p_126256_);
+	public CustomSimpleCookingRecipeBuilder unlockedBy(String triggerName, CriterionTriggerInstance triggerInstance) {
+		this.advancement.addCriterion(triggerName, triggerInstance);
 		return this;
 	}
 
-	public CustomSimpleCookingRecipeBuilder group(@Nullable String p_176795_) {
-		this.group = p_176795_;
+	public CustomSimpleCookingRecipeBuilder group(@Nullable String group) {
+		this.group = group;
 		return this;
 	}
 
@@ -72,10 +72,10 @@ public class CustomSimpleCookingRecipeBuilder implements RecipeBuilder {
 		return this.result;
 	}
 
-	public void save(Consumer<FinishedRecipe> p_126263_, ResourceLocation p_126264_) {
+	public void save(Consumer<FinishedRecipe> recipeConsumer, ResourceLocation p_126264_) {
 		this.ensureValid(p_126264_);
 		this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(p_126264_)).rewards(AdvancementRewards.Builder.recipe(p_126264_)).requirements(RequirementsStrategy.OR);
-		p_126263_.accept(new CustomSimpleCookingRecipeBuilder.Result(p_126264_, this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.cookingTime, this.advancement, new ResourceLocation(p_126264_.getNamespace(), "recipes/" + p_126264_.getPath()), this.serializer));
+		recipeConsumer.accept(new CustomSimpleCookingRecipeBuilder.Result(p_126264_, this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.cookingTime, this.advancement, new ResourceLocation(p_126264_.getNamespace(), "recipes/" + p_126264_.getPath()), this.serializer));
 	}
 
 	private void ensureValid(ResourceLocation p_126266_) {
@@ -95,27 +95,27 @@ public class CustomSimpleCookingRecipeBuilder implements RecipeBuilder {
 		private final ResourceLocation advancementId;
 		private final RecipeSerializer<? extends AbstractCookingRecipe> serializer;
 
-		public Result(ResourceLocation p_126287_, String p_126288_, Ingredient p_126289_, Item p_126290_, float p_126291_, int p_126292_, Advancement.Builder p_126293_, ResourceLocation p_126294_, RecipeSerializer<? extends AbstractCookingRecipe> p_126295_) {
-			this.id = p_126287_;
-			this.group = p_126288_;
-			this.ingredient = p_126289_;
-			this.result = p_126290_;
-			this.experience = p_126291_;
-			this.cookingTime = p_126292_;
-			this.advancement = p_126293_;
-			this.advancementId = p_126294_;
-			this.serializer = p_126295_;
+		public Result(ResourceLocation id, String group, Ingredient ingredient, Item result, float xp, int time, Advancement.Builder advancement, ResourceLocation advancementID, RecipeSerializer<? extends AbstractCookingRecipe> serializer) {
+			this.id = id;
+			this.group = group;
+			this.ingredient = ingredient;
+			this.result = result;
+			this.experience = xp;
+			this.cookingTime = time;
+			this.advancement = advancement;
+			this.advancementId = advancementID;
+			this.serializer = serializer;
 		}
 
-		public void serializeRecipeData(JsonObject p_126297_) {
+		public void serializeRecipeData(JsonObject jsonObject) {
 			if (!this.group.isEmpty()) {
-				p_126297_.addProperty("group", this.group);
+				jsonObject.addProperty("group", this.group);
 			}
 
-			p_126297_.add("ingredient", this.ingredient.toJson());
-			p_126297_.addProperty("result", Registry.ITEM.getKey(this.result).toString());
-			p_126297_.addProperty("experience", this.experience);
-			p_126297_.addProperty("cookingtime", this.cookingTime);
+			jsonObject.add("ingredient", this.ingredient.toJson());
+			jsonObject.addProperty("result", Registry.ITEM.getKey(this.result).toString());
+			jsonObject.addProperty("experience", this.experience);
+			jsonObject.addProperty("cookingtime", this.cookingTime);
 		}
 
 		public RecipeSerializer<?> getType() {

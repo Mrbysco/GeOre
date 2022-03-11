@@ -90,7 +90,7 @@ public class GeOreBlockReg {
 
 		budding = GeOreRegistry.BLOCKS.register("budding_" + name, () ->
 				new BuddingGeoreBlock(BlockBehaviour.Properties.of(Material.AMETHYST, color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
-					getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
+						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
 		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
 
 		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);

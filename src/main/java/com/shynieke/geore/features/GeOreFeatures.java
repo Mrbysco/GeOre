@@ -7,8 +7,9 @@ import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 public class GeOreFeatures {
-	//Just to initialize the features no matter what
-	public static void initialize() {}
+	public static void initialize() {
+		//Just to initialize the features no matter what
+	}
 
 	public static final PlacementModifier RNG_DECORATOR = HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top());
 

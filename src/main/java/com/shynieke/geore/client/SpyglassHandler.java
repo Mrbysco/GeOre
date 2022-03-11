@@ -15,15 +15,15 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class SpyglassHandler{
+public class SpyglassHandler {
 	@SubscribeEvent
 	public void onGameOverlayRender(RenderGameOverlayEvent.Pre event) {
-		if(event.getType() != ElementType.ALL) return;
+		if (event.getType() != ElementType.ALL) return;
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
 		PoseStack poseStack = event.getMatrixStack();
 
-		if(minecraft.options.getCameraType().isFirstPerson()) {
+		if (minecraft.options.getCameraType().isFirstPerson()) {
 			if (player.isUsingItem() && player.getUseItem().getItem() instanceof GeoreSpyglassItem georeSpyglassItem) {
 				int color = georeSpyglassItem.getOverlayHex();
 				RenderSystem.enableBlend();
@@ -48,15 +48,15 @@ public class SpyglassHandler{
 	}
 
 	protected static void fillGradient(Matrix4f matrix4f, BufferBuilder builder, int p_93126_, int p_93127_, int width, int height, int z, int color1, int color2) {
-		float f1 = (float)(color1 >> 16 & 255) / 255.0F;
-		float f2 = (float)(color1 >> 8 & 255) / 255.0F;
-		float f3 = (float)(color1 & 255) / 255.0F;
-		float f5 = (float)(color2 >> 16 & 255) / 255.0F;
-		float f6 = (float)(color2 >> 8 & 255) / 255.0F;
-		float f7 = (float)(color2 & 255) / 255.0F;
-		builder.vertex(matrix4f, (float)width, (float)p_93127_, (float)z).color(f1, f2, f3, 0.15F).endVertex();
-		builder.vertex(matrix4f, (float)p_93126_, (float)p_93127_, (float)z).color(f1, f2, f3, 0.15F).endVertex();
-		builder.vertex(matrix4f, (float)p_93126_, (float)height, (float)z).color(f5, f6, f7, 0.15F).endVertex();
-		builder.vertex(matrix4f, (float)width, (float)height, (float)z).color(f5, f6, f7, 0.15F).endVertex();
+		float f1 = (float) (color1 >> 16 & 255) / 255.0F;
+		float f2 = (float) (color1 >> 8 & 255) / 255.0F;
+		float f3 = (float) (color1 & 255) / 255.0F;
+		float f5 = (float) (color2 >> 16 & 255) / 255.0F;
+		float f6 = (float) (color2 >> 8 & 255) / 255.0F;
+		float f7 = (float) (color2 & 255) / 255.0F;
+		builder.vertex(matrix4f, (float) width, (float) p_93127_, (float) z).color(f1, f2, f3, 0.15F).endVertex();
+		builder.vertex(matrix4f, (float) p_93126_, (float) p_93127_, (float) z).color(f1, f2, f3, 0.15F).endVertex();
+		builder.vertex(matrix4f, (float) p_93126_, (float) height, (float) z).color(f5, f6, f7, 0.15F).endVertex();
+		builder.vertex(matrix4f, (float) width, (float) height, (float) z).color(f5, f6, f7, 0.15F).endVertex();
 	}
 }

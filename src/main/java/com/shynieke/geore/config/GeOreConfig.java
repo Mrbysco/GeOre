@@ -194,7 +194,7 @@ public class GeOreConfig {
 			rubyGeoreMaxY = builder
 					.comment("The max Y level that Ruby GeOre will generate at [Default: 30]")
 					.defineInRange("rubyGeoreMaxY", 30, 0, Integer.MAX_VALUE);
-			
+
 			generateSapphireGeore = builder
 					.comment("Generate Sapphire GeOre [Default: false]")
 					.define("generateSapphireGeore", false);
@@ -206,7 +206,7 @@ public class GeOreConfig {
 			sapphireGeoreMaxY = builder
 					.comment("The max Y level that Sapphire GeOre will generate at [Default: 30]")
 					.defineInRange("sapphireGeoreMaxY", 30, 0, Integer.MAX_VALUE);
-			
+
 			generateTopazGeore = builder
 					.comment("Generate Topaz GeOre [Default: false]")
 					.define("generateTopazGeore", false);
