@@ -179,14 +179,23 @@ public class GeOreDatagen {
 
 			//Mod compat
 			String gemsID = "gemsandcrystals";
-			generateRecipes(RUBY_GEORE, recipeConsumer);
-			optionalSmeltToOre(RUBY_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "ruby")), gemsID, recipeConsumer);
+			Item rubyItem = getModItem(new ResourceLocation(gemsID, "ruby"));
+			if(rubyItem != null) {
+				generateRecipes(RUBY_GEORE, recipeConsumer);
+				optionalSmeltToOre(RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeConsumer);
+			}
 
-			generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
-			optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "sapphire")), gemsID, recipeConsumer);
+			Item sapphireItem = getModItem(new ResourceLocation(gemsID, "sapphire"));
+			if(sapphireItem != null) {
+				generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
+				optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeConsumer);
+			}
 
-			generateRecipes(TOPAZ_GEORE, recipeConsumer);
-			optionalSmeltToOre(TOPAZ_GEORE, 0.7F, getModItem(new ResourceLocation(gemsID, "topaz")), gemsID, recipeConsumer);
+			Item topazItem = getModItem(new ResourceLocation(gemsID, "topaz"));
+			if(topazItem != null) {
+				generateRecipes(TOPAZ_GEORE, recipeConsumer);
+				optionalSmeltToOre(TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeConsumer);
+			}
 		}
 
 		public Item getModItem(ResourceLocation itemLocation) {
