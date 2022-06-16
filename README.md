@@ -1,4 +1,5 @@
-[![build](https://github.com/Mrbysco/GeOre/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/GeOre/actions/workflows/build.yml) [![](http://cf.way2muchnoise.eu/versions/530544.svg)](https://www.curseforge.com/minecraft/mc-mods/geore)
+[![build](https://github.com/Mrbysco/GeOre/actions/workflows/build.yml/badge.svg)](https://github.com/Mrbysco/GeOre/actions/workflows/build.yml) 
+[![](http://cf.way2muchnoise.eu/versions/530544.svg)](https://www.curseforge.com/minecraft/mc-mods/geore)
 
 # GeOre #
 
