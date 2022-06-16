@@ -1,17 +1,17 @@
 {
   "parent": "forge:item/default",
-  "loader": "forge:separate-perspective",
   "base": {
     "parent": "geore:item/quartz_spyglass_in_hand"
   },
+  "loader": "forge:separate-perspective",
   "perspectives": {
-    "gui": {
+    "fixed": {
       "parent": "geore:item/quartz_spyglass_gui"
     },
     "ground": {
       "parent": "geore:item/quartz_spyglass_gui"
     },
-    "fixed": {
+    "gui": {
       "parent": "geore:item/quartz_spyglass_gui"
     }
   }

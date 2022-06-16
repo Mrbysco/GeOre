@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Player.class)
 public class PlayerMixin {
-	@Inject(at = @At("HEAD"), method = "Lnet/minecraft/world/entity/player/Player;isScoping()Z", cancellable = true)
+	@Inject(at = @At("HEAD"), method = "isScoping()Z", cancellable = true)
 	public void georeIsScoping(CallbackInfoReturnable<Boolean> cir) {
 		Player player = (Player) (Object) this;
 		if (player.isUsingItem() && player.getUseItem().getItem() instanceof GeoreSpyglassItem) {

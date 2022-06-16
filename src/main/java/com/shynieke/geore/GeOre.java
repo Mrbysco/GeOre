@@ -6,7 +6,6 @@ import com.shynieke.geore.client.SpyglassHandler;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.registry.GeOreRegistry;
-import com.shynieke.geore.worldgen.GeOreWorldgen;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -31,8 +30,6 @@ public class GeOre {
 
 		GeOreRegistry.BLOCKS.register(eventBus);
 		GeOreRegistry.ITEMS.register(eventBus);
-
-		MinecraftForge.EVENT_BUS.register(new GeOreWorldgen());
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			eventBus.addListener(ClientHandler::onClientSetup);

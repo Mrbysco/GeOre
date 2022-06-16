@@ -1,0 +1,13 @@
+// 1.19	2022-06-15T22:26:39.256386	worldgen/placed_feature generator for geore
+c2e23146a52c68c7cfed37ffd49c8253ac89b62a data/geore/worldgen/placed_feature/coal_geode.json
+8cd2d93db69803b6fa0035d5cdccadcc08c71fbd data/geore/worldgen/placed_feature/copper_geode.json
+ea732811acf2517eba215ead91fcc9562a6018ba data/geore/worldgen/placed_feature/diamond_geode.json
+5945bbd2f0b821713a5991fb657f42e2de412aa5 data/geore/worldgen/placed_feature/emerald_geode.json
+68ac8f20fc49e39d49be1f512df84c5d22c02b11 data/geore/worldgen/placed_feature/gold_geode.json
+936763e3afbbbbbbe4f2a46b94a40a6226784f99 data/geore/worldgen/placed_feature/iron_geode.json
+b62ad93a20926355d4820c2f0ce4f8ac09f6c741 data/geore/worldgen/placed_feature/lapis_geode.json
+2f83f885f2245c72e94cf30be6b5852911110cbb data/geore/worldgen/placed_feature/quartz_geode.json
+84a12991da44fc4ae05f01e7f55e7c3739739095 data/geore/worldgen/placed_feature/redstone_geode.json
+82e5ccf623c480dfbb24b0102df5dcc06c3230b1 data/geore/worldgen/placed_feature/ruby_geode.json
+af467a04deb9339961a1742c53809d8943d90255 data/geore/worldgen/placed_feature/sapphire_geode.json
+2f15fb78ca96dcd95319dc1ade24861365fb9bd4 data/geore/worldgen/placed_feature/topaz_geode.json

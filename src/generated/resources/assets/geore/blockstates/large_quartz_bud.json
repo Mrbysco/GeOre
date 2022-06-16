@@ -4,8 +4,10 @@
       "model": "geore:block/large_quartz_bud",
       "x": 180
     },
-    "facing=up": {
-      "model": "geore:block/large_quartz_bud"
+    "facing=east": {
+      "model": "geore:block/large_quartz_bud",
+      "x": 90,
+      "y": 90
     },
     "facing=north": {
       "model": "geore:block/large_quartz_bud",
@@ -16,15 +18,13 @@
       "x": 90,
       "y": 180
     },
+    "facing=up": {
+      "model": "geore:block/large_quartz_bud"
+    },
     "facing=west": {
       "model": "geore:block/large_quartz_bud",
       "x": 90,
       "y": 270
-    },
-    "facing=east": {
-      "model": "geore:block/large_quartz_bud",
-      "x": 90,
-      "y": 90
     }
   }
 }

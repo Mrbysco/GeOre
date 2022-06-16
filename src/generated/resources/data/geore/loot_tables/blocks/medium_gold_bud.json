@@ -2,14 +2,7 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
-      "entries": [
-        {
-          "type": "minecraft:item",
-          "name": "geore:medium_gold_bud"
-        }
-      ],
       "conditions": [
         {
           "condition": "minecraft:match_tool",
@@ -24,7 +17,14 @@
             ]
           }
         }
-      ]
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "geore:medium_gold_bud"
+        }
+      ],
+      "rolls": 1.0
     }
   ]
 }

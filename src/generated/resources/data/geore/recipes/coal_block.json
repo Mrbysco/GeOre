@@ -1,14 +1,14 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "SS",
-    "SS"
-  ],
   "key": {
     "S": {
       "item": "geore:coal_shard"
     }
   },
+  "pattern": [
+    "SS",
+    "SS"
+  ],
   "result": {
     "item": "geore:coal_block"
   }

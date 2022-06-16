@@ -1,13 +1,22 @@
 package com.shynieke.geore.features;
 
+import com.google.gson.JsonElement;
+import com.shynieke.geore.Reference;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.core.Holder;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
 import net.minecraft.data.worldgen.features.FeatureUtils;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
+import net.minecraft.resources.RegistryOps;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.GeodeBlockSettings;
 import net.minecraft.world.level.levelgen.GeodeCrackSettings;
 import net.minecraft.world.level.levelgen.GeodeLayerSettings;
@@ -22,9 +31,11 @@ import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
+import net.minecraftforge.common.world.BiomeModifier;
+import net.minecraftforge.common.world.ForgeBiomeModifiers.AddFeaturesBiomeModifier;
 
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Map;
 
 public class GeOreFeatureReg {
 	protected final String NAME;
@@ -32,26 +43,15 @@ public class GeOreFeatureReg {
 	protected final Block BLOCK;
 	protected final Block BUDDING;
 	protected final Holder<ConfiguredFeature<GeodeConfiguration, ?>> GEODE;
-	protected final Holder<PlacedFeature> GEODE_PLACED;
-	protected final Supplier<Integer> RARITY;
-	protected final Supplier<Integer> MIN_Y;
-	protected final Supplier<Integer> MAX_Y;
 
 	public String getName() {
 		return NAME;
 	}
 
-	public Holder<PlacedFeature> getPlacedFeature() {
-		return GEODE_PLACED;
-	}
-
-	public GeOreFeatureReg(String name, GeOreBlockReg blockReg, Supplier<Integer> rarityConfig, Supplier<Integer> minYConfig, Supplier<Integer> maxYConfig) {
+	public GeOreFeatureReg(String name, GeOreBlockReg blockReg) {
 		NAME = name;
 		BLOCK = blockReg.getBlock().get();
 		BUDDING = blockReg.getBudding().get();
-		RARITY = rarityConfig;
-		MIN_Y = minYConfig;
-		MAX_Y = maxYConfig;
 
 		GEODE = FeatureUtils.register(name + "_geode", Feature.GEODE, new GeodeConfiguration(
 				new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), SimpleStateProvider.simple(BLOCK),
@@ -64,8 +64,26 @@ public class GeOreFeatureReg {
 				new GeodeCrackSettings(0.95D, 2.0D, 2), 0.35D, 0.083D, true,
 				UniformInt.of(4, 6), UniformInt.of(3, 4),
 				UniformInt.of(1, 2), -16, 16, 0.05D, 1));
+	}
 
-		GEODE_PLACED = PlacementUtils.register(name + "_geode", GEODE, RarityFilter.onAverageOnceEvery(RARITY.get()), GeOreFeatures.RNG_DECORATOR, InSquarePlacement.spread(),
-				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(MIN_Y.get()), VerticalAnchor.absolute(MAX_Y.get())), BiomeFilter.biome());
+	public void fillPlacedFeatureMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, PlacedFeature> map, int rarity, int minY, int maxY) {
+		final ResourceKey<ConfiguredFeature<?, ?>> georeFeatureKey = GEODE.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
+		final Holder<ConfiguredFeature<?, ?>> georeFeatureKeyHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(georeFeatureKey);
+		final PlacedFeature georeFeature = new PlacedFeature(
+				georeFeatureKeyHolder,
+				List.of(RarityFilter.onAverageOnceEvery(rarity), GeOreFeatures.RNG_DECORATOR, InSquarePlacement.spread(),
+						HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(minY), VerticalAnchor.absolute(maxY)), BiomeFilter.biome()));
+		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), georeFeature);
+	}
+
+	public void fillModifierMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, BiomeModifier> map, TagKey<Biome> tag) {
+		final HolderSet.Named<Biome> tagHolder = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), tag);
+		final BiomeModifier addGeore = new AddFeaturesBiomeModifier(
+				tagHolder,
+				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
+						new ResourceLocation(Reference.MOD_ID, NAME + "_geode")))),
+				Decoration.LOCAL_MODIFICATIONS);
+
+		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), addGeore);
 	}
 }

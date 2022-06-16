@@ -1,10 +1,10 @@
 {
   "type": "minecraft:blasting",
+  "cookingtime": 100,
+  "experience": 0.2,
   "group": "geore",
   "ingredient": {
     "item": "geore:quartz_shard"
   },
-  "result": "minecraft:quartz",
-  "experience": 0.2,
-  "cookingtime": 100
+  "result": "minecraft:quartz"
 }

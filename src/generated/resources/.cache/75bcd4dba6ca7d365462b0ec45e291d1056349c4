@@ -1,0 +1,6 @@
+// 1.19	2022-06-15T22:26:39.257386	Tags for minecraft:block
+5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/create/tags/blocks/non_movable.json
+5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/forge/tags/blocks/relocation_not_supported.json
+c3f9e5fd1c8db04caa6a40f803930fbb3776403a data/forge/tags/blocks/storage_blocks/amethyst.json
+6f181b24ce92d128fd2dbabfe0c8ea40c747be57 data/minecraft/tags/blocks/crystal_sound_blocks.json
+f9638b3b98e013bd5b6779c3ad6a9c230135b003 data/minecraft/tags/blocks/mineable/pickaxe.json

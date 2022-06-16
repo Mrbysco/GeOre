@@ -21,7 +21,7 @@ public class SpyglassHandler {
 		if (event.getType() != ElementType.ALL) return;
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
-		PoseStack poseStack = event.getMatrixStack();
+		PoseStack poseStack = event.getPoseStack();
 
 		if (minecraft.options.getCameraType().isFirstPerson()) {
 			if (player.isUsingItem() && player.getUseItem().getItem() instanceof GeoreSpyglassItem georeSpyglassItem) {

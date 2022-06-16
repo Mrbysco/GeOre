@@ -1,17 +1,17 @@
 {
   "parent": "forge:item/default",
-  "loader": "forge:separate-perspective",
   "base": {
     "parent": "geore:item/iron_spyglass_in_hand"
   },
+  "loader": "forge:separate-perspective",
   "perspectives": {
-    "gui": {
+    "fixed": {
       "parent": "geore:item/iron_spyglass_gui"
     },
     "ground": {
       "parent": "geore:item/iron_spyglass_gui"
     },
-    "fixed": {
+    "gui": {
       "parent": "geore:item/iron_spyglass_gui"
     }
   }
