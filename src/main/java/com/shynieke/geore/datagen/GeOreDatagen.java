@@ -237,20 +237,20 @@ public class GeOreDatagen {
 			//Mod compat
 			String gemsID = "gemsandcrystals";
 			Item rubyItem = getModItem(new ResourceLocation(gemsID, "ruby"));
+			generateRecipes(GeOreRegistry.RUBY_GEORE, recipeConsumer);
 			if (rubyItem != null) {
-				generateRecipes(GeOreRegistry.RUBY_GEORE, recipeConsumer);
 				optionalSmeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeConsumer);
 			}
 
 			Item sapphireItem = getModItem(new ResourceLocation(gemsID, "sapphire"));
+			generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, recipeConsumer);
 			if (sapphireItem != null) {
-				generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, recipeConsumer);
 				optionalSmeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeConsumer);
 			}
 
 			Item topazItem = getModItem(new ResourceLocation(gemsID, "topaz"));
+			generateRecipes(GeOreRegistry.TOPAZ_GEORE, recipeConsumer);
 			if (topazItem != null) {
-				generateRecipes(GeOreRegistry.TOPAZ_GEORE, recipeConsumer);
 				optionalSmeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeConsumer);
 			}
 		}

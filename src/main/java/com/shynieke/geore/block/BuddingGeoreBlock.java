@@ -3,13 +3,13 @@ package com.shynieke.geore.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BuddingAmethystBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluids;
 
-import java.util.Random;
 import java.util.function.Supplier;
 
 public class BuddingGeoreBlock extends BuddingAmethystBlock {
@@ -29,7 +29,7 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 		this.clusterSupplier = clusterSupplier;
 	}
 
-	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
+	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (random.nextInt(5) == 0) {
 			Direction direction = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
 			BlockPos blockpos = pos.relative(direction);
@@ -46,8 +46,8 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 			}
 
 			if (block != null) {
-				BlockState blockstate1 = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, Boolean.valueOf(blockstate.getFluidState().getType() == Fluids.WATER));
-				level.setBlockAndUpdate(blockpos, blockstate1);
+				BlockState budState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, Boolean.valueOf(blockstate.getFluidState().getType() == Fluids.WATER));
+				level.setBlockAndUpdate(blockpos, budState);
 			}
 		}
 	}

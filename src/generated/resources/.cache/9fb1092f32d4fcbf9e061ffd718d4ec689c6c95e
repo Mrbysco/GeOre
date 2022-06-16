@@ -1,4 +1,4 @@
-// 1.19	2022-06-15T22:26:39.2553855	Recipes
+// 1.19	2022-06-16T15:11:50.2216883	Recipes
 68d13adc12f58140e7232e3a130aec088b1dfabb data/geore/advancements/recipes/geore/coal_block.json
 f2cec9cd79b0f070536023d1476ab8747940b834 data/geore/advancements/recipes/geore/coal_spyglass.json
 ecc34b556e6229a3779ec27735c53e2885597d1c data/geore/advancements/recipes/geore/copper_block.json
@@ -17,6 +17,12 @@ a7cd1b539da5c748e871dd10f4fa7a1f7a8d6261 data/geore/advancements/recipes/geore/q
 80abb02cbb5fa1135a2e001e0705429a163ce047 data/geore/advancements/recipes/geore/quartz_spyglass.json
 2ec61bcb0db857ac10773497366497802d3f0593 data/geore/advancements/recipes/geore/redstone_block.json
 76b14cbaf3da48553faee819e56d28d1f77633fd data/geore/advancements/recipes/geore/redstone_spyglass.json
+c114d65d0670aaf67f3e676c14578dbe41855ede data/geore/advancements/recipes/geore/ruby_block.json
+1257e42141a04112282ea7ce6b1dfd0b07c1be26 data/geore/advancements/recipes/geore/ruby_spyglass.json
+2bea687d398d8dedd01bb7eb077882d21d27ca84 data/geore/advancements/recipes/geore/sapphire_block.json
+4e704da5680f686e77923319e18f1abc9b51195b data/geore/advancements/recipes/geore/sapphire_spyglass.json
+0b0126362d2405fac7544174c888130f2f94b555 data/geore/advancements/recipes/geore/topaz_block.json
+2491771e6653c8b2d835168219809e672b794242 data/geore/advancements/recipes/geore/topaz_spyglass.json
 4d44b26727e007b5bf12a94b10fe544eaf501fd5 data/geore/advancements/recipes/misc/copper_ingot_from_blasting_copper_shard.json
 826efdbb3f87c38a434b757153b19f092781255f data/geore/advancements/recipes/misc/copper_ingot_from_smelting_copper_shard.json
 065401c6e8936f061b21c695d7c3cc949e749586 data/geore/advancements/recipes/misc/diamond_from_blasting_diamond_shard.json
@@ -67,3 +73,9 @@ f86fc95a5a6d53bb3079b27adbff96a3c45c007b data/geore/recipes/quartz_spyglass.json
 feddd7910bfec02e7a340385dee593a8104e90c4 data/geore/recipes/redstone_from_blasting_redstone_shard.json
 c1f49a1c79659eb2c25822f124f8412c6af768d0 data/geore/recipes/redstone_from_smelting_redstone_shard.json
 4530c60728853b53b59246ab48c292ab6ae9ac8c data/geore/recipes/redstone_spyglass.json
+0a5a68618a931c1b9921e4f13481499ec66d9207 data/geore/recipes/ruby_block.json
+20157902b4c2039105ae5d18b7334b3053ac13b3 data/geore/recipes/ruby_spyglass.json
+921e2edbc26636b22a62d545ff4c848fa26ad5e5 data/geore/recipes/sapphire_block.json
+9c2e4f7b5f22655a0858b6c9fac6da7d60233318 data/geore/recipes/sapphire_spyglass.json
+f6a4981ba66e1cd4a0e2256850416fc46e5fb3ed data/geore/recipes/topaz_block.json
+974398322335119c942e0cd0605856ec66ef8b46 data/geore/recipes/topaz_spyglass.json
