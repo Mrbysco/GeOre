@@ -104,7 +104,6 @@ public class GeOreDatagen {
 		}
 	}
 
-
 	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
 		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
 
