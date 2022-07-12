@@ -51,7 +51,7 @@ import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
-import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
+import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
@@ -59,9 +59,9 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.data.LanguageProvider;
 import net.minecraftforge.common.world.BiomeModifier;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -429,7 +429,7 @@ public class GeOreDatagen {
 
 		private void crossBlock(Block block) {
 			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
-			cross(path, modLoc(BLOCK_FOLDER + "/" + path));
+			cross(path, modLoc(BLOCK_FOLDER + "/" + path)).renderType("cutout");
 		}
 	}
 
@@ -479,7 +479,7 @@ public class GeOreDatagen {
 					.texture("spyglass", modLoc(ITEM_FOLDER + "/" + path + "_model"));
 
 			withExistingParent(path, "forge:item/default")
-					.customLoader(SeparatePerspectiveModelBuilder::begin)
+					.customLoader(SeparateTransformsModelBuilder::begin)
 					.base(nested().parent(spyglass_hand))
 					.perspective(TransformType.GUI, nested().parent(spyglass_gui))
 					.perspective(TransformType.GROUND, nested().parent(spyglass_gui))
