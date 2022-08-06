@@ -3,6 +3,7 @@ package com.shynieke.geore;
 import com.mojang.logging.LogUtils;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
+import com.shynieke.geore.registry.GeOreModifiers;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -25,6 +26,7 @@ public class GeOre {
 
 		GeOreRegistry.BLOCKS.register(eventBus);
 		GeOreRegistry.ITEMS.register(eventBus);
+		GeOreModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

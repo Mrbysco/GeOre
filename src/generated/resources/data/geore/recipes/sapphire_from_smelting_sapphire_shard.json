@@ -1,0 +1,23 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "gemsandcrystals"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:smelting",
+        "cookingtime": 200,
+        "experience": 0.7,
+        "group": "geore",
+        "ingredient": {
+          "item": "geore:sapphire_shard"
+        },
+        "result": "gemsandcrystals:sapphire"
+      }
+    }
+  ]
+}

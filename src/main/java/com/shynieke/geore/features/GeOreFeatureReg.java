@@ -2,6 +2,7 @@ package com.shynieke.geore.features;
 
 import com.google.gson.JsonElement;
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
@@ -76,13 +77,13 @@ public class GeOreFeatureReg {
 		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), georeFeature);
 	}
 
-	public void fillModifierMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, BiomeModifier> map, TagKey<Biome> tag) {
+	public void fillModifierMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, BiomeModifier> map, TagKey<Biome> tag, String configName) {
 		final HolderSet.Named<Biome> tagHolder = new HolderSet.Named<>(ops.registry(Registry.BIOME_REGISTRY).get(), tag);
-		final BiomeModifier addGeore = new AddFeaturesBiomeModifier(
+		final AddConfigFeatureBiomeModifier addGeore = new AddConfigFeatureBiomeModifier(
 				tagHolder,
 				HolderSet.direct(ops.registry(Registry.PLACED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(ResourceKey.create(Registry.PLACED_FEATURE_REGISTRY,
 						new ResourceLocation(Reference.MOD_ID, NAME + "_geode")))),
-				Decoration.LOCAL_MODIFICATIONS);
+				Decoration.LOCAL_MODIFICATIONS, configName);
 
 		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), addGeore);
 	}

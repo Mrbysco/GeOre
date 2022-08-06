@@ -126,19 +126,19 @@ public class GeOreDatagen {
 	public static Map<ResourceLocation, BiomeModifier> getBiomeModifiers(RegistryOps<JsonElement> ops) {
 		Map<ResourceLocation, BiomeModifier> map = Maps.newHashMap();
 
-		GeOreFeatures.COAL_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.COPPER_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.DIAMOND_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.EMERALD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.GOLD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.IRON_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.LAPIS_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_NETHER);
-		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.RUBY_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
-		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD);
+		GeOreFeatures.COAL_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "coal");
+		GeOreFeatures.COPPER_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "copper");
+		GeOreFeatures.DIAMOND_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "diamond");
+		GeOreFeatures.EMERALD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "emerald");
+		GeOreFeatures.GOLD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "gold");
+		GeOreFeatures.IRON_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "iron");
+		GeOreFeatures.LAPIS_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "lapis");
+		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "quartz");
+		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_NETHER, "quartz");
+		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "redstone");
+		GeOreFeatures.RUBY_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "ruby");
+		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "sapphire");
+		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "topaz");
 
 		return map;
 	}
