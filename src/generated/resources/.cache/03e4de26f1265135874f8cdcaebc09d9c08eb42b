@@ -1,4 +1,4 @@
-// 1.19	2022-06-15T22:26:39.2533835	Tags for minecraft:item
+// 1.19.2	2022-09-04T02:03:30.6760584	Tags for minecraft:item
 11ac895a732b6c7aefb668feb7cf8299f235e307 data/forge/tags/items/geore_blocks.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/forge/tags/items/geore_blocks/coal.json
 3850720cdba712582173e9cba7b838f83066774f data/forge/tags/items/geore_blocks/copper.json
@@ -77,4 +77,15 @@ af605b701da956dd63448fa3a1bd6181c1b6b485 data/forge/tags/items/geore_small_buds/
 98d5c5ce1fe69beba2b8854a862c59715f77fdab data/forge/tags/items/geore_small_buds/ruby.json
 dcbecc36bbb81bef85b3c30a6d98bae1b656fdda data/forge/tags/items/geore_small_buds/sapphire.json
 9251d565604f062108f4ee17e7ef7e217e01c236 data/forge/tags/items/geore_small_buds/topaz.json
-c3f9e5fd1c8db04caa6a40f803930fbb3776403a data/forge/tags/items/storage_blocks/amethyst.json
+140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/items/storage_blocks/geore_coal.json
+3850720cdba712582173e9cba7b838f83066774f data/geore/tags/items/storage_blocks/geore_copper.json
+eef63965e0366006fb0db2f3652df728496fe2f1 data/geore/tags/items/storage_blocks/geore_diamond.json
+f790c0ffe0e68c7b868c8747d9f2418cec0a6ce8 data/geore/tags/items/storage_blocks/geore_emerald.json
+e0fe6345aaf8d8c1797edad60da64c353d407ebf data/geore/tags/items/storage_blocks/geore_gold.json
+eef8a77b7e457975de4ef6758d4ac272b1c60b62 data/geore/tags/items/storage_blocks/geore_iron.json
+86bb12cf0b9a02cfdbd46bd35f051916732b8988 data/geore/tags/items/storage_blocks/geore_lapis.json
+49db011672bbbdb9e3561b55694d27f7698ec82d data/geore/tags/items/storage_blocks/geore_quartz.json
+86a01f5d823e71c721cb551495c1fd48a6c9c6b7 data/geore/tags/items/storage_blocks/geore_redstone.json
+e3598ea237cae286393f1a7a4e7c0e16792c5448 data/geore/tags/items/storage_blocks/geore_ruby.json
+7ee96f1def210f07d9a2c4b109a7210a240a96ce data/geore/tags/items/storage_blocks/geore_sapphire.json
+1c453638750e28e3351fd61ea5d286bb120e1c5a data/geore/tags/items/storage_blocks/geore_topaz.json

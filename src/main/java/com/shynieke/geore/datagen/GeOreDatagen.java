@@ -52,7 +52,6 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -630,7 +629,8 @@ public class GeOreDatagen {
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {
-			this.tag(Tags.Blocks.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get());
+			TagKey<Block> blockTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
+			this.tag(blockTag).add(blockReg.getBlock().get());
 		}
 	}
 
@@ -676,7 +676,8 @@ public class GeOreDatagen {
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {
-			this.tag(Tags.Items.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get().asItem());
+			TagKey<Item> itemTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
+			this.tag(itemTag).add(blockReg.getBlock().get().asItem());
 		}
 
 		private void addGeore(GeOreBlockReg blockReg) {
@@ -707,6 +708,10 @@ public class GeOreDatagen {
 
 		private static TagKey<Item> forgeTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));
+		}
+
+		private static TagKey<Item> modTag(String modid, String name) {
+			return ItemTags.create(new ResourceLocation(modid, name));
 		}
 	}
 }
