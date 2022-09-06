@@ -1,4 +1,5 @@
-// 1.19.2	2022-09-04T01:59:23.3870063	Recipes
+// 1.19.2	2022-09-06T16:05:45.0655844	Recipes
+059c443c0b7e9d76a5a7cc163afce3216b4f171d data/geore/advancements/recipes/decorations/torch_from_coal_shard.json
 68d13adc12f58140e7232e3a130aec088b1dfabb data/geore/advancements/recipes/geore/coal_block.json
 f2cec9cd79b0f070536023d1476ab8747940b834 data/geore/advancements/recipes/geore/coal_spyglass.json
 ecc34b556e6229a3779ec27735c53e2885597d1c data/geore/advancements/recipes/geore/copper_block.json
@@ -85,3 +86,4 @@ f6a4981ba66e1cd4a0e2256850416fc46e5fb3ed data/geore/recipes/topaz_block.json
 cfc1222ee67964933ac372ca7b7ffdf90e583db5 data/geore/recipes/topaz_from_blasting_topaz_shard.json
 bbaa8c9ead20d20377c0d1936c36e9f8b67afb25 data/geore/recipes/topaz_from_smelting_topaz_shard.json
 974398322335119c942e0cd0605856ec66ef8b46 data/geore/recipes/topaz_spyglass.json
+c0f086d27bc03fc200557d86d8d1a4b442e116c1 data/geore/recipes/torch_from_coal_shard.json

@@ -34,6 +34,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -52,6 +53,7 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -207,6 +209,12 @@ public class GeOreDatagen {
 		@Override
 		protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
 			generateRecipes(GeOreRegistry.COAL_GEORE, recipeConsumer);
+
+			ShapedRecipeBuilder.shaped(Blocks.TORCH, 2)
+					.pattern("X").pattern("#")
+					.define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get())
+					.unlockedBy("has_coal_geore_shard",
+							has(GeOreRegistry.COAL_GEORE.getShard().get())).save(recipeConsumer, "geore:torch_from_coal_shard");
 
 			generateRecipes(GeOreRegistry.COPPER_GEORE, recipeConsumer);
 			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
@@ -649,6 +657,7 @@ public class GeOreDatagen {
 		@Override
 		protected void addTags() {
 			this.addGeore(GeOreRegistry.COAL_GEORE);
+			this.tag(ItemTags.COALS).add(GeOreRegistry.COAL_GEORE.getShard().get());
 			this.addGeore(GeOreRegistry.COPPER_GEORE);
 			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
 			this.addGeore(GeOreRegistry.EMERALD_GEORE);

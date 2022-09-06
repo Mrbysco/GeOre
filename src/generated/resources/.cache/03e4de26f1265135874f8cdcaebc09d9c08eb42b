@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-04T02:03:30.6760584	Tags for minecraft:item
+// 1.19.2	2022-09-06T15:43:33.1036175	Tags for minecraft:item
 11ac895a732b6c7aefb668feb7cf8299f235e307 data/forge/tags/items/geore_blocks.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/forge/tags/items/geore_blocks/coal.json
 3850720cdba712582173e9cba7b838f83066774f data/forge/tags/items/geore_blocks/copper.json
@@ -89,3 +89,4 @@ eef8a77b7e457975de4ef6758d4ac272b1c60b62 data/geore/tags/items/storage_blocks/ge
 e3598ea237cae286393f1a7a4e7c0e16792c5448 data/geore/tags/items/storage_blocks/geore_ruby.json
 7ee96f1def210f07d9a2c4b109a7210a240a96ce data/geore/tags/items/storage_blocks/geore_sapphire.json
 1c453638750e28e3351fd61ea5d286bb120e1c5a data/geore/tags/items/storage_blocks/geore_topaz.json
+c7e8ba482ea22f9fb671d4b5b607e0a7c214a6be data/minecraft/tags/items/coals.json
