@@ -33,7 +33,6 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ForgeBiomeModifiers.AddFeaturesBiomeModifier;
 
 import java.util.List;
 import java.util.Map;
@@ -67,13 +66,13 @@ public class GeOreFeatureReg {
 				UniformInt.of(1, 2), -16, 16, 0.05D, 1));
 	}
 
-	public void fillPlacedFeatureMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, PlacedFeature> map, int rarity, int minY, int maxY) {
+	public void fillPlacedFeatureMap(RegistryOps<JsonElement> ops, Map<ResourceLocation, PlacedFeature> map, int rarity, int aboveBottom, int absolute) {
 		final ResourceKey<ConfiguredFeature<?, ?>> georeFeatureKey = GEODE.unwrapKey().get().cast(Registry.CONFIGURED_FEATURE_REGISTRY).get();
 		final Holder<ConfiguredFeature<?, ?>> georeFeatureKeyHolder = ops.registry(Registry.CONFIGURED_FEATURE_REGISTRY).get().getOrCreateHolderOrThrow(georeFeatureKey);
 		final PlacedFeature georeFeature = new PlacedFeature(
 				georeFeatureKeyHolder,
-				List.of(RarityFilter.onAverageOnceEvery(rarity), GeOreFeatures.RNG_DECORATOR, InSquarePlacement.spread(),
-						HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(minY), VerticalAnchor.absolute(maxY)), BiomeFilter.biome()));
+				List.of(RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(),
+						HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(aboveBottom), VerticalAnchor.absolute(absolute)), BiomeFilter.biome()));
 		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), georeFeature);
 	}
 

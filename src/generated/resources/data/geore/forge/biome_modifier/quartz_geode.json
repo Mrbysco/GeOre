@@ -1,7 +1,7 @@
 {
   "type": "geore:add_config_features",
   "biomes": "#minecraft:is_nether",
-  "enabledConfig": "quartz",
+  "enabledConfig": "quartz_nether",
   "features": "geore:quartz_geode",
   "step": "local_modifications"
 }

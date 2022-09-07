@@ -15,6 +15,7 @@ public enum ConfigFeature {
 	IRON_GEORE("iron", GeOreConfig.COMMON.generateIronGeore),
 	LAPIS_GEORE("lapis", GeOreConfig.COMMON.generateLapisGeore),
 	QUARTZ_GEORE("quartz", GeOreConfig.COMMON.generateQuartzGeore),
+	QUARTZ_NETHER_GEORE("quartz_nether", GeOreConfig.COMMON.generateQuartzInNetherGeore),
 	REDSTONE_GEORE("redstone", GeOreConfig.COMMON.generateRedstoneGeore),
 	RUBY_GEORE("ruby", GeOreConfig.COMMON.generateRubyGeore),
 	SAPPHIRE_GEORE("sapphire", GeOreConfig.COMMON.generateSapphireGeore),

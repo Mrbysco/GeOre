@@ -135,7 +135,7 @@ public class GeOreDatagen {
 		GeOreFeatures.IRON_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "iron");
 		GeOreFeatures.LAPIS_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "lapis");
 		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "quartz");
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_NETHER, "quartz");
+		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_NETHER, "quartz_nether");
 		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "redstone");
 		GeOreFeatures.RUBY_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "ruby");
 		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "sapphire");
