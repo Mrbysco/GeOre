@@ -543,6 +543,10 @@ public class GeOreDatagen {
 		public static final TagKey<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
 		public static final TagKey<Block> NON_MOVABLE = modTag("create", "non_movable");
 
+		public static final TagKey<Block> BUDDING = forgeTag("budding");
+		public static final TagKey<Block> BUDS = forgeTag("buds");
+		public static final TagKey<Block> CLUSTERS = forgeTag("clusters");
+
 		private static TagKey<Block> forgeTag(String name) {
 			return BlockTags.create(new ResourceLocation("forge", name));
 		}
@@ -606,18 +610,18 @@ public class GeOreDatagen {
 			this.addCrystalSounds(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addCrystalSounds(GeOreRegistry.TOPAZ_GEORE);
 
-			this.addStorage(GeOreRegistry.COAL_GEORE);
-			this.addStorage(GeOreRegistry.COPPER_GEORE);
-			this.addStorage(GeOreRegistry.DIAMOND_GEORE);
-			this.addStorage(GeOreRegistry.EMERALD_GEORE);
-			this.addStorage(GeOreRegistry.GOLD_GEORE);
-			this.addStorage(GeOreRegistry.IRON_GEORE);
-			this.addStorage(GeOreRegistry.LAPIS_GEORE);
-			this.addStorage(GeOreRegistry.QUARTZ_GEORE);
-			this.addStorage(GeOreRegistry.REDSTONE_GEORE);
-			this.addStorage(GeOreRegistry.RUBY_GEORE);
-			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
+			this.addGeore(GeOreRegistry.COAL_GEORE);
+			this.addGeore(GeOreRegistry.COPPER_GEORE);
+			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
+			this.addGeore(GeOreRegistry.EMERALD_GEORE);
+			this.addGeore(GeOreRegistry.GOLD_GEORE);
+			this.addGeore(GeOreRegistry.IRON_GEORE);
+			this.addGeore(GeOreRegistry.LAPIS_GEORE);
+			this.addGeore(GeOreRegistry.QUARTZ_GEORE);
+			this.addGeore(GeOreRegistry.REDSTONE_GEORE);
+			this.addGeore(GeOreRegistry.RUBY_GEORE);
+			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -636,7 +640,16 @@ public class GeOreDatagen {
 					.add(blockReg.getBudding().get());
 		}
 
-		private void addStorage(GeOreBlockReg blockReg) {
+		private void addGeore(GeOreBlockReg blockReg) {
+			TagKey<Block> budsTag = forgeTag("buds/" + "geore_" + blockReg.getName());
+			this.tag(budsTag).add(blockReg.getSmallBud().get(), blockReg.getMediumBud().get(), blockReg.getLargeBud().get());
+			this.tag(BUDS).addTag(budsTag);
+
+			TagKey<Block> clustersTag = forgeTag("clusters/" + "geore_" + blockReg.getName());
+			this.tag(clustersTag).add(blockReg.getCluster().get());
+			this.tag(CLUSTERS).addTag(clustersTag);
+			this.tag(BUDDING).add(blockReg.getBudding().get());
+
 			TagKey<Block> blockTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
 			this.tag(blockTag).add(blockReg.getBlock().get());
 		}
