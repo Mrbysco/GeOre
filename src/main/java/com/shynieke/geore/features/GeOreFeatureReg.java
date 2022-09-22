@@ -65,7 +65,7 @@ public class GeOreFeatureReg {
 				UniformInt.of(4, 6), UniformInt.of(3, 4),
 				UniformInt.of(1, 2), -16, 16, 0.05D, 1));
 
-		GEODE_PLACED = PlacementUtils.register(name + "_geode", GEODE, RarityFilter.onAverageOnceEvery(RARITY.get()), GeOreFeatures.RNG_DECORATOR, InSquarePlacement.spread(),
+		GEODE_PLACED = PlacementUtils.register(name + "_geode", GEODE, RarityFilter.onAverageOnceEvery(RARITY.get()), InSquarePlacement.spread(),
 				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(MIN_Y.get()), VerticalAnchor.absolute(MAX_Y.get())), BiomeFilter.biome());
 	}
 }

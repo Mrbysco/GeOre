@@ -5,6 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.datagen.builder.CustomSimpleCookingRecipeBuilder;
 import com.shynieke.geore.registry.GeOreBlockReg;
+import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
@@ -41,7 +42,6 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraftforge.client.model.generators.BlockModelProvider;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
-import net.minecraftforge.client.model.generators.ModelBuilder.Perspective;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.client.model.generators.loaders.SeparatePerspectiveModelBuilder;
 import net.minecraftforge.common.Tags;
@@ -54,7 +54,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.lwjgl.system.CallbackI.P;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -62,8 +61,6 @@ import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-
-import static com.shynieke.geore.registry.GeOreRegistry.*;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GeOreDatagen {
@@ -103,18 +100,18 @@ public class GeOreDatagen {
 
 			@Override
 			protected void addTables() {
-				addGeOreTables(COAL_GEORE);
-				addGeOreTables(COPPER_GEORE);
-				addGeOreTables(DIAMOND_GEORE);
-				addGeOreTables(EMERALD_GEORE);
-				addGeOreTables(GOLD_GEORE);
-				addGeOreTables(IRON_GEORE);
-				addGeOreTables(LAPIS_GEORE);
-				addGeOreTables(QUARTZ_GEORE);
-				addGeOreTables(REDSTONE_GEORE);
-				addGeOreTables(RUBY_GEORE);
-				addGeOreTables(SAPPHIRE_GEORE);
-				addGeOreTables(TOPAZ_GEORE);
+				addGeOreTables(GeOreRegistry.COAL_GEORE);
+				addGeOreTables(GeOreRegistry.COPPER_GEORE);
+				addGeOreTables(GeOreRegistry.DIAMOND_GEORE);
+				addGeOreTables(GeOreRegistry.EMERALD_GEORE);
+				addGeOreTables(GeOreRegistry.GOLD_GEORE);
+				addGeOreTables(GeOreRegistry.IRON_GEORE);
+				addGeOreTables(GeOreRegistry.LAPIS_GEORE);
+				addGeOreTables(GeOreRegistry.QUARTZ_GEORE);
+				addGeOreTables(GeOreRegistry.REDSTONE_GEORE);
+				addGeOreTables(GeOreRegistry.RUBY_GEORE);
+				addGeOreTables(GeOreRegistry.SAPPHIRE_GEORE);
+				addGeOreTables(GeOreRegistry.TOPAZ_GEORE);
 			}
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
@@ -133,7 +130,7 @@ public class GeOreDatagen {
 
 			@Override
 			protected Iterable<Block> getKnownBlocks() {
-				return (Iterable<Block>) BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+				return (Iterable<Block>) GeOreRegistry.BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
 			}
 		}
 
@@ -151,56 +148,56 @@ public class GeOreDatagen {
 
 		@Override
 		protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
-			generateRecipes(COAL_GEORE, recipeConsumer);
+			generateRecipes(GeOreRegistry.COAL_GEORE, recipeConsumer);
 
-			generateRecipes(COPPER_GEORE, recipeConsumer);
-			smeltToOre(COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
+			generateRecipes(GeOreRegistry.COPPER_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
 
-			generateRecipes(DIAMOND_GEORE, recipeConsumer);
-			smeltToOre(DIAMOND_GEORE, 1.0F, Items.DIAMOND, recipeConsumer);
+			generateRecipes(GeOreRegistry.DIAMOND_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.DIAMOND_GEORE, 1.0F, Items.DIAMOND, recipeConsumer);
 
-			generateRecipes(EMERALD_GEORE, recipeConsumer);
-			smeltToOre(EMERALD_GEORE, 1.0F, Items.EMERALD, recipeConsumer);
+			generateRecipes(GeOreRegistry.EMERALD_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.EMERALD_GEORE, 1.0F, Items.EMERALD, recipeConsumer);
 
-			generateRecipes(GOLD_GEORE, recipeConsumer);
-			smeltToOre(GOLD_GEORE, 1.0F, Items.GOLD_INGOT, recipeConsumer);
+			generateRecipes(GeOreRegistry.GOLD_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.GOLD_GEORE, 1.0F, Items.GOLD_INGOT, recipeConsumer);
 
-			generateRecipes(IRON_GEORE, recipeConsumer);
-			smeltToOre(IRON_GEORE, 0.7F, Items.IRON_INGOT, recipeConsumer);
+			generateRecipes(GeOreRegistry.IRON_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.IRON_GEORE, 0.7F, Items.IRON_INGOT, recipeConsumer);
 
-			generateRecipes(LAPIS_GEORE, recipeConsumer);
-			smeltToOre(LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, recipeConsumer);
+			generateRecipes(GeOreRegistry.LAPIS_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, recipeConsumer);
 
-			generateRecipes(QUARTZ_GEORE, recipeConsumer);
-			smeltToOre(QUARTZ_GEORE, 0.2F, Items.QUARTZ, recipeConsumer);
+			generateRecipes(GeOreRegistry.QUARTZ_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, recipeConsumer);
 
-			generateRecipes(REDSTONE_GEORE, recipeConsumer);
-			smeltToOre(REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
+			generateRecipes(GeOreRegistry.REDSTONE_GEORE, recipeConsumer);
+			smeltToOre(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeConsumer);
 
 			//Mod compat
 			String gemsID = "gemsandcrystals";
 			Item rubyItem = getModItem(new ResourceLocation(gemsID, "ruby"));
-			if(rubyItem != null) {
-				generateRecipes(RUBY_GEORE, recipeConsumer);
-				optionalSmeltToOre(RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeConsumer);
+			if (rubyItem != null) {
+				generateRecipes(GeOreRegistry.RUBY_GEORE, recipeConsumer);
+				optionalSmeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeConsumer);
 			}
 
 			Item sapphireItem = getModItem(new ResourceLocation(gemsID, "sapphire"));
-			if(sapphireItem != null) {
-				generateRecipes(SAPPHIRE_GEORE, recipeConsumer);
-				optionalSmeltToOre(SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeConsumer);
+			if (sapphireItem != null) {
+				generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, recipeConsumer);
+				optionalSmeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeConsumer);
 			}
 
 			Item topazItem = getModItem(new ResourceLocation(gemsID, "topaz"));
-			if(topazItem != null) {
-				generateRecipes(TOPAZ_GEORE, recipeConsumer);
-				optionalSmeltToOre(TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeConsumer);
+			if (topazItem != null) {
+				generateRecipes(GeOreRegistry.TOPAZ_GEORE, recipeConsumer);
+				optionalSmeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeConsumer);
 			}
 		}
 
 		public Item getModItem(ResourceLocation itemLocation) {
-			for(Item item : ForgeRegistries.ITEMS) {
-				if(item.getRegistryName().equals(itemLocation)) {
+			for (Item item : ForgeRegistries.ITEMS) {
+				if (item.getRegistryName().equals(itemLocation)) {
 					return item;
 				}
 			}
@@ -266,18 +263,18 @@ public class GeOreDatagen {
 		protected void addTranslations() {
 			add("itemGroup.geore", "GeOre");
 
-			generateLang("Coal", COAL_GEORE);
-			generateLang("Copper", COPPER_GEORE);
-			generateLang("Diamond", DIAMOND_GEORE);
-			generateLang("Emerald", EMERALD_GEORE);
-			generateLang("Gold", GOLD_GEORE);
-			generateLang("Iron", IRON_GEORE);
-			generateLang("Lapis", LAPIS_GEORE);
-			generateLang("Quartz", QUARTZ_GEORE);
-			generateLang("Redstone", REDSTONE_GEORE);
-			generateLang("Ruby", RUBY_GEORE);
-			generateLang("Sapphire", SAPPHIRE_GEORE);
-			generateLang("Topaz", TOPAZ_GEORE);
+			generateLang("Coal", GeOreRegistry.COAL_GEORE);
+			generateLang("Copper", GeOreRegistry.COPPER_GEORE);
+			generateLang("Diamond", GeOreRegistry.DIAMOND_GEORE);
+			generateLang("Emerald", GeOreRegistry.EMERALD_GEORE);
+			generateLang("Gold", GeOreRegistry.GOLD_GEORE);
+			generateLang("Iron", GeOreRegistry.IRON_GEORE);
+			generateLang("Lapis", GeOreRegistry.LAPIS_GEORE);
+			generateLang("Quartz", GeOreRegistry.QUARTZ_GEORE);
+			generateLang("Redstone", GeOreRegistry.REDSTONE_GEORE);
+			generateLang("Ruby", GeOreRegistry.RUBY_GEORE);
+			generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
+			generateLang("Topaz", GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		public void generateLang(String name, GeOreBlockReg blockReg) {
@@ -299,18 +296,18 @@ public class GeOreDatagen {
 
 		@Override
 		protected void registerStatesAndModels() {
-			generateGeoreModels(COAL_GEORE);
-			generateGeoreModels(COPPER_GEORE);
-			generateGeoreModels(DIAMOND_GEORE);
-			generateGeoreModels(EMERALD_GEORE);
-			generateGeoreModels(GOLD_GEORE);
-			generateGeoreModels(IRON_GEORE);
-			generateGeoreModels(LAPIS_GEORE);
-			generateGeoreModels(QUARTZ_GEORE);
-			generateGeoreModels(REDSTONE_GEORE);
-			generateGeoreModels(RUBY_GEORE);
-			generateGeoreModels(SAPPHIRE_GEORE);
-			generateGeoreModels(TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.COAL_GEORE);
+			generateGeoreModels(GeOreRegistry.COPPER_GEORE);
+			generateGeoreModels(GeOreRegistry.DIAMOND_GEORE);
+			generateGeoreModels(GeOreRegistry.EMERALD_GEORE);
+			generateGeoreModels(GeOreRegistry.GOLD_GEORE);
+			generateGeoreModels(GeOreRegistry.IRON_GEORE);
+			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
+			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
+			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
+			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -347,18 +344,18 @@ public class GeOreDatagen {
 
 		@Override
 		protected void registerModels() {
-			generateGeoreModels(COAL_GEORE);
-			generateGeoreModels(COPPER_GEORE);
-			generateGeoreModels(DIAMOND_GEORE);
-			generateGeoreModels(EMERALD_GEORE);
-			generateGeoreModels(GOLD_GEORE);
-			generateGeoreModels(IRON_GEORE);
-			generateGeoreModels(LAPIS_GEORE);
-			generateGeoreModels(QUARTZ_GEORE);
-			generateGeoreModels(REDSTONE_GEORE);
-			generateGeoreModels(RUBY_GEORE);
-			generateGeoreModels(SAPPHIRE_GEORE);
-			generateGeoreModels(TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.COAL_GEORE);
+			generateGeoreModels(GeOreRegistry.COPPER_GEORE);
+			generateGeoreModels(GeOreRegistry.DIAMOND_GEORE);
+			generateGeoreModels(GeOreRegistry.EMERALD_GEORE);
+			generateGeoreModels(GeOreRegistry.GOLD_GEORE);
+			generateGeoreModels(GeOreRegistry.IRON_GEORE);
+			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
+			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
+			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
+			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -384,18 +381,18 @@ public class GeOreDatagen {
 
 		@Override
 		protected void registerModels() {
-			generateGeoreModels(COAL_GEORE);
-			generateGeoreModels(COPPER_GEORE);
-			generateGeoreModels(DIAMOND_GEORE);
-			generateGeoreModels(EMERALD_GEORE);
-			generateGeoreModels(GOLD_GEORE);
-			generateGeoreModels(IRON_GEORE);
-			generateGeoreModels(LAPIS_GEORE);
-			generateGeoreModels(QUARTZ_GEORE);
-			generateGeoreModels(REDSTONE_GEORE);
-			generateGeoreModels(RUBY_GEORE);
-			generateGeoreModels(SAPPHIRE_GEORE);
-			generateGeoreModels(TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.COAL_GEORE);
+			generateGeoreModels(GeOreRegistry.COPPER_GEORE);
+			generateGeoreModels(GeOreRegistry.DIAMOND_GEORE);
+			generateGeoreModels(GeOreRegistry.EMERALD_GEORE);
+			generateGeoreModels(GeOreRegistry.GOLD_GEORE);
+			generateGeoreModels(GeOreRegistry.IRON_GEORE);
+			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
+			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
+			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
+			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -436,7 +433,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/generated")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(Perspective.HEAD)
+					.transforms().transform(TransformType.HEAD)
 					.translation(0, 14, -5).end();
 		}
 
@@ -445,11 +442,11 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(Perspective.FIRSTPERSON_RIGHT)
+					.transforms().transform(TransformType.FIRST_PERSON_RIGHT_HAND)
 					.rotation(0, -90, 25)
 					.translation(0, 6, 0)
 					.scale(0.68F, 0.68F, 0.68F).end()
-					.transform(Perspective.FIXED)
+					.transform(TransformType.FIXED)
 					.translation(0, 7, 0).end();
 		}
 
@@ -458,7 +455,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(Perspective.FIXED)
+					.transforms().transform(TransformType.FIXED)
 					.translation(0, 6, 0).end();
 		}
 
@@ -467,7 +464,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(Perspective.FIXED)
+					.transforms().transform(TransformType.FIXED)
 					.translation(0, 4, 0).end();
 		}
 	}
@@ -491,70 +488,70 @@ public class GeOreDatagen {
 		@Override
 		protected void addTags() {
 			this.tag(RELOCATION_NOT_SUPPORTED)
-					.add(COAL_GEORE.getBudding().get())
-					.add(COPPER_GEORE.getBudding().get())
-					.add(DIAMOND_GEORE.getBudding().get())
-					.add(EMERALD_GEORE.getBudding().get())
-					.add(GOLD_GEORE.getBudding().get())
-					.add(IRON_GEORE.getBudding().get())
-					.add(LAPIS_GEORE.getBudding().get())
-					.add(QUARTZ_GEORE.getBudding().get())
-					.add(REDSTONE_GEORE.getBudding().get())
-					.add(RUBY_GEORE.getBudding().get())
-					.add(SAPPHIRE_GEORE.getBudding().get())
-					.add(TOPAZ_GEORE.getBudding().get());
+					.add(GeOreRegistry.COAL_GEORE.getBudding().get())
+					.add(GeOreRegistry.COPPER_GEORE.getBudding().get())
+					.add(GeOreRegistry.DIAMOND_GEORE.getBudding().get())
+					.add(GeOreRegistry.EMERALD_GEORE.getBudding().get())
+					.add(GeOreRegistry.GOLD_GEORE.getBudding().get())
+					.add(GeOreRegistry.IRON_GEORE.getBudding().get())
+					.add(GeOreRegistry.LAPIS_GEORE.getBudding().get())
+					.add(GeOreRegistry.QUARTZ_GEORE.getBudding().get())
+					.add(GeOreRegistry.REDSTONE_GEORE.getBudding().get())
+					.add(GeOreRegistry.RUBY_GEORE.getBudding().get())
+					.add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get())
+					.add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
 			this.tag(NON_MOVABLE)
-					.add(COAL_GEORE.getBudding().get())
-					.add(COPPER_GEORE.getBudding().get())
-					.add(DIAMOND_GEORE.getBudding().get())
-					.add(EMERALD_GEORE.getBudding().get())
-					.add(GOLD_GEORE.getBudding().get())
-					.add(IRON_GEORE.getBudding().get())
-					.add(LAPIS_GEORE.getBudding().get())
-					.add(QUARTZ_GEORE.getBudding().get())
-					.add(REDSTONE_GEORE.getBudding().get())
-					.add(RUBY_GEORE.getBudding().get())
-					.add(SAPPHIRE_GEORE.getBudding().get())
-					.add(TOPAZ_GEORE.getBudding().get());
+					.add(GeOreRegistry.COAL_GEORE.getBudding().get())
+					.add(GeOreRegistry.COPPER_GEORE.getBudding().get())
+					.add(GeOreRegistry.DIAMOND_GEORE.getBudding().get())
+					.add(GeOreRegistry.EMERALD_GEORE.getBudding().get())
+					.add(GeOreRegistry.GOLD_GEORE.getBudding().get())
+					.add(GeOreRegistry.IRON_GEORE.getBudding().get())
+					.add(GeOreRegistry.LAPIS_GEORE.getBudding().get())
+					.add(GeOreRegistry.QUARTZ_GEORE.getBudding().get())
+					.add(GeOreRegistry.REDSTONE_GEORE.getBudding().get())
+					.add(GeOreRegistry.RUBY_GEORE.getBudding().get())
+					.add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get())
+					.add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
 
-			this.addMineable(COAL_GEORE);
-			this.addMineable(COPPER_GEORE);
-			this.addMineable(DIAMOND_GEORE);
-			this.addMineable(EMERALD_GEORE);
-			this.addMineable(GOLD_GEORE);
-			this.addMineable(IRON_GEORE);
-			this.addMineable(LAPIS_GEORE);
-			this.addMineable(QUARTZ_GEORE);
-			this.addMineable(REDSTONE_GEORE);
-			this.addMineable(RUBY_GEORE);
-			this.addMineable(SAPPHIRE_GEORE);
-			this.addMineable(TOPAZ_GEORE);
+			this.addMineable(GeOreRegistry.COAL_GEORE);
+			this.addMineable(GeOreRegistry.COPPER_GEORE);
+			this.addMineable(GeOreRegistry.DIAMOND_GEORE);
+			this.addMineable(GeOreRegistry.EMERALD_GEORE);
+			this.addMineable(GeOreRegistry.GOLD_GEORE);
+			this.addMineable(GeOreRegistry.IRON_GEORE);
+			this.addMineable(GeOreRegistry.LAPIS_GEORE);
+			this.addMineable(GeOreRegistry.QUARTZ_GEORE);
+			this.addMineable(GeOreRegistry.REDSTONE_GEORE);
+			this.addMineable(GeOreRegistry.RUBY_GEORE);
+			this.addMineable(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addMineable(GeOreRegistry.TOPAZ_GEORE);
 
-			this.addCrystalSounds(COAL_GEORE);
-			this.addCrystalSounds(COPPER_GEORE);
-			this.addCrystalSounds(DIAMOND_GEORE);
-			this.addCrystalSounds(EMERALD_GEORE);
-			this.addCrystalSounds(GOLD_GEORE);
-			this.addCrystalSounds(IRON_GEORE);
-			this.addCrystalSounds(LAPIS_GEORE);
-			this.addCrystalSounds(QUARTZ_GEORE);
-			this.addCrystalSounds(REDSTONE_GEORE);
-			this.addCrystalSounds(RUBY_GEORE);
-			this.addCrystalSounds(SAPPHIRE_GEORE);
-			this.addCrystalSounds(TOPAZ_GEORE);
+			this.addCrystalSounds(GeOreRegistry.COAL_GEORE);
+			this.addCrystalSounds(GeOreRegistry.COPPER_GEORE);
+			this.addCrystalSounds(GeOreRegistry.DIAMOND_GEORE);
+			this.addCrystalSounds(GeOreRegistry.EMERALD_GEORE);
+			this.addCrystalSounds(GeOreRegistry.GOLD_GEORE);
+			this.addCrystalSounds(GeOreRegistry.IRON_GEORE);
+			this.addCrystalSounds(GeOreRegistry.LAPIS_GEORE);
+			this.addCrystalSounds(GeOreRegistry.QUARTZ_GEORE);
+			this.addCrystalSounds(GeOreRegistry.REDSTONE_GEORE);
+			this.addCrystalSounds(GeOreRegistry.RUBY_GEORE);
+			this.addCrystalSounds(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addCrystalSounds(GeOreRegistry.TOPAZ_GEORE);
 
-			this.addStorage(COAL_GEORE);
-			this.addStorage(COPPER_GEORE);
-			this.addStorage(DIAMOND_GEORE);
-			this.addStorage(EMERALD_GEORE);
-			this.addStorage(GOLD_GEORE);
-			this.addStorage(IRON_GEORE);
-			this.addStorage(LAPIS_GEORE);
-			this.addStorage(QUARTZ_GEORE);
-			this.addStorage(REDSTONE_GEORE);
-			this.addStorage(RUBY_GEORE);
-			this.addStorage(SAPPHIRE_GEORE);
-			this.addStorage(TOPAZ_GEORE);
+			this.addStorage(GeOreRegistry.COAL_GEORE);
+			this.addStorage(GeOreRegistry.COPPER_GEORE);
+			this.addStorage(GeOreRegistry.DIAMOND_GEORE);
+			this.addStorage(GeOreRegistry.EMERALD_GEORE);
+			this.addStorage(GeOreRegistry.GOLD_GEORE);
+			this.addStorage(GeOreRegistry.IRON_GEORE);
+			this.addStorage(GeOreRegistry.LAPIS_GEORE);
+			this.addStorage(GeOreRegistry.QUARTZ_GEORE);
+			this.addStorage(GeOreRegistry.REDSTONE_GEORE);
+			this.addStorage(GeOreRegistry.RUBY_GEORE);
+			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -592,31 +589,31 @@ public class GeOreDatagen {
 
 		@Override
 		protected void addTags() {
-			this.addGeore(COAL_GEORE);
-			this.addGeore(COPPER_GEORE);
-			this.addGeore(DIAMOND_GEORE);
-			this.addGeore(EMERALD_GEORE);
-			this.addGeore(GOLD_GEORE);
-			this.addGeore(IRON_GEORE);
-			this.addGeore(LAPIS_GEORE);
-			this.addGeore(QUARTZ_GEORE);
-			this.addGeore(REDSTONE_GEORE);
-			this.addGeore(RUBY_GEORE);
-			this.addGeore(SAPPHIRE_GEORE);
-			this.addGeore(TOPAZ_GEORE);
+			this.addGeore(GeOreRegistry.COAL_GEORE);
+			this.addGeore(GeOreRegistry.COPPER_GEORE);
+			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
+			this.addGeore(GeOreRegistry.EMERALD_GEORE);
+			this.addGeore(GeOreRegistry.GOLD_GEORE);
+			this.addGeore(GeOreRegistry.IRON_GEORE);
+			this.addGeore(GeOreRegistry.LAPIS_GEORE);
+			this.addGeore(GeOreRegistry.QUARTZ_GEORE);
+			this.addGeore(GeOreRegistry.REDSTONE_GEORE);
+			this.addGeore(GeOreRegistry.RUBY_GEORE);
+			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
 
-			this.addStorage(COAL_GEORE);
-			this.addStorage(COPPER_GEORE);
-			this.addStorage(DIAMOND_GEORE);
-			this.addStorage(EMERALD_GEORE);
-			this.addStorage(GOLD_GEORE);
-			this.addStorage(IRON_GEORE);
-			this.addStorage(LAPIS_GEORE);
-			this.addStorage(QUARTZ_GEORE);
-			this.addStorage(REDSTONE_GEORE);
-			this.addStorage(RUBY_GEORE);
-			this.addStorage(SAPPHIRE_GEORE);
-			this.addStorage(TOPAZ_GEORE);
+			this.addStorage(GeOreRegistry.COAL_GEORE);
+			this.addStorage(GeOreRegistry.COPPER_GEORE);
+			this.addStorage(GeOreRegistry.DIAMOND_GEORE);
+			this.addStorage(GeOreRegistry.EMERALD_GEORE);
+			this.addStorage(GeOreRegistry.GOLD_GEORE);
+			this.addStorage(GeOreRegistry.IRON_GEORE);
+			this.addStorage(GeOreRegistry.LAPIS_GEORE);
+			this.addStorage(GeOreRegistry.QUARTZ_GEORE);
+			this.addStorage(GeOreRegistry.REDSTONE_GEORE);
+			this.addStorage(GeOreRegistry.RUBY_GEORE);
+			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {

@@ -2,18 +2,11 @@ package com.shynieke.geore.features;
 
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.registry.GeOreRegistry;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 
 public class GeOreFeatures {
 	public static void initialize() {
 		//Just to initialize the features no matter what
 	}
-
-	public static final PlacementModifier RNG_DECORATOR = HeightRangePlacement.uniform(VerticalAnchor.bottom(), VerticalAnchor.top());
-
-//	public static final PlacementModifier<NoneDecoratorConfiguration> RNG_DECORATOR = GeOreRegistry.RNG_DECORATOR.get().configured(DecoratorConfiguration.NONE);
 
 	public static GeOreFeatureReg COAL_GEORE = new GeOreFeatureReg("coal", GeOreRegistry.COAL_GEORE, GeOreConfig.COMMON.coalGeoreRarity::get, GeOreConfig.COMMON.coalGeoreMinY::get, GeOreConfig.COMMON.coalGeoreMaxY::get);
 	public static GeOreFeatureReg COPPER_GEORE = new GeOreFeatureReg("copper", GeOreRegistry.COPPER_GEORE, GeOreConfig.COMMON.copperGeoreRarity::get, GeOreConfig.COMMON.copperGeoreMinY::get, GeOreConfig.COMMON.copperGeoreMaxY::get);

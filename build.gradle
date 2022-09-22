@@ -24,7 +24,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings  channel: "${mcp_channel}", version: "${mcp_mappings}"
+    mappings channel: "${mcp_channel}", version: "${mcp_mappings}"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
     accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
@@ -120,7 +120,8 @@ dependencies {
 
     implementation fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}")
 
-//    implementation fg.deobf("curse.maven:GemsAndCrystals-334162:3567496") //Most scuffed code I've ever seen, who uses capital letters in lang keys anymore?
+    //Most scuffed code I've ever seen, who uses capital letters in lang keys anymore?
+    implementation fg.deobf("curse.maven:GemsAndCrystals-334162:3836134")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
