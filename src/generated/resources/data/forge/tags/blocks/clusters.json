@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:clusters/geore_coal",
+    "#forge:clusters/geore_copper",
+    "#forge:clusters/geore_diamond",
+    "#forge:clusters/geore_emerald",
+    "#forge:clusters/geore_gold",
+    "#forge:clusters/geore_iron",
+    "#forge:clusters/geore_lapis",
+    "#forge:clusters/geore_quartz",
+    "#forge:clusters/geore_redstone",
+    "#forge:clusters/geore_ruby",
+    "#forge:clusters/geore_sapphire",
+    "#forge:clusters/geore_topaz"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "geore:budding_coal",
+    "geore:budding_copper",
+    "geore:budding_diamond",
+    "geore:budding_emerald",
+    "geore:budding_gold",
+    "geore:budding_iron",
+    "geore:budding_lapis",
+    "geore:budding_quartz",
+    "geore:budding_redstone",
+    "geore:budding_ruby",
+    "geore:budding_sapphire",
+    "geore:budding_topaz"
+  ]
+}

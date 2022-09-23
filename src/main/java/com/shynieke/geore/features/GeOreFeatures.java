@@ -8,17 +8,17 @@ public class GeOreFeatures {
 		//Just to initialize the features no matter what
 	}
 
-	public static GeOreFeatureReg COAL_GEORE = new GeOreFeatureReg("coal", GeOreRegistry.COAL_GEORE, GeOreConfig.COMMON.coalGeoreRarity::get, GeOreConfig.COMMON.coalGeoreMinY::get, GeOreConfig.COMMON.coalGeoreMaxY::get);
-	public static GeOreFeatureReg COPPER_GEORE = new GeOreFeatureReg("copper", GeOreRegistry.COPPER_GEORE, GeOreConfig.COMMON.copperGeoreRarity::get, GeOreConfig.COMMON.copperGeoreMinY::get, GeOreConfig.COMMON.copperGeoreMaxY::get);
-	public static GeOreFeatureReg DIAMOND_GEORE = new GeOreFeatureReg("diamond", GeOreRegistry.DIAMOND_GEORE, GeOreConfig.COMMON.diamondGeoreRarity::get, GeOreConfig.COMMON.diamondGeoreMinY::get, GeOreConfig.COMMON.diamondGeoreMaxY::get);
-	public static GeOreFeatureReg EMERALD_GEORE = new GeOreFeatureReg("emerald", GeOreRegistry.EMERALD_GEORE, GeOreConfig.COMMON.emeraldGeoreRarity::get, GeOreConfig.COMMON.emeraldGeoreMinY::get, GeOreConfig.COMMON.emeraldGeoreMaxY::get);
-	public static GeOreFeatureReg GOLD_GEORE = new GeOreFeatureReg("gold", GeOreRegistry.GOLD_GEORE, GeOreConfig.COMMON.goldGeoreRarity::get, GeOreConfig.COMMON.goldGeoreMinY::get, GeOreConfig.COMMON.goldGeoreMaxY::get);
-	public static GeOreFeatureReg IRON_GEORE = new GeOreFeatureReg("iron", GeOreRegistry.IRON_GEORE, GeOreConfig.COMMON.ironGeoreRarity::get, GeOreConfig.COMMON.ironGeoreMinY::get, GeOreConfig.COMMON.ironGeoreMaxY::get);
-	public static GeOreFeatureReg LAPIS_GEORE = new GeOreFeatureReg("lapis", GeOreRegistry.LAPIS_GEORE, GeOreConfig.COMMON.lapisGeoreRarity::get, GeOreConfig.COMMON.lapisGeoreMinY::get, GeOreConfig.COMMON.lapisGeoreMaxY::get);
-	public static GeOreFeatureReg QUARTZ_GEORE = new GeOreFeatureReg("quartz", GeOreRegistry.QUARTZ_GEORE, GeOreConfig.COMMON.quartzGeoreRarity::get, GeOreConfig.COMMON.quartzGeoreMinY::get, GeOreConfig.COMMON.quartzGeoreMaxY::get);
-	public static GeOreFeatureReg REDSTONE_GEORE = new GeOreFeatureReg("redstone", GeOreRegistry.REDSTONE_GEORE, GeOreConfig.COMMON.redstoneGeoreRarity::get, GeOreConfig.COMMON.redstoneGeoreMinY::get, GeOreConfig.COMMON.redstoneGeoreMaxY::get);
+	public static final GeOreFeatureReg COAL_GEORE = new GeOreFeatureReg("coal", GeOreRegistry.COAL_GEORE, GeOreConfig.COMMON.coalGeOre.GeOreRarity, GeOreConfig.COMMON.coalGeOre.GeOreMinY, GeOreConfig.COMMON.coalGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg COPPER_GEORE = new GeOreFeatureReg("copper", GeOreRegistry.COPPER_GEORE, GeOreConfig.COMMON.copperGeOre.GeOreRarity, GeOreConfig.COMMON.copperGeOre.GeOreMinY, GeOreConfig.COMMON.copperGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg DIAMOND_GEORE = new GeOreFeatureReg("diamond", GeOreRegistry.DIAMOND_GEORE, GeOreConfig.COMMON.diamondGeOre.GeOreRarity, GeOreConfig.COMMON.diamondGeOre.GeOreMinY, GeOreConfig.COMMON.diamondGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg EMERALD_GEORE = new GeOreFeatureReg("emerald", GeOreRegistry.EMERALD_GEORE, GeOreConfig.COMMON.emeraldGeOre.GeOreRarity, GeOreConfig.COMMON.emeraldGeOre.GeOreMinY, GeOreConfig.COMMON.emeraldGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg GOLD_GEORE = new GeOreFeatureReg("gold", GeOreRegistry.GOLD_GEORE, GeOreConfig.COMMON.goldGeOre.GeOreRarity, GeOreConfig.COMMON.goldGeOre.GeOreMinY, GeOreConfig.COMMON.goldGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg IRON_GEORE = new GeOreFeatureReg("iron", GeOreRegistry.IRON_GEORE, GeOreConfig.COMMON.ironGeOre.GeOreRarity, GeOreConfig.COMMON.ironGeOre.GeOreMinY, GeOreConfig.COMMON.ironGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg LAPIS_GEORE = new GeOreFeatureReg("lapis", GeOreRegistry.LAPIS_GEORE, GeOreConfig.COMMON.lapisGeOre.GeOreRarity, GeOreConfig.COMMON.lapisGeOre.GeOreMinY, GeOreConfig.COMMON.lapisGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg QUARTZ_GEORE = new GeOreFeatureReg("quartz", GeOreRegistry.QUARTZ_GEORE, GeOreConfig.COMMON.quartzGeOre.GeOreRarity, GeOreConfig.COMMON.quartzGeOre.GeOreMinY, GeOreConfig.COMMON.quartzGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg REDSTONE_GEORE = new GeOreFeatureReg("redstone", GeOreRegistry.REDSTONE_GEORE, GeOreConfig.COMMON.redstoneGeOre.GeOreRarity, GeOreConfig.COMMON.redstoneGeOre.GeOreMinY, GeOreConfig.COMMON.redstoneGeOre.GeOreMaxY);
 
-	public static GeOreFeatureReg RUBY_GEORE = new GeOreFeatureReg("ruby", GeOreRegistry.RUBY_GEORE, GeOreConfig.COMMON.rubyGeoreRarity::get, GeOreConfig.COMMON.rubyGeoreMinY::get, GeOreConfig.COMMON.rubyGeoreMaxY::get);
-	public static GeOreFeatureReg SAPPHIRE_GEORE = new GeOreFeatureReg("sapphire", GeOreRegistry.SAPPHIRE_GEORE, GeOreConfig.COMMON.sapphireGeoreRarity::get, GeOreConfig.COMMON.sapphireGeoreMinY::get, GeOreConfig.COMMON.sapphireGeoreMaxY::get);
-	public static GeOreFeatureReg TOPAZ_GEORE = new GeOreFeatureReg("topaz", GeOreRegistry.TOPAZ_GEORE, GeOreConfig.COMMON.topazGeoreRarity::get, GeOreConfig.COMMON.topazGeoreMinY::get, GeOreConfig.COMMON.topazGeoreMaxY::get);
+	public static final GeOreFeatureReg RUBY_GEORE = new GeOreFeatureReg("ruby", GeOreRegistry.RUBY_GEORE, GeOreConfig.COMMON.rubyGeOre.GeOreRarity, GeOreConfig.COMMON.rubyGeOre.GeOreMinY, GeOreConfig.COMMON.rubyGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg SAPPHIRE_GEORE = new GeOreFeatureReg("sapphire", GeOreRegistry.SAPPHIRE_GEORE, GeOreConfig.COMMON.sapphireGeOre.GeOreRarity, GeOreConfig.COMMON.sapphireGeOre.GeOreMinY, GeOreConfig.COMMON.sapphireGeOre.GeOreMaxY);
+	public static final GeOreFeatureReg TOPAZ_GEORE = new GeOreFeatureReg("topaz", GeOreRegistry.TOPAZ_GEORE, GeOreConfig.COMMON.topazGeOre.GeOreRarity, GeOreConfig.COMMON.topazGeOre.GeOreMinY, GeOreConfig.COMMON.topazGeOre.GeOreMaxY);
 }

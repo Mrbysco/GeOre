@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "tag": "forge:rods/wooden"
+    },
+    "X": {
+      "item": "geore:coal_shard"
+    }
+  },
+  "result": {
+    "item": "minecraft:torch",
+    "count": 2
+  }
+}

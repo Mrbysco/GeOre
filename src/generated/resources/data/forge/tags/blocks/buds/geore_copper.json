@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "geore:small_copper_bud",
+    "geore:medium_copper_bud",
+    "geore:large_copper_bud"
+  ]
+}

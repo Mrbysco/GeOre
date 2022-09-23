@@ -27,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.LootTable.Builder;
@@ -149,6 +150,12 @@ public class GeOreDatagen {
 		@Override
 		protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
 			generateRecipes(GeOreRegistry.COAL_GEORE, recipeConsumer);
+
+			ShapedRecipeBuilder.shaped(Blocks.TORCH, 2)
+					.pattern("X").pattern("#")
+					.define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get())
+					.unlockedBy("has_coal_geore_shard",
+							has(GeOreRegistry.COAL_GEORE.getShard().get())).save(recipeConsumer, "geore:torch_from_coal_shard");
 
 			generateRecipes(GeOreRegistry.COPPER_GEORE, recipeConsumer);
 			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeConsumer);
@@ -477,6 +484,10 @@ public class GeOreDatagen {
 		public static final TagKey<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
 		public static final TagKey<Block> NON_MOVABLE = modTag("create", "non_movable");
 
+		public static final TagKey<Block> BUDDING = forgeTag("budding");
+		public static final TagKey<Block> BUDS = forgeTag("buds");
+		public static final TagKey<Block> CLUSTERS = forgeTag("clusters");
+
 		private static TagKey<Block> forgeTag(String name) {
 			return BlockTags.create(new ResourceLocation("forge", name));
 		}
@@ -540,18 +551,18 @@ public class GeOreDatagen {
 			this.addCrystalSounds(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addCrystalSounds(GeOreRegistry.TOPAZ_GEORE);
 
-			this.addStorage(GeOreRegistry.COAL_GEORE);
-			this.addStorage(GeOreRegistry.COPPER_GEORE);
-			this.addStorage(GeOreRegistry.DIAMOND_GEORE);
-			this.addStorage(GeOreRegistry.EMERALD_GEORE);
-			this.addStorage(GeOreRegistry.GOLD_GEORE);
-			this.addStorage(GeOreRegistry.IRON_GEORE);
-			this.addStorage(GeOreRegistry.LAPIS_GEORE);
-			this.addStorage(GeOreRegistry.QUARTZ_GEORE);
-			this.addStorage(GeOreRegistry.REDSTONE_GEORE);
-			this.addStorage(GeOreRegistry.RUBY_GEORE);
-			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
+			this.addGeore(GeOreRegistry.COAL_GEORE);
+			this.addGeore(GeOreRegistry.COPPER_GEORE);
+			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
+			this.addGeore(GeOreRegistry.EMERALD_GEORE);
+			this.addGeore(GeOreRegistry.GOLD_GEORE);
+			this.addGeore(GeOreRegistry.IRON_GEORE);
+			this.addGeore(GeOreRegistry.LAPIS_GEORE);
+			this.addGeore(GeOreRegistry.QUARTZ_GEORE);
+			this.addGeore(GeOreRegistry.REDSTONE_GEORE);
+			this.addGeore(GeOreRegistry.RUBY_GEORE);
+			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
+			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -570,8 +581,18 @@ public class GeOreDatagen {
 					.add(blockReg.getBudding().get());
 		}
 
-		private void addStorage(GeOreBlockReg blockReg) {
-			this.tag(Tags.Blocks.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get());
+		private void addGeore(GeOreBlockReg blockReg) {
+			TagKey<Block> budsTag = forgeTag("buds/" + "geore_" + blockReg.getName());
+			this.tag(budsTag).add(blockReg.getSmallBud().get(), blockReg.getMediumBud().get(), blockReg.getLargeBud().get());
+			this.tag(BUDS).addTag(budsTag);
+
+			TagKey<Block> clustersTag = forgeTag("clusters/" + "geore_" + blockReg.getName());
+			this.tag(clustersTag).add(blockReg.getCluster().get());
+			this.tag(CLUSTERS).addTag(clustersTag);
+			this.tag(BUDDING).add(blockReg.getBudding().get());
+
+			TagKey<Block> blockTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
+			this.tag(blockTag).add(blockReg.getBlock().get());
 		}
 	}
 
@@ -590,6 +611,7 @@ public class GeOreDatagen {
 		@Override
 		protected void addTags() {
 			this.addGeore(GeOreRegistry.COAL_GEORE);
+			this.tag(ItemTags.COALS).add(GeOreRegistry.COAL_GEORE.getShard().get());
 			this.addGeore(GeOreRegistry.COPPER_GEORE);
 			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
 			this.addGeore(GeOreRegistry.EMERALD_GEORE);
@@ -617,7 +639,8 @@ public class GeOreDatagen {
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {
-			this.tag(Tags.Items.STORAGE_BLOCKS_AMETHYST).add(blockReg.getBlock().get().asItem());
+			TagKey<Item> itemTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
+			this.tag(itemTag).add(blockReg.getBlock().get().asItem());
 		}
 
 		private void addGeore(GeOreBlockReg blockReg) {
@@ -648,6 +671,10 @@ public class GeOreDatagen {
 
 		private static TagKey<Item> forgeTag(String name) {
 			return ItemTags.create(new ResourceLocation("forge", name));
+		}
+
+		private static TagKey<Item> modTag(String modid, String name) {
+			return ItemTags.create(new ResourceLocation(modid, name));
 		}
 	}
 }

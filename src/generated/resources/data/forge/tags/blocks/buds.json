@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "#forge:buds/geore_coal",
+    "#forge:buds/geore_copper",
+    "#forge:buds/geore_diamond",
+    "#forge:buds/geore_emerald",
+    "#forge:buds/geore_gold",
+    "#forge:buds/geore_iron",
+    "#forge:buds/geore_lapis",
+    "#forge:buds/geore_quartz",
+    "#forge:buds/geore_redstone",
+    "#forge:buds/geore_ruby",
+    "#forge:buds/geore_sapphire",
+    "#forge:buds/geore_topaz"
+  ]
+}
