@@ -1,27 +1,32 @@
 package com.shynieke.geore.datagen;
 
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.features.GeOreConfiguredFeatures;
 import com.shynieke.geore.features.GeOreFeatures;
+import com.shynieke.geore.features.GeOrePlacedFeatures;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeProvider;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
-import net.minecraft.data.tags.BlockTagsProvider;
+import net.minecraft.data.registries.VanillaRegistries;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.resources.RegistryOps;
 import net.minecraft.resources.ResourceLocation;
@@ -29,6 +34,7 @@ import net.minecraft.tags.BiomeTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
@@ -36,15 +42,12 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.LootTable.Builder;
 import net.minecraft.world.level.storage.loot.LootTables;
 import net.minecraft.world.level.storage.loot.ValidationContext;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSet;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
@@ -56,6 +59,8 @@ import net.minecraftforge.client.model.generators.loaders.SeparateTransformsMode
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.ConditionalRecipe;
 import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.common.data.BlockTagsProvider;
+import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.data.LanguageProvider;
@@ -69,9 +74,9 @@ import net.minecraftforge.registries.RegistryObject;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
+import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 import static com.shynieke.geore.registry.GeOreRegistry.BLOCKS;
 
@@ -79,87 +84,103 @@ import static com.shynieke.geore.registry.GeOreRegistry.BLOCKS;
 public class GeOreDatagen {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		final RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, RegistryAccess.builtinCopy());
+		HolderLookup.Provider provider = getProvider();
+		final RegistryOps<JsonElement> ops = RegistryOps.create(JsonOps.INSTANCE, provider);
 		DataGenerator generator = event.getGenerator();
+		PackOutput packOutput = generator.getPackOutput();
+		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
 		ExistingFileHelper helper = event.getExistingFileHelper();
 
 		if (event.includeServer()) {
-			generator.addProvider(event.includeServer(), new Loots(generator));
-			generator.addProvider(event.includeServer(), new Recipes(generator));
-			BlockTagsProvider provider;
-			generator.addProvider(event.includeServer(), provider = new GeoreBlockTags(generator, helper));
-			generator.addProvider(event.includeServer(), new GeoreItemTags(generator, provider, helper));
+			generator.addProvider(event.includeServer(), new Loots(packOutput));
+			generator.addProvider(event.includeServer(), new Recipes(packOutput));
+			BlockTagsProvider blockTagsProvider;
+			generator.addProvider(event.includeServer(), blockTagsProvider = new GeoreBlockTags(packOutput, lookupProvider, helper));
+			generator.addProvider(event.includeServer(), new GeoreItemTags(packOutput, lookupProvider, blockTagsProvider, helper));
 
+			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
+					packOutput, GeOreDatagen::getProvider));
+
+//			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
+//					packOutput, helper, Reference.MOD_ID, ops, Registries.PLACED_FEATURE, getConfiguredFeatures(ops)));
 
 			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-					generator, helper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, getConfiguredFeatures(ops)));
-
-			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-					generator, helper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(ops)));
+					packOutput, helper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(provider)));
 		}
 		if (event.includeClient()) {
-			generator.addProvider(event.includeClient(), new Language(generator));
-			generator.addProvider(event.includeClient(), new BlockModels(generator, helper));
-			generator.addProvider(event.includeClient(), new ItemModels(generator, helper));
-			generator.addProvider(event.includeClient(), new BlockStates(generator, helper));
+			generator.addProvider(event.includeClient(), new Language(packOutput));
+			generator.addProvider(event.includeClient(), new BlockModels(packOutput, helper));
+			generator.addProvider(event.includeClient(), new ItemModels(packOutput, helper));
+			generator.addProvider(event.includeClient(), new BlockStates(packOutput, helper));
 		}
 	}
 
-	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
-		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
 
-		GeOreFeatures.COAL_GEORE.fillPlacedFeatureMap(ops, map, 60, 6, 30);
-		GeOreFeatures.COPPER_GEORE.fillPlacedFeatureMap(ops, map, 90, 6, 30);
-		GeOreFeatures.DIAMOND_GEORE.fillPlacedFeatureMap(ops, map, 330, 6, 30);
-		GeOreFeatures.EMERALD_GEORE.fillPlacedFeatureMap(ops, map, 420, 6, 30);
-		GeOreFeatures.GOLD_GEORE.fillPlacedFeatureMap(ops, map, 180, 6, 30);
-		GeOreFeatures.IRON_GEORE.fillPlacedFeatureMap(ops, map, 120, 6, 30);
-		GeOreFeatures.LAPIS_GEORE.fillPlacedFeatureMap(ops, map, 210, 6, 30);
-		GeOreFeatures.QUARTZ_GEORE.fillPlacedFeatureMap(ops, map, 150, 6, 30);
-		GeOreFeatures.REDSTONE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-		GeOreFeatures.RUBY_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-		GeOreFeatures.SAPPHIRE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-		GeOreFeatures.TOPAZ_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-
-		return map;
+	private static HolderLookup.Provider getProvider() {
+		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
+		registryBuilder.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap);
+		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
+		registryBuilder.add(Registries.BIOME, context -> {
+		});
+		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
 	}
 
-	public static Map<ResourceLocation, BiomeModifier> getBiomeModifiers(RegistryOps<JsonElement> ops) {
+//	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
+//		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
+//
+//		GeOreFeatures.COAL_GEORE.fillPlacedFeatureMap(ops, map, 60, 6, 30);
+//		GeOreFeatures.COPPER_GEORE.fillPlacedFeatureMap(ops, map, 90, 6, 30);
+//		GeOreFeatures.DIAMOND_GEORE.fillPlacedFeatureMap(ops, map, 330, 6, 30);
+//		GeOreFeatures.EMERALD_GEORE.fillPlacedFeatureMap(ops, map, 420, 6, 30);
+//		GeOreFeatures.GOLD_GEORE.fillPlacedFeatureMap(ops, map, 180, 6, 30);
+//		GeOreFeatures.IRON_GEORE.fillPlacedFeatureMap(ops, map, 120, 6, 30);
+//		GeOreFeatures.LAPIS_GEORE.fillPlacedFeatureMap(ops, map, 210, 6, 30);
+//		GeOreFeatures.QUARTZ_GEORE.fillPlacedFeatureMap(ops, map, 150, 6, 30);
+//		GeOreFeatures.REDSTONE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
+//		GeOreFeatures.RUBY_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
+//		GeOreFeatures.SAPPHIRE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
+//		GeOreFeatures.TOPAZ_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
+//
+//		return map;
+//	}
+
+	public static Map<ResourceLocation, BiomeModifier> getBiomeModifiers(HolderLookup.Provider provider) {
 		Map<ResourceLocation, BiomeModifier> map = Maps.newHashMap();
 
-		GeOreFeatures.COAL_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "coal");
-		GeOreFeatures.COPPER_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "copper");
-		GeOreFeatures.DIAMOND_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "diamond");
-		GeOreFeatures.EMERALD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "emerald");
-		GeOreFeatures.GOLD_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "gold");
-		GeOreFeatures.IRON_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "iron");
-		GeOreFeatures.LAPIS_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "lapis");
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "quartz");
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_NETHER, "quartz_nether");
-		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "redstone");
-		GeOreFeatures.RUBY_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "ruby");
-		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "sapphire");
-		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "topaz");
+		GeOreFeatures.COAL_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "coal");
+		GeOreFeatures.COPPER_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "copper");
+		GeOreFeatures.DIAMOND_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "diamond");
+		GeOreFeatures.EMERALD_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "emerald");
+		GeOreFeatures.GOLD_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "gold");
+		GeOreFeatures.IRON_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "iron");
+		GeOreFeatures.LAPIS_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "lapis");
+		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "quartz");
+		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_NETHER, "quartz_nether");
+		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "redstone");
+		GeOreFeatures.RUBY_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "ruby");
+		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "sapphire");
+		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "topaz");
 
 		return map;
 	}
 
 	private static class Loots extends LootTableProvider {
-		public Loots(DataGenerator gen) {
-			super(gen);
+		public Loots(PackOutput packOutput) {
+			super(packOutput, Set.of(), List.of(
+					new SubProviderEntry(GeOreBlockTables::new, LootContextParamSets.BLOCK)
+			));
 		}
 
-		@Override
-		protected List<Pair<Supplier<Consumer<BiConsumer<ResourceLocation, Builder>>>, LootContextParamSet>> getTables() {
-			return ImmutableList.of(
-					Pair.of(GeOreBlockTables::new, LootContextParamSets.BLOCK)
-			);
-		}
+		public static class GeOreBlockTables extends BlockLootSubProvider {
 
-		public static class GeOreBlockTables extends BlockLoot {
+			protected GeOreBlockTables() {
+				super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+			}
 
 			@Override
-			protected void addTables() {
+			protected void generate() {
 				addGeOreTables(GeOreRegistry.COAL_GEORE);
 				addGeOreTables(GeOreRegistry.COPPER_GEORE);
 				addGeOreTables(GeOreRegistry.DIAMOND_GEORE);
@@ -202,15 +223,15 @@ public class GeOreDatagen {
 
 	public static class Recipes extends RecipeProvider {
 
-		public Recipes(DataGenerator generator) {
-			super(generator);
+		public Recipes(PackOutput packOutput) {
+			super(packOutput);
 		}
 
 		@Override
-		protected void buildCraftingRecipes(Consumer<FinishedRecipe> recipeConsumer) {
+		protected void buildRecipes(Consumer<FinishedRecipe> recipeConsumer) {
 			generateRecipes(GeOreRegistry.COAL_GEORE, recipeConsumer);
 
-			ShapedRecipeBuilder.shaped(Blocks.TORCH, 2)
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.TORCH, 2)
 					.pattern("X").pattern("#")
 					.define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get())
 					.unlockedBy("has_coal_geore_shard",
@@ -271,11 +292,11 @@ public class GeOreDatagen {
 		}
 
 		private void generateRecipes(GeOreBlockReg blockReg, Consumer<FinishedRecipe> recipeConsumer) {
-			ShapedRecipeBuilder.shaped(blockReg.getBlock().get())
+			ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getBlock().get())
 					.define('S', blockReg.getShard().get()).pattern("SS").pattern("SS").unlockedBy("has_" + blockReg.getName() + "geore_shard",
 							has(blockReg.getShard().get())).save(recipeConsumer);
 
-			ShapedRecipeBuilder.shaped(blockReg.getSpyglass().get())
+			ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get())
 					.define('#', blockReg.getShard().get())
 					.define('X', Items.COPPER_INGOT)
 					.pattern(" # ").pattern(" X ").pattern(" X ").unlockedBy("has_" + blockReg.getName() + "geore_shard",
@@ -283,11 +304,11 @@ public class GeOreDatagen {
 		}
 
 		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, Consumer<FinishedRecipe> recipeConsumer) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100)
 					.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 					.save(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
@@ -299,7 +320,7 @@ public class GeOreDatagen {
 							new ModLoadedCondition(modid)
 					)
 					.addRecipe(
-							SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+							SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200)
 									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 									::save
 					)
@@ -311,7 +332,7 @@ public class GeOreDatagen {
 							new ModLoadedCondition(modid)
 					)
 					.addRecipe(
-							SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+							SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100)
 									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 									::save
 					)
@@ -321,8 +342,8 @@ public class GeOreDatagen {
 	}
 
 	private static class Language extends LanguageProvider {
-		public Language(DataGenerator gen) {
-			super(gen, Reference.MOD_ID, "en_us");
+		public Language(PackOutput packOutput) {
+			super(packOutput, Reference.MOD_ID, "en_us");
 		}
 
 		@Override
@@ -356,8 +377,8 @@ public class GeOreDatagen {
 	}
 
 	private static class BlockStates extends BlockStateProvider {
-		public BlockStates(DataGenerator gen, ExistingFileHelper helper) {
-			super(gen, Reference.MOD_ID, helper);
+		public BlockStates(PackOutput packOutput, ExistingFileHelper helper) {
+			super(packOutput, Reference.MOD_ID, helper);
 		}
 
 		@Override
@@ -404,8 +425,8 @@ public class GeOreDatagen {
 	}
 
 	private static class BlockModels extends BlockModelProvider {
-		public BlockModels(DataGenerator gen, ExistingFileHelper helper) {
-			super(gen, Reference.MOD_ID, helper);
+		public BlockModels(PackOutput packOutput, ExistingFileHelper helper) {
+			super(packOutput, Reference.MOD_ID, helper);
 		}
 
 		@Override
@@ -441,8 +462,8 @@ public class GeOreDatagen {
 	}
 
 	private static class ItemModels extends ItemModelProvider {
-		public ItemModels(DataGenerator gen, ExistingFileHelper helper) {
-			super(gen, Reference.MOD_ID, helper);
+		public ItemModels(PackOutput packOutput, ExistingFileHelper helper) {
+			super(packOutput, Reference.MOD_ID, helper);
 		}
 
 		@Override
@@ -536,8 +557,8 @@ public class GeOreDatagen {
 	}
 
 	public static class GeoreBlockTags extends BlockTagsProvider {
-		public GeoreBlockTags(DataGenerator generator, @Nullable ExistingFileHelper existingFileHelper) {
-			super(generator, Reference.MOD_ID, existingFileHelper);
+		public GeoreBlockTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+			super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
 		}
 
 		public static final TagKey<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
@@ -556,7 +577,7 @@ public class GeOreDatagen {
 		}
 
 		@Override
-		protected void addTags() {
+		protected void addTags(HolderLookup.Provider provider) {
 			this.tag(RELOCATION_NOT_SUPPORTED)
 					.add(GeOreRegistry.COAL_GEORE.getBudding().get())
 					.add(GeOreRegistry.COPPER_GEORE.getBudding().get())
@@ -656,8 +677,8 @@ public class GeOreDatagen {
 	}
 
 	public static class GeoreItemTags extends ItemTagsProvider {
-		public GeoreItemTags(DataGenerator dataGenerator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-			super(dataGenerator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+		public GeoreItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
+			super(packOutput, lookupProvider, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
 		}
 
 		public static final TagKey<Item> GEORE_CLUSTERS = forgeTag("geore_clusters");
@@ -668,7 +689,7 @@ public class GeOreDatagen {
 		public static final TagKey<Item> GEORE_BLOCKS = forgeTag("geore_blocks");
 
 		@Override
-		protected void addTags() {
+		protected void addTags(HolderLookup.Provider provider) {
 			this.addGeore(GeOreRegistry.COAL_GEORE);
 			this.tag(ItemTags.COALS).add(GeOreRegistry.COAL_GEORE.getShard().get());
 			this.addGeore(GeOreRegistry.COPPER_GEORE);

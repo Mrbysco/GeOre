@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:ruby_geode",
+  "feature": "geore:ruby_geode",
   "placement": [
     {
       "type": "minecraft:rarity_filter",

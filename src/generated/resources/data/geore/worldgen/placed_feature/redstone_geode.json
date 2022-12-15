@@ -1,5 +1,5 @@
 {
-  "feature": "minecraft:redstone_geode",
+  "feature": "geore:redstone_geode",
   "placement": [
     {
       "type": "minecraft:rarity_filter",

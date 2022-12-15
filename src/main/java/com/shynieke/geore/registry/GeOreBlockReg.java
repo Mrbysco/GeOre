@@ -64,37 +64,37 @@ public class GeOreBlockReg {
 	}
 
 	public GeOreBlockReg(String name, MaterialColor color, int spyglassHex) {
-		this(name, color, () -> new Item(new Item.Properties().tab(GeOreTabs.TAB_GEORE)), spyglassHex);
+		this(name, color, () -> new Item(new Item.Properties()), spyglassHex);
 	}
 
 	public GeOreBlockReg(String name, MaterialColor color, Supplier<Item> customShard, int spyglassHex) {
 		this.name = name;
 		block = GeOreRegistry.BLOCKS.register(name + "_block", () -> new AmethystBlock(BlockBehaviour.Properties.of(Material.AMETHYST, color).strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()));
-		GeOreRegistry.ITEMS.register(getBlock().getId().getPath(), () -> new BlockItem(getBlock().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getBlock().getId().getPath(), () -> new BlockItem(getBlock().get(), new Item.Properties()));
 
 		large_bud = GeOreRegistry.BLOCKS.register("large_" + name + "_bud", () -> new AmethystClusterBlock(5, 3,
 				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 4)));
-		GeOreRegistry.ITEMS.register(getLargeBud().getId().getPath(), () -> new BlockItem(getLargeBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getLargeBud().getId().getPath(), () -> new BlockItem(getLargeBud().get(), new Item.Properties()));
 
 		medium_bud = GeOreRegistry.BLOCKS.register("medium_" + name + "_bud", () -> new AmethystClusterBlock(4, 3,
 				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 2)));
-		GeOreRegistry.ITEMS.register(getMediumBud().getId().getPath(), () -> new BlockItem(getMediumBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getMediumBud().getId().getPath(), () -> new BlockItem(getMediumBud().get(), new Item.Properties()));
 
 		small_bud = GeOreRegistry.BLOCKS.register("small_" + name + "_bud", () -> new AmethystClusterBlock(3, 4,
 				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 1)));
-		GeOreRegistry.ITEMS.register(getSmallBud().getId().getPath(), () -> new BlockItem(getSmallBud().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getSmallBud().getId().getPath(), () -> new BlockItem(getSmallBud().get(), new Item.Properties()));
 
 		cluster = GeOreRegistry.BLOCKS.register(name + "_cluster", () -> new AmethystClusterBlock(7, 3,
 				BlockBehaviour.Properties.of(Material.AMETHYST, color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((p_152651_) -> 5)));
-		GeOreRegistry.ITEMS.register(getCluster().getId().getPath(), () -> new BlockItem(getCluster().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getCluster().getId().getPath(), () -> new BlockItem(getCluster().get(), new Item.Properties()));
 
 		budding = GeOreRegistry.BLOCKS.register("budding_" + name, () ->
 				new BuddingGeoreBlock(BlockBehaviour.Properties.of(Material.AMETHYST, color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
 						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
-		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties().tab(GeOreTabs.TAB_GEORE)));
+		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties()));
 
 		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);
 
-		spyglass = GeOreRegistry.ITEMS.register(name + "_spyglass", () -> new GeoreSpyglassItem(new Item.Properties().tab(GeOreTabs.TAB_GEORE), spyglassHex));
+		spyglass = GeOreRegistry.ITEMS.register(name + "_spyglass", () -> new GeoreSpyglassItem(new Item.Properties(), spyglassHex));
 	}
 }
