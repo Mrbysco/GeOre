@@ -1,1 +1,1 @@
-* Fix Nether Quartz GeOre possibly not spawning in the overworld even when configured to
+* Initial update to 1.19.4

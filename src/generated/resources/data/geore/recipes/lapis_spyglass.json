@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "geore:lapis_spyglass"
-  }
+  },
+  "show_notification": true
 }

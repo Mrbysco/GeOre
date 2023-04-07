@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "geore:topaz_spyglass"
-  }
+  },
+  "show_notification": true
 }

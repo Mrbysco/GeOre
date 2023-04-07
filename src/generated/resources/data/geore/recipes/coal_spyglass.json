@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "geore:coal_spyglass"
-  }
+  },
+  "show_notification": true
 }

@@ -9,7 +9,6 @@ import com.shynieke.geore.features.GeOrePlacedFeatures;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.client.renderer.block.model.ItemTransforms.TransformType;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
@@ -35,6 +34,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -476,9 +476,9 @@ public class GeOreDatagen {
 			withExistingParent(path, "forge:item/default")
 					.customLoader(SeparateTransformsModelBuilder::begin)
 					.base(nested().parent(spyglass_hand))
-					.perspective(TransformType.GUI, nested().parent(spyglass_gui))
-					.perspective(TransformType.GROUND, nested().parent(spyglass_gui))
-					.perspective(TransformType.FIXED, nested().parent(spyglass_gui))
+					.perspective(ItemDisplayContext.GUI, nested().parent(spyglass_gui))
+					.perspective(ItemDisplayContext.GROUND, nested().parent(spyglass_gui))
+					.perspective(ItemDisplayContext.FIXED, nested().parent(spyglass_gui))
 					.end();
 		}
 
@@ -487,7 +487,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/generated")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(TransformType.HEAD)
+					.transforms().transform(ItemDisplayContext.HEAD)
 					.translation(0, 14, -5).end();
 		}
 
@@ -496,11 +496,11 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(TransformType.THIRD_PERSON_RIGHT_HAND)
+					.transforms().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
 					.rotation(0, -90, 25)
 					.translation(0, 6, 0)
 					.scale(0.68F, 0.68F, 0.68F).end()
-					.transform(TransformType.FIXED)
+					.transform(ItemDisplayContext.FIXED)
 					.translation(0, 7, 0).end();
 		}
 
@@ -509,7 +509,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(TransformType.FIXED)
+					.transforms().transform(ItemDisplayContext.FIXED)
 					.translation(0, 6, 0).end();
 		}
 
@@ -518,7 +518,7 @@ public class GeOreDatagen {
 			getBuilder(path)
 					.parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud")))
 					.texture("layer0", modLoc(BLOCK_FOLDER + "/" + path))
-					.transforms().transform(TransformType.FIXED)
+					.transforms().transform(ItemDisplayContext.FIXED)
 					.translation(0, 4, 0).end();
 		}
 	}
@@ -645,7 +645,7 @@ public class GeOreDatagen {
 
 	public static class GeoreItemTags extends ItemTagsProvider {
 		public GeoreItemTags(PackOutput packOutput, CompletableFuture<HolderLookup.Provider> lookupProvider, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-			super(packOutput, lookupProvider, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+			super(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), Reference.MOD_ID, existingFileHelper);
 		}
 
 		public static final TagKey<Item> GEORE_CLUSTERS = forgeTag("geore_clusters");

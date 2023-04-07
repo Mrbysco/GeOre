@@ -16,5 +16,6 @@
   ],
   "result": {
     "item": "geore:redstone_spyglass"
-  }
+  },
+  "show_notification": true
 }

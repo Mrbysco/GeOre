@@ -19,7 +19,7 @@ public class GeOreTabs {
 		TAB_GEORE = event.registerCreativeModeTab(new ResourceLocation(Reference.MOD_ID, "items"), builder ->
 				builder.icon(() -> new ItemStack(Items.AMETHYST_SHARD))
 						.title(Component.translatable("itemGroup.statues.items"))
-						.displayItems((features, output, hasPermissions) -> {
+						.displayItems((displayParameters, output) -> {
 							List<ItemStack> stacks = GeOreRegistry.ITEMS.getEntries().stream().map(reg -> new ItemStack(reg.get())).toList();
 							output.acceptAll(stacks);
 						}));

@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "geore:copper_block"
-  }
+  },
+  "show_notification": true
 }

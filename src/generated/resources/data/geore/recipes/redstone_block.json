@@ -12,5 +12,6 @@
   ],
   "result": {
     "item": "geore:redstone_block"
-  }
+  },
+  "show_notification": true
 }
