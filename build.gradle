@@ -93,9 +93,10 @@ mixin {
 
 repositories {
     maven {
-        // location of the maven that hosts JEI files
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
+        url = "https://dvs1.progwml6.com/files/maven"
+    }
+    maven {
+        url = "https://maven.blamejared.com"
     }
     maven {
         url "https://cursemaven.com"
@@ -109,10 +110,10 @@ dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
-//    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-//    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-//
-//    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+
+    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     //Most scuffed code I've ever seen, who uses capital letters in lang keys anymore?
 //    implementation fg.deobf("curse.maven:GemsAndCrystals-334162:3837321")
