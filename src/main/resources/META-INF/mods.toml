@@ -13,9 +13,17 @@ authors="ShyNieke, Mrbysco"
 description='''
 This mod takes heavy inspiration of the vanilla amethyst geode feature and applies it to other valuables to.
 '''
+
 [[dependencies.geore]]
 modId="minecraft"
 mandatory=true
 versionRange="[1.19.3,1.20)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.geore]]
+modId="forge"
+mandatory=true
+versionRange="[44.1.0,)"
 ordering="NONE"
 side="BOTH"

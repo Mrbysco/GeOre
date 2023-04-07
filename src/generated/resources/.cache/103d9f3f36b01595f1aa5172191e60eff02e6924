@@ -1,4 +1,17 @@
-// 1.19.3	2022-12-15T20:10:18.1286486	Registries
+// 1.19.3	2023-04-07T22:42:36.0282674	Registries
+8f100a136c1b0213dee5914698733da65235c56d data/geore/forge/biome_modifier/coal_geode.json
+3a1a241afb25dc4650ae0065a56fe11e6beb5b00 data/geore/forge/biome_modifier/copper_geode.json
+0ab88c5001734523aafe6a0599287c2ddcf83ac6 data/geore/forge/biome_modifier/diamond_geode.json
+3dad0dfab0f4e5955271d3d048ac6e02e1b6ee7b data/geore/forge/biome_modifier/emerald_geode.json
+da17288eeb2e953491e8478290cb0b2c58cc4dd3 data/geore/forge/biome_modifier/gold_geode.json
+123c211eaa448000baa97169108dc30f8f355fdd data/geore/forge/biome_modifier/iron_geode.json
+25ff246bd89b3e0a8604c3c3646763b757d289ba data/geore/forge/biome_modifier/lapis_geode.json
+7632a41688a3808f62e3e1c7551f608cfe28ecbf data/geore/forge/biome_modifier/quartz_geode.json
+d4e6cb6647cc29b1f48aa6e112189a64d96036aa data/geore/forge/biome_modifier/quartz_nether_geode.json
+4d6df302cefcd7dd55349c08192aa32f581c2992 data/geore/forge/biome_modifier/redstone_geode.json
+2dcb62ac37d4001a6dff0b11f3a3421df71e88f5 data/geore/forge/biome_modifier/ruby_geode.json
+ef6d41fd9ff77570d8a333d9339efac7b5dc3f71 data/geore/forge/biome_modifier/sapphire_geode.json
+a6db0776f730dba58274eb75f398486d09f18d25 data/geore/forge/biome_modifier/topaz_geode.json
 0456b50b714c3ff1b508730484e73faa34bf1294 data/geore/worldgen/configured_feature/coal_geode.json
 2378f75946c3498c97007e6bb80deeeb44071da1 data/geore/worldgen/configured_feature/copper_geode.json
 5c2494eabdbf7abe645da580438691cd88c3e410 data/geore/worldgen/configured_feature/diamond_geode.json

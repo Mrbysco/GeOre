@@ -1,6 +1,5 @@
 package com.shynieke.geore.datagen;
 
-import com.google.common.collect.Maps;
 import com.google.gson.JsonElement;
 import com.mojang.serialization.JsonOps;
 import com.shynieke.geore.Reference;
@@ -62,9 +61,7 @@ import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
-import net.minecraftforge.common.data.JsonCodecProvider;
 import net.minecraftforge.common.data.LanguageProvider;
-import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -99,13 +96,7 @@ public class GeOreDatagen {
 			generator.addProvider(event.includeServer(), new GeoreItemTags(packOutput, lookupProvider, blockTagsProvider, helper));
 
 			generator.addProvider(event.includeServer(), new DatapackBuiltinEntriesProvider(
-					packOutput, GeOreDatagen::getProvider));
-
-//			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-//					packOutput, helper, Reference.MOD_ID, ops, Registries.PLACED_FEATURE, getConfiguredFeatures(ops)));
-
-			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-					packOutput, helper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(provider)));
+					packOutput, CompletableFuture.supplyAsync(GeOreDatagen::getProvider), Set.of(Reference.MOD_ID)));
 		}
 		if (event.includeClient()) {
 			generator.addProvider(event.includeClient(), new Language(packOutput));
@@ -119,50 +110,27 @@ public class GeOreDatagen {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap);
+		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, context -> {
+			GeOreFeatures.COAL_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "coal");
+			GeOreFeatures.COPPER_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "copper");
+			GeOreFeatures.DIAMOND_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "diamond");
+			GeOreFeatures.EMERALD_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "emerald");
+			GeOreFeatures.GOLD_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "gold");
+			GeOreFeatures.IRON_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "iron");
+			GeOreFeatures.LAPIS_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "lapis");
+			GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "quartz");
+			GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_NETHER, "quartz_nether");
+			GeOreFeatures.REDSTONE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "redstone");
+			GeOreFeatures.RUBY_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "ruby");
+			GeOreFeatures.SAPPHIRE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "sapphire");
+			GeOreFeatures.TOPAZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "topaz");
+
+		});
 		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
 		registryBuilder.add(Registries.BIOME, context -> {
 		});
 		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
 		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
-	}
-
-//	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
-//		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
-//
-//		GeOreFeatures.COAL_GEORE.fillPlacedFeatureMap(ops, map, 60, 6, 30);
-//		GeOreFeatures.COPPER_GEORE.fillPlacedFeatureMap(ops, map, 90, 6, 30);
-//		GeOreFeatures.DIAMOND_GEORE.fillPlacedFeatureMap(ops, map, 330, 6, 30);
-//		GeOreFeatures.EMERALD_GEORE.fillPlacedFeatureMap(ops, map, 420, 6, 30);
-//		GeOreFeatures.GOLD_GEORE.fillPlacedFeatureMap(ops, map, 180, 6, 30);
-//		GeOreFeatures.IRON_GEORE.fillPlacedFeatureMap(ops, map, 120, 6, 30);
-//		GeOreFeatures.LAPIS_GEORE.fillPlacedFeatureMap(ops, map, 210, 6, 30);
-//		GeOreFeatures.QUARTZ_GEORE.fillPlacedFeatureMap(ops, map, 150, 6, 30);
-//		GeOreFeatures.REDSTONE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-//		GeOreFeatures.RUBY_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-//		GeOreFeatures.SAPPHIRE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-//		GeOreFeatures.TOPAZ_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
-//
-//		return map;
-//	}
-
-	public static Map<ResourceLocation, BiomeModifier> getBiomeModifiers(HolderLookup.Provider provider) {
-		Map<ResourceLocation, BiomeModifier> map = Maps.newHashMap();
-
-		GeOreFeatures.COAL_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "coal");
-		GeOreFeatures.COPPER_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "copper");
-		GeOreFeatures.DIAMOND_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "diamond");
-		GeOreFeatures.EMERALD_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "emerald");
-		GeOreFeatures.GOLD_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "gold");
-		GeOreFeatures.IRON_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "iron");
-		GeOreFeatures.LAPIS_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "lapis");
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "quartz");
-		GeOreFeatures.QUARTZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_NETHER, "quartz_nether");
-		GeOreFeatures.REDSTONE_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "redstone");
-		GeOreFeatures.RUBY_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "ruby");
-		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "sapphire");
-		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(provider, map, BiomeTags.IS_OVERWORLD, "topaz");
-
-		return map;
 	}
 
 	private static class Loots extends LootTableProvider {

@@ -5,7 +5,6 @@ import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -35,9 +34,9 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraftforge.common.world.BiomeModifier;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
-import java.util.Map;
 
 public class GeOreFeatureReg {
 	protected final String NAME;
@@ -82,15 +81,19 @@ public class GeOreFeatureReg {
 				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(aboveBottom), VerticalAnchor.absolute(absolute)), BiomeFilter.biome());
 	}
 
-	public void fillModifierMap(HolderLookup.Provider provider, Map<ResourceLocation, BiomeModifier> map, TagKey<Biome> tag, String configName) {
-		final HolderLookup.RegistryLookup<Biome> biomeReg = provider.lookupOrThrow(Registries.BIOME);
-		final HolderLookup.RegistryLookup<PlacedFeature> placedReg = provider.lookupOrThrow(Registries.PLACED_FEATURE);
+	public void setupBiomeModifier(BootstapContext<BiomeModifier> context, TagKey<Biome> tag, String configName) {
+		final HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
+		final HolderGetter<PlacedFeature> placedHolderGetter = context.lookup(Registries.PLACED_FEATURE);
 
 		final AddConfigFeatureBiomeModifier addGeore = new AddConfigFeatureBiomeModifier(
-				HolderSet.emptyNamed(biomeReg, tag),
-				HolderSet.direct(placedReg.get(GEODE_PLACEMENT_KEY).orElseThrow()),
+				biomeHolderGetter.getOrThrow(tag),
+				HolderSet.direct(placedHolderGetter.getOrThrow(GEODE_PLACEMENT_KEY)),
 				Decoration.LOCAL_MODIFICATIONS, configName);
 
-		map.put(new ResourceLocation(Reference.MOD_ID, NAME + "_geode"), addGeore);
+		context.register(createKey(configName + "_geode"), addGeore);
+	}
+
+	private ResourceKey<BiomeModifier> createKey(String name) {
+		return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
 	}
 }
