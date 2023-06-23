@@ -30,5 +30,6 @@
     "recipes": [
       "geore:iron_ingot_from_smelting_iron_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

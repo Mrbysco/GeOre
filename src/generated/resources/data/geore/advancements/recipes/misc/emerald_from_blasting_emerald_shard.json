@@ -30,5 +30,6 @@
     "recipes": [
       "geore:emerald_from_blasting_emerald_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

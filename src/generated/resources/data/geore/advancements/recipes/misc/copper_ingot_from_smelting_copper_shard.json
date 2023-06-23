@@ -30,5 +30,6 @@
     "recipes": [
       "geore:copper_ingot_from_smelting_copper_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

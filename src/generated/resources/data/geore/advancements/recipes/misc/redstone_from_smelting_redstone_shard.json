@@ -30,5 +30,6 @@
     "recipes": [
       "geore:redstone_from_smelting_redstone_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }

@@ -30,5 +30,6 @@
     "recipes": [
       "geore:torch_from_coal_shard"
     ]
-  }
+  },
+  "sends_telemetry_event": false
 }
