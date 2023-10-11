@@ -11,6 +11,7 @@
     "#forge:geore_shards/redstone",
     "#forge:geore_shards/ruby",
     "#forge:geore_shards/sapphire",
-    "#forge:geore_shards/topaz"
+    "#forge:geore_shards/topaz",
+    "#forge:geore_shards/zinc"
   ]
 }

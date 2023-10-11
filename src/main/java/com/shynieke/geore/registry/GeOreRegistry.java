@@ -22,7 +22,8 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg QUARTZ_GEORE = new GeOreBlockReg("quartz", MaterialColor.STONE, 0xb6a48e);
 	public static final GeOreBlockReg REDSTONE_GEORE = new GeOreBlockReg("redstone", MaterialColor.STONE, 0x960606);
 
-	public static final GeOreBlockReg RUBY_GEORE = new GeOreBlockReg("ruby", MaterialColor.STONE, 0xc81d2e);
-	public static final GeOreBlockReg SAPPHIRE_GEORE = new GeOreBlockReg("sapphire", MaterialColor.STONE, 0xe00e0);
-	public static final GeOreBlockReg TOPAZ_GEORE = new GeOreBlockReg("topaz", MaterialColor.STONE, 0xffb856);
+	public static final GeOreBlockReg RUBY_GEORE = new GeOreBlockReg("ruby", MapColor.COLOR_RED, 0xc81d2e);
+	public static final GeOreBlockReg SAPPHIRE_GEORE = new GeOreBlockReg("sapphire", MapColor.COLOR_BLUE, 0xe00e0);
+	public static final GeOreBlockReg TOPAZ_GEORE = new GeOreBlockReg("topaz", MapColor.GOLD, 0xffb856);
+	public static final GeOreBlockReg ZINC_GEORE = new GeOreBlockReg("zinc", MapColor.GOLD, 0xa7bdac);
 }

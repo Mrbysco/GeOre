@@ -11,6 +11,7 @@
     "#forge:geore_blocks/redstone",
     "#forge:geore_blocks/ruby",
     "#forge:geore_blocks/sapphire",
-    "#forge:geore_blocks/topaz"
+    "#forge:geore_blocks/topaz",
+    "#forge:geore_blocks/zinc"
   ]
 }

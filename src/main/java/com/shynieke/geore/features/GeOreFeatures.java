@@ -20,4 +20,5 @@ public class GeOreFeatures {
 	public static GeOreFeatureReg RUBY_GEORE = new GeOreFeatureReg("ruby", GeOreRegistry.RUBY_GEORE);
 	public static GeOreFeatureReg SAPPHIRE_GEORE = new GeOreFeatureReg("sapphire", GeOreRegistry.SAPPHIRE_GEORE);
 	public static GeOreFeatureReg TOPAZ_GEORE = new GeOreFeatureReg("topaz", GeOreRegistry.TOPAZ_GEORE);
+	public static GeOreFeatureReg ZINC_GEORE = new GeOreFeatureReg("zinc", GeOreRegistry.ZINC_GEORE);
 }

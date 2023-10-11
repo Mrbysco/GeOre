@@ -19,7 +19,8 @@ public enum ConfigFeature {
 	REDSTONE_GEORE("redstone", GeOreConfig.COMMON.generateRedstoneGeore),
 	RUBY_GEORE("ruby", GeOreConfig.COMMON.generateRubyGeore),
 	SAPPHIRE_GEORE("sapphire", GeOreConfig.COMMON.generateSapphireGeore),
-	TOPAZ_GEORE("topaz", GeOreConfig.COMMON.generateTopazGeore);
+	TOPAZ_GEORE("topaz", GeOreConfig.COMMON.generateTopazGeore),
+	ZINC_GEORE("zinc", GeOreConfig.COMMON.generateTopazGeore);
 
 	public final String name;
 	public final Supplier<Boolean> configValue;

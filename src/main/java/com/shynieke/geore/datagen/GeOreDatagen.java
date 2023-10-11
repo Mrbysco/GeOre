@@ -120,6 +120,7 @@ public class GeOreDatagen {
 		GeOreFeatures.RUBY_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
 		GeOreFeatures.SAPPHIRE_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
 		GeOreFeatures.TOPAZ_GEORE.fillPlacedFeatureMap(ops, map, 240, 6, 30);
+		GeOreFeatures.ZINC_GEORE.fillPlacedFeatureMap(ops, map, 140, 6, 30);
 
 		return map;
 	}
@@ -140,6 +141,7 @@ public class GeOreDatagen {
 		GeOreFeatures.RUBY_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "ruby");
 		GeOreFeatures.SAPPHIRE_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "sapphire");
 		GeOreFeatures.TOPAZ_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "topaz");
+		GeOreFeatures.ZINC_GEORE.fillModifierMap(ops, map, BiomeTags.IS_OVERWORLD, "zinc");
 
 		return map;
 	}
@@ -172,6 +174,7 @@ public class GeOreDatagen {
 				addGeOreTables(GeOreRegistry.RUBY_GEORE);
 				addGeOreTables(GeOreRegistry.SAPPHIRE_GEORE);
 				addGeOreTables(GeOreRegistry.TOPAZ_GEORE);
+				addGeOreTables(GeOreRegistry.ZINC_GEORE);
 			}
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
@@ -259,6 +262,8 @@ public class GeOreDatagen {
 			if (topazItem != null) {
 				optionalSmeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeConsumer);
 			}
+
+			generateRecipes(GeOreRegistry.ZINC_GEORE, recipeConsumer);
 		}
 
 		public Item getModItem(ResourceLocation itemLocation) {
@@ -294,26 +299,20 @@ public class GeOreDatagen {
 		}
 
 		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, Consumer<FinishedRecipe> recipeConsumer) {
-			new ConditionalRecipe.Builder()
-					.addCondition(
-							new ModLoadedCondition(modid)
-					)
-					.addRecipe(
-							SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
-									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-									::save
+			ConditionalRecipe.builder()
+					.addCondition(new ModLoadedCondition(modid))
+					.addRecipe(SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), item, xp, 200)
+							.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+							::save
 					)
 					.build(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 
-			new ConditionalRecipe.Builder()
-					.addCondition(
-							new ModLoadedCondition(modid)
-					)
-					.addRecipe(
-							SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
-									.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-									::save
+			ConditionalRecipe.builder()
+					.addCondition(new ModLoadedCondition(modid))
+					.addRecipe(SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), item, xp, 100)
+							.group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+							::save
 					)
 					.build(recipeConsumer,
 							new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
@@ -341,6 +340,7 @@ public class GeOreDatagen {
 			generateLang("Ruby", GeOreRegistry.RUBY_GEORE);
 			generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
 			generateLang("Topaz", GeOreRegistry.TOPAZ_GEORE);
+			generateLang("Zinc", GeOreRegistry.ZINC_GEORE);
 		}
 
 		public void generateLang(String name, GeOreBlockReg blockReg) {
@@ -374,6 +374,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -422,6 +423,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -459,6 +461,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
+			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -682,6 +685,7 @@ public class GeOreDatagen {
 			this.addGeore(GeOreRegistry.RUBY_GEORE);
 			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
+			this.addGeore(GeOreRegistry.ZINC_GEORE);
 
 			this.addStorage(GeOreRegistry.COAL_GEORE);
 			this.addStorage(GeOreRegistry.COPPER_GEORE);
@@ -695,6 +699,7 @@ public class GeOreDatagen {
 			this.addStorage(GeOreRegistry.RUBY_GEORE);
 			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
+			this.addStorage(GeOreRegistry.ZINC_GEORE);
 		}
 
 		private void addStorage(GeOreBlockReg blockReg) {
