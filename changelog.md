@@ -1,2 +1,2 @@
-* Add Zinc GeOre (Disabled by default)
-* Re-add Spyglass coloring code and make the intensity configurable
+* Fix `generateZincGeore` config option having no effect
+* Add missing block tags for the Zinc GeOre blocks
