@@ -1,0 +1,24 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:mod_loaded",
+          "modid": "gemsandcrystals"
+        }
+      ],
+      "recipe": {
+        "type": "minecraft:blasting",
+        "category": "misc",
+        "cookingtime": 100,
+        "experience": 0.7,
+        "group": "geore",
+        "ingredient": {
+          "item": "geore:topaz_shard"
+        },
+        "result": "gemsandcrystals:topaz"
+      }
+    }
+  ]
+}

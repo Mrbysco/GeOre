@@ -18,5 +18,6 @@ public class GeOrePlacedFeatures {
 		GeOreFeatures.RUBY_GEORE.setupPlaced(context, 240, 6, 30);
 		GeOreFeatures.SAPPHIRE_GEORE.setupPlaced(context, 240, 6, 30);
 		GeOreFeatures.TOPAZ_GEORE.setupPlaced(context, 240, 6, 30);
+		GeOreFeatures.ZINC_GEORE.setupPlaced(context, 140, 6, 30);
 	}
 }

@@ -34,6 +34,7 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg RUBY_GEORE = new GeOreBlockReg("ruby", MapColor.COLOR_RED, 0xc81d2e);
 	public static final GeOreBlockReg SAPPHIRE_GEORE = new GeOreBlockReg("sapphire", MapColor.COLOR_BLUE, 0xe00e0);
 	public static final GeOreBlockReg TOPAZ_GEORE = new GeOreBlockReg("topaz", MapColor.GOLD, 0xffb856);
+	public static final GeOreBlockReg ZINC_GEORE = new GeOreBlockReg("zinc", MapColor.GOLD, 0xa7bdac);
 
 	public static final RegistryObject<CreativeModeTab> GEORE_TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
 			.icon(() -> new ItemStack(Items.AMETHYST_SHARD))

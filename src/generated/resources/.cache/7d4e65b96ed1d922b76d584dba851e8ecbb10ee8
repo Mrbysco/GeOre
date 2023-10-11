@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-23T23:29:11.636396	Block States: geore
+// 1.20.1	2023-10-11T16:34:02.2878512	Block States: geore
 326bed1db3c7e11092a15a100a06e552f3efe437 assets/geore/blockstates/budding_coal.json
 7e773985a3534c11952f3dd2088cc9f6d1c04afe assets/geore/blockstates/budding_copper.json
 a20e81059eec26e3ca3e9979821810bb00f0e09b assets/geore/blockstates/budding_diamond.json
@@ -11,6 +11,7 @@ c127157bc41649585852f02ca1a2ddecb92eef16 assets/geore/blockstates/budding_lapis.
 74b6faf789b2f4c4433196c1113942f49f2e3821 assets/geore/blockstates/budding_ruby.json
 0e5d8b6be0580b91442acc08354555d745a90d29 assets/geore/blockstates/budding_sapphire.json
 4eb7efa2d1f6a8bab6fef0863d40fbf6587d9e91 assets/geore/blockstates/budding_topaz.json
+3f022b5711cad6ffe12b447cb93f615876cc25bc assets/geore/blockstates/budding_zinc.json
 faa6665cd35a0ecf13cc8d639a5be7f8a22f438e assets/geore/blockstates/coal_block.json
 b354018e5bb972a0059d775aa310ac0732bc6cc4 assets/geore/blockstates/coal_cluster.json
 95b09ca965af042c9950fc96b80c5e75da891795 assets/geore/blockstates/copper_block.json
@@ -37,6 +38,7 @@ efa024895c4813116be2b4e03985d90b31c17373 assets/geore/blockstates/large_lapis_bu
 b6c407fd2758ebb5b7f9a37e15a78d6e506537ec assets/geore/blockstates/large_ruby_bud.json
 637094799e83492ed9bec6fb9d92a53ad1abdf99 assets/geore/blockstates/large_sapphire_bud.json
 9d6afea9ace9aa57f0c7d0cdfab7381984d04da5 assets/geore/blockstates/large_topaz_bud.json
+1771c4fa7f50d30dc3ad94211beaebac3107ccd8 assets/geore/blockstates/large_zinc_bud.json
 c9358b7a54973b94e48ae234b79f1dc4090e8bff assets/geore/blockstates/medium_coal_bud.json
 493ef3cc8b813df5437e863c092529f67dbc2b85 assets/geore/blockstates/medium_copper_bud.json
 e6b48badd71b39894ef6e284b4ea856a26b91e8c assets/geore/blockstates/medium_diamond_bud.json
@@ -49,6 +51,7 @@ a968132c1611912243515c26727ddc9dd172972e assets/geore/blockstates/medium_quartz_
 a1a476c9d95f9c8e2335cbfa726078087a9e2c87 assets/geore/blockstates/medium_ruby_bud.json
 19f94bd6a3a7765afd9ddb16f1b48a45c5b5bdfb assets/geore/blockstates/medium_sapphire_bud.json
 6c655e303d2a861e4486a0fe98903dafe406ffb6 assets/geore/blockstates/medium_topaz_bud.json
+0d46855313519e63668c2a2e659bf393be4f1c70 assets/geore/blockstates/medium_zinc_bud.json
 9d6724fd1d3db7aaaeb86bb4ed80a9e694e79c16 assets/geore/blockstates/quartz_block.json
 863eb15f933d03c2420ffabc8849052e7a657e5e assets/geore/blockstates/quartz_cluster.json
 321f1b777dc6bf389660f3869cd5f6fc8f89791a assets/geore/blockstates/redstone_block.json
@@ -69,8 +72,11 @@ c9bd885814c8b260194c4f676ac6fb017625fe6d assets/geore/blockstates/small_emerald_
 1e4d267b76276210190b914bb633f3e7e3488718 assets/geore/blockstates/small_ruby_bud.json
 dd61d2df986c553b804ed0af4fa61481231c25d8 assets/geore/blockstates/small_sapphire_bud.json
 abea24503b57ab0a0340f3192a153f3719219fce assets/geore/blockstates/small_topaz_bud.json
+a6a740c4bfe0639358ecaf4a5bd68d07c326d343 assets/geore/blockstates/small_zinc_bud.json
 03c0afecf0a21f5867e581a45f295fb70202cdee assets/geore/blockstates/topaz_block.json
 30a382bd51ef79b2557abd42d92e98e830beb32c assets/geore/blockstates/topaz_cluster.json
+c912b208c240c30a2e05caea90d870b505e3f119 assets/geore/blockstates/zinc_block.json
+555a9cc2e9cc0b2da44359df2424a37c24a76f79 assets/geore/blockstates/zinc_cluster.json
 bdc7892462f2eb80de9be9ebd9da9b99dd2f7c5c assets/geore/models/block/budding_coal.json
 19345ff787e43f0e1cdfccef994dbdcd70553468 assets/geore/models/block/budding_copper.json
 a83a9d0ba8d430d5d1e74ab0bac3ebc034f2b98e assets/geore/models/block/budding_diamond.json
@@ -83,6 +89,7 @@ a83a9d0ba8d430d5d1e74ab0bac3ebc034f2b98e assets/geore/models/block/budding_diamo
 5f982ccf913baafb63b61029a58cbf1e691f6221 assets/geore/models/block/budding_ruby.json
 7bec9152ecd22cf51ae2386de1859354b113846c assets/geore/models/block/budding_sapphire.json
 670cece6ceff484dd0a050cf9374a48766247669 assets/geore/models/block/budding_topaz.json
+92f4a3e7f4b6e84704ee6244c9598c13947f575c assets/geore/models/block/budding_zinc.json
 638755eef6ccbc9e423c8d90a6f9abaaa608223c assets/geore/models/block/coal_block.json
 e9511467cc2bda33917b29ff68052d2782ed3008 assets/geore/models/block/copper_block.json
 a027fb1aff97064c21183cbcc5b20f3db9dd40f5 assets/geore/models/block/diamond_block.json
@@ -95,3 +102,4 @@ e5ab04a1958b6253142ceb4a9b337fda49cccac3 assets/geore/models/block/gold_block.js
 82d123de9bcba4fa8c698d1f2d3c37911b6ce454 assets/geore/models/block/ruby_block.json
 d9aa1faa37e49fa6c4853893a2d9d3da8c05ba65 assets/geore/models/block/sapphire_block.json
 0d994460c42a6ba5e08c76fa12c7b998850b0b88 assets/geore/models/block/topaz_block.json
+ea6407d397923ae96699b8f20ebb94b5d3d3799a assets/geore/models/block/zinc_block.json

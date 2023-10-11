@@ -8,6 +8,31 @@ import net.minecraftforge.fml.event.config.ModConfigEvent;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GeOreConfig {
+	public static class Client {
+		public final ForgeConfigSpec.DoubleValue spyglassIntensity;
+
+		Client(ForgeConfigSpec.Builder builder) {
+			builder.comment("Client settings")
+					.push("Client");
+
+			spyglassIntensity = builder
+					.comment("The intensity of the spyglass color overlay (0.5 = 50%) [Default: 0.5]")
+					.defineInRange("spyglassIntensity", 0.5, 0.01, 1.0);
+
+			builder.pop();
+		}
+	}
+
+	public static final ForgeConfigSpec clientSpec;
+	public static final Client CLIENT;
+
+	static {
+		final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+		clientSpec = specPair.getRight();
+		CLIENT = specPair.getLeft();
+	}
+
+
 	public static class Common {
 		public final BooleanValue generateCoalGeore;
 		public final BooleanValue generateCopperGeore;
@@ -23,6 +48,7 @@ public class GeOreConfig {
 		public final BooleanValue generateRubyGeore;
 		public final BooleanValue generateSapphireGeore;
 		public final BooleanValue generateTopazGeore;
+		public final BooleanValue generateZincGeore;
 
 		Common(ForgeConfigSpec.Builder builder) {
 			builder.comment("General settings")
@@ -83,6 +109,10 @@ public class GeOreConfig {
 			generateTopazGeore = builder
 					.comment("Generate Topaz GeOre [Default: false]")
 					.define("generateTopazGeore", false);
+
+			generateZincGeore = builder
+					.comment("Generate Zinc GeOre [Default: false]")
+					.define("generateZincGeore", false);
 
 			builder.pop();
 		}

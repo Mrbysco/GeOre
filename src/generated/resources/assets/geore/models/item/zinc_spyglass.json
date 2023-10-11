@@ -1,0 +1,18 @@
+{
+  "parent": "forge:item/default",
+  "base": {
+    "parent": "geore:item/zinc_spyglass_in_hand"
+  },
+  "loader": "forge:separate_transforms",
+  "perspectives": {
+    "fixed": {
+      "parent": "geore:item/zinc_spyglass_gui"
+    },
+    "ground": {
+      "parent": "geore:item/zinc_spyglass_gui"
+    },
+    "gui": {
+      "parent": "geore:item/zinc_spyglass_gui"
+    }
+  }
+}

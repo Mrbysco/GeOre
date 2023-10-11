@@ -1,4 +1,4 @@
-// 1.20.1	2023-06-23T23:29:11.6338957	Registries
+// 1.20.1	2023-10-11T16:34:02.285349	Registries
 8f100a136c1b0213dee5914698733da65235c56d data/geore/forge/biome_modifier/coal_geode.json
 3a1a241afb25dc4650ae0065a56fe11e6beb5b00 data/geore/forge/biome_modifier/copper_geode.json
 0ab88c5001734523aafe6a0599287c2ddcf83ac6 data/geore/forge/biome_modifier/diamond_geode.json
@@ -12,6 +12,7 @@ d4e6cb6647cc29b1f48aa6e112189a64d96036aa data/geore/forge/biome_modifier/quartz_
 2dcb62ac37d4001a6dff0b11f3a3421df71e88f5 data/geore/forge/biome_modifier/ruby_geode.json
 ef6d41fd9ff77570d8a333d9339efac7b5dc3f71 data/geore/forge/biome_modifier/sapphire_geode.json
 a6db0776f730dba58274eb75f398486d09f18d25 data/geore/forge/biome_modifier/topaz_geode.json
+708c5799bcb3fabb0449014258fe93b8f4abaa26 data/geore/forge/biome_modifier/zinc_geode.json
 0456b50b714c3ff1b508730484e73faa34bf1294 data/geore/worldgen/configured_feature/coal_geode.json
 2378f75946c3498c97007e6bb80deeeb44071da1 data/geore/worldgen/configured_feature/copper_geode.json
 5c2494eabdbf7abe645da580438691cd88c3e410 data/geore/worldgen/configured_feature/diamond_geode.json
@@ -24,6 +25,7 @@ ee971bec639af9668a0fa7a6890840a1d8e6b658 data/geore/worldgen/configured_feature/
 cda352cdf90b3d580ec106b9bf6243975aca9949 data/geore/worldgen/configured_feature/ruby_geode.json
 f00bc4f4b091438c389bd829723e18950cfc683d data/geore/worldgen/configured_feature/sapphire_geode.json
 ac694e677da8762378f89b1899a3909a87c36332 data/geore/worldgen/configured_feature/topaz_geode.json
+4041a60e3f05ba9fca86f818656a585433f42f59 data/geore/worldgen/configured_feature/zinc_geode.json
 3e5e42016f7ac32d3508a74a1dfe0a6c02e50fb9 data/geore/worldgen/placed_feature/coal_geode.json
 950d083ab88a3b00d0d62173dc3d29a107779571 data/geore/worldgen/placed_feature/copper_geode.json
 f082f0df5dd7ddba903a4a3494633645091b9e26 data/geore/worldgen/placed_feature/diamond_geode.json
@@ -36,3 +38,4 @@ bf16a543a124b53eb0ef59553a3c059dc9b60555 data/geore/worldgen/placed_feature/quar
 fd46dda3f40dadf5691114774555cd35cba96c8f data/geore/worldgen/placed_feature/ruby_geode.json
 a9226babf7f80b090ad718a1eea8d05b3a1c0f56 data/geore/worldgen/placed_feature/sapphire_geode.json
 6194a3f8c9ad5ea8831fdd41d2bd69460098f530 data/geore/worldgen/placed_feature/topaz_geode.json
+fa7016cb712c92b0fa6846b51e03a4c828dbdc13 data/geore/worldgen/placed_feature/zinc_geode.json

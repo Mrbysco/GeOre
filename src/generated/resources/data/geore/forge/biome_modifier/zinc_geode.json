@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_overworld",
+  "enabledConfig": "zinc",
+  "features": "geore:zinc_geode",
+  "step": "local_modifications"
+}

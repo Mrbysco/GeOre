@@ -19,5 +19,6 @@ public class GeOreConfiguredFeatures {
 		GeOreFeatures.RUBY_GEORE.setupConfigured(context, GeOreRegistry.RUBY_GEORE);
 		GeOreFeatures.SAPPHIRE_GEORE.setupConfigured(context, GeOreRegistry.SAPPHIRE_GEORE);
 		GeOreFeatures.TOPAZ_GEORE.setupConfigured(context, GeOreRegistry.TOPAZ_GEORE);
+		GeOreFeatures.ZINC_GEORE.setupConfigured(context, GeOreRegistry.ZINC_GEORE);
 	}
 }
