@@ -20,7 +20,7 @@ public enum ConfigFeature {
 	RUBY_GEORE("ruby", GeOreConfig.COMMON.generateRubyGeore),
 	SAPPHIRE_GEORE("sapphire", GeOreConfig.COMMON.generateSapphireGeore),
 	TOPAZ_GEORE("topaz", GeOreConfig.COMMON.generateTopazGeore),
-	ZINC_GEORE("zinc", GeOreConfig.COMMON.generateTopazGeore);
+	ZINC_GEORE("zinc", GeOreConfig.COMMON.generateZincGeore);
 
 	public final String name;
 	public final Supplier<Boolean> configValue;
