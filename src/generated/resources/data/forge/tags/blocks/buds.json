@@ -11,6 +11,7 @@
     "#forge:buds/geore_redstone",
     "#forge:buds/geore_ruby",
     "#forge:buds/geore_sapphire",
-    "#forge:buds/geore_topaz"
+    "#forge:buds/geore_topaz",
+    "#forge:buds/geore_zinc"
   ]
 }

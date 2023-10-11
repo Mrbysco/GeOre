@@ -23,6 +23,8 @@
     "geore:sapphire_block",
     "geore:budding_sapphire",
     "geore:topaz_block",
-    "geore:budding_topaz"
+    "geore:budding_topaz",
+    "geore:zinc_block",
+    "geore:budding_zinc"
   ]
 }

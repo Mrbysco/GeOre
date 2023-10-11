@@ -71,6 +71,12 @@
     "geore:medium_topaz_bud",
     "geore:large_topaz_bud",
     "geore:topaz_block",
-    "geore:budding_topaz"
+    "geore:budding_topaz",
+    "geore:zinc_cluster",
+    "geore:small_zinc_bud",
+    "geore:medium_zinc_bud",
+    "geore:large_zinc_bud",
+    "geore:zinc_block",
+    "geore:budding_zinc"
   ]
 }
