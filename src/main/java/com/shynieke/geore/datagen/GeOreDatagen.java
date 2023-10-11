@@ -585,6 +585,7 @@ public class GeOreDatagen {
 			this.addMineable(GeOreRegistry.RUBY_GEORE);
 			this.addMineable(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addMineable(GeOreRegistry.TOPAZ_GEORE);
+			this.addMineable(GeOreRegistry.ZINC_GEORE);
 
 			this.addCrystalSounds(GeOreRegistry.COAL_GEORE);
 			this.addCrystalSounds(GeOreRegistry.COPPER_GEORE);
@@ -598,6 +599,7 @@ public class GeOreDatagen {
 			this.addCrystalSounds(GeOreRegistry.RUBY_GEORE);
 			this.addCrystalSounds(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addCrystalSounds(GeOreRegistry.TOPAZ_GEORE);
+			this.addCrystalSounds(GeOreRegistry.ZINC_GEORE);
 
 			this.addGeore(GeOreRegistry.COAL_GEORE);
 			this.addGeore(GeOreRegistry.COPPER_GEORE);
@@ -611,6 +613,7 @@ public class GeOreDatagen {
 			this.addGeore(GeOreRegistry.RUBY_GEORE);
 			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
 			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
+			this.addGeore(GeOreRegistry.ZINC_GEORE);
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {

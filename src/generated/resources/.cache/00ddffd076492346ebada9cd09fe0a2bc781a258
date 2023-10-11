@@ -1,7 +1,7 @@
-// 1.20.1	2023-06-23T23:29:11.631396	Tags for minecraft:block mod id geore
+// 1.20.1	2023-10-11T18:47:10.0463548	Tags for minecraft:block mod id geore
 5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/create/tags/blocks/non_movable.json
-5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/forge/tags/blocks/budding.json
-546c37b516d1e78e9d0d295fc9b17aa8d13def4f data/forge/tags/blocks/buds.json
+e1a70bd5d84ca732479f61a6d35fe8502bf0d858 data/forge/tags/blocks/budding.json
+f97818d31cd591c4ef50a00b7e46473ee458a144 data/forge/tags/blocks/buds.json
 c4a594ed42bb4b557d97ed15f3c66590cb5429c5 data/forge/tags/blocks/buds/geore_coal.json
 c309d5c194dcb7411fc5bad16e0bce8a1307582d data/forge/tags/blocks/buds/geore_copper.json
 70d3a07d5d6984be2a7289491c9d265ab8763b65 data/forge/tags/blocks/buds/geore_diamond.json
@@ -14,7 +14,8 @@ f4dab078f7e626490bf8f042787818a60ab43b6c data/forge/tags/blocks/buds/geore_iron.
 597eb1dac2381c56b491f12d7f419cce94195c27 data/forge/tags/blocks/buds/geore_ruby.json
 34b16da14ddf411ab1fd4d49d8ae052d9fc34647 data/forge/tags/blocks/buds/geore_sapphire.json
 315cd0c20323ecc571e94a20d1e26367bb96fda4 data/forge/tags/blocks/buds/geore_topaz.json
-47faa2374cead0bfcb2a569871fc8fce0a61af20 data/forge/tags/blocks/clusters.json
+bba8e613472420e0f3f20e5c2954e24594b0fd6b data/forge/tags/blocks/buds/geore_zinc.json
+8d098cf235329e7358cd600f78dc81d371dbe15f data/forge/tags/blocks/clusters.json
 db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/forge/tags/blocks/clusters/geore_coal.json
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/forge/tags/blocks/clusters/geore_copper.json
 7767b62aa95b439e6e1355a66ca8078492f6399b data/forge/tags/blocks/clusters/geore_diamond.json
@@ -27,6 +28,7 @@ af605b701da956dd63448fa3a1bd6181c1b6b485 data/forge/tags/blocks/clusters/geore_q
 98d5c5ce1fe69beba2b8854a862c59715f77fdab data/forge/tags/blocks/clusters/geore_ruby.json
 dcbecc36bbb81bef85b3c30a6d98bae1b656fdda data/forge/tags/blocks/clusters/geore_sapphire.json
 9251d565604f062108f4ee17e7ef7e217e01c236 data/forge/tags/blocks/clusters/geore_topaz.json
+04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/forge/tags/blocks/clusters/geore_zinc.json
 5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/forge/tags/blocks/relocation_not_supported.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/blocks/storage_blocks/geore_coal.json
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/blocks/storage_blocks/geore_copper.json
@@ -40,5 +42,6 @@ eef8a77b7e457975de4ef6758d4ac272b1c60b62 data/geore/tags/blocks/storage_blocks/g
 e3598ea237cae286393f1a7a4e7c0e16792c5448 data/geore/tags/blocks/storage_blocks/geore_ruby.json
 7ee96f1def210f07d9a2c4b109a7210a240a96ce data/geore/tags/blocks/storage_blocks/geore_sapphire.json
 1c453638750e28e3351fd61ea5d286bb120e1c5a data/geore/tags/blocks/storage_blocks/geore_topaz.json
-6f181b24ce92d128fd2dbabfe0c8ea40c747be57 data/minecraft/tags/blocks/crystal_sound_blocks.json
-f9638b3b98e013bd5b6779c3ad6a9c230135b003 data/minecraft/tags/blocks/mineable/pickaxe.json
+bc1a41f5c1b6f099b3c5ff1f6fc0de18d23bd093 data/geore/tags/blocks/storage_blocks/geore_zinc.json
+b841d066a51a119400bf6caf72b3492fc4b7b6ee data/minecraft/tags/blocks/crystal_sound_blocks.json
+674973bc5e87e0bed049b1b9c784d8e707e86f81 data/minecraft/tags/blocks/mineable/pickaxe.json

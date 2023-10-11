@@ -11,6 +11,7 @@
     "#forge:clusters/geore_redstone",
     "#forge:clusters/geore_ruby",
     "#forge:clusters/geore_sapphire",
-    "#forge:clusters/geore_topaz"
+    "#forge:clusters/geore_topaz",
+    "#forge:clusters/geore_zinc"
   ]
 }
