@@ -1,9 +1,9 @@
 {
-  "parent": "forge:item/default",
+  "parent": "neoforge:item/default",
   "base": {
     "parent": "geore:item/zinc_spyglass_in_hand"
   },
-  "loader": "forge:separate_transforms",
+  "loader": "neoforge:separate_transforms",
   "perspectives": {
     "fixed": {
       "parent": "geore:item/zinc_spyglass_gui"

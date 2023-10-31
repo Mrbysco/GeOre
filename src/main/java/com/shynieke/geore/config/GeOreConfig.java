@@ -1,17 +1,16 @@
 package com.shynieke.geore.config;
 
 import com.shynieke.geore.GeOre;
-import net.minecraftforge.common.ForgeConfigSpec;
-import net.minecraftforge.common.ForgeConfigSpec.BooleanValue;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.config.ModConfigEvent;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.event.config.ModConfigEvent;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class GeOreConfig {
 	public static class Client {
-		public final ForgeConfigSpec.DoubleValue spyglassIntensity;
+		public final ModConfigSpec.DoubleValue spyglassIntensity;
 
-		Client(ForgeConfigSpec.Builder builder) {
+		Client(ModConfigSpec.Builder builder) {
 			builder.comment("Client settings")
 					.push("Client");
 
@@ -23,34 +22,34 @@ public class GeOreConfig {
 		}
 	}
 
-	public static final ForgeConfigSpec clientSpec;
+	public static final ModConfigSpec clientSpec;
 	public static final Client CLIENT;
 
 	static {
-		final Pair<Client, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Client::new);
+		final Pair<Client, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Client::new);
 		clientSpec = specPair.getRight();
 		CLIENT = specPair.getLeft();
 	}
 
 
 	public static class Common {
-		public final BooleanValue generateCoalGeore;
-		public final BooleanValue generateCopperGeore;
-		public final BooleanValue generateDiamondGeore;
-		public final BooleanValue generateEmeraldGeore;
-		public final BooleanValue generateGoldGeore;
-		public final BooleanValue generateIronGeore;
-		public final BooleanValue generateLapisGeore;
-		public final BooleanValue generateQuartzGeore;
-		public final BooleanValue generateQuartzInNetherGeore;
-		public final BooleanValue generateRedstoneGeore;
+		public final ModConfigSpec.BooleanValue generateCoalGeore;
+		public final ModConfigSpec.BooleanValue generateCopperGeore;
+		public final ModConfigSpec.BooleanValue generateDiamondGeore;
+		public final ModConfigSpec.BooleanValue generateEmeraldGeore;
+		public final ModConfigSpec.BooleanValue generateGoldGeore;
+		public final ModConfigSpec.BooleanValue generateIronGeore;
+		public final ModConfigSpec.BooleanValue generateLapisGeore;
+		public final ModConfigSpec.BooleanValue generateQuartzGeore;
+		public final ModConfigSpec.BooleanValue generateQuartzInNetherGeore;
+		public final ModConfigSpec.BooleanValue generateRedstoneGeore;
 		//Mod support
-		public final BooleanValue generateRubyGeore;
-		public final BooleanValue generateSapphireGeore;
-		public final BooleanValue generateTopazGeore;
-		public final BooleanValue generateZincGeore;
+		public final ModConfigSpec.BooleanValue generateRubyGeore;
+		public final ModConfigSpec.BooleanValue generateSapphireGeore;
+		public final ModConfigSpec.BooleanValue generateTopazGeore;
+		public final ModConfigSpec.BooleanValue generateZincGeore;
 
-		Common(ForgeConfigSpec.Builder builder) {
+		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General settings")
 					.push("General");
 
@@ -118,11 +117,11 @@ public class GeOreConfig {
 		}
 	}
 
-	public static final ForgeConfigSpec commonSpec;
+	public static final ModConfigSpec commonSpec;
 	public static final Common COMMON;
 
 	static {
-		final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(Common::new);
+		final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(Common::new);
 		commonSpec = specPair.getRight();
 		COMMON = specPair.getLeft();
 	}

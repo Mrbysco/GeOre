@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_diamondgeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_diamondgeore_shard"
     ]
   ],
   "rewards": {

@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_redstonegeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_redstonegeore_shard"
     ]
   ],
   "rewards": {

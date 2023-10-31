@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_goldgeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_goldgeore_shard"
     ]
   ],
   "rewards": {

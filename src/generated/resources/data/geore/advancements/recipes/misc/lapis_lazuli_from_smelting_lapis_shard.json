@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_lapisgeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_lapisgeore_shard"
     ]
   ],
   "rewards": {

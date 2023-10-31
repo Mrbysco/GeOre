@@ -1,14 +1,17 @@
 plugins {
+    id 'java-library'
+    id 'eclipse'
     id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
-    id 'org.spongepowered.mixin'
+    id 'net.neoforged.gradle.userdev' version '7.0.8'
+    id 'net.neoforged.gradle.mixin' version '7.0.8'
     id 'net.darkhax.curseforgegradle' version '1.1.16'
     id 'com.modrinth.minotaur' version "2.+"
 }
 
 version = "${version}"
 group = "${mod_group}"
+
 base {
     archivesName = "${mod_archive_name}-${mc_version}"
 }
@@ -16,83 +19,43 @@ base {
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
-println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
-minecraft {
-    mappings channel: "${mapping_channel}", version: "${mapping_version}"
+minecraft.accessTransformers.file rootProject.file('src/main/resources/META-INF/accesstransformer.cfg')
+//minecraft.accessTransformers.entry public net.minecraft.client.Minecraft textureManager # textureManager
 
-    copyIdeResources = true
+runs {
+    // applies to all the run configs below
+    configureEach {
+        // Recommended logging data for a userdev environment
+        systemProperty 'forge.logging.markers', 'REGISTRIES'
 
-    // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+        // Recommended logging level for the console
+        systemProperty 'forge.logging.console.level', 'debug'
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
-    runs {
-        client {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+        //Limit ram usage for the dev environment to 4GB
+        jvmArgument '-Xmx4G'
 
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.markers', 'REGISTRIES'
+        systemProperty 'mixin.env.disableRefMap', 'true'
+        programArgument "-mixin.config=${mod_id}.mixins.json"
 
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
+        modSource project.sourceSets.main
+    }
 
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', "${mod_id}"
+    client {
+        // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+        systemProperty 'forge.enabledGameTestNamespaces', "${mod_id}"
+    }
 
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
+    server {
+        systemProperty 'forge.enabledGameTestNamespaces', "${mod_id}"
+        programArgument '--nogui'
+    }
 
-        server {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+    data {
+        // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+        // workingDirectory project.file('run-data')
 
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', "${mod_id}"
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        data {
-            workingDirectory project.file('run')
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-
-            // Recommended logging data for a userdev environment
-            // property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            // Recommended logging level for the console
-            property 'forge.logging.console.level', 'debug'
-
-            // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                "${mod_id}" {
-                    source sourceSets.main
-                }
-            }
-        }
+        // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
+        programArguments.addAll '--mod', "${mod_id}", '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
     }
 }
 
@@ -100,7 +63,6 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 mixin {
-    add sourceSets.main, "${mod_id}.refmap.json"
     config "${mod_id}.mixins.json"
 }
 
@@ -118,18 +80,17 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
-    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation "net.neoforged:neoforge:${neo_version}"
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+//    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
 
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+//    runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
 
-    implementation fg.deobf("curse.maven:gems-and-crystals-334162:4766843")
+//    implementation fg.deobf("curse.maven:gems-and-crystals-334162:4766843")
 }
 
-// Example for how to get properties into the manifest for reading at runtime.
 jar {
     manifest {
         attributes([
@@ -144,19 +105,10 @@ jar {
     }
 }
 
-def reobfFile = file("$buildDir/reobfJar/output.jar")
-def reobfArtifact = artifacts.add('default', reobfFile) {
-    type 'jar'
-    builtBy 'reobfJar'
-}
 publishing {
     publications {
-        mavenJava(MavenPublication) {
-            artifact(reobfArtifact) {
-                builtBy reobfArtifact
-                artifactId = archivesBaseName
-                classifier null
-            }
+        register('mavenJava', MavenPublication) {
+            from components.java
         }
     }
     repositories {
@@ -172,18 +124,13 @@ publishing {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
-}
-
 if (System.getenv().CURSEFORGE_KEY) {
     task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
         apiToken = System.getenv().CURSEFORGE_KEY
 
         def mainFile = upload(project.curseforge_id, jar)
         mainFile.releaseType = 'beta'
-        mainFile.addGameVersion "Forge"
-        mainFile.addGameVersion "1.20"
+        mainFile.addGameVersion "NeoForge"
         mainFile.addGameVersion "${mc_version}"
         mainFile.addGameVersion "Java 17"
 
@@ -204,9 +151,13 @@ if (System.getenv().MODRINTH_KEY) {
         versionNumber = project.version
         uploadFile = jar
         changelog = file("$project.rootDir/changelog.md").text
-        gameVersions = ["1.20", "${mc_version}"]
-        loaders = ["forge"]
+        gameVersions = ["${mc_version}"]
+        loaders = ["neoforge"]
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
 ////////////////

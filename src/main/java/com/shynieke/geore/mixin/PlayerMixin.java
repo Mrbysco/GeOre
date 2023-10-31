@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(Player.class)
+@Mixin(value = Player.class, remap = false)
 public class PlayerMixin {
 	@Inject(at = @At("HEAD"), method = "isScoping()Z", cancellable = true)
 	public void georeIsScoping(CallbackInfoReturnable<Boolean> cir) {

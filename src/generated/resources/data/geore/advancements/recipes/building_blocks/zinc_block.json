@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_zincgeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_zincgeore_shard"
     ]
   ],
   "rewards": {

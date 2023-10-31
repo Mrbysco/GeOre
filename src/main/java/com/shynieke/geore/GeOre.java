@@ -6,15 +6,15 @@ import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.registry.GeOreModifiers;
 import com.shynieke.geore.registry.GeOreRegistry;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
 
 @Mod(Reference.MOD_ID)
@@ -33,11 +33,10 @@ public class GeOre {
 		GeOreRegistry.CREATIVE_MODE_TABS.register(eventBus);
 		GeOreModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+		if (FMLEnvironment.dist == Dist.CLIENT) {
 			ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GeOreConfig.clientSpec);
-
-			MinecraftForge.EVENT_BUS.register(new SpyglassHandler());
-		});
+			NeoForge.EVENT_BUS.register(new SpyglassHandler());
+		}
 	}
 
 	private void setup(final FMLCommonSetupEvent event) {

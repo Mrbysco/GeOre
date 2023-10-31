@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_topazgeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_topazgeore_shard"
     ]
   ],
   "rewards": {

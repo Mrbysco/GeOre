@@ -22,8 +22,8 @@
   },
   "requirements": [
     [
-      "has_sapphiregeore_shard",
-      "has_the_recipe"
+      "has_the_recipe",
+      "has_sapphiregeore_shard"
     ]
   ],
   "rewards": {

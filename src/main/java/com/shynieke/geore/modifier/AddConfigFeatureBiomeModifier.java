@@ -8,15 +8,14 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
-import net.minecraftforge.common.world.BiomeModifier;
-import net.minecraftforge.common.world.ModifiableBiomeInfo.BiomeInfo.Builder;
+import net.neoforged.neoforge.common.world.BiomeGenerationSettingsBuilder;
+import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 
 public record AddConfigFeatureBiomeModifier(HolderSet<Biome> biomes, HolderSet<PlacedFeature> features, Decoration step,
 											String enabledConfig) implements BiomeModifier {
-
 	@Override
-	public void modify(Holder<Biome> biome, Phase phase, Builder builder) {
+	public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
 		if (phase == Phase.ADD && this.biomes.contains(biome) && ConfigFeature.getByName(enabledConfig).getValue()) {
 			BiomeGenerationSettingsBuilder generationSettings = builder.getGenerationSettings();
 			this.features.forEach(holder -> generationSettings.addFeature(this.step, holder));
