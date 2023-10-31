@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.spongepowered.mixin'
-    id 'com.matthewprenger.cursegradle' version '1.4.0'
+    id 'net.darkhax.curseforgegradle' version '1.1.16'
     id 'com.modrinth.minotaur' version "2.+"
 }
 
@@ -176,8 +176,38 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-apply from: 'gradle/curseforge.gradle'
-apply from: 'gradle/modrinth.gradle'
+if (System.getenv().CURSEFORGE_KEY) {
+    task curseforge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+        apiToken = System.getenv().CURSEFORGE_KEY
+
+        def mainFile = upload(project.curseforge_id, jar)
+        mainFile.releaseType = 'beta'
+        mainFile.addGameVersion "Forge"
+        mainFile.addGameVersion "1.20"
+        mainFile.addGameVersion "${mc_version}"
+        mainFile.addGameVersion "Java 17"
+
+        mainFile.changelog = file("$project.rootDir/changelog.md")
+        mainFile.changelogType = 'markdown'
+
+//        mainFile.addRequirement()
+//        mainFile.addOptional()
+    }
+}
+
+if (System.getenv().MODRINTH_KEY) {
+    modrinth {
+        token = System.getenv().MODRINTH_KEY
+        projectId = project.modrinth_id
+        versionType = "beta"
+        versionName = "${mod_name} ${mc_version}"
+        versionNumber = project.version
+        uploadFile = jar
+        changelog = file("$project.rootDir/changelog.md").text
+        gameVersions = ["1.20", "${mc_version}"]
+        loaders = ["forge"]
+    }
+}
 
 ////////////////
 // IntelliJ Project Import
