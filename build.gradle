@@ -81,7 +81,6 @@ repositories {
 
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
-    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
 //    compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
 //    compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
