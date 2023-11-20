@@ -4,6 +4,7 @@ import com.shynieke.geore.Reference;
 import com.shynieke.geore.features.GeOreConfiguredFeatures;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.features.GeOrePlacedFeatures;
+import com.shynieke.geore.item.GeoreSpyglassItem;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -35,6 +36,7 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -55,14 +57,13 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
-import net.neoforged.neoforge.common.crafting.ConditionalRecipeBuilder;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -103,7 +104,7 @@ public class GeOreDatagen {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap);
-		registryBuilder.add(ForgeRegistries.Keys.BIOME_MODIFIERS, context -> {
+		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, context -> {
 			GeOreFeatures.COAL_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "coal");
 			GeOreFeatures.COPPER_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "copper");
 			GeOreFeatures.DIAMOND_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "diamond");
@@ -166,7 +167,7 @@ public class GeOreDatagen {
 
 			@Override
 			protected Iterable<Block> getKnownBlocks() {
-				return (Iterable<Block>) BLOCKS.getEntries().stream().map(RegistryObject::get)::iterator;
+				return (Iterable<Block>) BLOCKS.getEntries().stream().map(holder -> (Block) holder.get())::iterator;
 			}
 		}
 
@@ -236,8 +237,8 @@ public class GeOreDatagen {
 		}
 
 		public Item getModItem(ResourceLocation itemLocation) {
-			for (Item item : ForgeRegistries.ITEMS) {
-				if (ForgeRegistries.ITEMS.getKey(item).equals(itemLocation)) {
+			for (Item item : BuiltInRegistries.ITEM.stream().toList()) {
+				if (BuiltInRegistries.ITEM.getKey(item).equals(itemLocation)) {
 					return item;
 				}
 			}
@@ -251,24 +252,21 @@ public class GeOreDatagen {
 		}
 
 		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, RecipeOutput recipeConsumer) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 
 		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, RecipeOutput recipeConsumer) {
-			new ConditionalRecipeBuilder()
-					.withCondition(new ModLoadedCondition(modid))
-					.withRecipe(SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
-									item, xp, 200).group("geore")
-							.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())))
-					.save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			RecipeOutput conditionalConsumer = recipeConsumer.withConditions(new ModLoadedCondition(modid));
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
+							item, xp, 200).group("geore")
+					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+					.save(conditionalConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 
-			new ConditionalRecipeBuilder()
-					.withCondition(new ModLoadedCondition(modid))
-					.withRecipe(SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
-									item, xp, 100).group("geore")
-							.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())))
-					.save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, ForgeRegistries.ITEMS.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
+							item, xp, 100).group("geore")
+					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+					.save(conditionalConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 	}
 
@@ -340,7 +338,7 @@ public class GeOreDatagen {
 		}
 
 		private void clusterBlock(Block block) {
-			ModelFile clusterBlock = models().getExistingFile(modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block).getPath()));
+			ModelFile clusterBlock = models().getExistingFile(modLoc("block/" + BuiltInRegistries.BLOCK.getKey(block).getPath()));
 			getVariantBuilder(block).partialState().with(BlockStateProperties.FACING, Direction.DOWN).modelForState().modelFile(clusterBlock).rotationX(180).addModel().partialState().with(BlockStateProperties.FACING, Direction.EAST).modelForState().modelFile(clusterBlock).rotationX(90).rotationY(90).addModel().partialState().with(BlockStateProperties.FACING, Direction.NORTH).modelForState().modelFile(clusterBlock).rotationX(90).addModel().partialState().with(BlockStateProperties.FACING, Direction.SOUTH).modelForState().modelFile(clusterBlock).rotationX(90).rotationY(180).addModel().partialState().with(BlockStateProperties.FACING, Direction.UP).modelForState().modelFile(clusterBlock).addModel().partialState().with(BlockStateProperties.FACING, Direction.WEST).modelForState().modelFile(clusterBlock).rotationX(90).rotationY(270).addModel();
 		}
 	}
@@ -378,7 +376,7 @@ public class GeOreDatagen {
 		}
 
 		private void crossBlock(Block block) {
-			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
+			String path = BuiltInRegistries.BLOCK.getKey(block).getPath();
 			cross(path, modLoc(BLOCK_FOLDER + "/" + path)).renderType("cutout");
 		}
 	}
@@ -411,14 +409,14 @@ public class GeOreDatagen {
 			withExistingParent(blockReg.getBlock().getId().getPath(), new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
 			withExistingParent(blockReg.getBudding().getId().getPath(), new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
 
-			makeCluster(blockReg.getCluster().get());
-			makeSmallBud(blockReg.getSmallBud().get());
-			makeMediumBud(blockReg.getMediumBud().get());
-			makeLargeBud(blockReg.getLargeBud().get());
+			makeCluster(blockReg.getCluster());
+			makeSmallBud(blockReg.getSmallBud());
+			makeMediumBud(blockReg.getMediumBud());
+			makeLargeBud(blockReg.getLargeBud());
 			makeSpyglass(blockReg.getSpyglass());
 		}
 
-		private void makeSpyglass(RegistryObject<Item> spyglass) {
+		private void makeSpyglass(DeferredHolder<Item, GeoreSpyglassItem> spyglass) {
 			String path = spyglass.getId().getPath();
 
 			ModelFile spyglass_gui = withExistingParent(path + "_gui", mcLoc("spyglass")).texture("layer0", modLoc(ITEM_FOLDER + "/" + path));
@@ -427,23 +425,23 @@ public class GeOreDatagen {
 			withExistingParent(path, "neoforge:item/default").customLoader(SeparateTransformsModelBuilder::begin).base(nested().parent(spyglass_hand)).perspective(ItemDisplayContext.GUI, nested().parent(spyglass_gui)).perspective(ItemDisplayContext.GROUND, nested().parent(spyglass_gui)).perspective(ItemDisplayContext.FIXED, nested().parent(spyglass_gui)).end();
 		}
 
-		private void makeCluster(Block block) {
-			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
+		private void makeCluster(DeferredHolder<Block, AmethystClusterBlock> deferredHolder) {
+			String path = deferredHolder.getId().getPath();
 			getBuilder(path).parent(new ModelFile.UncheckedModelFile(mcLoc("item/generated"))).texture("layer0", modLoc(BLOCK_FOLDER + "/" + path)).transforms().transform(ItemDisplayContext.HEAD).translation(0, 14, -5).end();
 		}
 
-		private void makeSmallBud(Block block) {
-			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
+		private void makeSmallBud(DeferredHolder<Block, AmethystClusterBlock> deferredHolder) {
+			String path = deferredHolder.getId().getPath();
 			getBuilder(path).parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud"))).texture("layer0", modLoc(BLOCK_FOLDER + "/" + path)).transforms().transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND).rotation(0, -90, 25).translation(0, 6, 0).scale(0.68F, 0.68F, 0.68F).end().transform(ItemDisplayContext.FIXED).translation(0, 7, 0).end();
 		}
 
-		private void makeMediumBud(Block block) {
-			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
+		private void makeMediumBud(DeferredHolder<Block, AmethystClusterBlock> deferredHolder) {
+			String path = deferredHolder.getId().getPath();
 			getBuilder(path).parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud"))).texture("layer0", modLoc(BLOCK_FOLDER + "/" + path)).transforms().transform(ItemDisplayContext.FIXED).translation(0, 6, 0).end();
 		}
 
-		private void makeLargeBud(Block block) {
-			String path = ForgeRegistries.BLOCKS.getKey(block).getPath();
+		private void makeLargeBud(DeferredHolder<Block, AmethystClusterBlock> deferredHolder) {
+			String path = deferredHolder.getId().getPath();
 			getBuilder(path).parent(new ModelFile.UncheckedModelFile(mcLoc("item/amethyst_bud"))).texture("layer0", modLoc(BLOCK_FOLDER + "/" + path)).transforms().transform(ItemDisplayContext.FIXED).translation(0, 4, 0).end();
 		}
 	}

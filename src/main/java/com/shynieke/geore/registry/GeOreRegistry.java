@@ -11,15 +11,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.ForgeRegistries;
-import net.neoforged.neoforge.registries.RegistryObject;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class GeOreRegistry {
-	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
+	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
+
 
 	public static final GeOreBlockReg COAL_GEORE = new GeOreBlockReg("coal", MapColor.COLOR_BLACK, () -> new CoalShardItem(new Item.Properties()), 0x2e2e2e);
 	public static final GeOreBlockReg COPPER_GEORE = new GeOreBlockReg("copper", MapColor.COLOR_ORANGE, 0xc26b4c);
@@ -36,7 +36,7 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg TOPAZ_GEORE = new GeOreBlockReg("topaz", MapColor.GOLD, 0xffb856);
 	public static final GeOreBlockReg ZINC_GEORE = new GeOreBlockReg("zinc", MapColor.GOLD, 0xa7bdac);
 
-	public static final RegistryObject<CreativeModeTab> GEORE_TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
+	public static final Supplier<CreativeModeTab> GEORE_TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
 			.icon(() -> new ItemStack(Items.AMETHYST_SHARD))
 			.title(Component.translatable("itemGroup.geore"))
 			.displayItems((displayParameters, output) -> {

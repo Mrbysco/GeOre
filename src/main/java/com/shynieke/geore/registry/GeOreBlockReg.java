@@ -6,60 +6,61 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.AmethystBlock;
 import net.minecraft.world.level.block.AmethystClusterBlock;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.neoforge.registries.RegistryObject;
+import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nonnull;
 import java.util.function.Supplier;
 
 public class GeOreBlockReg {
 	protected final String name;
-	protected final RegistryObject<AmethystBlock> block;
-	protected final RegistryObject<BuddingGeoreBlock> budding;
-	protected final RegistryObject<AmethystClusterBlock> cluster;
-	protected final RegistryObject<AmethystClusterBlock> large_bud;
-	protected final RegistryObject<AmethystClusterBlock> medium_bud;
-	protected final RegistryObject<AmethystClusterBlock> small_bud;
-	protected final RegistryObject<Item> shard;
-	protected final RegistryObject<Item> spyglass;
+	protected final DeferredHolder<Block, AmethystBlock> block;
+	protected final DeferredHolder<Block, BuddingGeoreBlock> budding;
+	protected final DeferredHolder<Block, AmethystClusterBlock> cluster;
+	protected final DeferredHolder<Block, AmethystClusterBlock> large_bud;
+	protected final DeferredHolder<Block, AmethystClusterBlock> medium_bud;
+	protected final DeferredHolder<Block, AmethystClusterBlock> small_bud;
+	protected final DeferredHolder<Item, Item> shard;
+	protected final DeferredHolder<Item, GeoreSpyglassItem> spyglass;
 
 	@Nonnull
 	public String getName() {
 		return name;
 	}
 
-	public RegistryObject<AmethystBlock> getBlock() {
+	public DeferredHolder<Block, AmethystBlock> getBlock() {
 		return block;
 	}
 
-	public RegistryObject<BuddingGeoreBlock> getBudding() {
+	public DeferredHolder<Block, BuddingGeoreBlock> getBudding() {
 		return budding;
 	}
 
-	public RegistryObject<AmethystClusterBlock> getCluster() {
+	public DeferredHolder<Block, AmethystClusterBlock> getCluster() {
 		return cluster;
 	}
 
-	public RegistryObject<AmethystClusterBlock> getLargeBud() {
+	public DeferredHolder<Block, AmethystClusterBlock> getLargeBud() {
 		return large_bud;
 	}
 
-	public RegistryObject<AmethystClusterBlock> getMediumBud() {
+	public DeferredHolder<Block, AmethystClusterBlock> getMediumBud() {
 		return medium_bud;
 	}
 
-	public RegistryObject<AmethystClusterBlock> getSmallBud() {
+	public DeferredHolder<Block, AmethystClusterBlock> getSmallBud() {
 		return small_bud;
 	}
 
-	public RegistryObject<Item> getShard() {
+	public DeferredHolder<Item, Item> getShard() {
 		return shard;
 	}
 
-	public RegistryObject<Item> getSpyglass() {
+	public DeferredHolder<Item, GeoreSpyglassItem> getSpyglass() {
 		return spyglass;
 	}
 

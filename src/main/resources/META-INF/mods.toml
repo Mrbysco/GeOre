@@ -20,3 +20,11 @@ mandatory=true
 versionRange="[1.20.2,1.21)"
 ordering="NONE"
 side="BOTH"
+[[dependencies.geore]]
+modId="neoforge"
+mandatory=true
+versionRange="[20.2.59-beta,)"
+ordering="NONE"
+side="BOTH"
+[[mixins]]
+config = "geore.mixins.json"

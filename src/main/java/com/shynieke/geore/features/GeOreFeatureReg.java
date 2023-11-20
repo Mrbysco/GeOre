@@ -34,7 +34,7 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.neoforged.neoforge.common.world.BiomeModifier;
-import net.neoforged.neoforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.List;
 
@@ -94,6 +94,6 @@ public class GeOreFeatureReg {
 	}
 
 	private ResourceKey<BiomeModifier> createKey(String name) {
-		return ResourceKey.create(ForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
 	}
 }

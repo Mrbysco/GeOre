@@ -49,6 +49,7 @@ public class SpyglassHandler {
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
+	//TODO: Maybe just use the gradiant related method in GuiGraphics
 	protected static void fillGradient(Matrix4f matrix4f, BufferBuilder builder, int width, int height, int color1, int color2, float intensity) {
 		float f1 = (float) (color1 >> 16 & 255) / 255.0F;
 		float f2 = (float) (color1 >> 8 & 255) / 255.0F;
