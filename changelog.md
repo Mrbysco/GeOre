@@ -1,1 +1,1 @@
-* Update to support the 20.2.59-beta registry rework
+* Initial update to 1.20.4
