@@ -30,6 +30,5 @@
     "recipes": [
       "geore:iron_ingot_from_blasting_iron_shard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

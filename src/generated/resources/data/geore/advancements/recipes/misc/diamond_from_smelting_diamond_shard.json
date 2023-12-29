@@ -30,6 +30,5 @@
     "recipes": [
       "geore:diamond_from_smelting_diamond_shard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "geore:emerald_from_smelting_emerald_shard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

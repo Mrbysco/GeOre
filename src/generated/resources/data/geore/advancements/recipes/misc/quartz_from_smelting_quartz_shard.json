@@ -30,6 +30,5 @@
     "recipes": [
       "geore:quartz_from_smelting_quartz_shard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

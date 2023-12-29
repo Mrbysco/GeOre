@@ -30,6 +30,5 @@
     "recipes": [
       "geore:copper_spyglass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

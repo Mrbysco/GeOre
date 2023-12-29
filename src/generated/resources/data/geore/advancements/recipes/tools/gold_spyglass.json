@@ -30,6 +30,5 @@
     "recipes": [
       "geore:gold_spyglass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

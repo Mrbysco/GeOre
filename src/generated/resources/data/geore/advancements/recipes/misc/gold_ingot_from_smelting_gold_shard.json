@@ -30,6 +30,5 @@
     "recipes": [
       "geore:gold_ingot_from_smelting_gold_shard"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

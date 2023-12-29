@@ -30,6 +30,5 @@
     "recipes": [
       "geore:ruby_spyglass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

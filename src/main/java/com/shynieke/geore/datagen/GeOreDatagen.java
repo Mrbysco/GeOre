@@ -8,6 +8,7 @@ import com.shynieke.geore.item.GeoreSpyglassItem;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.Cloner;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistryAccess;
@@ -77,7 +78,6 @@ import static com.shynieke.geore.registry.GeOreRegistry.BLOCKS;
 public class GeOreDatagen {
 	@SubscribeEvent
 	public static void gatherData(GatherDataEvent event) {
-		HolderLookup.Provider provider = getProvider();
 		DataGenerator generator = event.getGenerator();
 		PackOutput packOutput = generator.getPackOutput();
 		CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
@@ -100,7 +100,7 @@ public class GeOreDatagen {
 		}
 	}
 
-	private static HolderLookup.Provider getProvider() {
+	private static RegistrySetBuilder.PatchedRegistries getProvider() {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap);
@@ -125,7 +125,9 @@ public class GeOreDatagen {
 		registryBuilder.add(Registries.BIOME, context -> {
 		});
 		RegistryAccess.Frozen regAccess = RegistryAccess.fromRegistryOfRegistries(BuiltInRegistries.REGISTRY);
-		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup());
+		Cloner.Factory cloner$factory = new Cloner.Factory();
+		net.neoforged.neoforge.registries.DataPackRegistriesHooks.getDataPackRegistriesWithDimensions().forEach(p_311524_ -> p_311524_.runWithArguments(cloner$factory::addCodec));
+		return registryBuilder.buildPatch(regAccess, VanillaRegistries.createLookup(), cloner$factory);
 	}
 
 	private static class Loots extends LootTableProvider {

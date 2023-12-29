@@ -12,7 +12,6 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
 import org.slf4j.Logger;
@@ -21,8 +20,7 @@ import org.slf4j.Logger;
 public class GeOre {
 	public static final Logger LOGGER = LogUtils.getLogger();
 
-	public GeOre() {
-		IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+	public GeOre(IEventBus eventBus) {
 		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GeOreConfig.commonSpec);
 		eventBus.register(GeOreConfig.class);
 

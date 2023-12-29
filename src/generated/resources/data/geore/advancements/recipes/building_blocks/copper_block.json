@@ -30,6 +30,5 @@
     "recipes": [
       "geore:copper_block"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

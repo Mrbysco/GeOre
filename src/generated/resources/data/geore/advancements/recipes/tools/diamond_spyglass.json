@@ -30,6 +30,5 @@
     "recipes": [
       "geore:diamond_spyglass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

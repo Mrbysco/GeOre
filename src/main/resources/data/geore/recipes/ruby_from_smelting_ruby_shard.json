@@ -1,24 +1,17 @@
 {
-  "type": "neoforge:conditional",
-  "recipes": [
+  "neoforge:conditions": [
     {
-      "conditions": [
-        {
-          "type": "neoforge:mod_loaded",
-          "modid": "gemsandcrystals"
-        }
-      ],
-      "recipe": {
-        "type": "minecraft:smelting",
-        "category": "misc",
-        "cookingtime": 200,
-        "experience": 0.7,
-        "group": "geore",
-        "ingredient": {
-          "item": "geore:ruby_shard"
-        },
-        "result": "gemsandcrystals:ruby"
-      }
+      "type": "neoforge:mod_loaded",
+      "modid": "gemsandcrystals"
     }
-  ]
+  ],
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:ruby_shard"
+  },
+  "result": "gemsandcrystals:ruby"
 }

@@ -30,6 +30,5 @@
     "recipes": [
       "geore:emerald_spyglass"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
