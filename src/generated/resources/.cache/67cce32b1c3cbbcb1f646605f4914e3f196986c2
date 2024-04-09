@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-04T01:59:23.3845034	LootTables
+// 1.19.2	2024-04-09T22:34:11.7394915	LootTables
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_coal.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_copper.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_diamond.json
@@ -11,6 +11,7 @@
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_ruby.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_sapphire.json
 1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_topaz.json
+1d4929d7d6176f60e5ea991a577527ed251ef375 data/geore/loot_tables/blocks/budding_zinc.json
 ff74842d73cbd2c1b50ffdba46c7ae4a82662fc3 data/geore/loot_tables/blocks/coal_block.json
 d66daee8cfb6acd22da84016a6fba26ebcca03d7 data/geore/loot_tables/blocks/coal_cluster.json
 beec2555816c64f50d01a729cc6f9a56ba8fff41 data/geore/loot_tables/blocks/copper_block.json
@@ -37,6 +38,7 @@ bd0f024d62567d86dfaa376300368a21e8c72776 data/geore/loot_tables/blocks/large_eme
 3ec61b18ab4d48bcf31991d33a1d186456206941 data/geore/loot_tables/blocks/large_ruby_bud.json
 8d8d1ba6674e9a7d1bfb3b51a657b38626640ff6 data/geore/loot_tables/blocks/large_sapphire_bud.json
 e614769aedece1312758a751a36c314f0aa721df data/geore/loot_tables/blocks/large_topaz_bud.json
+acb8dcbb3ae09facb57cbec573c5696720dd442c data/geore/loot_tables/blocks/large_zinc_bud.json
 56da96e3626e359cce3469e9cca615100d6cf519 data/geore/loot_tables/blocks/medium_coal_bud.json
 20d1674612cb7a7f01c90dd53d0cb799a2aa5e31 data/geore/loot_tables/blocks/medium_copper_bud.json
 80e04481f2d8913aee0ebad7a5f38c6fcd164e93 data/geore/loot_tables/blocks/medium_diamond_bud.json
@@ -49,6 +51,7 @@ a62bcbcad4e9881824481ae9343217c9d206c3e0 data/geore/loot_tables/blocks/medium_re
 f6790bab4adefc08b7ace2e2622925fe75fed157 data/geore/loot_tables/blocks/medium_ruby_bud.json
 385a6c1b905f706a19fb91296706f0469406c051 data/geore/loot_tables/blocks/medium_sapphire_bud.json
 d24b3ac5a4fe3bff6a02b6d784996bbe718f44b8 data/geore/loot_tables/blocks/medium_topaz_bud.json
+5b24e8a8bf2581ac3df6703df893799451703668 data/geore/loot_tables/blocks/medium_zinc_bud.json
 df6d8e7e69df2f26c4d21dd76a9156f6c24d3aed data/geore/loot_tables/blocks/quartz_block.json
 487d05348ce329f1cbd3222b028e60252281d826 data/geore/loot_tables/blocks/quartz_cluster.json
 f9bc6eb51ef6e95ae5b0fb85f758cfd75f9f6622 data/geore/loot_tables/blocks/redstone_block.json
@@ -69,5 +72,8 @@ c4a3bd672dfe48ea4caac38372996aa00102b14d data/geore/loot_tables/blocks/small_lap
 892fbf846325087bd69e5154ab8acf03248a2f88 data/geore/loot_tables/blocks/small_ruby_bud.json
 7d7de1ff4f540a3810ee704b6af9ae9242abd7fd data/geore/loot_tables/blocks/small_sapphire_bud.json
 a986a3385bde025cf5ae67030b7312727f00d328 data/geore/loot_tables/blocks/small_topaz_bud.json
+a27f0255b3c50e972253324ae1ef0d0282598977 data/geore/loot_tables/blocks/small_zinc_bud.json
 6f4aac9cdcc70bd945e6fe1dd3bbd87233cc6357 data/geore/loot_tables/blocks/topaz_block.json
 05628cd51e741c09e41a66a262033a3dfa13583e data/geore/loot_tables/blocks/topaz_cluster.json
+9867d1fbb28e36e28d0fae26487ec2d1aee5120a data/geore/loot_tables/blocks/zinc_block.json
+81a799f688b43e5d46f92dfdddaf2252743de15e data/geore/loot_tables/blocks/zinc_cluster.json

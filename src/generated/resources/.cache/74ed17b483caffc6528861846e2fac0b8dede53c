@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-07T16:21:12.4220423	worldgen/placed_feature generator for geore
+// 1.19.2	2024-04-09T22:34:11.7424925	worldgen/placed_feature generator for geore
 3a6ab985ddb521d4ce3c18b3a7ec4ba497e09dc2 data/geore/worldgen/placed_feature/coal_geode.json
 cdc4fadb0e91edf2cc89799e8537a4a65cd5474b data/geore/worldgen/placed_feature/copper_geode.json
 b84948e1b4039cafe400f819e7b20989f57e0c49 data/geore/worldgen/placed_feature/diamond_geode.json
@@ -11,3 +11,4 @@ d3538c8fd9b97c9e830335423af08e158cb47b22 data/geore/worldgen/placed_feature/lapi
 6d155f42137c849296f57bb506695611393fabe0 data/geore/worldgen/placed_feature/ruby_geode.json
 ff9a067aa9420550e0cf23c959aecc7c239dd127 data/geore/worldgen/placed_feature/sapphire_geode.json
 134135895e8bb3185f322b587eeeed6051c59fcd data/geore/worldgen/placed_feature/topaz_geode.json
+a28c2a588e28db3fba665c15cdd72178151e8048 data/geore/worldgen/placed_feature/zinc_geode.json

@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "equipment",
   "key": {
     "#": {
       "item": "geore:zinc_shard"
@@ -16,6 +15,5 @@
   ],
   "result": {
     "item": "geore:zinc_spyglass"
-  },
-  "show_notification": true
+  }
 }

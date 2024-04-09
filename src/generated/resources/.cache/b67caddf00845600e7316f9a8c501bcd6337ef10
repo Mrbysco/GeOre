@@ -1,4 +1,4 @@
-// 1.19.2	2022-09-04T01:59:23.3885069	Item Models: geore
+// 1.19.2	2024-04-09T22:34:11.7344916	Item Models: geore
 3ba5cd88f8b4f889c8c919a05e841a1b876328f5 assets/geore/models/item/budding_coal.json
 b0a92c4a637c6c48c9728460fd52a76d1948ffc7 assets/geore/models/item/budding_copper.json
 cbea5bbab6857a8015a7eb8f1c553893affc4bcf assets/geore/models/item/budding_diamond.json
@@ -11,6 +11,7 @@ d79bf6d87a846c7fca5ba23f5f220a8f73791ff3 assets/geore/models/item/budding_redsto
 fb93ae76c4503932915e7f6ad4ddf08fc1ee72c3 assets/geore/models/item/budding_ruby.json
 d149974f3d0b462869735a32f9f0178751416d5a assets/geore/models/item/budding_sapphire.json
 8a447a55306b06d9d5e4b2934607a7a809a2c417 assets/geore/models/item/budding_topaz.json
+1a0baf856db56587945ec0331aeaa1680e3e47a0 assets/geore/models/item/budding_zinc.json
 79e7e27e1c33b7f6ec934c708fdf318f3b52db35 assets/geore/models/item/coal_block.json
 151d734a92ae5667e76a6975284d0fbd99631dea assets/geore/models/item/coal_cluster.json
 ee16aa03cf28f0bc38f52e31ccfac05bb1f75a07 assets/geore/models/item/coal_shard.json
@@ -65,6 +66,7 @@ ce0b2c396ade0bc581381d907eedbdce77c4ba70 assets/geore/models/item/large_iron_bud
 a7c7e080f0f21c7e7765eed5b3e7132cc195f24a assets/geore/models/item/large_ruby_bud.json
 48b71eff6eb106223677c8ce935e3b5d8de44734 assets/geore/models/item/large_sapphire_bud.json
 b0fdaba84920f21d0f153bc80bc275c7b90b43fa assets/geore/models/item/large_topaz_bud.json
+b62984b00a2b4dc8242ddba7516c24e138ce1a44 assets/geore/models/item/large_zinc_bud.json
 266a934fd0548c72cba19adacc7a267887bae0cd assets/geore/models/item/medium_coal_bud.json
 f05243e56c41b9116a3adac7dcdf35d7ff35b5c2 assets/geore/models/item/medium_copper_bud.json
 5a89da2c65593e62a673dbc5a1979ca3832e55bf assets/geore/models/item/medium_diamond_bud.json
@@ -77,6 +79,7 @@ c32f4ec46e0316521480b832e8134e4359abb180 assets/geore/models/item/medium_quartz_
 5821d414d1e05f71a6d3b5df11f6e73520da46c4 assets/geore/models/item/medium_ruby_bud.json
 b09df72fe574d3bf607732a2f3ffa2d958d18aba assets/geore/models/item/medium_sapphire_bud.json
 a09796fcd3ab02c9199186d4e6fc574e141834a2 assets/geore/models/item/medium_topaz_bud.json
+32b4ef82f99e32d1aa9fa8210928e431f2fc6a4f assets/geore/models/item/medium_zinc_bud.json
 9530d69fb9e64f70bb5d5cf8270fd76081661448 assets/geore/models/item/quartz_block.json
 57a26d348085cc3cdb0ad9f7b6c05e7928481e51 assets/geore/models/item/quartz_cluster.json
 1989dc9699baeb1c53bae2a0386b0a931844fc8c assets/geore/models/item/quartz_shard.json
@@ -113,9 +116,16 @@ e0ba903dfea6137fc94e081b489a5f26ed09b359 assets/geore/models/item/small_redstone
 2b29906a0cd0751323b5082a09d05147962dedfc assets/geore/models/item/small_ruby_bud.json
 1abdef8ac4be643da0a29de1d6f4da28772414eb assets/geore/models/item/small_sapphire_bud.json
 83b574ef30acc3dded5b8410aae89c4400a42433 assets/geore/models/item/small_topaz_bud.json
+022f82b3a5b0f524a4c1b47af2925a67d74bfec5 assets/geore/models/item/small_zinc_bud.json
 2b4b758e27647b235e8679eb181f59c0e4030ba2 assets/geore/models/item/topaz_block.json
 a943f3a9fe10826fea92ccfbc31f5fd0af3a92cf assets/geore/models/item/topaz_cluster.json
 8711e790c6458be8e04fc0498bf68bbeec3129f6 assets/geore/models/item/topaz_shard.json
 8a216bae0c2ad18046b67659ea64abfd2255412b assets/geore/models/item/topaz_spyglass.json
 9127df645595066bb74fffdd42a84dcfbc71852d assets/geore/models/item/topaz_spyglass_gui.json
 373641f51a814e893c116ef6ed2c24ebf704e421 assets/geore/models/item/topaz_spyglass_in_hand.json
+1006fe256be57274689ecaa372d1a3a9a0cf77a8 assets/geore/models/item/zinc_block.json
+fdccc4b94be2039af1556a591f1f728a847b38b7 assets/geore/models/item/zinc_cluster.json
+2b025e98df7a087580e416b799c0b6953123b1ea assets/geore/models/item/zinc_shard.json
+74771af793887a90eee019886fb7a525d1f55d71 assets/geore/models/item/zinc_spyglass.json
+d33fb6389582f551c6572447ff4856f872241d67 assets/geore/models/item/zinc_spyglass_gui.json
+260c6427c695f2d43388e9faa456b9098e3233fc assets/geore/models/item/zinc_spyglass_in_hand.json

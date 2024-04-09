@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
   "key": {
     "S": {
       "item": "geore:zinc_shard"
@@ -12,6 +11,5 @@
   ],
   "result": {
     "item": "geore:zinc_block"
-  },
-  "show_notification": true
+  }
 }

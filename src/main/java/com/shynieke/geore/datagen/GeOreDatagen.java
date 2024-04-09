@@ -92,7 +92,7 @@ public class GeOreDatagen {
 
 
 			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
-					generator, helper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, getConfiguredFeatures(ops)));
+					generator, helper, Reference.MOD_ID, ops, Registry.PLACED_FEATURE_REGISTRY, getPlacedFeatures(ops)));
 
 			generator.addProvider(event.includeServer(), JsonCodecProvider.forDatapackRegistry(
 					generator, helper, Reference.MOD_ID, ops, ForgeRegistries.Keys.BIOME_MODIFIERS, getBiomeModifiers(ops)));
@@ -105,7 +105,7 @@ public class GeOreDatagen {
 		}
 	}
 
-	public static Map<ResourceLocation, PlacedFeature> getConfiguredFeatures(RegistryOps<JsonElement> ops) {
+	public static Map<ResourceLocation, PlacedFeature> getPlacedFeatures(RegistryOps<JsonElement> ops) {
 		Map<ResourceLocation, PlacedFeature> map = Maps.newHashMap();
 
 		GeOreFeatures.COAL_GEORE.fillPlacedFeatureMap(ops, map, 60, 6, 30);
