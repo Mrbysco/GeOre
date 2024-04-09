@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.math.Matrix4f;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.item.GeoreSpyglassItem;
 import net.minecraft.client.Minecraft;
@@ -14,7 +15,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import org.joml.Matrix4f;
 
 public class SpyglassHandler {
 
@@ -23,7 +23,7 @@ public class SpyglassHandler {
 		if (!event.getOverlay().id().equals(new ResourceLocation("spyglass"))) return;
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
-		PoseStack poseStack = event.getGuiGraphics().pose();
+		PoseStack poseStack = event.getPoseStack();
 
 		if (player != null && minecraft.options.getCameraType().isFirstPerson()) {
 			if (player.isUsingItem() && player.getUseItem().getItem() instanceof GeoreSpyglassItem georeSpyglassItem) {
