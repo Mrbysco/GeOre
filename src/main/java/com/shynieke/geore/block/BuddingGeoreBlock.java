@@ -19,9 +19,9 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 	private final Supplier<? extends AmethystClusterBlock> clusterSupplier;
 
 	public BuddingGeoreBlock(Properties properties, Supplier<? extends AmethystClusterBlock> smallSupplier,
-							 Supplier<? extends AmethystClusterBlock> mediumSupplier,
-							 Supplier<? extends AmethystClusterBlock> largeSupplier,
-							 Supplier<? extends AmethystClusterBlock> clusterSupplier) {
+	                         Supplier<? extends AmethystClusterBlock> mediumSupplier,
+	                         Supplier<? extends AmethystClusterBlock> largeSupplier,
+	                         Supplier<? extends AmethystClusterBlock> clusterSupplier) {
 		super(properties);
 		this.smallSupplier = smallSupplier;
 		this.mediumSupplier = mediumSupplier;

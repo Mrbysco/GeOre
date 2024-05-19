@@ -13,7 +13,7 @@ import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.ModifiableBiomeInfo;
 
 public record AddConfigFeatureBiomeModifier(HolderSet<Biome> biomes, HolderSet<PlacedFeature> features, Decoration step,
-											String enabledConfig) implements BiomeModifier {
+                                            String enabledConfig) implements BiomeModifier {
 	@Override
 	public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
 		if (phase == Phase.ADD && this.biomes.contains(biome) && ConfigFeature.getByName(enabledConfig).getValue()) {
