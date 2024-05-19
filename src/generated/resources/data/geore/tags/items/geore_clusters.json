@@ -1,0 +1,17 @@
+{
+  "values": [
+    "#geore:geore_clusters/coal",
+    "#geore:geore_clusters/copper",
+    "#geore:geore_clusters/diamond",
+    "#geore:geore_clusters/emerald",
+    "#geore:geore_clusters/gold",
+    "#geore:geore_clusters/iron",
+    "#geore:geore_clusters/lapis",
+    "#geore:geore_clusters/quartz",
+    "#geore:geore_clusters/redstone",
+    "#geore:geore_clusters/ruby",
+    "#geore:geore_clusters/sapphire",
+    "#geore:geore_clusters/topaz",
+    "#geore:geore_clusters/zinc"
+  ]
+}

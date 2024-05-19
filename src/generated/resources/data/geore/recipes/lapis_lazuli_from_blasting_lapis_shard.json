@@ -7,5 +7,8 @@
   "ingredient": {
     "item": "geore:lapis_shard"
   },
-  "result": "minecraft:lapis_lazuli"
+  "result": {
+    "count": 1,
+    "id": "minecraft:lapis_lazuli"
+  }
 }

@@ -7,5 +7,8 @@
   "ingredient": {
     "item": "geore:diamond_shard"
   },
-  "result": "minecraft:diamond"
+  "result": {
+    "count": 1,
+    "id": "minecraft:diamond"
+  }
 }

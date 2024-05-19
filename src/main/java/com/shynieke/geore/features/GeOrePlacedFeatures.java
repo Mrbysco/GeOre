@@ -1,11 +1,11 @@
 package com.shynieke.geore.features;
 
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
 public class GeOrePlacedFeatures {
 
-	public static void bootstrap(BootstapContext<PlacedFeature> context) {
+	public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 		GeOreFeatures.COAL_GEORE.setupPlaced(context, 60, 6, 30);
 		GeOreFeatures.COPPER_GEORE.setupPlaced(context, 90, 6, 30);
 		GeOreFeatures.DIAMOND_GEORE.setupPlaced(context, 330, 6, 30);

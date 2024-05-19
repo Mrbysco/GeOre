@@ -11,6 +11,7 @@
     "SS"
   ],
   "result": {
-    "item": "geore:iron_block"
+    "count": 1,
+    "id": "geore:iron_block"
   }
 }

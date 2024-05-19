@@ -1,0 +1,17 @@
+{
+  "values": [
+    "#geore:geore_shards/coal",
+    "#geore:geore_shards/copper",
+    "#geore:geore_shards/diamond",
+    "#geore:geore_shards/emerald",
+    "#geore:geore_shards/gold",
+    "#geore:geore_shards/iron",
+    "#geore:geore_shards/lapis",
+    "#geore:geore_shards/quartz",
+    "#geore:geore_shards/redstone",
+    "#geore:geore_shards/ruby",
+    "#geore:geore_shards/sapphire",
+    "#geore:geore_shards/topaz",
+    "#geore:geore_shards/zinc"
+  ]
+}

@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "geore:lapis_shard"
-            ]
+            "items": "geore:lapis_shard"
           }
         ]
       },

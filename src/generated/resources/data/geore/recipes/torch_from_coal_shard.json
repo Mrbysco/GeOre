@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "#": {
-      "tag": "forge:rods/wooden"
+      "tag": "c:rods/wooden"
     },
     "X": {
       "item": "geore:coal_shard"
@@ -15,6 +15,6 @@
   ],
   "result": {
     "count": 2,
-    "item": "minecraft:torch"
+    "id": "minecraft:torch"
   }
 }

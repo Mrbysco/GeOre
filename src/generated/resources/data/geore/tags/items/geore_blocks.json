@@ -1,0 +1,17 @@
+{
+  "values": [
+    "#geore:geore_blocks/coal",
+    "#geore:geore_blocks/copper",
+    "#geore:geore_blocks/diamond",
+    "#geore:geore_blocks/emerald",
+    "#geore:geore_blocks/gold",
+    "#geore:geore_blocks/iron",
+    "#geore:geore_blocks/lapis",
+    "#geore:geore_blocks/quartz",
+    "#geore:geore_blocks/redstone",
+    "#geore:geore_blocks/ruby",
+    "#geore:geore_blocks/sapphire",
+    "#geore:geore_blocks/topaz",
+    "#geore:geore_blocks/zinc"
+  ]
+}

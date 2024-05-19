@@ -5,9 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "geore:iron_shard"
-            ]
+            "items": "geore:iron_shard"
           }
         ]
       },

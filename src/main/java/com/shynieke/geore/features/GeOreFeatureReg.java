@@ -7,7 +7,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -59,7 +59,7 @@ public class GeOreFeatureReg {
 		GEODE_PLACEMENT_KEY = PlacementUtils.createKey(Reference.MOD_PREFIX + name + "_geode");
 	}
 
-	public void setupConfigured(BootstapContext<ConfiguredFeature<?, ?>> context, GeOreBlockReg blockReg) {
+	public void setupConfigured(BootstrapContext<ConfiguredFeature<?, ?>> context, GeOreBlockReg blockReg) {
 		FeatureUtils.register(context, GEODE_CONFIGURED_KEY, Feature.GEODE, new GeodeConfiguration(
 				new GeodeBlockSettings(BlockStateProvider.simple(Blocks.AIR), SimpleStateProvider.simple(BLOCK),
 						SimpleStateProvider.simple(BUDDING), BlockStateProvider.simple(Blocks.CALCITE),
@@ -73,7 +73,7 @@ public class GeOreFeatureReg {
 				UniformInt.of(1, 2), -16, 16, 0.05D, 1));
 	}
 
-	public void setupPlaced(BootstapContext<PlacedFeature> context, int rarity, int aboveBottom, int absolute) {
+	public void setupPlaced(BootstrapContext<PlacedFeature> context, int rarity, int aboveBottom, int absolute) {
 		HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 		Holder<ConfiguredFeature<?, ?>> geodeHolder = holdergetter.getOrThrow(GEODE_CONFIGURED_KEY);
 		PlacementUtils.register(context, GEODE_PLACEMENT_KEY, geodeHolder,
@@ -81,7 +81,7 @@ public class GeOreFeatureReg {
 				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(aboveBottom), VerticalAnchor.absolute(absolute)), BiomeFilter.biome());
 	}
 
-	public void setupBiomeModifier(BootstapContext<BiomeModifier> context, TagKey<Biome> tag, String configName) {
+	public void setupBiomeModifier(BootstrapContext<BiomeModifier> context, TagKey<Biome> tag, String configName) {
 		final HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
 		final HolderGetter<PlacedFeature> placedHolderGetter = context.lookup(Registries.PLACED_FEATURE);
 

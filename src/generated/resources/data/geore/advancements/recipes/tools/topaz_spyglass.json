@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "geore:topaz_shard"
-            ]
+            "items": "geore:topaz_shard"
           }
         ]
       },

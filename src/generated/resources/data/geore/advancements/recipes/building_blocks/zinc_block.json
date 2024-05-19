@@ -11,9 +11,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "geore:zinc_shard"
-            ]
+            "items": "geore:zinc_shard"
           }
         ]
       },

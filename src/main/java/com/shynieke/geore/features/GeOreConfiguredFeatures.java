@@ -1,12 +1,12 @@
 package com.shynieke.geore.features;
 
 import com.shynieke.geore.registry.GeOreRegistry;
-import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 public class GeOreConfiguredFeatures {
 
-	public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
+	public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 		GeOreFeatures.COAL_GEORE.setupConfigured(context, GeOreRegistry.COAL_GEORE);
 		GeOreFeatures.COPPER_GEORE.setupConfigured(context, GeOreRegistry.COPPER_GEORE);
 		GeOreFeatures.DIAMOND_GEORE.setupConfigured(context, GeOreRegistry.DIAMOND_GEORE);

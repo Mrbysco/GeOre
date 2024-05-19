@@ -7,5 +7,8 @@
   "ingredient": {
     "item": "geore:emerald_shard"
   },
-  "result": "minecraft:emerald"
+  "result": {
+    "count": 1,
+    "id": "minecraft:emerald"
+  }
 }

@@ -13,14 +13,14 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.client.event.RenderGuiOverlayEvent;
+import net.neoforged.neoforge.client.event.RenderGuiLayerEvent;
 import org.joml.Matrix4f;
 
 public class SpyglassHandler {
 
 	@SubscribeEvent
-	public void onOverlayRender(RenderGuiOverlayEvent.Pre event) {
-		if (!event.getOverlay().id().equals(new ResourceLocation("spyglass"))) return;
+	public void onOverlayRender(RenderGuiLayerEvent.Pre event) {
+		if (!event.getName().equals(new ResourceLocation("camera_overlays"))) return;
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
 		PoseStack poseStack = event.getGuiGraphics().pose();

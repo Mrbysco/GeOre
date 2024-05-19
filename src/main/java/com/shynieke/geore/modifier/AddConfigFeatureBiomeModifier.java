@@ -1,6 +1,7 @@
 package com.shynieke.geore.modifier;
 
 import com.mojang.serialization.Codec;
+import com.mojang.serialization.MapCodec;
 import com.shynieke.geore.features.ConfigFeature;
 import com.shynieke.geore.registry.GeOreModifiers;
 import net.minecraft.core.Holder;
@@ -23,7 +24,7 @@ public record AddConfigFeatureBiomeModifier(HolderSet<Biome> biomes, HolderSet<P
 	}
 
 	@Override
-	public Codec<? extends BiomeModifier> codec() {
+	public MapCodec<? extends BiomeModifier> codec() {
 		return GeOreModifiers.ADD_CONFIG_FEATURES_BIOME_MODIFIER_TYPE.get();
 	}
 }
