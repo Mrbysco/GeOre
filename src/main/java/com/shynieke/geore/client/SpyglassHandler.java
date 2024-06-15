@@ -20,7 +20,7 @@ public class SpyglassHandler {
 
 	@SubscribeEvent
 	public void onOverlayRender(RenderGuiLayerEvent.Pre event) {
-		if (!event.getName().equals(new ResourceLocation("camera_overlays"))) return;
+		if (!event.getName().equals(ResourceLocation.parse("camera_overlays"))) return;
 		Minecraft minecraft = Minecraft.getInstance();
 		Player player = Minecraft.getInstance().player;
 		PoseStack poseStack = event.getGuiGraphics().pose();
@@ -42,10 +42,9 @@ public class SpyglassHandler {
 	protected static void fillGradient(PoseStack poseStack, int width, int height, int color1, int color2, float intensity) {
 		RenderSystem.setShader(GameRenderer::getPositionColorShader);
 		Tesselator tesselator = Tesselator.getInstance();
-		BufferBuilder bufferbuilder = tesselator.getBuilder();
-		bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+		BufferBuilder bufferbuilder = tesselator.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
 		fillGradient(poseStack.last().pose(), bufferbuilder, width, height, color1, color2, intensity);
-		tesselator.end();
+//		tesselator.end();
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 	}
 
@@ -57,9 +56,9 @@ public class SpyglassHandler {
 		float f5 = (float) (color2 >> 16 & 255) / 255.0F;
 		float f6 = (float) (color2 >> 8 & 255) / 255.0F;
 		float f7 = (float) (color2 & 255) / 255.0F;
-		builder.vertex(matrix4f, (float) width, (float) 0, (float) 0).color(f1, f2, f3, intensity).endVertex();
-		builder.vertex(matrix4f, (float) 0, (float) 0, (float) 0).color(f1, f2, f3, intensity).endVertex();
-		builder.vertex(matrix4f, (float) 0, (float) height, (float) 0).color(f5, f6, f7, intensity).endVertex();
-		builder.vertex(matrix4f, (float) width, (float) height, (float) 0).color(f5, f6, f7, intensity).endVertex();
+		builder.addVertex(matrix4f, (float) width, (float) 0, (float) 0).setColor(f1, f2, f3, intensity);
+		builder.addVertex(matrix4f, (float) 0, (float) 0, (float) 0).setColor(f1, f2, f3, intensity);
+		builder.addVertex(matrix4f, (float) 0, (float) height, (float) 0).setColor(f5, f6, f7, intensity);
+		builder.addVertex(matrix4f, (float) width, (float) height, (float) 0).setColor(f5, f6, f7, intensity);
 	}
 }

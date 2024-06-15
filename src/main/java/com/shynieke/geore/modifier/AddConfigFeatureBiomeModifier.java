@@ -1,6 +1,5 @@
 package com.shynieke.geore.modifier;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.shynieke.geore.features.ConfigFeature;
 import com.shynieke.geore.registry.GeOreModifiers;

@@ -55,8 +55,8 @@ public class GeOreFeatureReg {
 		BLOCK = blockReg.getBlock().get();
 		BUDDING = blockReg.getBudding().get();
 
-		GEODE_CONFIGURED_KEY = FeatureUtils.createKey(Reference.MOD_PREFIX + name + "_geode");
-		GEODE_PLACEMENT_KEY = PlacementUtils.createKey(Reference.MOD_PREFIX + name + "_geode");
+		GEODE_CONFIGURED_KEY = createConfiguredKey(name + "_geode");
+		GEODE_PLACEMENT_KEY = createPlacedKey(name + "_geode");
 	}
 
 	public void setupConfigured(BootstrapContext<ConfiguredFeature<?, ?>> context, GeOreBlockReg blockReg) {
@@ -90,10 +90,18 @@ public class GeOreFeatureReg {
 				HolderSet.direct(placedHolderGetter.getOrThrow(GEODE_PLACEMENT_KEY)),
 				Decoration.LOCAL_MODIFICATIONS, configName);
 
-		context.register(createKey(configName + "_geode"), addGeore);
+		context.register(createModifierKey(configName + "_geode"), addGeore);
 	}
 
-	private ResourceKey<BiomeModifier> createKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, new ResourceLocation(Reference.MOD_ID, name));
+	private ResourceKey<BiomeModifier> createModifierKey(String name) {
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+	}
+
+	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String path) {
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, path));
+	}
+
+	public static ResourceKey<PlacedFeature> createPlacedKey(String path) {
+		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, path));
 	}
 }

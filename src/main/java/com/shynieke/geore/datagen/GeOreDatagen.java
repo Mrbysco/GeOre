@@ -38,6 +38,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
@@ -140,8 +141,11 @@ public class GeOreDatagen {
 
 		public static class GeOreBlockTables extends BlockLootSubProvider {
 
-			protected GeOreBlockTables() {
-				super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+			private final HolderLookup.RegistryLookup<Enchantment> enchantmentLookup;
+
+			protected GeOreBlockTables(HolderLookup.Provider lookupProvider) {
+				super(Set.of(), FeatureFlags.REGISTRY.allFlags(), lookupProvider);
+				this.enchantmentLookup = lookupProvider.lookupOrThrow(Registries.ENCHANTMENT);
 			}
 
 			@Override
@@ -165,7 +169,7 @@ public class GeOreDatagen {
 				this.dropSelf(blockReg.getBlock().get());
 				this.add(blockReg.getCluster().get(), (block) -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get())
 						.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
-						.apply(ApplyBonusCount.addOreBonusCount(Enchantments.FORTUNE))
+						.apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE)))
 						.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
 						.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get())
 								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
@@ -225,19 +229,19 @@ public class GeOreDatagen {
 
 			//Mod compat
 			String gemsID = "gemsandcrystals";
-			Item rubyItem = getModItem(new ResourceLocation(gemsID, "ruby"));
+			Item rubyItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "ruby"));
 			generateRecipes(GeOreRegistry.RUBY_GEORE, recipeOutput);
 			if (rubyItem != null) {
 				optionalSmeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeOutput);
 			}
 
-			Item sapphireItem = getModItem(new ResourceLocation(gemsID, "sapphire"));
+			Item sapphireItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "sapphire"));
 			generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, recipeOutput);
 			if (sapphireItem != null) {
 				optionalSmeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeOutput);
 			}
 
-			Item topazItem = getModItem(new ResourceLocation(gemsID, "topaz"));
+			Item topazItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "topaz"));
 			generateRecipes(GeOreRegistry.TOPAZ_GEORE, recipeOutput);
 			if (topazItem != null) {
 				optionalSmeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeOutput);
@@ -262,8 +266,8 @@ public class GeOreDatagen {
 		}
 
 		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, RecipeOutput recipeConsumer) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 
 		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, RecipeOutput recipeConsumer) {
@@ -271,12 +275,12 @@ public class GeOreDatagen {
 			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
 							item, xp, 200).group("geore")
 					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-					.save(conditionalConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+					.save(conditionalConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 
 			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
 							item, xp, 100).group("geore")
 					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-					.save(conditionalConsumer, new ResourceLocation(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+					.save(conditionalConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 	}
 
@@ -414,10 +418,10 @@ public class GeOreDatagen {
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
-			singleTexture(blockReg.getShard().getId().getPath(), new ResourceLocation("item/generated"), "layer0", new ResourceLocation(Reference.MOD_ID, "item/" + blockReg.getShard().getId().getPath()));
+			singleTexture(blockReg.getShard().getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"), "layer0", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "item/" + blockReg.getShard().getId().getPath()));
 
-			withExistingParent(blockReg.getBlock().getId().getPath(), new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
-			withExistingParent(blockReg.getBudding().getId().getPath(), new ResourceLocation(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
+			withExistingParent(blockReg.getBlock().getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
+			withExistingParent(blockReg.getBudding().getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
 
 			makeCluster(blockReg.getCluster());
 			makeSmallBud(blockReg.getSmallBud());
@@ -462,7 +466,7 @@ public class GeOreDatagen {
 		}
 
 		private static TagKey<Block> modTag(String name) {
-			return BlockTags.create(new ResourceLocation(Reference.MOD_ID, name));
+			return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
 		}
 
 		@Override
@@ -618,7 +622,7 @@ public class GeOreDatagen {
 		}
 
 		private static TagKey<Item> modTag(String name) {
-			return ItemTags.create(new ResourceLocation(Reference.MOD_ID, name));
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
 		}
 	}
 }
