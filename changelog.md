@@ -1,1 +1,1 @@
-* Initial update to 1.21
+* Fix spyglass render
