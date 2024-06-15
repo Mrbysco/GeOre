@@ -8,7 +8,7 @@ This mod takes heavy inspiration of the vanilla amethyst geode feature and appli
 
 ## License ##
 * GeOre is licensed under the MIT License
-  - (c) 2021 ShyNieke
+  - (c) 2024 ShyNieke
   - [![License](https://img.shields.io/badge/License-MIT-red.svg?style=flat)](http://opensource.org/licenses/MIT)
 
 ## Downloads ##
