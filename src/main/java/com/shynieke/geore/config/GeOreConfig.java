@@ -128,11 +128,11 @@ public class GeOreConfig {
 
 	@SubscribeEvent
 	public static void onLoad(final ModConfigEvent.Loading configEvent) {
-		GeOre.LOGGER.debug("Loaded GeOre's enabledConfig file {}", configEvent.getConfig().getFileName());
+		GeOre.LOGGER.debug("Loaded GeOre's config file {}", configEvent.getConfig().getFileName());
 	}
 
 	@SubscribeEvent
 	public static void onFileChange(final ModConfigEvent.Reloading configEvent) {
-		GeOre.LOGGER.debug("GeOre's enabledConfig just got changed on the file system!");
+		GeOre.LOGGER.debug("GeOre's config just got changed on the file system!");
 	}
 }
