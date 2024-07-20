@@ -23,7 +23,7 @@ side="BOTH"
 [[dependencies.geore]]
 modId="neoforge"
 type="REQUIRED"
-versionRange="[21.0.0-beta,)"
+versionRange="[21.0.110-beta,)"
 ordering="NONE"
 side="BOTH"
 [[mixins]]
