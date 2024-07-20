@@ -308,7 +308,7 @@ public class GeOreDatagen {
 			generateLang("Zinc", GeOreRegistry.ZINC_GEORE);
 
 			//Config
-			add("grimoireofgaia.configuration.title", "Grimoire of Gaia Settings");
+			add("geore.configuration.title", "Grimoire of Gaia Settings");
 			addConfig("Client", "Client", "Client Settings");
 			addConfig("spyglassIntensity", "Spyglass Intensity", "The intensity of the spyglass color overlay (0.5 = 50%) [Default: 0.5]");
 
@@ -323,6 +323,7 @@ public class GeOreDatagen {
 			addConfig("generateQuartzGeore", "Generate Quartz GeOre", "Generate Quartz GeOre [Default: true]");
 			addConfig("generateQuartzInNetherGeore", "Generate Quartz In Nether GeOre", "Generate Quartz In Nether GeOre [Default: true]");
 			addConfig("generateRedstoneGeore", "Generate Redstone GeOre", "Generate Redstone GeOre [Default: true]");
+			addConfig("disablePistonPushForBuddingGeOre", "Disable Piston Push For Budding GeOre", "Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]");
 
 			addConfig("ModdedGeneration", "Modded Generation", "Modded Generation Settings");
 			addConfig("generateRubyGeore", "Generate Ruby GeOre", "Generate Ruby GeOre [Default: false]");

@@ -43,6 +43,7 @@ public class GeOreConfig {
 		public final ModConfigSpec.BooleanValue generateQuartzGeore;
 		public final ModConfigSpec.BooleanValue generateQuartzInNetherGeore;
 		public final ModConfigSpec.BooleanValue generateRedstoneGeore;
+		public final ModConfigSpec.BooleanValue disablePistonPushForBuddingGeOre;
 		//Mod support
 		public final ModConfigSpec.BooleanValue generateRubyGeore;
 		public final ModConfigSpec.BooleanValue generateSapphireGeore;
@@ -92,6 +93,10 @@ public class GeOreConfig {
 			generateRedstoneGeore = builder
 					.comment("Generate Redstone GeOre [Default: true]")
 					.define("generateRedstoneGeore", true);
+
+			disablePistonPushForBuddingGeOre = builder
+					.comment("Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]")
+					.define("disablePistonPushForBuddingGeOre", false);
 
 			builder.pop();
 			builder.comment("Modded Generation settings")
