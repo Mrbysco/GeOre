@@ -306,6 +306,29 @@ public class GeOreDatagen {
 			generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
 			generateLang("Topaz", GeOreRegistry.TOPAZ_GEORE);
 			generateLang("Zinc", GeOreRegistry.ZINC_GEORE);
+
+			//Config
+			add("grimoireofgaia.configuration.title", "Grimoire of Gaia Settings");
+			addConfig("Client", "Client", "Client Settings");
+			addConfig("spyglassIntensity", "Spyglass Intensity", "The intensity of the spyglass color overlay (0.5 = 50%) [Default: 0.5]");
+
+			addConfig("General", "General", "General settings");
+			addConfig("generateCoalGeore", "Generate Coal GeOre", "Generate Coal GeOre [Default: true]");
+			addConfig("generateCopperGeore", "Generate Copper GeOre", "Generate Copper GeOre [Default: true]");
+			addConfig("generateDiamondGeore", "Generate Diamond GeOre", "Generate Diamond GeOre [Default: true]");
+			addConfig("generateEmeraldGeore", "Generate Emerald GeOre", "Generate Emerald GeOre [Default: true]");
+			addConfig("generateGoldGeore", "Generate Gold GeOre", "Generate Gold GeOre [Default: true]");
+			addConfig("generateIronGeore", "Generate Iron GeOre", "Generate Iron GeOre [Default: true]");
+			addConfig("generateLapisGeore", "Generate Lapis GeOre", "Generate Lapis GeOre [Default: true]");
+			addConfig("generateQuartzGeore", "Generate Quartz GeOre", "Generate Quartz GeOre [Default: true]");
+			addConfig("generateQuartzInNetherGeore", "Generate Quartz In Nether GeOre", "Generate Quartz In Nether GeOre [Default: true]");
+			addConfig("generateRedstoneGeore", "Generate Redstone GeOre", "Generate Redstone GeOre [Default: true]");
+
+			addConfig("ModdedGeneration", "Modded Generation", "Modded Generation Settings");
+			addConfig("generateRubyGeore", "Generate Ruby GeOre", "Generate Ruby GeOre [Default: false]");
+			addConfig("generateSapphireGeore", "Generate Sapphire GeOre", "Generate Sapphire GeOre [Default: false]");
+			addConfig("generateTopazGeore", "Generate Topaz GeOre", "Generate Topaz GeOre [Default: false]");
+			addConfig("generateZincGeore", "Generate Zinc GeOre", "Generate Zinc GeOre [Default: false]");
 		}
 
 		public void generateLang(String name, GeOreBlockReg blockReg) {
@@ -317,6 +340,18 @@ public class GeOreDatagen {
 			addBlock(blockReg.getCluster(), name + " Geore Cluster");
 			addItem(blockReg.getShard(), name + " Geore Shard");
 			addItem(blockReg.getSpyglass(), name + " Geore Spyglass");
+		}
+
+		/**
+		 * Add the translation for a config entry
+		 *
+		 * @param path        The path of the config entry
+		 * @param name        The name of the config entry
+		 * @param description The description of the config entry
+		 */
+		private void addConfig(String path, String name, String description) {
+			this.add("geore.configuration." + path, name);
+			this.add("geore.configuration." + path + ".tooltip", description);
 		}
 	}
 
