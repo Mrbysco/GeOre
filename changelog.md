@@ -1,1 +1,1 @@
-* Fix spyglass render
+* Enable in-game config (Requires NeoForge 21.0.110-beta and above)
