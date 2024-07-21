@@ -1,2 +1,1 @@
-* Add a config option `disablePistonPushForBuddingGeOre` which overrides the default behavior of breaking the Budding GeOre if attempted to be pushed by a piston. 
-* When `disablePistonPushForBuddingGeOre` is enabled the Budding GeOre will not be pushed by pistons.
+* Change some internals so that GeOre Nouveau can get updated
