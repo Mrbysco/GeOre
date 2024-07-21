@@ -9,10 +9,10 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 public class GeOreRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
@@ -35,7 +35,7 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg TOPAZ_GEORE = new GeOreBlockReg("topaz", MapColor.GOLD, 0xffb856);
 	public static final GeOreBlockReg ZINC_GEORE = new GeOreBlockReg("zinc", MapColor.GOLD, 0xa7bdac);
 
-	public static final Supplier<CreativeModeTab> GEORE_TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> GEORE_TAB = CREATIVE_MODE_TABS.register("tab", () -> CreativeModeTab.builder()
 			.icon(() -> new ItemStack(Items.AMETHYST_SHARD))
 			.title(Component.translatable("itemGroup.geore"))
 			.displayItems((displayParameters, output) -> {
