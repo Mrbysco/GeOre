@@ -1,6 +1,7 @@
 package com.shynieke.geore.features;
 
 import com.shynieke.geore.config.GeOreConfig;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.function.Supplier;
@@ -34,7 +35,7 @@ public enum ConfigFeature {
 		return configValue.get();
 	}
 
-	@Nullable
+	@NotNull
 	public static ConfigFeature getByName(@Nullable String value) {
 		for (ConfigFeature captcha : values()) {
 			if (captcha.name.equals(value)) {

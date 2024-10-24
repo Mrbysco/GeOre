@@ -49,7 +49,7 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 			}
 
 			if (block != null) {
-				BlockState budState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, Boolean.valueOf(blockstate.getFluidState().getType() == Fluids.WATER));
+				BlockState budState = block.defaultBlockState().setValue(AmethystClusterBlock.FACING, direction).setValue(AmethystClusterBlock.WATERLOGGED, blockstate.getFluidState().getType() == Fluids.WATER);
 				level.setBlockAndUpdate(blockpos, budState);
 			}
 		}
