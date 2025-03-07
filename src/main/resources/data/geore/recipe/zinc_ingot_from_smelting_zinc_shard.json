@@ -13,5 +13,8 @@
   "ingredient": {
     "item": "geore:zinc_shard"
   },
-  "result": "create:zinc_ingot"
+  "result": {
+    "count": 1,
+    "id": "create:zinc_ingot"
+  }
 }

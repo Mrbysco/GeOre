@@ -13,5 +13,8 @@
   "ingredient": {
     "item": "geore:sapphire_shard"
   },
-  "result": "gemsandcrystals:sapphire"
+  "result": {
+    "count": 1,
+    "id": "gemsandcrystals:sapphire"
+  }
 }

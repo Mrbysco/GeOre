@@ -13,5 +13,8 @@
   "ingredient": {
     "item": "geore:ruby_shard"
   },
-  "result": "gemsandcrystals:ruby"
+  "result": {
+    "count": 1,
+    "id": "gemsandcrystals:ruby"
+  }
 }
