@@ -1,5 +1,6 @@
 package com.shynieke.geore.datagen;
 
+import com.shynieke.geore.GeOre;
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.features.GeOreConfiguredFeatures;
 import com.shynieke.geore.features.GeOreFeatures;
@@ -11,6 +12,7 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.Cloner;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.WritableRegistry;
@@ -198,7 +200,7 @@ public class GeOreDatagen {
 		}
 
 		@Override
-		protected void buildRecipes(RecipeOutput recipeOutput) {
+		protected void buildRecipes(RecipeOutput recipeOutput, Provider holderLookup) {
 			generateRecipes(GeOreRegistry.COAL_GEORE, recipeOutput);
 
 			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.TORCH, 2).pattern("X").pattern("#").define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get()).unlockedBy("has_coal_geore_shard", has(GeOreRegistry.COAL_GEORE.getShard().get())).save(recipeOutput, "geore:torch_from_coal_shard");
@@ -228,7 +230,7 @@ public class GeOreDatagen {
 			smeltToOre(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeOutput);
 
 			//Mod compat
-			String gemsID = "gemsandcrystals";
+			final String gemsID = "gemsandcrystals";
 			Item rubyItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "ruby"));
 			generateRecipes(GeOreRegistry.RUBY_GEORE, recipeOutput);
 			if (rubyItem != null) {
@@ -251,10 +253,9 @@ public class GeOreDatagen {
 		}
 
 		public Item getModItem(ResourceLocation itemLocation) {
-			for (Item item : BuiltInRegistries.ITEM.stream().toList()) {
-				if (BuiltInRegistries.ITEM.getKey(item).equals(itemLocation)) {
-					return item;
-				}
+			Item item = BuiltInRegistries.ITEM.get(itemLocation);
+			if (item != Items.AIR) {
+				return item;
 			}
 			return null;
 		}
@@ -588,6 +589,7 @@ public class GeOreDatagen {
 		public static final TagKey<Item> GEORE_SHARDS = modTag("geore_shards");
 		public static final TagKey<Item> GEORE_BLOCKS = modTag("geore_blocks");
 
+		@SuppressWarnings("unchecked")
 		@Override
 		protected void addTags(HolderLookup.Provider provider) {
 			this.addGeore(GeOreRegistry.COAL_GEORE);
