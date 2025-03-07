@@ -1,1 +1,1 @@
-* Change some internals so that GeOre Nouveau can get updated
+* Fix the optional recipes (Like the zinc shard to zinc ingot recipe if Create is installed)
