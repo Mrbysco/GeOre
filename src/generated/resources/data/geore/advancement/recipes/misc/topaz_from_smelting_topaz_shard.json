@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:gems/topaz"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:topaz_from_smelting_topaz_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_topazgeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:topaz_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_topazgeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:topaz_from_smelting_topaz_shard"
+    ]
+  }
+}

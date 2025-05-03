@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/zinc"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:zinc_from_smelting_zinc_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_zincgeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:zinc_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_zincgeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:zinc_from_smelting_zinc_shard"
+    ]
+  }
+}

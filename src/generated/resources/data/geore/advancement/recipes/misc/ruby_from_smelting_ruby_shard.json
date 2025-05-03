@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:gems/ruby"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rubygeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:ruby_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:ruby_from_smelting_ruby_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_rubygeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:ruby_from_smelting_ruby_shard"
+    ]
+  }
+}

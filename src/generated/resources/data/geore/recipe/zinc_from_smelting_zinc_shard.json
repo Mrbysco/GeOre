@@ -1,11 +1,14 @@
 {
   "neoforge:conditions": [
     {
-      "type": "neoforge:mod_loaded",
-      "modid": "create"
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/zinc"
+      }
     }
   ],
-  "type": "minecraft:smelting",
+  "type": "geore:furnace",
   "category": "misc",
   "cookingtime": 200,
   "experience": 0.7,
@@ -14,7 +17,6 @@
     "item": "geore:zinc_shard"
   },
   "result": {
-    "count": 1,
-    "id": "create:zinc_ingot"
+    "tag": "c:ingots/zinc"
   }
 }
