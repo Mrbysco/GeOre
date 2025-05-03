@@ -5,6 +5,7 @@ import com.shynieke.geore.client.SpyglassHandler;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.registry.GeOreModifiers;
+import com.shynieke.geore.registry.GeOreRecipes;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
@@ -30,6 +31,7 @@ public class GeOre {
 		GeOreRegistry.BLOCKS.register(eventBus);
 		GeOreRegistry.ITEMS.register(eventBus);
 		GeOreRegistry.CREATIVE_MODE_TABS.register(eventBus);
+		GeOreRecipes.RECIPE_SERIALIZERS.register(eventBus);
 		GeOreModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 
 		if (dist.isClient()) {

@@ -1,7 +1,7 @@
 package com.shynieke.geore.datagen;
 
-import com.shynieke.geore.GeOre;
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.datagen.builder.TagSmeltingRecipeBuilder;
 import com.shynieke.geore.features.GeOreConfiguredFeatures;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.features.GeOrePlacedFeatures;
@@ -62,7 +62,8 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.loaders.SeparateTransformsModelBuilder;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
+import net.neoforged.neoforge.common.conditions.NotCondition;
+import net.neoforged.neoforge.common.conditions.TagEmptyCondition;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -136,9 +137,7 @@ public class GeOreDatagen {
 
 	private static class Loots extends LootTableProvider {
 		public Loots(PackOutput packOutput, CompletableFuture<net.minecraft.core.HolderLookup.Provider> lookupProvider) {
-			super(packOutput, Set.of(), List.of(
-					new SubProviderEntry(GeOreBlockTables::new, LootContextParamSets.BLOCK)
-			), lookupProvider);
+			super(packOutput, Set.of(), List.of(new SubProviderEntry(GeOreBlockTables::new, LootContextParamSets.BLOCK)), lookupProvider);
 		}
 
 		public static class GeOreBlockTables extends BlockLootSubProvider {
@@ -169,12 +168,7 @@ public class GeOreDatagen {
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
 				this.dropSelf(blockReg.getBlock().get());
-				this.add(blockReg.getCluster().get(), (block) -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get())
-						.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
-						.apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE)))
-						.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
-						.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get())
-								.apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
+				this.add(blockReg.getCluster().get(), (block) -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F))).apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE))).when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES))).otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
 				this.dropWhenSilkTouch(blockReg.getSmallBud().get());
 				this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 				this.dropWhenSilkTouch(blockReg.getLargeBud().get());
@@ -200,88 +194,71 @@ public class GeOreDatagen {
 		}
 
 		@Override
-		protected void buildRecipes(RecipeOutput recipeOutput, Provider holderLookup) {
-			generateRecipes(GeOreRegistry.COAL_GEORE, recipeOutput);
+		protected void buildRecipes(RecipeOutput output, Provider holderLookup) {
+			generateRecipes(GeOreRegistry.COAL_GEORE, output);
 
-			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.TORCH, 2).pattern("X").pattern("#").define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get()).unlockedBy("has_coal_geore_shard", has(GeOreRegistry.COAL_GEORE.getShard().get())).save(recipeOutput, "geore:torch_from_coal_shard");
+			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.TORCH, 2).pattern("X").pattern("#").define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get()).unlockedBy("has_coal_geore_shard", has(GeOreRegistry.COAL_GEORE.getShard().get())).save(output, "geore:torch_from_coal_shard");
 
-			generateRecipes(GeOreRegistry.COPPER_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, recipeOutput);
+			generateRecipes(GeOreRegistry.COPPER_GEORE, output);
+			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, output);
 
-			generateRecipes(GeOreRegistry.DIAMOND_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.DIAMOND_GEORE, 1.0F, Items.DIAMOND, recipeOutput);
+			generateRecipes(GeOreRegistry.DIAMOND_GEORE, output);
+			smeltToOre(GeOreRegistry.DIAMOND_GEORE, 1.0F, Items.DIAMOND, output);
 
-			generateRecipes(GeOreRegistry.EMERALD_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.EMERALD_GEORE, 1.0F, Items.EMERALD, recipeOutput);
+			generateRecipes(GeOreRegistry.EMERALD_GEORE, output);
+			smeltToOre(GeOreRegistry.EMERALD_GEORE, 1.0F, Items.EMERALD, output);
 
-			generateRecipes(GeOreRegistry.GOLD_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.GOLD_GEORE, 1.0F, Items.GOLD_INGOT, recipeOutput);
+			generateRecipes(GeOreRegistry.GOLD_GEORE, output);
+			smeltToOre(GeOreRegistry.GOLD_GEORE, 1.0F, Items.GOLD_INGOT, output);
 
-			generateRecipes(GeOreRegistry.IRON_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.IRON_GEORE, 0.7F, Items.IRON_INGOT, recipeOutput);
+			generateRecipes(GeOreRegistry.IRON_GEORE, output);
+			smeltToOre(GeOreRegistry.IRON_GEORE, 0.7F, Items.IRON_INGOT, output);
 
-			generateRecipes(GeOreRegistry.LAPIS_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, recipeOutput);
+			generateRecipes(GeOreRegistry.LAPIS_GEORE, output);
+			smeltToOre(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, output);
 
-			generateRecipes(GeOreRegistry.QUARTZ_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, recipeOutput);
+			generateRecipes(GeOreRegistry.QUARTZ_GEORE, output);
+			smeltToOre(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, output);
 
-			generateRecipes(GeOreRegistry.REDSTONE_GEORE, recipeOutput);
-			smeltToOre(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, recipeOutput);
+			generateRecipes(GeOreRegistry.REDSTONE_GEORE, output);
+			smeltToOre(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, output);
 
 			//Mod compat
-			final String gemsID = "gemsandcrystals";
-			Item rubyItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "ruby"));
-			generateRecipes(GeOreRegistry.RUBY_GEORE, recipeOutput);
-			if (rubyItem != null) {
-				optionalSmeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, rubyItem, gemsID, recipeOutput);
-			}
+			generateRecipes(GeOreRegistry.RUBY_GEORE, output);
+			smeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, "ruby", getCommonTag("gems/ruby"), output);
 
-			Item sapphireItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "sapphire"));
-			generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, recipeOutput);
-			if (sapphireItem != null) {
-				optionalSmeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, sapphireItem, gemsID, recipeOutput);
-			}
+			generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, output);
+			smeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, "sapphire", getCommonTag("gems/sapphire"), output);
 
-			Item topazItem = getModItem(ResourceLocation.fromNamespaceAndPath(gemsID, "topaz"));
-			generateRecipes(GeOreRegistry.TOPAZ_GEORE, recipeOutput);
-			if (topazItem != null) {
-				optionalSmeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, topazItem, gemsID, recipeOutput);
-			}
+			generateRecipes(GeOreRegistry.TOPAZ_GEORE, output);
+			smeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, "topaz", getCommonTag("gems/topaz"), output);
 
-			generateRecipes(GeOreRegistry.ZINC_GEORE, recipeOutput);
+			generateRecipes(GeOreRegistry.ZINC_GEORE, output);
+			smeltToOre(GeOreRegistry.ZINC_GEORE, 0.7F, "zinc", getCommonTag("ingots/zinc"), output);
 		}
 
-		public Item getModItem(ResourceLocation itemLocation) {
-			Item item = BuiltInRegistries.ITEM.get(itemLocation);
-			if (item != Items.AIR) {
-				return item;
-			}
-			return null;
+		private TagKey<Item> getCommonTag(String path) {
+			return ItemTags.create(ResourceLocation.fromNamespaceAndPath("c", path));
 		}
 
-		private void generateRecipes(GeOreBlockReg blockReg, RecipeOutput recipeConsumer) {
-			ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getBlock().get()).define('S', blockReg.getShard().get()).pattern("SS").pattern("SS").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer);
+		private void generateRecipes(GeOreBlockReg blockReg, RecipeOutput output) {
+			ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getBlock().get()).define('S', blockReg.getShard().get()).pattern("SS").pattern("SS").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output);
 
-			ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get()).define('#', blockReg.getShard().get()).define('X', Items.COPPER_INGOT).pattern(" # ").pattern(" X ").pattern(" X ").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer);
+			ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get()).define('#', blockReg.getShard().get()).define('X', Items.COPPER_INGOT).pattern(" # ").pattern(" X ").pattern(" X ").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output);
 		}
 
-		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, RecipeOutput recipeConsumer) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(recipeConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, RecipeOutput output) {
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 
-		private void optionalSmeltToOre(GeOreBlockReg blockReg, float xp, Item item, String modid, RecipeOutput recipeConsumer) {
-			RecipeOutput conditionalConsumer = recipeConsumer.withConditions(new ModLoadedCondition(modid));
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
-							item, xp, 200).group("geore")
-					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-					.save(conditionalConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+		private void smeltToOre(GeOreBlockReg blockReg, float xp, String type, TagKey<Item> oreTag, RecipeOutput output) {
+			RecipeOutput tagOutput = output.withConditions(new NotCondition(new TagEmptyCondition(oreTag.location())));
 
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC,
-							item, xp, 100).group("geore")
-					.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-					.save(conditionalConsumer, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+			Ingredient outputIngredient = Ingredient.of(oreTag);
+			TagSmeltingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(tagOutput, Reference.modLoc(type + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			TagSmeltingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(tagOutput, Reference.modLoc(type + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+
 		}
 	}
 
@@ -455,10 +432,10 @@ public class GeOreDatagen {
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
-			singleTexture(blockReg.getShard().getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"), "layer0", ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, "item/" + blockReg.getShard().getId().getPath()));
+			singleTexture(blockReg.getShard().getId().getPath(), ResourceLocation.withDefaultNamespace("item/generated"), "layer0", Reference.modLoc("item/" + blockReg.getShard().getId().getPath()));
 
-			withExistingParent(blockReg.getBlock().getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
-			withExistingParent(blockReg.getBudding().getId().getPath(), ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
+			withExistingParent(blockReg.getBlock().getId().getPath(), Reference.modLoc(BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
+			withExistingParent(blockReg.getBudding().getId().getPath(), Reference.modLoc(BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
 
 			makeCluster(blockReg.getCluster());
 			makeSmallBud(blockReg.getSmallBud());
@@ -503,7 +480,7 @@ public class GeOreDatagen {
 		}
 
 		private static TagKey<Block> modTag(String name) {
-			return BlockTags.create(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+			return BlockTags.create(Reference.modLoc(name));
 		}
 
 		@Override
@@ -660,7 +637,7 @@ public class GeOreDatagen {
 		}
 
 		private static TagKey<Item> modTag(String name) {
-			return ItemTags.create(ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+			return ItemTags.create(Reference.modLoc(name));
 		}
 	}
 }

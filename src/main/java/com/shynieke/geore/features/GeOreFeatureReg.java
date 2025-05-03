@@ -11,7 +11,6 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -94,14 +93,14 @@ public class GeOreFeatureReg {
 	}
 
 	private ResourceKey<BiomeModifier> createModifierKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, name));
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Reference.modLoc(name));
 	}
 
 	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String path) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, path));
+		return ResourceKey.create(Registries.CONFIGURED_FEATURE, Reference.modLoc(path));
 	}
 
 	public static ResourceKey<PlacedFeature> createPlacedKey(String path) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, ResourceLocation.fromNamespaceAndPath(Reference.MOD_ID, path));
+		return ResourceKey.create(Registries.PLACED_FEATURE, Reference.modLoc(path));
 	}
 }
