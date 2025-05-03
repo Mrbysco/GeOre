@@ -1,1 +1,2 @@
-* Fix the optional recipes (Like the zinc shard to zinc ingot recipe if Create is installed)
+* Change the Zinc, Ruby, Sapphire and Topaz GeOres to use tags for the smelting output
+* Fix GeOre Shards smelting faster in the furnace than in the blast furnace
