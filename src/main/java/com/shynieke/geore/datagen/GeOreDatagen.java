@@ -295,6 +295,18 @@ public class GeOreDatagen {
 			addConfig("generateSapphireGeore", "Generate Sapphire GeOre", "Generate Sapphire GeOre [Default: false]");
 			addConfig("generateTopazGeore", "Generate Topaz GeOre", "Generate Topaz GeOre [Default: false]");
 			addConfig("generateZincGeore", "Generate Zinc GeOre", "Generate Zinc GeOre [Default: false]");
+			addConfig("generateUraniniteGeore", "Generate Uraninite GeOre", "Generate Uraninite GeOre [Default: false]");
+			addConfig("generateBlackQuartzGeore", "Generate Black Quartz GeOre", "Generate Black Quartz GeOre [Default: false]");
+			addConfig("generateMonaziteGeore", "Generate Monazite GeOre", "Generate Monazite GeOre [Default: false]");
+			addConfig("generateAluminumGeore", "Generate Aluminum GeOre", "Generate Aluminum GeOre [Default: false]");
+			addConfig("generateLeadGeore", "Generate Lead GeOre", "Generate Lead GeOre [Default: false]");
+			addConfig("generateNickelGeore", "Generate Nickel GeOre", "Generate Nickel GeOre [Default: false]");
+			addConfig("generateOsmiumGeore", "Generate Osmium GeOre", "Generate Osmium GeOre [Default: false]");
+			addConfig("generatePlatinumGeore", "Generate Platinum GeOre", "Generate Platinum GeOre [Default: false]");
+			addConfig("generateSilverGeore", "Generate Silver GeOre", "Generate Silver GeOre [Default: false]");
+			addConfig("generateTinGeore", "Generate Tin GeOre", "Generate Tin GeOre [Default: false]");
+			addConfig("generateTungstenGeore", "Generate Tungsten GeOre", "Generate Tungsten GeOre [Default: false]");
+			addConfig("generateUraniumGeore", "Generate Uranium GeOre", "Generate Uranium GeOre [Default: false]");
 		}
 
 		public void generateLang(String name, GeOreBlockReg blockReg) {
