@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_overworld",
+  "enabledConfig": "nickel",
+  "features": "geore:nickel_geode",
+  "step": "local_modifications"
+}

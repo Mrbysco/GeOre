@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/silver"
+      }
+    }
+  ],
+  "type": "geore:furnace",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:silver_shard"
+  },
+  "result": {
+    "tag": "c:ingots/silver"
+  }
+}

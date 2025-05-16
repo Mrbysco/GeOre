@@ -12,6 +12,18 @@
     "#geore:clusters/geore_ruby",
     "#geore:clusters/geore_sapphire",
     "#geore:clusters/geore_topaz",
-    "#geore:clusters/geore_zinc"
+    "#geore:clusters/geore_zinc",
+    "#geore:clusters/geore_uraninite",
+    "#geore:clusters/geore_black_quartz",
+    "#geore:clusters/geore_monazite",
+    "#geore:clusters/geore_aluminum",
+    "#geore:clusters/geore_lead",
+    "#geore:clusters/geore_nickel",
+    "#geore:clusters/geore_osmium",
+    "#geore:clusters/geore_platinum",
+    "#geore:clusters/geore_silver",
+    "#geore:clusters/geore_tin",
+    "#geore:clusters/geore_tungsten",
+    "#geore:clusters/geore_uranium"
   ]
 }

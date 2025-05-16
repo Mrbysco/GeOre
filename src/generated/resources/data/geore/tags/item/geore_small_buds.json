@@ -12,6 +12,18 @@
     "#geore:geore_small_buds/ruby",
     "#geore:geore_small_buds/sapphire",
     "#geore:geore_small_buds/topaz",
-    "#geore:geore_small_buds/zinc"
+    "#geore:geore_small_buds/zinc",
+    "#geore:geore_small_buds/uraninite",
+    "#geore:geore_small_buds/black_quartz",
+    "#geore:geore_small_buds/monazite",
+    "#geore:geore_small_buds/aluminum",
+    "#geore:geore_small_buds/lead",
+    "#geore:geore_small_buds/nickel",
+    "#geore:geore_small_buds/osmium",
+    "#geore:geore_small_buds/platinum",
+    "#geore:geore_small_buds/silver",
+    "#geore:geore_small_buds/tin",
+    "#geore:geore_small_buds/tungsten",
+    "#geore:geore_small_buds/uranium"
   ]
 }

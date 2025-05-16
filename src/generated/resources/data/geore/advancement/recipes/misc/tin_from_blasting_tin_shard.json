@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/tin"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:tin_from_blasting_tin_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tingeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:tin_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tingeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:tin_from_blasting_tin_shard"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "geore:black_quartz_shard"
+    },
+    "X": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    " # ",
+    " X ",
+    " X "
+  ],
+  "result": {
+    "count": 1,
+    "id": "geore:black_quartz_spyglass"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:tungsten_spyglass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tungstengeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:tungsten_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_tungstengeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:tungsten_spyglass"
+    ]
+  }
+}

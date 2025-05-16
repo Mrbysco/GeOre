@@ -12,6 +12,18 @@
     "#geore:geore_blocks/ruby",
     "#geore:geore_blocks/sapphire",
     "#geore:geore_blocks/topaz",
-    "#geore:geore_blocks/zinc"
+    "#geore:geore_blocks/zinc",
+    "#geore:geore_blocks/uraninite",
+    "#geore:geore_blocks/black_quartz",
+    "#geore:geore_blocks/monazite",
+    "#geore:geore_blocks/aluminum",
+    "#geore:geore_blocks/lead",
+    "#geore:geore_blocks/nickel",
+    "#geore:geore_blocks/osmium",
+    "#geore:geore_blocks/platinum",
+    "#geore:geore_blocks/silver",
+    "#geore:geore_blocks/tin",
+    "#geore:geore_blocks/tungsten",
+    "#geore:geore_blocks/uranium"
   ]
 }

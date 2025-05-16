@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:raw_materials/uraninite"
+      }
+    }
+  ],
+  "type": "geore:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:uraninite_shard"
+  },
+  "result": {
+    "tag": "c:raw_materials/uraninite"
+  }
+}

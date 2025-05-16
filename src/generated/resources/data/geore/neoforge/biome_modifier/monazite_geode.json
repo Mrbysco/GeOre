@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_overworld",
+  "enabledConfig": "monazite",
+  "features": "geore:monazite_geode",
+  "step": "local_modifications"
+}

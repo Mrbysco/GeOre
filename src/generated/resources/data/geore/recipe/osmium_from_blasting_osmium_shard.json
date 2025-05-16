@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:ingots/osmium"
+      }
+    }
+  ],
+  "type": "geore:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 0.7,
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:osmium_shard"
+  },
+  "result": {
+    "tag": "c:ingots/osmium"
+  }
+}
