@@ -42,6 +42,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -109,23 +110,7 @@ public class GeOreDatagen {
 		final RegistrySetBuilder registryBuilder = new RegistrySetBuilder();
 		registryBuilder.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap);
-		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, context -> {
-			GeOreFeatures.COAL_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "coal");
-			GeOreFeatures.COPPER_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "copper");
-			GeOreFeatures.DIAMOND_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "diamond");
-			GeOreFeatures.EMERALD_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "emerald");
-			GeOreFeatures.GOLD_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "gold");
-			GeOreFeatures.IRON_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "iron");
-			GeOreFeatures.LAPIS_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "lapis");
-			GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "quartz");
-			GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_NETHER, "quartz_nether");
-			GeOreFeatures.REDSTONE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "redstone");
-			GeOreFeatures.RUBY_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "ruby");
-			GeOreFeatures.SAPPHIRE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "sapphire");
-			GeOreFeatures.TOPAZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "topaz");
-			GeOreFeatures.ZINC_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "zinc");
-
-		});
+		registryBuilder.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, GeOreBiomeModifiers::bootstrap);
 		// We need the BIOME registry to be present so we can use a biome tag, doesn't matter that it's empty
 		registryBuilder.add(Registries.BIOME, context -> {
 		});
@@ -151,19 +136,9 @@ public class GeOreDatagen {
 
 			@Override
 			protected void generate() {
-				addGeOreTables(GeOreRegistry.COAL_GEORE);
-				addGeOreTables(GeOreRegistry.COPPER_GEORE);
-				addGeOreTables(GeOreRegistry.DIAMOND_GEORE);
-				addGeOreTables(GeOreRegistry.EMERALD_GEORE);
-				addGeOreTables(GeOreRegistry.GOLD_GEORE);
-				addGeOreTables(GeOreRegistry.IRON_GEORE);
-				addGeOreTables(GeOreRegistry.LAPIS_GEORE);
-				addGeOreTables(GeOreRegistry.QUARTZ_GEORE);
-				addGeOreTables(GeOreRegistry.REDSTONE_GEORE);
-				addGeOreTables(GeOreRegistry.RUBY_GEORE);
-				addGeOreTables(GeOreRegistry.SAPPHIRE_GEORE);
-				addGeOreTables(GeOreRegistry.TOPAZ_GEORE);
-				addGeOreTables(GeOreRegistry.ZINC_GEORE);
+				for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
+					addGeOreTables(reg);
+				}
 			}
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
@@ -196,45 +171,44 @@ public class GeOreDatagen {
 		@Override
 		protected void buildRecipes(RecipeOutput output, Provider holderLookup) {
 			generateRecipes(GeOreRegistry.COAL_GEORE, output);
-
 			ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, Blocks.TORCH, 2).pattern("X").pattern("#").define('#', Tags.Items.RODS_WOODEN).define('X', GeOreRegistry.COAL_GEORE.getShard().get()).unlockedBy("has_coal_geore_shard", has(GeOreRegistry.COAL_GEORE.getShard().get())).save(output, "geore:torch_from_coal_shard");
 
-			generateRecipes(GeOreRegistry.COPPER_GEORE, output);
-			smeltToOre(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, output);
-
-			generateRecipes(GeOreRegistry.DIAMOND_GEORE, output);
-			smeltToOre(GeOreRegistry.DIAMOND_GEORE, 1.0F, Items.DIAMOND, output);
-
-			generateRecipes(GeOreRegistry.EMERALD_GEORE, output);
-			smeltToOre(GeOreRegistry.EMERALD_GEORE, 1.0F, Items.EMERALD, output);
-
-			generateRecipes(GeOreRegistry.GOLD_GEORE, output);
-			smeltToOre(GeOreRegistry.GOLD_GEORE, 1.0F, Items.GOLD_INGOT, output);
-
-			generateRecipes(GeOreRegistry.IRON_GEORE, output);
-			smeltToOre(GeOreRegistry.IRON_GEORE, 0.7F, Items.IRON_INGOT, output);
-
-			generateRecipes(GeOreRegistry.LAPIS_GEORE, output);
-			smeltToOre(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, output);
-
-			generateRecipes(GeOreRegistry.QUARTZ_GEORE, output);
-			smeltToOre(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, output);
-
-			generateRecipes(GeOreRegistry.REDSTONE_GEORE, output);
-			smeltToOre(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, output);
+			generateRecipe(GeOreRegistry.COPPER_GEORE, 0.7F, Items.COPPER_INGOT, output);
+			generateRecipe(GeOreRegistry.DIAMOND_GEORE, 1.0F, Items.DIAMOND, output);
+			generateRecipe(GeOreRegistry.EMERALD_GEORE, 1.0F, Items.EMERALD, output);
+			generateRecipe(GeOreRegistry.GOLD_GEORE, 1.0F, Items.GOLD_INGOT, output);
+			generateRecipe(GeOreRegistry.IRON_GEORE, 0.7F, Items.IRON_INGOT, output);
+			generateRecipe(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, output);
+			generateRecipe(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, output);
+			generateRecipe(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, output);
 
 			//Mod compat
-			generateRecipes(GeOreRegistry.RUBY_GEORE, output);
-			smeltToOre(GeOreRegistry.RUBY_GEORE, 0.7F, "ruby", getCommonTag("gems/ruby"), output);
+			generateTagRecipe(GeOreRegistry.RUBY_GEORE, 0.7F, getCommonTag("gems/ruby"), output);
+			generateTagRecipe(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, getCommonTag("gems/sapphire"), output);
+			generateTagRecipe(GeOreRegistry.TOPAZ_GEORE, 0.7F, getCommonTag("gems/topaz"), output);
+			generateTagRecipe(GeOreRegistry.ZINC_GEORE, 0.7F, getCommonTag("ingots/zinc"), output);
+			generateTagRecipe(GeOreRegistry.URANINITE_GEORE, 0.7F, getCommonTag("raw_materials/uraninite"), output);
+			generateTagRecipe(GeOreRegistry.BLACK_QUARTZ_GEORE, 0.7F, getCommonTag("gems/black_quartz"), output);
+			generateTagRecipe(GeOreRegistry.MONAZITE_GEORE, 0.7F, getCommonTag("dusts/monazite"), output);
+			generateTagRecipe(GeOreRegistry.ALUMINUM_GEORE, 0.7F, getCommonTag("ingots/aluminum"), output);
+			generateTagRecipe(GeOreRegistry.LEAD_GEORE, 0.7F, getCommonTag("ingots/lead"), output);
+			generateTagRecipe(GeOreRegistry.NICKEL_GEORE, 0.7F, getCommonTag("ingots/nickel"), output);
+			generateTagRecipe(GeOreRegistry.OSMIUM_GEORE, 0.7F, getCommonTag("ingots/osmium"), output);
+			generateTagRecipe(GeOreRegistry.PLATINUM_GEORE, 0.7F, getCommonTag("ingots/platinum"), output);
+			generateTagRecipe(GeOreRegistry.SILVER_GEORE, 0.7F, getCommonTag("ingots/silver"), output);
+			generateTagRecipe(GeOreRegistry.TIN_GEORE, 0.7F, getCommonTag("ingots/tin"), output);
+			generateTagRecipe(GeOreRegistry.TUNGSTEN_GEORE, 0.7F, getCommonTag("ingots/tungsten"), output);
+			generateTagRecipe(GeOreRegistry.URANIUM_GEORE, 0.7F, getCommonTag("ingots/uranium"), output);
+		}
 
-			generateRecipes(GeOreRegistry.SAPPHIRE_GEORE, output);
-			smeltToOre(GeOreRegistry.SAPPHIRE_GEORE, 0.7F, "sapphire", getCommonTag("gems/sapphire"), output);
+		private void generateRecipe(GeOreBlockReg reg, float xp, ItemLike result, RecipeOutput output) {
+			generateRecipes(reg, output);
+			smeltToOre(reg, xp, result, output);
+		}
 
-			generateRecipes(GeOreRegistry.TOPAZ_GEORE, output);
-			smeltToOre(GeOreRegistry.TOPAZ_GEORE, 0.7F, "topaz", getCommonTag("gems/topaz"), output);
-
-			generateRecipes(GeOreRegistry.ZINC_GEORE, output);
-			smeltToOre(GeOreRegistry.ZINC_GEORE, 0.7F, "zinc", getCommonTag("ingots/zinc"), output);
+		private void generateTagRecipe(GeOreBlockReg reg, float xp, TagKey<Item> result, RecipeOutput output) {
+			generateRecipes(reg, output);
+			smeltToOre(reg, xp, reg.getName(), result, output);
 		}
 
 		private TagKey<Item> getCommonTag(String path) {
@@ -247,9 +221,9 @@ public class GeOreDatagen {
 			ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get()).define('#', blockReg.getShard().get()).define('X', Items.COPPER_INGOT).pattern(" # ").pattern(" X ").pattern(" X ").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output);
 		}
 
-		private void smeltToOre(GeOreBlockReg blockReg, float xp, Item item, RecipeOutput output) {
-			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
-			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+		private void smeltToOre(GeOreBlockReg blockReg, float xp, ItemLike item, RecipeOutput output) {
+			SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item.asItem()).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+			SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output, Reference.modLoc(BuiltInRegistries.ITEM.getKey(item.asItem()).getPath() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 		}
 
 		private void smeltToOre(GeOreBlockReg blockReg, float xp, String type, TagKey<Item> oreTag, RecipeOutput output) {
@@ -284,6 +258,19 @@ public class GeOreDatagen {
 			generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
 			generateLang("Topaz", GeOreRegistry.TOPAZ_GEORE);
 			generateLang("Zinc", GeOreRegistry.ZINC_GEORE);
+			generateLang("Uraninite", GeOreRegistry.URANINITE_GEORE);
+			generateLang("Black Quartz", GeOreRegistry.BLACK_QUARTZ_GEORE);
+			generateLang("Monzanite", GeOreRegistry.MONAZITE_GEORE);
+			generateLang("Aluminum", GeOreRegistry.ALUMINUM_GEORE);
+			generateLang("Lead", GeOreRegistry.LEAD_GEORE);
+			generateLang("Nickel", GeOreRegistry.NICKEL_GEORE);
+			generateLang("Osmium", GeOreRegistry.OSMIUM_GEORE);
+			generateLang("Platinum", GeOreRegistry.PLATINUM_GEORE);
+			generateLang("Silver", GeOreRegistry.SILVER_GEORE);
+			generateLang("Tin", GeOreRegistry.TIN_GEORE);
+			generateLang("Tungsten", GeOreRegistry.TUNGSTEN_GEORE);
+			generateLang("Uranium", GeOreRegistry.URANIUM_GEORE);
+
 
 			//Config
 			add("geore.configuration.title", "Grimoire of Gaia Settings");
@@ -354,6 +341,18 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
+			generateGeoreModels(GeOreRegistry.URANINITE_GEORE);
+			generateGeoreModels(GeOreRegistry.BLACK_QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.MONAZITE_GEORE);
+			generateGeoreModels(GeOreRegistry.ALUMINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.LEAD_GEORE);
+			generateGeoreModels(GeOreRegistry.NICKEL_GEORE);
+			generateGeoreModels(GeOreRegistry.OSMIUM_GEORE);
+			generateGeoreModels(GeOreRegistry.PLATINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.SILVER_GEORE);
+			generateGeoreModels(GeOreRegistry.TIN_GEORE);
+			generateGeoreModels(GeOreRegistry.TUNGSTEN_GEORE);
+			generateGeoreModels(GeOreRegistry.URANIUM_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -391,6 +390,18 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
+			generateGeoreModels(GeOreRegistry.URANINITE_GEORE);
+			generateGeoreModels(GeOreRegistry.BLACK_QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.MONAZITE_GEORE);
+			generateGeoreModels(GeOreRegistry.ALUMINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.LEAD_GEORE);
+			generateGeoreModels(GeOreRegistry.NICKEL_GEORE);
+			generateGeoreModels(GeOreRegistry.OSMIUM_GEORE);
+			generateGeoreModels(GeOreRegistry.PLATINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.SILVER_GEORE);
+			generateGeoreModels(GeOreRegistry.TIN_GEORE);
+			generateGeoreModels(GeOreRegistry.TUNGSTEN_GEORE);
+			generateGeoreModels(GeOreRegistry.URANIUM_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -429,6 +440,18 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
 			generateGeoreModels(GeOreRegistry.ZINC_GEORE);
+			generateGeoreModels(GeOreRegistry.URANINITE_GEORE);
+			generateGeoreModels(GeOreRegistry.BLACK_QUARTZ_GEORE);
+			generateGeoreModels(GeOreRegistry.MONAZITE_GEORE);
+			generateGeoreModels(GeOreRegistry.ALUMINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.LEAD_GEORE);
+			generateGeoreModels(GeOreRegistry.NICKEL_GEORE);
+			generateGeoreModels(GeOreRegistry.OSMIUM_GEORE);
+			generateGeoreModels(GeOreRegistry.PLATINUM_GEORE);
+			generateGeoreModels(GeOreRegistry.SILVER_GEORE);
+			generateGeoreModels(GeOreRegistry.TIN_GEORE);
+			generateGeoreModels(GeOreRegistry.TUNGSTEN_GEORE);
+			generateGeoreModels(GeOreRegistry.URANIUM_GEORE);
 		}
 
 		protected void generateGeoreModels(GeOreBlockReg blockReg) {
@@ -487,47 +510,11 @@ public class GeOreDatagen {
 		protected void addTags(HolderLookup.Provider provider) {
 			this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(GeOreRegistry.COAL_GEORE.getBudding().get()).add(GeOreRegistry.COPPER_GEORE.getBudding().get()).add(GeOreRegistry.DIAMOND_GEORE.getBudding().get()).add(GeOreRegistry.EMERALD_GEORE.getBudding().get()).add(GeOreRegistry.GOLD_GEORE.getBudding().get()).add(GeOreRegistry.IRON_GEORE.getBudding().get()).add(GeOreRegistry.LAPIS_GEORE.getBudding().get()).add(GeOreRegistry.QUARTZ_GEORE.getBudding().get()).add(GeOreRegistry.REDSTONE_GEORE.getBudding().get()).add(GeOreRegistry.RUBY_GEORE.getBudding().get()).add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get()).add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
 
-			this.addMineable(GeOreRegistry.COAL_GEORE);
-			this.addMineable(GeOreRegistry.COPPER_GEORE);
-			this.addMineable(GeOreRegistry.DIAMOND_GEORE);
-			this.addMineable(GeOreRegistry.EMERALD_GEORE);
-			this.addMineable(GeOreRegistry.GOLD_GEORE);
-			this.addMineable(GeOreRegistry.IRON_GEORE);
-			this.addMineable(GeOreRegistry.LAPIS_GEORE);
-			this.addMineable(GeOreRegistry.QUARTZ_GEORE);
-			this.addMineable(GeOreRegistry.REDSTONE_GEORE);
-			this.addMineable(GeOreRegistry.RUBY_GEORE);
-			this.addMineable(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addMineable(GeOreRegistry.TOPAZ_GEORE);
-			this.addMineable(GeOreRegistry.ZINC_GEORE);
-
-			this.addCrystalSounds(GeOreRegistry.COAL_GEORE);
-			this.addCrystalSounds(GeOreRegistry.COPPER_GEORE);
-			this.addCrystalSounds(GeOreRegistry.DIAMOND_GEORE);
-			this.addCrystalSounds(GeOreRegistry.EMERALD_GEORE);
-			this.addCrystalSounds(GeOreRegistry.GOLD_GEORE);
-			this.addCrystalSounds(GeOreRegistry.IRON_GEORE);
-			this.addCrystalSounds(GeOreRegistry.LAPIS_GEORE);
-			this.addCrystalSounds(GeOreRegistry.QUARTZ_GEORE);
-			this.addCrystalSounds(GeOreRegistry.REDSTONE_GEORE);
-			this.addCrystalSounds(GeOreRegistry.RUBY_GEORE);
-			this.addCrystalSounds(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addCrystalSounds(GeOreRegistry.TOPAZ_GEORE);
-			this.addCrystalSounds(GeOreRegistry.ZINC_GEORE);
-
-			this.addGeore(GeOreRegistry.COAL_GEORE);
-			this.addGeore(GeOreRegistry.COPPER_GEORE);
-			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
-			this.addGeore(GeOreRegistry.EMERALD_GEORE);
-			this.addGeore(GeOreRegistry.GOLD_GEORE);
-			this.addGeore(GeOreRegistry.IRON_GEORE);
-			this.addGeore(GeOreRegistry.LAPIS_GEORE);
-			this.addGeore(GeOreRegistry.QUARTZ_GEORE);
-			this.addGeore(GeOreRegistry.REDSTONE_GEORE);
-			this.addGeore(GeOreRegistry.RUBY_GEORE);
-			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
-			this.addGeore(GeOreRegistry.ZINC_GEORE);
+			for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
+				this.addMineable(reg);
+				this.addCrystalSounds(reg);
+				this.addGeore(reg);
+			}
 		}
 
 		private void addMineable(GeOreBlockReg blockReg) {
@@ -569,34 +556,12 @@ public class GeOreDatagen {
 		@SuppressWarnings("unchecked")
 		@Override
 		protected void addTags(HolderLookup.Provider provider) {
-			this.addGeore(GeOreRegistry.COAL_GEORE);
 			this.tag(ItemTags.COALS).add(GeOreRegistry.COAL_GEORE.getShard().get());
-			this.addGeore(GeOreRegistry.COPPER_GEORE);
-			this.addGeore(GeOreRegistry.DIAMOND_GEORE);
-			this.addGeore(GeOreRegistry.EMERALD_GEORE);
-			this.addGeore(GeOreRegistry.GOLD_GEORE);
-			this.addGeore(GeOreRegistry.IRON_GEORE);
-			this.addGeore(GeOreRegistry.LAPIS_GEORE);
-			this.addGeore(GeOreRegistry.QUARTZ_GEORE);
-			this.addGeore(GeOreRegistry.REDSTONE_GEORE);
-			this.addGeore(GeOreRegistry.RUBY_GEORE);
-			this.addGeore(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addGeore(GeOreRegistry.TOPAZ_GEORE);
-			this.addGeore(GeOreRegistry.ZINC_GEORE);
 
-			this.addStorage(GeOreRegistry.COAL_GEORE);
-			this.addStorage(GeOreRegistry.COPPER_GEORE);
-			this.addStorage(GeOreRegistry.DIAMOND_GEORE);
-			this.addStorage(GeOreRegistry.EMERALD_GEORE);
-			this.addStorage(GeOreRegistry.GOLD_GEORE);
-			this.addStorage(GeOreRegistry.IRON_GEORE);
-			this.addStorage(GeOreRegistry.LAPIS_GEORE);
-			this.addStorage(GeOreRegistry.QUARTZ_GEORE);
-			this.addStorage(GeOreRegistry.REDSTONE_GEORE);
-			this.addStorage(GeOreRegistry.RUBY_GEORE);
-			this.addStorage(GeOreRegistry.SAPPHIRE_GEORE);
-			this.addStorage(GeOreRegistry.TOPAZ_GEORE);
-			this.addStorage(GeOreRegistry.ZINC_GEORE);
+			for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
+				this.addGeore(reg);
+				this.addStorage(reg);
+			}
 
 			this.tag(Tags.Items.BUDDING_BLOCKS).addTag(GEORE_BUDDING);
 			this.tag(Tags.Items.BUDS).addTags(GEORE_SMALL_BUDS, GEORE_MEDIUM_BUDS, GEORE_LARGE_BUDS);

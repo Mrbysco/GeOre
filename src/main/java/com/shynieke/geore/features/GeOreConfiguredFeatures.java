@@ -20,5 +20,17 @@ public class GeOreConfiguredFeatures {
 		GeOreFeatures.SAPPHIRE_GEORE.setupConfigured(context, GeOreRegistry.SAPPHIRE_GEORE);
 		GeOreFeatures.TOPAZ_GEORE.setupConfigured(context, GeOreRegistry.TOPAZ_GEORE);
 		GeOreFeatures.ZINC_GEORE.setupConfigured(context, GeOreRegistry.ZINC_GEORE);
+		GeOreFeatures.URANINITE_GEORE.setupConfigured(context, GeOreRegistry.URANINITE_GEORE);
+		GeOreFeatures.BLACK_QUARTZ_GEORE.setupConfigured(context, GeOreRegistry.BLACK_QUARTZ_GEORE);
+		GeOreFeatures.MONAZITE_GEORE.setupConfigured(context, GeOreRegistry.MONAZITE_GEORE);
+		GeOreFeatures.ALUMINUM_GEORE.setupConfigured(context, GeOreRegistry.ALUMINUM_GEORE);
+		GeOreFeatures.LEAD_GEORE.setupConfigured(context, GeOreRegistry.LEAD_GEORE);
+		GeOreFeatures.NICKEL_GEORE.setupConfigured(context, GeOreRegistry.NICKEL_GEORE);
+		GeOreFeatures.OSMIUM_GEORE.setupConfigured(context, GeOreRegistry.OSMIUM_GEORE);
+		GeOreFeatures.PLATINUM_GEORE.setupConfigured(context, GeOreRegistry.PLATINUM_GEORE);
+		GeOreFeatures.SILVER_GEORE.setupConfigured(context, GeOreRegistry.SILVER_GEORE);
+		GeOreFeatures.TIN_GEORE.setupConfigured(context, GeOreRegistry.TIN_GEORE);
+		GeOreFeatures.TUNGSTEN_GEORE.setupConfigured(context, GeOreRegistry.TUNGSTEN_GEORE);
+		GeOreFeatures.URANIUM_GEORE.setupConfigured(context, GeOreRegistry.URANIUM_GEORE);
 	}
 }

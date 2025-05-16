@@ -49,6 +49,18 @@ public class GeOreConfig {
 		public final ModConfigSpec.BooleanValue generateSapphireGeore;
 		public final ModConfigSpec.BooleanValue generateTopazGeore;
 		public final ModConfigSpec.BooleanValue generateZincGeore;
+		public final ModConfigSpec.BooleanValue generateUraniniteGeore;
+		public final ModConfigSpec.BooleanValue generateBlackQuartzGeore;
+		public final ModConfigSpec.BooleanValue generateMonaziteGeore;
+		public final ModConfigSpec.BooleanValue generateAluminumGeore;
+		public final ModConfigSpec.BooleanValue generateLeadGeore;
+		public final ModConfigSpec.BooleanValue generateNickelGeore;
+		public final ModConfigSpec.BooleanValue generateOsmiumGeore;
+		public final ModConfigSpec.BooleanValue generatePlatinumGeore;
+		public final ModConfigSpec.BooleanValue generateSilverGeore;
+		public final ModConfigSpec.BooleanValue generateTinGeore;
+		public final ModConfigSpec.BooleanValue generateTungstenGeore;
+		public final ModConfigSpec.BooleanValue generateUraniumGeore;
 
 		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General settings")
@@ -117,6 +129,54 @@ public class GeOreConfig {
 			generateZincGeore = builder
 					.comment("Generate Zinc GeOre [Default: false]")
 					.define("generateZincGeore", false);
+
+			generateUraniniteGeore = builder
+					.comment("Generate Uraninite GeOre [Default: false]")
+					.define("generateUraniniteGeore", false);
+
+			generateBlackQuartzGeore = builder
+					.comment("Generate Black Quartz GeOre [Default: false]")
+					.define("generateBlackQuartzGeore", false);
+
+			generateMonaziteGeore = builder
+					.comment("Generate Monazite GeOre [Default: false]")
+					.define("generateMonaziteGeore", false);
+
+			generateAluminumGeore = builder
+					.comment("Generate Aluminum GeOre [Default: false]")
+					.define("generateAluminumGeore", false);
+
+			generateLeadGeore = builder
+					.comment("Generate Lead GeOre [Default: false]")
+					.define("generateLeadGeore", false);
+
+			generateNickelGeore = builder
+					.comment("Generate Nickel GeOre [Default: false]")
+					.define("generateNickelGeore", false);
+
+			generateOsmiumGeore = builder
+					.comment("Generate Osmium GeOre [Default: false]")
+					.define("generateOsmiumGeore", false);
+
+			generatePlatinumGeore = builder
+					.comment("Generate Platinum GeOre [Default: false]")
+					.define("generatePlatinumGeore", false);
+
+			generateSilverGeore = builder
+					.comment("Generate Silver GeOre [Default: false]")
+					.define("generateSilverGeore", false);
+
+			generateTinGeore = builder
+					.comment("Generate Tin GeOre [Default: false]")
+					.define("generateTinGeore", false);
+
+			generateTungstenGeore = builder
+					.comment("Generate Tungsten GeOre [Default: false]")
+					.define("generateTungstenGeore", false);
+
+			generateUraniumGeore = builder
+					.comment("Generate Uranium GeOre [Default: false]")
+					.define("generateUraniumGeore", false);
 
 			builder.pop();
 		}
