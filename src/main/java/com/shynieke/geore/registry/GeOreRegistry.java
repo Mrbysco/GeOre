@@ -21,7 +21,7 @@ public class GeOreRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
-	public static final List<GeOreBlockReg> GEORES = new ArrayList<>();
+	private static final List<GeOreBlockReg> GEORES = new ArrayList<>();
 
 	public static final GeOreBlockReg COAL_GEORE = createGeOre("coal", MapColor.COLOR_BLACK, () -> new CoalShardItem(new Item.Properties()), 0x2e2e2e);
 	public static final GeOreBlockReg COPPER_GEORE = createGeOre("copper", MapColor.COLOR_ORANGE, 0xc26b4c);
