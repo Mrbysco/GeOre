@@ -1,6 +1,8 @@
 package com.shynieke.geore.block;
 
+import com.shynieke.geore.GeOre;
 import com.shynieke.geore.config.GeOreConfig;
+import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -33,6 +35,9 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+		if (this == GeOreRegistry.ANCIENT_DEBRIS_GEORE.getBudding().get()) {
+			GeOre.LOGGER.info("Random tick for {} at {}", this, pos);
+		}
 		if (random.nextInt(5) == 0) {
 			Direction direction = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
 			BlockPos blockpos = pos.relative(direction);

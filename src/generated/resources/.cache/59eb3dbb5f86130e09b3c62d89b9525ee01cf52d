@@ -1,9 +1,12 @@
-// 1.21.1	2025-05-17T01:20:21.835594	Loot Tables
+// 1.21.1	2025-05-17T20:05:58.4264773	Loot Tables
 816c9cb34d9b43d16bcccee143ab649df1be2ce5 data/geore/loot_table/blocks/aluminum_block.json
 5446c941d139374e201a78215b1265f215ead328 data/geore/loot_table/blocks/aluminum_cluster.json
+2c37b6726aa361170d3fdab65cfd2260687d933d data/geore/loot_table/blocks/ancient_debris_block.json
+ac12b9e0348bdd05600cf8692cc5f829fd2e609e data/geore/loot_table/blocks/ancient_debris_cluster.json
 566cad643b1788acf0f3e1ebd5b3ea7eadf84688 data/geore/loot_table/blocks/black_quartz_block.json
 99267656436d12e3889012e31fbfca9bde99f7ee data/geore/loot_table/blocks/black_quartz_cluster.json
 abd6e08ffd80fce156f45db4e400dcb2378930e3 data/geore/loot_table/blocks/budding_aluminum.json
+1221c42b8f00a6830c0beae397fe5433254b1440 data/geore/loot_table/blocks/budding_ancient_debris.json
 8ed4c8030df953ae3a4d6b5cc798be8c2e0c7edd data/geore/loot_table/blocks/budding_black_quartz.json
 5004b7269fe0e41f1f32f376580a4da65ee996c8 data/geore/loot_table/blocks/budding_coal.json
 cb744aab0e7c2c50c6117677189114fbbae4f53f data/geore/loot_table/blocks/budding_copper.json
@@ -43,6 +46,7 @@ c64b5c03652b7431093b2d2128e888aa5d3f1601 data/geore/loot_table/blocks/iron_block
 f15c7ca518b8bbbb03541365cc0eb8cfa174bf83 data/geore/loot_table/blocks/lapis_block.json
 c963f29dc33fcd4000f69068efb6a3d783f281a8 data/geore/loot_table/blocks/lapis_cluster.json
 51576275c279a9da975eba80140bf0ed0a44e2ea data/geore/loot_table/blocks/large_aluminum_bud.json
+ee74d6068676ecb706a47e12df062e18c74169ec data/geore/loot_table/blocks/large_ancient_debris_bud.json
 6b8e0c4065479c64f8efc4b84551d9d3acc38cd3 data/geore/loot_table/blocks/large_black_quartz_bud.json
 e148ea4676adf5b729459680c9f09ae901767d1a data/geore/loot_table/blocks/large_coal_bud.json
 3f3d1e2f531be6c83313215154bf5e5e6c54c5b9 data/geore/loot_table/blocks/large_copper_bud.json
@@ -70,6 +74,7 @@ d9dd2b846fcc1aa4a22bf1bdd69466b02c3b2970 data/geore/loot_table/blocks/large_zinc
 41b9c27b6da995b8300097a3337517000ea27dcd data/geore/loot_table/blocks/lead_block.json
 5ac9e8106d10688424452ca448420a3b519d2aa3 data/geore/loot_table/blocks/lead_cluster.json
 72cefc6e71f3abb651bc931b892090d660b8fe83 data/geore/loot_table/blocks/medium_aluminum_bud.json
+6877583e9ce48432a230fcb43a6bc6863dc9730a data/geore/loot_table/blocks/medium_ancient_debris_bud.json
 cf8b38edaf66931b9338c0d586d1fa9d926e2dca data/geore/loot_table/blocks/medium_black_quartz_bud.json
 709bbd78531f088fe881df22ed2e4a1fc06c7818 data/geore/loot_table/blocks/medium_coal_bud.json
 10b16c435fcaddd0b02e9ab703b8a60599e8062f data/geore/loot_table/blocks/medium_copper_bud.json
@@ -113,6 +118,7 @@ cf652a6b4959bb7d53034124d332de1db4f98928 data/geore/loot_table/blocks/redstone_c
 aa0e8b92423875f9a136658c4248f61cda2be767 data/geore/loot_table/blocks/silver_block.json
 6a42e9f2eca121c31024446e4017163ab7060675 data/geore/loot_table/blocks/silver_cluster.json
 9945f54a7f85ca4c0ddd442d4e60307b7d3d36c7 data/geore/loot_table/blocks/small_aluminum_bud.json
+52012497b3989ba7b7cebd1decc87197f44fa691 data/geore/loot_table/blocks/small_ancient_debris_bud.json
 82771215312dfe1ddc2af21ba263368f86d4866c data/geore/loot_table/blocks/small_black_quartz_bud.json
 d8fd60d9f2a83fe844b18dea4718cdef7937d9fb data/geore/loot_table/blocks/small_coal_bud.json
 17e1031322dcf72a44c2ca0178b429400d80889c data/geore/loot_table/blocks/small_copper_bud.json

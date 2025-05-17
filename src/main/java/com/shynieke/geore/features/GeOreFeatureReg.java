@@ -1,6 +1,7 @@
 package com.shynieke.geore.features;
 
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.datagen.GeOreBiomeModifiers;
 import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.core.Holder;
@@ -54,8 +55,8 @@ public class GeOreFeatureReg {
 		BLOCK = blockReg.getBlock().get();
 		BUDDING = blockReg.getBudding().get();
 
-		GEODE_CONFIGURED_KEY = createConfiguredKey(name + "_geode");
-		GEODE_PLACEMENT_KEY = createPlacedKey(name + "_geode");
+		GEODE_CONFIGURED_KEY = GeOreConfiguredFeatures.createConfiguredKey(name + "_geode");
+		GEODE_PLACEMENT_KEY = GeOrePlacedFeatures.createPlacedKey(name + "_geode");
 	}
 
 	public void setupConfigured(BootstrapContext<ConfiguredFeature<?, ?>> context, GeOreBlockReg blockReg) {
@@ -89,18 +90,6 @@ public class GeOreFeatureReg {
 				HolderSet.direct(placedHolderGetter.getOrThrow(GEODE_PLACEMENT_KEY)),
 				Decoration.LOCAL_MODIFICATIONS, configName);
 
-		context.register(createModifierKey(configName + "_geode"), addGeore);
-	}
-
-	private ResourceKey<BiomeModifier> createModifierKey(String name) {
-		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Reference.modLoc(name));
-	}
-
-	public static ResourceKey<ConfiguredFeature<?, ?>> createConfiguredKey(String path) {
-		return ResourceKey.create(Registries.CONFIGURED_FEATURE, Reference.modLoc(path));
-	}
-
-	public static ResourceKey<PlacedFeature> createPlacedKey(String path) {
-		return ResourceKey.create(Registries.PLACED_FEATURE, Reference.modLoc(path));
+		context.register(GeOreBiomeModifiers.createModifierKey(configName + "_geode"), addGeore);
 	}
 }

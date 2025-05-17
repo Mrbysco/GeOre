@@ -1,10 +1,16 @@
-// 1.21.1	2025-05-17T01:20:21.8405983	Item Models: geore
+// 1.21.1	2025-05-17T20:05:58.4294807	Item Models: geore
 6b29f56eb1342afcb9d2b3964c18d77dda812ea0 assets/geore/models/item/aluminum_block.json
 6b06f13168753819b5f8a7c313888be61c88290d assets/geore/models/item/aluminum_cluster.json
 d0265750a8bbd1151051235ccfc0018aadf720f4 assets/geore/models/item/aluminum_shard.json
 23e29d2ecd74926ec34f79404d79e65ce7a11e21 assets/geore/models/item/aluminum_spyglass.json
 513e6c276e363dd9c09a5817de0b75671a26fabd assets/geore/models/item/aluminum_spyglass_gui.json
 c9a29f36bc1c97ee2cb38e713b664776bff6917b assets/geore/models/item/aluminum_spyglass_in_hand.json
+a090d9da4181f54ec029bfb858b78c5c46101741 assets/geore/models/item/ancient_debris_block.json
+827f0dbaa4618336865b2fee8c0a8b2122f795a1 assets/geore/models/item/ancient_debris_cluster.json
+7decbf11e3c811680524bc498448b3689cab9d4a assets/geore/models/item/ancient_debris_shard.json
+b52c63ec9c39c052715197d49be6be581775f57f assets/geore/models/item/ancient_debris_spyglass.json
+ff3c65f6d2bcae7d13ef83504dce637928bf7baf assets/geore/models/item/ancient_debris_spyglass_gui.json
+21a958ef3e1f25f1a3123d42b151f72ff19caf29 assets/geore/models/item/ancient_debris_spyglass_in_hand.json
 d05bffe82d2df6737e1eec9ba80e7ac80f826716 assets/geore/models/item/black_quartz_block.json
 4c70b667f24ff0b039f9178c68b0135d4c16285b assets/geore/models/item/black_quartz_cluster.json
 4c3b17f90b3b290589a65d15e56fae2e5b80cf36 assets/geore/models/item/black_quartz_shard.json
@@ -12,6 +18,7 @@ adfece6bdb2786b53daaccf8205d5f6f4a58d6ac assets/geore/models/item/black_quartz_s
 5d56384d9083dd6e6cebfd43d2ba55a912aa1dc7 assets/geore/models/item/black_quartz_spyglass_gui.json
 0c605bbde7eb28cc9ae1e60a77516f5ce0ca4d5e assets/geore/models/item/black_quartz_spyglass_in_hand.json
 a8f90b9e5af2d0ea1f727bf3715e3048c597059a assets/geore/models/item/budding_aluminum.json
+bdc5e4200a823fb6a20379b4939c4edc66006db3 assets/geore/models/item/budding_ancient_debris.json
 b55378d816c5a399fb4625da0208ace7d8929c8f assets/geore/models/item/budding_black_quartz.json
 3ba5cd88f8b4f889c8c919a05e841a1b876328f5 assets/geore/models/item/budding_coal.json
 b0a92c4a637c6c48c9728460fd52a76d1948ffc7 assets/geore/models/item/budding_copper.json
@@ -79,6 +86,7 @@ e886bd27c47f1694eeacf9342c5cbb7e7f452c7f assets/geore/models/item/lapis_spyglass
 a3ee430fcc62804fe2cea66fb4ad02da77721312 assets/geore/models/item/lapis_spyglass_gui.json
 c7ef90a263bdb07cfac6b5e4345bce4919135e0c assets/geore/models/item/lapis_spyglass_in_hand.json
 fd422d3df80e584240d83fad83c54a0a625c637c assets/geore/models/item/large_aluminum_bud.json
+5ed1116acf6a7d0eb56b08932f64b4dd2784be17 assets/geore/models/item/large_ancient_debris_bud.json
 d733861f3c5b9f5cfc2c30ff7058e344de602056 assets/geore/models/item/large_black_quartz_bud.json
 dd325627009ca9aba33ead508b1b8bd06d0b3a79 assets/geore/models/item/large_coal_bud.json
 5e48c71460743f48738714cc4dc3fb0fec706533 assets/geore/models/item/large_copper_bud.json
@@ -110,6 +118,7 @@ a4175edea72bf50641e9409b95f41f14729179c5 assets/geore/models/item/lead_cluster.j
 ff005755a5cd63e887ec83c3f23985f2abb01405 assets/geore/models/item/lead_spyglass_gui.json
 51f4c3799ec3031a6685dad6a216a6784411d60f assets/geore/models/item/lead_spyglass_in_hand.json
 6c5558664664f2b52677313cd2e87995830c0216 assets/geore/models/item/medium_aluminum_bud.json
+e1e8192053bcc07fcd5e0ee8daa311642d761500 assets/geore/models/item/medium_ancient_debris_bud.json
 442479cbf24ae9dadcf6b1892e014cadfbc4d7f4 assets/geore/models/item/medium_black_quartz_bud.json
 266a934fd0548c72cba19adacc7a267887bae0cd assets/geore/models/item/medium_coal_bud.json
 f05243e56c41b9116a3adac7dcdf35d7ff35b5c2 assets/geore/models/item/medium_copper_bud.json
@@ -189,6 +198,7 @@ d8087ad0054126d4322ec4d93e93b13b8e2c8f27 assets/geore/models/item/silver_shard.j
 41e810a859462e65fe8dc578bfa434cdd2aa24f5 assets/geore/models/item/silver_spyglass_gui.json
 b990edb93e5508e8f5047739eaabc6d83d04913a assets/geore/models/item/silver_spyglass_in_hand.json
 01c6564cb95d63b7dcfc295bd052d8377a5dc497 assets/geore/models/item/small_aluminum_bud.json
+c4d4d5fef1f915f507090981c7b25de076596efa assets/geore/models/item/small_ancient_debris_bud.json
 ea5156505607e5eb0a5076d371b0ee4179a8dfe9 assets/geore/models/item/small_black_quartz_bud.json
 c0157c8c5a7b1fa3d5b86f3e2c1a556cb89ed20e assets/geore/models/item/small_coal_bud.json
 419f84648167ab14322c24d1b32caf91db3e4d93 assets/geore/models/item/small_copper_bud.json

@@ -137,13 +137,32 @@ public class GeOreDatagen {
 			@Override
 			protected void generate() {
 				for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
-					addGeOreTables(reg);
+					if (reg.getName().equals("ancient_debris")) {
+						addAncientDebrisGeOreTables();
+					} else {
+						addGeOreTables(reg);
+					}
 				}
 			}
 
 			protected void addGeOreTables(GeOreBlockReg blockReg) {
 				this.dropSelf(blockReg.getBlock().get());
 				this.add(blockReg.getCluster().get(), (block) -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F))).apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE))).when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES))).otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
+				this.dropWhenSilkTouch(blockReg.getSmallBud().get());
+				this.dropWhenSilkTouch(blockReg.getMediumBud().get());
+				this.dropWhenSilkTouch(blockReg.getLargeBud().get());
+				this.add(blockReg.getBudding().get(), noDrop());
+			}
+
+			private void addAncientDebrisGeOreTables() {
+				GeOreBlockReg blockReg = GeOreRegistry.ANCIENT_DEBRIS_GEORE;
+				this.dropSelf(blockReg.getBlock().get());
+				this.add(blockReg.getCluster().get(), (block) ->
+						createSilkTouchDispatchTable(block,
+								LootItem.lootTableItem(blockReg.getShard().get())
+										.apply(SetItemCountFunction.setCount(ConstantValue.exactly(14.0F)))
+						));
+
 				this.dropWhenSilkTouch(blockReg.getSmallBud().get());
 				this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 				this.dropWhenSilkTouch(blockReg.getLargeBud().get());
@@ -181,6 +200,15 @@ public class GeOreDatagen {
 			generateRecipe(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, output);
 			generateRecipe(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, output);
 			generateRecipe(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, output);
+
+			generateRecipes(GeOreRegistry.ANCIENT_DEBRIS_GEORE, output);
+			ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ANCIENT_DEBRIS)
+					.pattern("###")
+					.pattern("###")
+					.pattern("###")
+					.define('#', GeOreRegistry.ANCIENT_DEBRIS_GEORE.getShard().get())
+					.unlockedBy("has_ancient_debris_geore_shard", has(GeOreRegistry.ANCIENT_DEBRIS_GEORE.getShard().get()))
+					.save(output, "geore:ancient_debris_from_ancient_debris_shard");
 
 			//Mod compat
 			generateTagRecipe(GeOreRegistry.RUBY_GEORE, 0.7F, getCommonTag("gems/ruby"), output);
@@ -232,7 +260,6 @@ public class GeOreDatagen {
 			Ingredient outputIngredient = Ingredient.of(oreTag);
 			TagSmeltingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 200).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(tagOutput, Reference.modLoc(type + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 			TagSmeltingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 100).group("geore").unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(tagOutput, Reference.modLoc(type + "_from_blasting_" + blockReg.getShard().getId().getPath()));
-
 		}
 	}
 
@@ -254,6 +281,7 @@ public class GeOreDatagen {
 			generateLang("Lapis", GeOreRegistry.LAPIS_GEORE);
 			generateLang("Quartz", GeOreRegistry.QUARTZ_GEORE);
 			generateLang("Redstone", GeOreRegistry.REDSTONE_GEORE);
+			generateLang("Ancient Debris", GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 			generateLang("Ruby", GeOreRegistry.RUBY_GEORE);
 			generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
 			generateLang("Topaz", GeOreRegistry.TOPAZ_GEORE);
@@ -288,6 +316,7 @@ public class GeOreDatagen {
 			addConfig("generateQuartzGeore", "Generate Quartz GeOre", "Generate Quartz GeOre [Default: true]");
 			addConfig("generateQuartzInNetherGeore", "Generate Quartz In Nether GeOre", "Generate Quartz In Nether GeOre [Default: true]");
 			addConfig("generateRedstoneGeore", "Generate Redstone GeOre", "Generate Redstone GeOre [Default: true]");
+			addConfig("generateBuddingAncientDebris", "Generate Budding Ancient Debris", "Generate Budding Ancient Debris [Default: true]");
 			addConfig("disablePistonPushForBuddingGeOre", "Disable Piston Push For Budding GeOre", "Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]");
 
 			addConfig("ModdedGeneration", "Modded Generation", "Modded Generation Settings");
@@ -349,6 +378,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
 			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
 			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
@@ -398,6 +428,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
 			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
 			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
@@ -448,6 +479,7 @@ public class GeOreDatagen {
 			generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
 			generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
 			generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
+			generateGeoreModels(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 			generateGeoreModels(GeOreRegistry.RUBY_GEORE);
 			generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
 			generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);

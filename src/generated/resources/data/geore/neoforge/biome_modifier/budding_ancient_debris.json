@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_nether",
+  "enabledConfig": "ancient_debris",
+  "features": "geore:budding_ancient_debris",
+  "step": "local_modifications"
+}

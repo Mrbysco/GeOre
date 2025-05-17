@@ -1,9 +1,10 @@
-// 1.21.1	2025-05-17T01:20:21.8285875	Tags for minecraft:item mod id geore
+// 1.21.1	2025-05-17T20:05:58.4204718	Tags for minecraft:item mod id geore
 236c14ee69fd5783a167648a11cf45b5703d103c data/c/tags/item/budding_blocks.json
 4b87ab032e803a2bd25f544cfb8f16295c7a43f8 data/c/tags/item/buds.json
 a1e8d7e6adfd4c477ce56b02761a626c7c1f4659 data/c/tags/item/clusters.json
-d078fa3cdac6a15c38b30f4cbcdb44894d4ef128 data/geore/tags/item/geore_blocks.json
+1154edb1db7aa398cb5d6c53dec90868b5612d46 data/geore/tags/item/geore_blocks.json
 8da2b705e355098a33712a91f6793bee00e1793c data/geore/tags/item/geore_blocks/aluminum.json
+a19478e83bee228d7fb0148bc3a295d7a834a8fe data/geore/tags/item/geore_blocks/ancient_debris.json
 66b5816b8e1a58075e5ea07af392939b1e2df4b2 data/geore/tags/item/geore_blocks/black_quartz.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/item/geore_blocks/coal.json
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/item/geore_blocks/copper.json
@@ -28,9 +29,10 @@ cc8666d649f33657d6ca6f9b06975549dc2e41bd data/geore/tags/item/geore_blocks/silve
 f0ee3e10d608d0b8a2a07aa1bf5e1bd9a5be8312 data/geore/tags/item/geore_blocks/uraninite.json
 2ad476422f8b56ee962b75fbe9a55f5851af2a8f data/geore/tags/item/geore_blocks/uranium.json
 bc1a41f5c1b6f099b3c5ff1f6fc0de18d23bd093 data/geore/tags/item/geore_blocks/zinc.json
-0f2645c0e1b5eeded3ab10adf0652dd0c79dc324 data/geore/tags/item/geore_budding.json
-b5f8c7886b436f2b9e792fc6c7aad331d1ee29c8 data/geore/tags/item/geore_clusters.json
+2a65238a769d9e985d5f5b6b90887e4fd104e11f data/geore/tags/item/geore_budding.json
+9c6c0f8ca10d2002b84bb75f2587c81b93b8ea73 data/geore/tags/item/geore_clusters.json
 2d45d66ea01e6dd92a4f50c0679d4dd934ed39ab data/geore/tags/item/geore_clusters/aluminum.json
+c07be2a11364f1c37a479808c3159f6e8f2c39e2 data/geore/tags/item/geore_clusters/ancient_debris.json
 9ae67afa1166fdcd98bd7920e3da05c1d1186f39 data/geore/tags/item/geore_clusters/black_quartz.json
 db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/geore/tags/item/geore_clusters/coal.json
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/geore/tags/item/geore_clusters/copper.json
@@ -55,8 +57,9 @@ b38ce8cfe9f193d4cfeb4ff1e4c7e4f5f022c752 data/geore/tags/item/geore_clusters/tin
 18658d17aedff8555cc8d6671bf0a9863faf1433 data/geore/tags/item/geore_clusters/uraninite.json
 379f8e9b94a01dfca5e4a8a78dc4530ee3f3c92e data/geore/tags/item/geore_clusters/uranium.json
 04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/geore/tags/item/geore_clusters/zinc.json
-50ba88e6377603c6bde83f32f689fb4b7fb88714 data/geore/tags/item/geore_large_buds.json
+0d571712a5fdcd635a9e916734d20fa2234f2214 data/geore/tags/item/geore_large_buds.json
 2d45d66ea01e6dd92a4f50c0679d4dd934ed39ab data/geore/tags/item/geore_large_buds/aluminum.json
+c07be2a11364f1c37a479808c3159f6e8f2c39e2 data/geore/tags/item/geore_large_buds/ancient_debris.json
 9ae67afa1166fdcd98bd7920e3da05c1d1186f39 data/geore/tags/item/geore_large_buds/black_quartz.json
 db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/geore/tags/item/geore_large_buds/coal.json
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/geore/tags/item/geore_large_buds/copper.json
@@ -81,8 +84,9 @@ b38ce8cfe9f193d4cfeb4ff1e4c7e4f5f022c752 data/geore/tags/item/geore_large_buds/t
 18658d17aedff8555cc8d6671bf0a9863faf1433 data/geore/tags/item/geore_large_buds/uraninite.json
 379f8e9b94a01dfca5e4a8a78dc4530ee3f3c92e data/geore/tags/item/geore_large_buds/uranium.json
 04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/geore/tags/item/geore_large_buds/zinc.json
-a1d71ece90196cf496eb517297c3412163894477 data/geore/tags/item/geore_medium_buds.json
+aab3b534e532f9a9a11031f046d223a9e4de7443 data/geore/tags/item/geore_medium_buds.json
 75efd0099514997baed2e889f9630cd8648d25da data/geore/tags/item/geore_medium_buds/aluminum.json
+d5ae81289891bef6a208304cc896537ac6b01d22 data/geore/tags/item/geore_medium_buds/ancient_debris.json
 8cfd69807246e9d9193286b2bf7076c0cbfce673 data/geore/tags/item/geore_medium_buds/black_quartz.json
 9401076a4894fd7884100de2c5811f31d1eaaac5 data/geore/tags/item/geore_medium_buds/coal.json
 38750bd8d8b6de2a36c288377bc293bdd325dc4c data/geore/tags/item/geore_medium_buds/copper.json
@@ -107,8 +111,9 @@ d1e879a9fe221ca1f4d05907fef8e748b1e663d3 data/geore/tags/item/geore_medium_buds/
 faac28c483e95e6bef7cdc038c9b6d7d463765c7 data/geore/tags/item/geore_medium_buds/uraninite.json
 1b903d49a099fc917bfcfbb208dfa6baeeeaf3c8 data/geore/tags/item/geore_medium_buds/uranium.json
 0fb5c9e61f9e58d5f6d53e62e3b09a8b791cfedd data/geore/tags/item/geore_medium_buds/zinc.json
-3e1840e0e6a089267cd06bf25afb8215757e78cb data/geore/tags/item/geore_shards.json
+4618cafc6e2360c549b5af8101881e41b40f6765 data/geore/tags/item/geore_shards.json
 9c414e345451299d9f514e0680fd194d8d27916d data/geore/tags/item/geore_shards/aluminum.json
+456f9c834104d503fe78b0f32370a96a481e9889 data/geore/tags/item/geore_shards/ancient_debris.json
 c302df1d8b81bbb15e2e89993b92d860c846a7e0 data/geore/tags/item/geore_shards/black_quartz.json
 c7e8ba482ea22f9fb671d4b5b607e0a7c214a6be data/geore/tags/item/geore_shards/coal.json
 7961609a812ebd9fef1340da3a7adeadf9366957 data/geore/tags/item/geore_shards/copper.json
@@ -133,8 +138,9 @@ de8ea93348d9dfe142067b50c50055b759408697 data/geore/tags/item/geore_shards/tin.j
 c4747297d58148374496e9fbada3ecff676fb905 data/geore/tags/item/geore_shards/uraninite.json
 3fc466a402f65faf0539ebd162217d6b9d099c2e data/geore/tags/item/geore_shards/uranium.json
 6b7537a0e8f155c2c630f05b1a165024277c7049 data/geore/tags/item/geore_shards/zinc.json
-8905edbf42d7c31ff0351cd1a0284261ef1b8118 data/geore/tags/item/geore_small_buds.json
+6d09020c4df587cb174847703d1792da6937beb1 data/geore/tags/item/geore_small_buds.json
 2d45d66ea01e6dd92a4f50c0679d4dd934ed39ab data/geore/tags/item/geore_small_buds/aluminum.json
+c07be2a11364f1c37a479808c3159f6e8f2c39e2 data/geore/tags/item/geore_small_buds/ancient_debris.json
 9ae67afa1166fdcd98bd7920e3da05c1d1186f39 data/geore/tags/item/geore_small_buds/black_quartz.json
 db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/geore/tags/item/geore_small_buds/coal.json
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/geore/tags/item/geore_small_buds/copper.json
@@ -160,6 +166,7 @@ b38ce8cfe9f193d4cfeb4ff1e4c7e4f5f022c752 data/geore/tags/item/geore_small_buds/t
 379f8e9b94a01dfca5e4a8a78dc4530ee3f3c92e data/geore/tags/item/geore_small_buds/uranium.json
 04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/geore/tags/item/geore_small_buds/zinc.json
 8da2b705e355098a33712a91f6793bee00e1793c data/geore/tags/item/storage_blocks/geore_aluminum.json
+a19478e83bee228d7fb0148bc3a295d7a834a8fe data/geore/tags/item/storage_blocks/geore_ancient_debris.json
 66b5816b8e1a58075e5ea07af392939b1e2df4b2 data/geore/tags/item/storage_blocks/geore_black_quartz.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/item/storage_blocks/geore_coal.json
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/item/storage_blocks/geore_copper.json

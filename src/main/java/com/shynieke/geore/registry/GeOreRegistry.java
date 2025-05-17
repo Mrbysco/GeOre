@@ -32,6 +32,7 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg LAPIS_GEORE = createGeOre("lapis", MapColor.LAPIS, 0x2a53c8);
 	public static final GeOreBlockReg QUARTZ_GEORE = createGeOre("quartz", MapColor.QUARTZ, 0xb6a48e);
 	public static final GeOreBlockReg REDSTONE_GEORE = createGeOre("redstone", MapColor.FIRE, 0x960606);
+	public static final GeOreBlockReg ANCIENT_DEBRIS_GEORE = createGeOre("ancient_debris", MapColor.COLOR_BROWN, 0x5d342c);
 
 	public static final GeOreBlockReg RUBY_GEORE = createGeOre("ruby", MapColor.COLOR_RED, 0xc81d2e);
 	public static final GeOreBlockReg SAPPHIRE_GEORE = createGeOre("sapphire", MapColor.COLOR_BLUE, 0xe00e0);

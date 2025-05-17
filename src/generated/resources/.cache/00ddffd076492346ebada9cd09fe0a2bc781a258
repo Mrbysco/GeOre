@@ -1,9 +1,10 @@
-// 1.21.1	2025-05-17T01:20:21.8345934	Tags for minecraft:block mod id geore
-0f2645c0e1b5eeded3ab10adf0652dd0c79dc324 data/c/tags/block/budding_blocks.json
-0db7134e89b0cb45e4ddf99e4e48bb33416f638c data/c/tags/block/buds.json
-fc6b9010ba224ee832e46e8843b9aef1875e972e data/c/tags/block/clusters.json
+// 1.21.1	2025-05-17T20:05:58.4254764	Tags for minecraft:block mod id geore
+2a65238a769d9e985d5f5b6b90887e4fd104e11f data/c/tags/block/budding_blocks.json
+70f89311df8b0fff6dc15ef7511d43d665ec5590 data/c/tags/block/buds.json
+2e158af7ebe85ee175e90e75a27331befbe680ad data/c/tags/block/clusters.json
 5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/c/tags/block/relocation_not_supported.json
 3f4c58b51ae0dd4ab9bd2bf3435985cb71a47cba data/geore/tags/block/buds/geore_aluminum.json
+7b6019a113b1d9d65416de463ae029bea67bef0d data/geore/tags/block/buds/geore_ancient_debris.json
 2723771177b4fc7f7d4a1b6dba88fb80f74fbe87 data/geore/tags/block/buds/geore_black_quartz.json
 c4a594ed42bb4b557d97ed15f3c66590cb5429c5 data/geore/tags/block/buds/geore_coal.json
 c309d5c194dcb7411fc5bad16e0bce8a1307582d data/geore/tags/block/buds/geore_copper.json
@@ -29,6 +30,7 @@ ed9b3b84722b68e62cea65fa648a142ed969b70a data/geore/tags/block/buds/geore_tungst
 1167499c1a801e7ee15c7ba486c84f5d3d846768 data/geore/tags/block/buds/geore_uranium.json
 bba8e613472420e0f3f20e5c2954e24594b0fd6b data/geore/tags/block/buds/geore_zinc.json
 2d45d66ea01e6dd92a4f50c0679d4dd934ed39ab data/geore/tags/block/clusters/geore_aluminum.json
+c07be2a11364f1c37a479808c3159f6e8f2c39e2 data/geore/tags/block/clusters/geore_ancient_debris.json
 9ae67afa1166fdcd98bd7920e3da05c1d1186f39 data/geore/tags/block/clusters/geore_black_quartz.json
 db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/geore/tags/block/clusters/geore_coal.json
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/geore/tags/block/clusters/geore_copper.json
@@ -54,6 +56,7 @@ b38ce8cfe9f193d4cfeb4ff1e4c7e4f5f022c752 data/geore/tags/block/clusters/geore_ti
 379f8e9b94a01dfca5e4a8a78dc4530ee3f3c92e data/geore/tags/block/clusters/geore_uranium.json
 04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/geore/tags/block/clusters/geore_zinc.json
 8da2b705e355098a33712a91f6793bee00e1793c data/geore/tags/block/storage_blocks/geore_aluminum.json
+a19478e83bee228d7fb0148bc3a295d7a834a8fe data/geore/tags/block/storage_blocks/geore_ancient_debris.json
 66b5816b8e1a58075e5ea07af392939b1e2df4b2 data/geore/tags/block/storage_blocks/geore_black_quartz.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/block/storage_blocks/geore_coal.json
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/block/storage_blocks/geore_copper.json
@@ -78,5 +81,5 @@ cc8666d649f33657d6ca6f9b06975549dc2e41bd data/geore/tags/block/storage_blocks/ge
 f0ee3e10d608d0b8a2a07aa1bf5e1bd9a5be8312 data/geore/tags/block/storage_blocks/geore_uraninite.json
 2ad476422f8b56ee962b75fbe9a55f5851af2a8f data/geore/tags/block/storage_blocks/geore_uranium.json
 bc1a41f5c1b6f099b3c5ff1f6fc0de18d23bd093 data/geore/tags/block/storage_blocks/geore_zinc.json
-66e1d0193073f8804d68aff0cadaba9c1d21dbd6 data/minecraft/tags/block/crystal_sound_blocks.json
-3ca67ee1a95f5aac105fea6163c3b88149b5c073 data/minecraft/tags/block/mineable/pickaxe.json
+ad3c270c539c4292908fcef126693368df5d4af3 data/minecraft/tags/block/crystal_sound_blocks.json
+f931771c90993f7fe62d552e2435b3a48ecab2f0 data/minecraft/tags/block/mineable/pickaxe.json

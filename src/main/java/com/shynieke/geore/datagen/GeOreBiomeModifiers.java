@@ -1,13 +1,28 @@
 package com.shynieke.geore.datagen;
 
+import com.shynieke.geore.Reference;
+import com.shynieke.geore.features.GeOreFeatureReg;
 import com.shynieke.geore.features.GeOreFeatures;
+import com.shynieke.geore.features.GeOrePlacedFeatures;
+import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
+import net.minecraft.core.HolderGetter;
+import net.minecraft.core.HolderSet;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
+import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.neoforged.neoforge.common.world.BiomeModifier;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class GeOreBiomeModifiers {
 
 	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
+		final HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
+		final HolderGetter<PlacedFeature> placedHolderGetter = context.lookup(Registries.PLACED_FEATURE);
+
 		GeOreFeatures.COAL_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "coal");
 		GeOreFeatures.COPPER_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "copper");
 		GeOreFeatures.DIAMOND_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "diamond");
@@ -34,5 +49,16 @@ public class GeOreBiomeModifiers {
 		GeOreFeatures.TIN_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "tin");
 		GeOreFeatures.TUNGSTEN_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "tungsten");
 		GeOreFeatures.URANIUM_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "uranium");
+
+		final AddConfigFeatureBiomeModifier addBuddingAncientDebris = new AddConfigFeatureBiomeModifier(
+				biomeHolderGetter.getOrThrow(BiomeTags.IS_NETHER),
+				HolderSet.direct(placedHolderGetter.getOrThrow(GeOrePlacedFeatures.ANCIENT_DEBRIS_PLACEMENT_KEY)),
+				Decoration.LOCAL_MODIFICATIONS, "ancient_debris");
+
+		context.register(createModifierKey("budding_ancient_debris"), addBuddingAncientDebris);
+	}
+
+	public static ResourceKey<BiomeModifier> createModifierKey(String name) {
+		return ResourceKey.create(NeoForgeRegistries.Keys.BIOME_MODIFIERS, Reference.modLoc(name));
 	}
 }

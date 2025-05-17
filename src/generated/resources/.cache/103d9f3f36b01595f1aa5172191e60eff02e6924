@@ -1,6 +1,7 @@
-// 1.21.1	2025-05-17T01:30:39.4453024	Registries
+// 1.21.1	2025-05-17T23:19:09.9557835	Registries
 e46df2ee4f7b79b3665e5af8a785cbf5aa8ae3b7 data/geore/neoforge/biome_modifier/aluminum_geode.json
 afb50bcf4eeeec2c284a0118bc2700b22cb66d36 data/geore/neoforge/biome_modifier/black_quartz_geode.json
+e81698ff548235fe1a3de0075ae98bc76183aa6c data/geore/neoforge/biome_modifier/budding_ancient_debris.json
 8f100a136c1b0213dee5914698733da65235c56d data/geore/neoforge/biome_modifier/coal_geode.json
 3a1a241afb25dc4650ae0065a56fe11e6beb5b00 data/geore/neoforge/biome_modifier/copper_geode.json
 0ab88c5001734523aafe6a0599287c2ddcf83ac6 data/geore/neoforge/biome_modifier/diamond_geode.json
@@ -27,6 +28,7 @@ a113b3479427e64af828583246f527bbb0bad581 data/geore/neoforge/biome_modifier/tung
 708c5799bcb3fabb0449014258fe93b8f4abaa26 data/geore/neoforge/biome_modifier/zinc_geode.json
 7820f3fdfde3f818a19c114adc3e6fddc0594ac9 data/geore/worldgen/configured_feature/aluminum_geode.json
 ce38de4e562fd178659d8f0f4b2c8ea7582db571 data/geore/worldgen/configured_feature/black_quartz_geode.json
+4bd4dafd1116b62d3e49bda297babcc6e3983caf data/geore/worldgen/configured_feature/budding_ancient_debris.json
 1f7f5bfddf131e80baffc2c83eb8b1ee7265f2a7 data/geore/worldgen/configured_feature/coal_geode.json
 97f5f18166280e19c9fb93cdf84dcf9869ea0b90 data/geore/worldgen/configured_feature/copper_geode.json
 48b822e4a72c573abafab52bb16a3bb73e54703c data/geore/worldgen/configured_feature/diamond_geode.json
@@ -52,6 +54,7 @@ d9176b5a6ef9a9a721587e72828c05da0e4f4365 data/geore/worldgen/configured_feature/
 22b5e81429bbbbe24ecb1d446b6b9ccdbaeef307 data/geore/worldgen/configured_feature/zinc_geode.json
 79ba3128faffd90e595b2d199c759adbb5a09387 data/geore/worldgen/placed_feature/aluminum_geode.json
 3ef0ce18f24a9ab16348f87edf0e60e91c6dc448 data/geore/worldgen/placed_feature/black_quartz_geode.json
+c16114ffa205efe651a57846714ac0ffbcc8f7c8 data/geore/worldgen/placed_feature/budding_ancient_debris.json
 3e5e42016f7ac32d3508a74a1dfe0a6c02e50fb9 data/geore/worldgen/placed_feature/coal_geode.json
 950d083ab88a3b00d0d62173dc3d29a107779571 data/geore/worldgen/placed_feature/copper_geode.json
 f082f0df5dd7ddba903a4a3494633645091b9e26 data/geore/worldgen/placed_feature/diamond_geode.json
