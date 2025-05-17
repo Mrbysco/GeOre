@@ -1,2 +1,14 @@
-* Change the Zinc, Ruby, Sapphire and Topaz GeOres to use tags for the smelting output
-* Fix GeOre Shards smelting faster in the furnace than in the blast furnace
+* Add Ancient Debris geodes. Only the budding ancient debris block will generate. (Can be disabled in config)
+* Add more modded GeOres:
+    * Uraninite
+    * Black Quartz
+    * Monzanite
+    * Aluminum
+    * Lead
+    * Nickel
+    * Osmium
+    * Platinum
+    * Silver
+    * Tin
+    * Tungsten
+    * Uranium
