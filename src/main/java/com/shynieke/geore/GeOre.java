@@ -37,7 +37,7 @@ public class GeOre {
 		if (dist.isClient()) {
 			container.registerConfig(ModConfig.Type.CLIENT, GeOreConfig.clientSpec);
 			container.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-			NeoForge.EVENT_BUS.register(new SpyglassHandler());
+			eventBus.addListener(SpyglassHandler::registerGuiLayer);
 		}
 	}
 
