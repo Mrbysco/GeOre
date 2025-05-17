@@ -286,7 +286,7 @@ public class GeOreDatagen {
 			generateLang("Zinc", GeOreRegistry.ZINC_GEORE);
 			generateLang("Uraninite", GeOreRegistry.URANINITE_GEORE);
 			generateLang("Black Quartz", GeOreRegistry.BLACK_QUARTZ_GEORE);
-			generateLang("Monzanite", GeOreRegistry.MONAZITE_GEORE);
+			generateLang("Monazite", GeOreRegistry.MONAZITE_GEORE);
 			generateLang("Aluminum", GeOreRegistry.ALUMINUM_GEORE);
 			generateLang("Lead", GeOreRegistry.LEAD_GEORE);
 			generateLang("Nickel", GeOreRegistry.NICKEL_GEORE);

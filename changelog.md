@@ -2,7 +2,7 @@
 * Add more modded GeOres:
     * Uraninite
     * Black Quartz
-    * Monzanite
+    * Monazite
     * Aluminum
     * Lead
     * Nickel
