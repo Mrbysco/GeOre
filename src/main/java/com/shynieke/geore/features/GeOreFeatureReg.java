@@ -1,6 +1,5 @@
 package com.shynieke.geore.features;
 
-import com.shynieke.geore.Reference;
 import com.shynieke.geore.datagen.GeOreBiomeModifiers;
 import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
 import com.shynieke.geore.registry.GeOreBlockReg;
@@ -34,7 +33,6 @@ import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.neoforged.neoforge.common.world.BiomeModifier;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 import java.util.List;
 

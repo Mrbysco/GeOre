@@ -1,7 +1,6 @@
 package com.shynieke.geore.datagen;
 
 import com.shynieke.geore.Reference;
-import com.shynieke.geore.features.GeOreFeatureReg;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.features.GeOrePlacedFeatures;
 import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
