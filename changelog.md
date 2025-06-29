@@ -1,1 +1,1 @@
-* Remove left-over debug log messages
+* Fixed ancient debris drop rate
