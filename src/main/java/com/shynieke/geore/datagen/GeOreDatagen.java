@@ -158,7 +158,7 @@ public class GeOreDatagen {
 				this.add(blockReg.getCluster().get(), (block) ->
 						createSilkTouchDispatchTable(block,
 								LootItem.lootTableItem(blockReg.getShard().get())
-										.apply(SetItemCountFunction.setCount(ConstantValue.exactly(14.0F)))
+										.apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
 						));
 
 				this.dropWhenSilkTouch(blockReg.getSmallBud().get());

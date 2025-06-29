@@ -1,8 +1,8 @@
-// 1.21.1	2025-05-17T20:05:58.4264773	Loot Tables
+// 1.21.1	2025-06-29T23:02:46.7721284	Loot Tables
 816c9cb34d9b43d16bcccee143ab649df1be2ce5 data/geore/loot_table/blocks/aluminum_block.json
 5446c941d139374e201a78215b1265f215ead328 data/geore/loot_table/blocks/aluminum_cluster.json
 2c37b6726aa361170d3fdab65cfd2260687d933d data/geore/loot_table/blocks/ancient_debris_block.json
-ac12b9e0348bdd05600cf8692cc5f829fd2e609e data/geore/loot_table/blocks/ancient_debris_cluster.json
+072bc1aa957812cf49ee08f09f89faad7cdaf8af data/geore/loot_table/blocks/ancient_debris_cluster.json
 566cad643b1788acf0f3e1ebd5b3ea7eadf84688 data/geore/loot_table/blocks/black_quartz_block.json
 99267656436d12e3889012e31fbfca9bde99f7ee data/geore/loot_table/blocks/black_quartz_cluster.json
 abd6e08ffd80fce156f45db4e400dcb2378930e3 data/geore/loot_table/blocks/budding_aluminum.json
