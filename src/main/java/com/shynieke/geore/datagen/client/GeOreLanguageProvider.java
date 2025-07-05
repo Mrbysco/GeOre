@@ -88,6 +88,7 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addBlock(blockReg.getMediumBud(), "Medium " + name + " Geore Bud");
 		addBlock(blockReg.getLargeBud(), "Large " + name + " Geore Bud");
 		addBlock(blockReg.getCluster(), name + " Geore Cluster");
+		addBlock(blockReg.getTintedGlass(), name + " Tinted Glass");
 		addItem(blockReg.getShard(), name + " Geore Shard");
 		addItem(blockReg.getSpyglass(), name + " Geore Spyglass");
 	}

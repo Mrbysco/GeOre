@@ -57,6 +57,7 @@ public class GeOreItemModelProvider extends ItemModelProvider {
 
 		withExistingParent(blockReg.getBlock().getId().getPath(), Reference.modLoc(BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
 		withExistingParent(blockReg.getBudding().getId().getPath(), Reference.modLoc(BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
+		withExistingParent(blockReg.getTintedGlass().getId().getPath(), Reference.modLoc(BLOCK_FOLDER + "/" + blockReg.getTintedGlass().getId().getPath()));
 
 		makeCluster(blockReg.getCluster());
 		makeSmallBud(blockReg.getSmallBud());

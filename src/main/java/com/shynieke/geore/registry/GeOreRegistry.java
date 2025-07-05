@@ -35,7 +35,7 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg ANCIENT_DEBRIS_GEORE = createGeOre("ancient_debris", MapColor.COLOR_BROWN, 0x5d342c);
 
 	public static final GeOreBlockReg RUBY_GEORE = createGeOre("ruby", MapColor.COLOR_RED, 0xc81d2e);
-	public static final GeOreBlockReg SAPPHIRE_GEORE = createGeOre("sapphire", MapColor.COLOR_BLUE, 0xe00e0);
+	public static final GeOreBlockReg SAPPHIRE_GEORE = createGeOre("sapphire", MapColor.COLOR_BLUE, 0x0e00e0);
 	public static final GeOreBlockReg TOPAZ_GEORE = createGeOre("topaz", MapColor.GOLD, 0xffb856);
 	public static final GeOreBlockReg ZINC_GEORE = createGeOre("zinc", MapColor.GOLD, 0xa7bdac);
 	public static final GeOreBlockReg URANINITE_GEORE = createGeOre("uraninite", MapColor.COLOR_GREEN, 0x00d512);

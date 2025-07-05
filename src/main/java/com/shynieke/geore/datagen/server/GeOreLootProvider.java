@@ -59,11 +59,19 @@ public class GeOreLootProvider extends LootTableProvider {
 
 		protected void addGeOreTables(GeOreBlockReg blockReg) {
 			this.dropSelf(blockReg.getBlock().get());
-			this.add(blockReg.getCluster().get(), (block) -> createSilkTouchDispatchTable(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F))).apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE))).when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES))).otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get()).apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
+			this.add(blockReg.getCluster().get(), (block) ->
+					createSilkTouchDispatchTable(block,
+							LootItem.lootTableItem(blockReg.getShard().get())
+									.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
+									.apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE)))
+									.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+									.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get())
+											.apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
 			this.dropWhenSilkTouch(blockReg.getSmallBud().get());
 			this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 			this.dropWhenSilkTouch(blockReg.getLargeBud().get());
 			this.add(blockReg.getBudding().get(), noDrop());
+			this.dropSelf(blockReg.getTintedGlass().get());
 		}
 
 		private void addAncientDebrisGeOreTables() {
@@ -79,6 +87,7 @@ public class GeOreLootProvider extends LootTableProvider {
 			this.dropWhenSilkTouch(blockReg.getMediumBud().get());
 			this.dropWhenSilkTouch(blockReg.getLargeBud().get());
 			this.add(blockReg.getBudding().get(), noDrop());
+			this.dropSelf(blockReg.getTintedGlass().get());
 		}
 
 		@NotNull

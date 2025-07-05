@@ -13,13 +13,13 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-public class GeoreDatapackProvider extends DatapackBuiltinEntriesProvider {
+public class GeOreDatapackProvider extends DatapackBuiltinEntriesProvider {
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.CONFIGURED_FEATURE, GeOreConfiguredFeatures::bootstrap)
 			.add(Registries.PLACED_FEATURE, GeOrePlacedFeatures::bootstrap)
 			.add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, GeOreBiomeModifiers::bootstrap);
 
-	public GeoreDatapackProvider(PackOutput output, CompletableFuture<Provider> registries, Set<String> modIds) {
+	public GeOreDatapackProvider(PackOutput output, CompletableFuture<Provider> registries, Set<String> modIds) {
 		super(output, registries, BUILDER, modIds);
 	}
 }

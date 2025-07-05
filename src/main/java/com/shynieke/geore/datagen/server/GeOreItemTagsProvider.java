@@ -38,6 +38,7 @@ public class GeOreItemTagsProvider extends ItemTagsProvider {
 		for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
 			this.addGeore(reg);
 			this.addStorage(reg);
+			this.tag(Tags.Items.GLASS_BLOCKS_TINTED).add(reg.getTintedGlass().get().asItem());
 		}
 
 		this.tag(Tags.Items.BUDDING_BLOCKS).addTag(GEORE_BUDDING);

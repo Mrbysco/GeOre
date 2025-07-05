@@ -99,13 +99,24 @@ public class GeOreRecipeProvider extends RecipeProvider {
 		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getBlock().get())
 				.pattern("SS").pattern("SS")
 				.define('S', blockReg.getShard().get())
-				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output);
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(output);
 
 		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get())
 				.pattern(" # ").pattern(" X ").pattern(" X ")
 				.define('#', blockReg.getShard().get())
 				.define('X', Items.COPPER_INGOT)
-				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get())).save(output);
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(output);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getTintedGlass().get(), 2)
+				.define('G', Blocks.GLASS)
+				.define('S', blockReg.getShard().get())
+				.pattern(" S ")
+				.pattern("SGS")
+				.pattern(" S ")
+				.unlockedBy("has_shard", has(blockReg.getShard().get()))
+				.save(output);
 	}
 
 	private void smeltToOre(GeOreBlockReg blockReg, float xp, ItemLike item, RecipeOutput output) {

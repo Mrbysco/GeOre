@@ -47,6 +47,7 @@ public class GeOreBlockModelProvider extends BlockModelProvider {
 	protected void generateGeoreModels(GeOreBlockReg blockReg) {
 		cubeAll(blockReg.getBlock().getId().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBlock().getId().getPath()));
 		cubeAll(blockReg.getBudding().getId().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getBudding().getId().getPath()));
+		cubeAll(blockReg.getTintedGlass().getId().getPath(), modLoc(BLOCK_FOLDER + "/" + blockReg.getTintedGlass().getId().getPath())).renderType("translucent");
 
 		crossBlock(blockReg.getCluster().get());
 		crossBlock(blockReg.getSmallBud().get());

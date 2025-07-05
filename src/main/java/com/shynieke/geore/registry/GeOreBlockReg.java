@@ -9,6 +9,7 @@ import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TintedGlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -24,6 +25,7 @@ public class GeOreBlockReg {
 	protected final DeferredHolder<Block, AmethystClusterBlock> large_bud;
 	protected final DeferredHolder<Block, AmethystClusterBlock> medium_bud;
 	protected final DeferredHolder<Block, AmethystClusterBlock> small_bud;
+	protected final DeferredHolder<Block, TintedGlassBlock> tinted_glass;
 	protected final DeferredHolder<Item, Item> shard;
 	protected final DeferredHolder<Item, GeoreSpyglassItem> spyglass;
 
@@ -64,6 +66,10 @@ public class GeOreBlockReg {
 		return spyglass;
 	}
 
+	public DeferredHolder<Block, TintedGlassBlock> getTintedGlass() {
+		return tinted_glass;
+	}
+
 	public GeOreBlockReg(String name, MapColor color, int spyglassHex) {
 		this(name, color, () -> new Item(new Item.Properties()), spyglassHex);
 	}
@@ -93,6 +99,10 @@ public class GeOreBlockReg {
 				new BuddingGeoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
 						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
 		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties()));
+
+		tinted_glass = GeOreRegistry.BLOCKS.register(name + "_tinted_glass", () ->
+				new TintedGlassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TINTED_GLASS).mapColor(color).strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
+		GeOreRegistry.ITEMS.register(getTintedGlass().getId().getPath(), () -> new BlockItem(getTintedGlass().get(), new Item.Properties()));
 
 		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);
 

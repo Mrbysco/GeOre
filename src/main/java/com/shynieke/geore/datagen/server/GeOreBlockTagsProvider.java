@@ -33,6 +33,7 @@ public class GeOreBlockTagsProvider extends BlockTagsProvider {
 			this.addMineable(reg);
 			this.addCrystalSounds(reg);
 			this.addGeore(reg);
+			this.tag(Tags.Blocks.GLASS_BLOCKS_TINTED).add(reg.getTintedGlass().get());
 		}
 	}
 

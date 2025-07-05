@@ -8,7 +8,7 @@ import com.shynieke.geore.datagen.server.GeOreBlockTagsProvider;
 import com.shynieke.geore.datagen.server.GeOreItemTagsProvider;
 import com.shynieke.geore.datagen.server.GeOreLootProvider;
 import com.shynieke.geore.datagen.server.GeOreRecipeProvider;
-import com.shynieke.geore.datagen.server.GeoreDatapackProvider;
+import com.shynieke.geore.datagen.server.GeOreDatapackProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -37,7 +37,7 @@ public class GeOreDatagen {
 			generator.addProvider(event.includeServer(), blockTagsProvider = new GeOreBlockTagsProvider(packOutput, lookupProvider, helper));
 			generator.addProvider(event.includeServer(), new GeOreItemTagsProvider(packOutput, lookupProvider, blockTagsProvider, helper));
 
-			generator.addProvider(event.includeClient(), new GeoreDatapackProvider(
+			generator.addProvider(event.includeClient(), new GeOreDatapackProvider(
 					packOutput,
 					event.getLookupProvider(),
 					Set.of("geore")

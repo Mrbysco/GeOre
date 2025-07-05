@@ -48,12 +48,19 @@ public class GeOreBlockStateProvider extends BlockStateProvider {
 	}
 
 	protected void generateGeoreModels(GeOreBlockReg blockReg) {
-		simpleBlock(blockReg.getBlock().get());
-		simpleBlock(blockReg.getBudding().get());
+		simpleExistingBlock(blockReg.getBlock().get());
+		simpleExistingBlock(blockReg.getBudding().get());
+		simpleExistingBlock(blockReg.getTintedGlass().get());
 		clusterBlock(blockReg.getCluster().get());
 		clusterBlock(blockReg.getLargeBud().get());
 		clusterBlock(blockReg.getMediumBud().get());
 		clusterBlock(blockReg.getSmallBud().get());
+	}
+
+	private void simpleExistingBlock(Block block) {
+		ModelFile blockModel = models().getExistingFile(modLoc("block/" + BuiltInRegistries.BLOCK.getKey(block).getPath()));
+		getVariantBuilder(block)
+				.partialState().modelForState().modelFile(blockModel).addModel();
 	}
 
 	private void clusterBlock(Block block) {

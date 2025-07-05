@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "geore:block/osmium_tinted_glass"
+    }
+  }
+}
