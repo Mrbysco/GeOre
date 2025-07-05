@@ -1,1 +1,1 @@
-* Fixed ancient debris drop rate
+* Add a Tinted Glass variant per GeOre type
