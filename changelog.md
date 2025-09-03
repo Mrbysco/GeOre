@@ -1,1 +1,1 @@
-* Add a Tinted Glass variant per GeOre type
+* Fix `c:relocation_not_supported` block tag not being applied to the newer modded GeOre budding blocks
