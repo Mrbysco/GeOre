@@ -27,13 +27,12 @@ public class GeOreBlockTagsProvider extends BlockTagsProvider {
 
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
-		this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(GeOreRegistry.COAL_GEORE.getBudding().get()).add(GeOreRegistry.COPPER_GEORE.getBudding().get()).add(GeOreRegistry.DIAMOND_GEORE.getBudding().get()).add(GeOreRegistry.EMERALD_GEORE.getBudding().get()).add(GeOreRegistry.GOLD_GEORE.getBudding().get()).add(GeOreRegistry.IRON_GEORE.getBudding().get()).add(GeOreRegistry.LAPIS_GEORE.getBudding().get()).add(GeOreRegistry.QUARTZ_GEORE.getBudding().get()).add(GeOreRegistry.REDSTONE_GEORE.getBudding().get()).add(GeOreRegistry.RUBY_GEORE.getBudding().get()).add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get()).add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
-
 		for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
 			this.addMineable(reg);
 			this.addCrystalSounds(reg);
 			this.addGeore(reg);
 			this.tag(Tags.Blocks.GLASS_BLOCKS_TINTED).add(reg.getTintedGlass().get());
+			this.tag(Tags.Blocks.RELOCATION_NOT_SUPPORTED).add(reg.getBudding().get());
 		}
 	}
 
