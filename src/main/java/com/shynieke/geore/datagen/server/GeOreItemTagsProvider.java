@@ -56,15 +56,15 @@ public class GeOreItemTagsProvider extends ItemTagsProvider {
 
 		TagKey<Item> smallBudsTag = modTag("geore_small_buds/" + blockReg.getName());
 		this.tag(GEORE_SMALL_BUDS).addTag(smallBudsTag);
-		this.tag(smallBudsTag).add(blockReg.getCluster().get().asItem());
+		this.tag(smallBudsTag).add(blockReg.getSmallBud().get().asItem());
 
 		TagKey<Item> mediumBudsTag = modTag("geore_medium_buds/" + blockReg.getName());
 		this.tag(GEORE_MEDIUM_BUDS).addTag(mediumBudsTag);
-		this.tag(mediumBudsTag).add(blockReg.getSmallBud().get().asItem());
+		this.tag(mediumBudsTag).add(blockReg.getMediumBud().get().asItem());
 
 		TagKey<Item> largeBudsTag = modTag("geore_large_buds/" + blockReg.getName());
 		this.tag(GEORE_LARGE_BUDS).addTag(largeBudsTag);
-		this.tag(largeBudsTag).add(blockReg.getCluster().get().asItem());
+		this.tag(largeBudsTag).add(blockReg.getLargeBud().get().asItem());
 
 		TagKey<Item> clusterTag = modTag("geore_clusters/" + blockReg.getName());
 		this.tag(GEORE_CLUSTERS).addTag(clusterTag);
