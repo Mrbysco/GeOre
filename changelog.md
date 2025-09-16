@@ -1,1 +1,1 @@
-* Fix `c:relocation_not_supported` block tag not being applied to the newer modded GeOre budding blocks
+* Fix the small bud, medium bud and large bud related item tags (Fixing clusters ending up in the `c:buds` tag)
