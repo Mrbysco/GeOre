@@ -47,7 +47,7 @@ public class GeOreLanguageProvider extends LanguageProvider {
 
 
 		//Config
-		add("geore.configuration.title", "Grimoire of Gaia Settings");
+		add("geore.configuration.title", "GeOre Settings");
 		addConfig("Client", "Client", "Client Settings");
 		addConfig("spyglassIntensity", "Spyglass Intensity", "The intensity of the spyglass color overlay (0.5 = 50%) [Default: 0.5]");
 
@@ -88,15 +88,15 @@ public class GeOreLanguageProvider extends LanguageProvider {
 	}
 
 	public void generateLang(String name, GeOreBlockReg blockReg) {
-		addBlock(blockReg.getBlock(), "Block Of " + name + " Geore");
-		addBlock(blockReg.getBudding(), "Budding " + name + " Geore");
-		addBlock(blockReg.getSmallBud(), "Small " + name + " Geore Bud");
-		addBlock(blockReg.getMediumBud(), "Medium " + name + " Geore Bud");
-		addBlock(blockReg.getLargeBud(), "Large " + name + " Geore Bud");
-		addBlock(blockReg.getCluster(), name + " Geore Cluster");
+		addBlock(blockReg.getBlock(), "Block Of " + name + " GeOre");
+		addBlock(blockReg.getBudding(), "Budding " + name + " GeOre");
+		addBlock(blockReg.getSmallBud(), "Small " + name + " GeOre Bud");
+		addBlock(blockReg.getMediumBud(), "Medium " + name + " GeOre Bud");
+		addBlock(blockReg.getLargeBud(), "Large " + name + " GeOre Bud");
+		addBlock(blockReg.getCluster(), name + " GeOre Cluster");
 		addBlock(blockReg.getTintedGlass(), name + " Tinted Glass");
-		addItem(blockReg.getShard(), name + " Geore Shard");
-		addItem(blockReg.getSpyglass(), name + " Geore Spyglass");
+		addItem(blockReg.getShard(), name + " GeOre Shard");
+		addItem(blockReg.getSpyglass(), name + " GeOre Spyglass");
 	}
 
 	/**
