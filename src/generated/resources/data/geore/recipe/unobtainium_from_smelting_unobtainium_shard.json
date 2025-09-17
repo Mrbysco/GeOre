@@ -14,7 +14,7 @@
   "experience": 0.7,
   "group": "geore",
   "ingredient": {
-    "item": "geore:unobtainium_shard"
+    "item": "geore:unobtainium_block"
   },
   "result": {
     "tag": "c:nuggets/unobtainium"

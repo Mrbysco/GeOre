@@ -80,9 +80,9 @@ public class GeOreRecipeProvider extends RecipeProvider {
 		generateTagRecipe(GeOreRegistry.TUNGSTEN_GEORE, 0.7F, getCommonTag("ingots/tungsten"), output);
 		generateTagRecipe(GeOreRegistry.URANIUM_GEORE, 0.7F, getCommonTag("ingots/uranium"), output);
 
-		generateTagRecipe(GeOreRegistry.ALLTHEMODIUM_GEORE, 0.7F, getCommonTag("nuggets/allthemodium"), output);
-		generateTagRecipe(GeOreRegistry.VIBRANIUM_GEORE, 0.7F, getCommonTag("nuggets/vibranium"), output);
-		generateTagRecipe(GeOreRegistry.UNOBTAINIUM_GEORE, 0.7F, getCommonTag("nuggets/unobtainium"), output);
+		generateHarderTagRecipe(GeOreRegistry.ALLTHEMODIUM_GEORE, 0.7F, getCommonTag("nuggets/allthemodium"), output);
+		generateHarderTagRecipe(GeOreRegistry.VIBRANIUM_GEORE, 0.7F, getCommonTag("nuggets/vibranium"), output);
+		generateHarderTagRecipe(GeOreRegistry.UNOBTAINIUM_GEORE, 0.7F, getCommonTag("nuggets/unobtainium"), output);
 	}
 
 	private void generateRecipe(GeOreBlockReg reg, float xp, ItemLike result, RecipeOutput output) {
@@ -92,7 +92,7 @@ public class GeOreRecipeProvider extends RecipeProvider {
 
 	private void generateTagRecipe(GeOreBlockReg reg, float xp, TagKey<Item> result, RecipeOutput output) {
 		generateRecipes(reg, output);
-		smeltToOre(reg, xp, reg.getName(), result, output);
+		smeltToOre(reg, xp, result, output);
 	}
 
 	private TagKey<Item> getCommonTag(String path) {
@@ -123,6 +123,42 @@ public class GeOreRecipeProvider extends RecipeProvider {
 				.save(output);
 	}
 
+	private void generateHarderTagRecipe(GeOreBlockReg blockReg, float xp, TagKey<Item> oreTag, RecipeOutput output) {
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getBlock().get())
+				.pattern("SS").pattern("SS")
+				.define('S', blockReg.getShard().get())
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(output);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, blockReg.getSpyglass().get())
+				.pattern(" # ").pattern(" X ").pattern(" X ")
+				.define('#', blockReg.getShard().get())
+				.define('X', Items.COPPER_INGOT)
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(output);
+
+		ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, blockReg.getTintedGlass().get(), 2)
+				.define('G', Blocks.GLASS)
+				.define('S', blockReg.getShard().get())
+				.pattern(" S ")
+				.pattern("SGS")
+				.pattern(" S ")
+				.unlockedBy("has_shard", has(blockReg.getShard().get()))
+				.save(output);
+
+		RecipeOutput tagOutput = output.withConditions(new NotCondition(new TagEmptyCondition(oreTag.location())));
+
+		Ingredient outputIngredient = Ingredient.of(oreTag);
+		TagSmeltingRecipeBuilder.smelting(Ingredient.of(blockReg.getBlock().get()), RecipeCategory.MISC, outputIngredient, xp, 200)
+				.group("geore")
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(tagOutput, Reference.modLoc(blockReg.getName() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+		TagSmeltingRecipeBuilder.blasting(Ingredient.of(blockReg.getBlock().get()), RecipeCategory.MISC, outputIngredient, xp, 100)
+				.group("geore")
+				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
+				.save(tagOutput, Reference.modLoc(blockReg.getName() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+	}
+
 	private void smeltToOre(GeOreBlockReg blockReg, float xp, ItemLike item, RecipeOutput output) {
 		SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200)
 				.group("geore")
@@ -138,17 +174,17 @@ public class GeOreRecipeProvider extends RecipeProvider {
 				));
 	}
 
-	private void smeltToOre(GeOreBlockReg blockReg, float xp, String type, TagKey<Item> oreTag, RecipeOutput output) {
+	private void smeltToOre(GeOreBlockReg blockReg, float xp, TagKey<Item> oreTag, RecipeOutput output) {
 		RecipeOutput tagOutput = output.withConditions(new NotCondition(new TagEmptyCondition(oreTag.location())));
 
 		Ingredient outputIngredient = Ingredient.of(oreTag);
 		TagSmeltingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 200)
 				.group("geore")
 				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-				.save(tagOutput, Reference.modLoc(type + "_from_smelting_" + blockReg.getShard().getId().getPath()));
+				.save(tagOutput, Reference.modLoc(blockReg.getName() + "_from_smelting_" + blockReg.getShard().getId().getPath()));
 		TagSmeltingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, outputIngredient, xp, 100)
 				.group("geore")
 				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
-				.save(tagOutput, Reference.modLoc(type + "_from_blasting_" + blockReg.getShard().getId().getPath()));
+				.save(tagOutput, Reference.modLoc(blockReg.getName() + "_from_blasting_" + blockReg.getShard().getId().getPath()));
 	}
 }

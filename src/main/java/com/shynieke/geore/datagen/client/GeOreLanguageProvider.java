@@ -82,6 +82,9 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addConfig("generateTinGeore", "Generate Tin GeOre", "Generate Tin GeOre [Default: false]");
 		addConfig("generateTungstenGeore", "Generate Tungsten GeOre", "Generate Tungsten GeOre [Default: false]");
 		addConfig("generateUraniumGeore", "Generate Uranium GeOre", "Generate Uranium GeOre [Default: false]");
+		addConfig("generateAllthemodiumGeore", "Generate Allthemodium GeOre", "Generate Allthemodium GeOre [Default: false]");
+		addConfig("generateVibraniumGeore", "Generate Vibranium GeOre", "Generate Vibranium GeOre [Default: false]");
+		addConfig("generateUnobtainiumGeore", "Generate Unobtainium GeOre", "Generate Unobtainium GeOre [Default: false]");
 	}
 
 	public void generateLang(String name, GeOreBlockReg blockReg) {
