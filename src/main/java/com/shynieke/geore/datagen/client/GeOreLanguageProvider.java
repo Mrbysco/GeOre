@@ -41,6 +41,9 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		generateLang("Tin", GeOreRegistry.TIN_GEORE);
 		generateLang("Tungsten", GeOreRegistry.TUNGSTEN_GEORE);
 		generateLang("Uranium", GeOreRegistry.URANIUM_GEORE);
+		generateLang("Allthemodium", GeOreRegistry.ALLTHEMODIUM_GEORE);
+		generateLang("Vibranium", GeOreRegistry.VIBRANIUM_GEORE);
+		generateLang("Unobtainium", GeOreRegistry.UNOBTAINIUM_GEORE);
 
 
 		//Config

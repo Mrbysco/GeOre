@@ -44,6 +44,10 @@ public class GeOreConfiguredFeatures {
 		GeOreFeatures.TUNGSTEN_GEORE.setupConfigured(context, GeOreRegistry.TUNGSTEN_GEORE);
 		GeOreFeatures.URANIUM_GEORE.setupConfigured(context, GeOreRegistry.URANIUM_GEORE);
 
+		GeOreFeatures.ALLTHEMODIUM_GEORE.setupConfigured(context, GeOreRegistry.ALLTHEMODIUM_GEORE);
+		GeOreFeatures.VIBRANIUM_GEORE.setupConfigured(context, GeOreRegistry.VIBRANIUM_GEORE);
+		GeOreFeatures.UNOBTAINIUM_GEORE.setupConfigured(context, GeOreRegistry.UNOBTAINIUM_GEORE);
+
 		RuleTest netherrackRule = new BlockMatchTest(Blocks.NETHERRACK);
 		FeatureUtils.register(
 				context, ANCIENT_DEBRIS_CONFIGURED_KEY, Feature.SCATTERED_ORE, new OreConfiguration(netherrackRule,

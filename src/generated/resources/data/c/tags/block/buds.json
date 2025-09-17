@@ -25,6 +25,9 @@
     "#geore:buds/geore_silver",
     "#geore:buds/geore_tin",
     "#geore:buds/geore_tungsten",
-    "#geore:buds/geore_uranium"
+    "#geore:buds/geore_uranium",
+    "#geore:buds/geore_allthemodium",
+    "#geore:buds/geore_vibranium",
+    "#geore:buds/geore_unobtainium"
   ]
 }

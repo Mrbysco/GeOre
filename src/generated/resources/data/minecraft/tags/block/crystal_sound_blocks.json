@@ -51,6 +51,12 @@
     "geore:tungsten_block",
     "geore:budding_tungsten",
     "geore:uranium_block",
-    "geore:budding_uranium"
+    "geore:budding_uranium",
+    "geore:allthemodium_block",
+    "geore:budding_allthemodium",
+    "geore:vibranium_block",
+    "geore:budding_vibranium",
+    "geore:unobtainium_block",
+    "geore:budding_unobtainium"
   ]
 }

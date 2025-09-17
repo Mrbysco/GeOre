@@ -1,0 +1,41 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/unobtainium"
+      }
+    }
+  ],
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:unobtainium_from_smelting_unobtainium_shard"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_unobtainiumgeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:unobtainium_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_unobtainiumgeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:unobtainium_from_smelting_unobtainium_shard"
+    ]
+  }
+}

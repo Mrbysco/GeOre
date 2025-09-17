@@ -34,7 +34,10 @@ public enum ConfigFeature {
 	SILVER_GEORE("silver", GeOreConfig.COMMON.generateSilverGeore),
 	TIN_GEORE("tin", GeOreConfig.COMMON.generateTinGeore),
 	TUNGSTEN_GEORE("tungsten", GeOreConfig.COMMON.generateTungstenGeore),
-	URANIUM_GEORE("uranium", GeOreConfig.COMMON.generateUraniumGeore);
+	URANIUM_GEORE("uranium", GeOreConfig.COMMON.generateUraniumGeore),
+	ALLTHEMODIUM_GEORE("allthemodium", GeOreConfig.COMMON.generateAllthemodiumGeore),
+	VIBRANIUM_GEORE("vibranium", GeOreConfig.COMMON.generateVibraniumGeore),
+	UNOBTAINIUM_GEORE("unobtainium", GeOreConfig.COMMON.generateUnobtainiumGeore);
 
 	public final String name;
 	public final Supplier<Boolean> configValue;

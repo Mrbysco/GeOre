@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:tag_empty",
+        "tag": "c:nuggets/allthemodium"
+      }
+    }
+  ],
+  "type": "geore:furnace",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "geore",
+  "ingredient": {
+    "item": "geore:allthemodium_shard"
+  },
+  "result": {
+    "tag": "c:nuggets/allthemodium"
+  }
+}

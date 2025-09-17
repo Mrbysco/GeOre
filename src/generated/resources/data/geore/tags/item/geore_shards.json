@@ -25,6 +25,9 @@
     "#geore:geore_shards/silver",
     "#geore:geore_shards/tin",
     "#geore:geore_shards/tungsten",
-    "#geore:geore_shards/uranium"
+    "#geore:geore_shards/uranium",
+    "#geore:geore_shards/allthemodium",
+    "#geore:geore_shards/vibranium",
+    "#geore:geore_shards/unobtainium"
   ]
 }

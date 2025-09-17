@@ -44,6 +44,10 @@ public class GeOrePlacedFeatures {
 		GeOreFeatures.TUNGSTEN_GEORE.setupPlaced(context, 290, 6, 30);
 		GeOreFeatures.URANIUM_GEORE.setupPlaced(context, 320, 6, 30);
 
+		GeOreFeatures.ALLTHEMODIUM_GEORE.setupPlaced(context, 400, 6, 30);
+		GeOreFeatures.VIBRANIUM_GEORE.setupPlaced(context, 400, 6, 30);
+		GeOreFeatures.UNOBTAINIUM_GEORE.setupPlaced(context, 400, 6, 30);
+
 		Holder<ConfiguredFeature<?, ?>> buddingAncientDebris = holdergetter.getOrThrow(GeOreConfiguredFeatures.ANCIENT_DEBRIS_CONFIGURED_KEY);
 		PlacementUtils.register(context, ANCIENT_DEBRIS_PLACEMENT_KEY, buddingAncientDebris,
 				InSquarePlacement.spread(), PlacementUtils.RANGE_8_8, BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(3));

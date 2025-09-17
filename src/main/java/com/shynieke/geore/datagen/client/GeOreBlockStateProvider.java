@@ -19,32 +19,9 @@ public class GeOreBlockStateProvider extends BlockStateProvider {
 
 	@Override
 	protected void registerStatesAndModels() {
-		generateGeoreModels(GeOreRegistry.COAL_GEORE);
-		generateGeoreModels(GeOreRegistry.COPPER_GEORE);
-		generateGeoreModels(GeOreRegistry.DIAMOND_GEORE);
-		generateGeoreModels(GeOreRegistry.EMERALD_GEORE);
-		generateGeoreModels(GeOreRegistry.GOLD_GEORE);
-		generateGeoreModels(GeOreRegistry.IRON_GEORE);
-		generateGeoreModels(GeOreRegistry.LAPIS_GEORE);
-		generateGeoreModels(GeOreRegistry.QUARTZ_GEORE);
-		generateGeoreModels(GeOreRegistry.REDSTONE_GEORE);
-		generateGeoreModels(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
-		generateGeoreModels(GeOreRegistry.RUBY_GEORE);
-		generateGeoreModels(GeOreRegistry.SAPPHIRE_GEORE);
-		generateGeoreModels(GeOreRegistry.TOPAZ_GEORE);
-		generateGeoreModels(GeOreRegistry.ZINC_GEORE);
-		generateGeoreModels(GeOreRegistry.URANINITE_GEORE);
-		generateGeoreModels(GeOreRegistry.BLACK_QUARTZ_GEORE);
-		generateGeoreModels(GeOreRegistry.MONAZITE_GEORE);
-		generateGeoreModels(GeOreRegistry.ALUMINUM_GEORE);
-		generateGeoreModels(GeOreRegistry.LEAD_GEORE);
-		generateGeoreModels(GeOreRegistry.NICKEL_GEORE);
-		generateGeoreModels(GeOreRegistry.OSMIUM_GEORE);
-		generateGeoreModels(GeOreRegistry.PLATINUM_GEORE);
-		generateGeoreModels(GeOreRegistry.SILVER_GEORE);
-		generateGeoreModels(GeOreRegistry.TIN_GEORE);
-		generateGeoreModels(GeOreRegistry.TUNGSTEN_GEORE);
-		generateGeoreModels(GeOreRegistry.URANIUM_GEORE);
+		for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
+			generateGeoreModels(reg);
+		}
 	}
 
 	protected void generateGeoreModels(GeOreBlockReg blockReg) {

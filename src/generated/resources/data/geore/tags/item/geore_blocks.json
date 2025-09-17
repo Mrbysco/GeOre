@@ -25,6 +25,9 @@
     "#geore:geore_blocks/silver",
     "#geore:geore_blocks/tin",
     "#geore:geore_blocks/tungsten",
-    "#geore:geore_blocks/uranium"
+    "#geore:geore_blocks/uranium",
+    "#geore:geore_blocks/allthemodium",
+    "#geore:geore_blocks/vibranium",
+    "#geore:geore_blocks/unobtainium"
   ]
 }

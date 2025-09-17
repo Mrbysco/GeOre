@@ -79,6 +79,10 @@ public class GeOreRecipeProvider extends RecipeProvider {
 		generateTagRecipe(GeOreRegistry.TIN_GEORE, 0.7F, getCommonTag("ingots/tin"), output);
 		generateTagRecipe(GeOreRegistry.TUNGSTEN_GEORE, 0.7F, getCommonTag("ingots/tungsten"), output);
 		generateTagRecipe(GeOreRegistry.URANIUM_GEORE, 0.7F, getCommonTag("ingots/uranium"), output);
+
+		generateTagRecipe(GeOreRegistry.ALLTHEMODIUM_GEORE, 0.7F, getCommonTag("nuggets/allthemodium"), output);
+		generateTagRecipe(GeOreRegistry.VIBRANIUM_GEORE, 0.7F, getCommonTag("nuggets/vibranium"), output);
+		generateTagRecipe(GeOreRegistry.UNOBTAINIUM_GEORE, 0.7F, getCommonTag("nuggets/unobtainium"), output);
 	}
 
 	private void generateRecipe(GeOreBlockReg reg, float xp, ItemLike result, RecipeOutput output) {

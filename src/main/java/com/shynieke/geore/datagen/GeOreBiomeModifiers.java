@@ -10,13 +10,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BiomeTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.levelgen.GenerationStep.Decoration;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 public class GeOreBiomeModifiers {
+	public static final TagKey<Biome> IS_DEEP_DARK = TagKey.create(Registries.BIOME, Reference.modLoc("is_deep_dark"));
 
 	public static void bootstrap(BootstrapContext<BiomeModifier> context) {
 		final HolderGetter<Biome> biomeHolderGetter = context.lookup(Registries.BIOME);
@@ -48,6 +51,10 @@ public class GeOreBiomeModifiers {
 		GeOreFeatures.TIN_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "tin");
 		GeOreFeatures.TUNGSTEN_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "tungsten");
 		GeOreFeatures.URANIUM_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "uranium");
+
+		GeOreFeatures.ALLTHEMODIUM_GEORE.setupBiomeModifier(context, IS_DEEP_DARK, "allthemodium");
+		GeOreFeatures.VIBRANIUM_GEORE.setupBiomeModifier(context, BiomeTags.IS_NETHER, "vibranium");
+		GeOreFeatures.UNOBTAINIUM_GEORE.setupBiomeModifier(context, BiomeTags.IS_END, "unobtainium");
 
 		final AddConfigFeatureBiomeModifier addBuddingAncientDebris = new AddConfigFeatureBiomeModifier(
 				biomeHolderGetter.getOrThrow(BiomeTags.IS_NETHER),

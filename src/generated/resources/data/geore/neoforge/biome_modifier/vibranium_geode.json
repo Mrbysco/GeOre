@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_nether",
+  "enabledConfig": "vibranium",
+  "features": "geore:vibranium_geode",
+  "step": "local_modifications"
+}

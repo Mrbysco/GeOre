@@ -62,6 +62,9 @@ public class GeOreConfig {
 		public final ModConfigSpec.BooleanValue generateTinGeore;
 		public final ModConfigSpec.BooleanValue generateTungstenGeore;
 		public final ModConfigSpec.BooleanValue generateUraniumGeore;
+		public final ModConfigSpec.BooleanValue generateAllthemodiumGeore;
+		public final ModConfigSpec.BooleanValue generateVibraniumGeore;
+		public final ModConfigSpec.BooleanValue generateUnobtainiumGeore;
 
 		Common(ModConfigSpec.Builder builder) {
 			builder.comment("General settings")
@@ -182,6 +185,18 @@ public class GeOreConfig {
 			generateUraniumGeore = builder
 					.comment("Generate Uranium GeOre [Default: false]")
 					.define("generateUraniumGeore", false);
+
+			generateAllthemodiumGeore = builder
+					.comment("Generate Allthemodium GeOre [Default: false]")
+					.define("generateAllthemodiumGeore", false);
+
+			generateVibraniumGeore = builder
+					.comment("Generate Vibranium GeOre [Default: false]")
+					.define("generateVibraniumGeore", false);
+
+			generateUnobtainiumGeore = builder
+					.comment("Generate Unobtainium GeOre [Default: false]")
+					.define("generateUnobtainiumGeore", false);
 
 			builder.pop();
 		}

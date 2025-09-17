@@ -155,6 +155,24 @@
     "geore:medium_uranium_bud",
     "geore:large_uranium_bud",
     "geore:uranium_block",
-    "geore:budding_uranium"
+    "geore:budding_uranium",
+    "geore:allthemodium_cluster",
+    "geore:small_allthemodium_bud",
+    "geore:medium_allthemodium_bud",
+    "geore:large_allthemodium_bud",
+    "geore:allthemodium_block",
+    "geore:budding_allthemodium",
+    "geore:vibranium_cluster",
+    "geore:small_vibranium_bud",
+    "geore:medium_vibranium_bud",
+    "geore:large_vibranium_bud",
+    "geore:vibranium_block",
+    "geore:budding_vibranium",
+    "geore:unobtainium_cluster",
+    "geore:small_unobtainium_bud",
+    "geore:medium_unobtainium_bud",
+    "geore:large_unobtainium_bud",
+    "geore:unobtainium_block",
+    "geore:budding_unobtainium"
   ]
 }

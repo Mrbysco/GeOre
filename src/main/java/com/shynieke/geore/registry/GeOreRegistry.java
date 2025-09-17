@@ -51,6 +51,10 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg TUNGSTEN_GEORE = createGeOre("tungsten", MapColor.TERRACOTTA_PURPLE, 0x584a73);
 	public static final GeOreBlockReg URANIUM_GEORE = createGeOre("uranium", MapColor.COLOR_GREEN, 0x00fc15);
 
+	public static final GeOreBlockReg ALLTHEMODIUM_GEORE = createGeOre("allthemodium", MapColor.COLOR_YELLOW, 0xf2a61d);
+	public static final GeOreBlockReg VIBRANIUM_GEORE = createGeOre("vibranium", MapColor.COLOR_GREEN, 0x26de88);
+	public static final GeOreBlockReg UNOBTAINIUM_GEORE = createGeOre("unobtainium", MapColor.COLOR_PURPLE, 0xa82ce3);
+
 	private static GeOreBlockReg createGeOre(String name, MapColor mapColor, Supplier<Item> item, int color) {
 		GeOreBlockReg geOre = new GeOreBlockReg(name, mapColor, item, color);
 		GEORES.add(geOre);

@@ -33,4 +33,8 @@ public class GeOreFeatures {
 	public static GeOreFeatureReg TIN_GEORE = new GeOreFeatureReg("tin", GeOreRegistry.TIN_GEORE);
 	public static GeOreFeatureReg TUNGSTEN_GEORE = new GeOreFeatureReg("tungsten", GeOreRegistry.TUNGSTEN_GEORE);
 	public static GeOreFeatureReg URANIUM_GEORE = new GeOreFeatureReg("uranium", GeOreRegistry.URANIUM_GEORE);
+
+	public static GeOreFeatureReg ALLTHEMODIUM_GEORE = new GeOreFeatureReg("allthemodium", GeOreRegistry.ALLTHEMODIUM_GEORE);
+	public static GeOreFeatureReg VIBRANIUM_GEORE = new GeOreFeatureReg("vibranium", GeOreRegistry.VIBRANIUM_GEORE);
+	public static GeOreFeatureReg UNOBTAINIUM_GEORE = new GeOreFeatureReg("unobtainium", GeOreRegistry.UNOBTAINIUM_GEORE);
 }

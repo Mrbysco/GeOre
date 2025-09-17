@@ -49,10 +49,12 @@ public class GeOreLootProvider extends LootTableProvider {
 		@Override
 		protected void generate() {
 			for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
-				if (reg.getName().equals("ancient_debris")) {
-					addAncientDebrisGeOreTables();
-				} else {
-					addGeOreTables(reg);
+				switch(reg.getName()) {
+					case "ancient_debris" -> addHarderGeOreTables(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
+					case "allthemodium" -> addHarderGeOreTables(GeOreRegistry.ALLTHEMODIUM_GEORE);
+					case "vibranium" -> addHarderGeOreTables(GeOreRegistry.VIBRANIUM_GEORE);
+					case "unobtanium" -> addHarderGeOreTables(GeOreRegistry.UNOBTAINIUM_GEORE);
+					default -> addGeOreTables(reg);
 				}
 			}
 		}
@@ -74,8 +76,7 @@ public class GeOreLootProvider extends LootTableProvider {
 			this.dropSelf(blockReg.getTintedGlass().get());
 		}
 
-		private void addAncientDebrisGeOreTables() {
-			GeOreBlockReg blockReg = GeOreRegistry.ANCIENT_DEBRIS_GEORE;
+		private void addHarderGeOreTables(GeOreBlockReg blockReg) {
 			this.dropSelf(blockReg.getBlock().get());
 			this.add(blockReg.getCluster().get(), (block) ->
 					createSilkTouchDispatchTable(block,

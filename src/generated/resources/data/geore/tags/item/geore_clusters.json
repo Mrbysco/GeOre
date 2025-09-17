@@ -25,6 +25,9 @@
     "#geore:geore_clusters/silver",
     "#geore:geore_clusters/tin",
     "#geore:geore_clusters/tungsten",
-    "#geore:geore_clusters/uranium"
+    "#geore:geore_clusters/uranium",
+    "#geore:geore_clusters/allthemodium",
+    "#geore:geore_clusters/vibranium",
+    "#geore:geore_clusters/unobtainium"
   ]
 }
