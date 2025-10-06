@@ -53,7 +53,7 @@ public class GeOreLootProvider extends LootTableProvider {
 					case "ancient_debris" -> addHarderGeOreTables(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 					case "allthemodium" -> addHarderGeOreTables(GeOreRegistry.ALLTHEMODIUM_GEORE);
 					case "vibranium" -> addHarderGeOreTables(GeOreRegistry.VIBRANIUM_GEORE);
-					case "unobtanium" -> addHarderGeOreTables(GeOreRegistry.UNOBTAINIUM_GEORE);
+					case "unobtainium" -> addHarderGeOreTables(GeOreRegistry.UNOBTAINIUM_GEORE);
 					default -> addGeOreTables(reg);
 				}
 			}
