@@ -1,1 +1,1 @@
-* Add GeOre for AllTheModium, Vibranium and Unobtainium
+* Fix Unobtainium GeOre block loot tables
