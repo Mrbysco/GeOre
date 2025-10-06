@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-17T01:53:34.3076674	Loot Tables
+// 1.21.1	2025-10-06T22:37:49.1018038	Loot Tables
 1157dad72f4fd9a68a494c53d4a4a0fe16b3beb5 data/geore/loot_table/blocks/allthemodium_block.json
 1450d3e869bba878da7d11a06069c94986e7ca4a data/geore/loot_table/blocks/allthemodium_cluster.json
 1fe6ad0b136fd6153855ada5ae547b5a279739ec data/geore/loot_table/blocks/allthemodium_tinted_glass.json
@@ -188,7 +188,7 @@ e1b08a43937726e2ffbbbe8d43d5ad8e80f21a9e data/geore/loot_table/blocks/topaz_tint
 7d0beb8c39c65d086942cd0a882c2dd3be8b855b data/geore/loot_table/blocks/tungsten_cluster.json
 86339df42a267b9e8593871d5b99192b5c05f47c data/geore/loot_table/blocks/tungsten_tinted_glass.json
 b309a41f4b88567ad49cc3b0d773998207b2876c data/geore/loot_table/blocks/unobtainium_block.json
-b70de7ee255c3267ca7f83f494ac985523b3da2d data/geore/loot_table/blocks/unobtainium_cluster.json
+58907257f6b922e21db026884cee8b3f864a1f0d data/geore/loot_table/blocks/unobtainium_cluster.json
 7581e304428cd08cbfd44a1eff71e75f6f57b7d7 data/geore/loot_table/blocks/unobtainium_tinted_glass.json
 12af997568f024aaac59640067d3b0c437c2722d data/geore/loot_table/blocks/uraninite_block.json
 30601d6ce0157c21b4563aff1f1cb49dc25c7b43 data/geore/loot_table/blocks/uraninite_cluster.json
