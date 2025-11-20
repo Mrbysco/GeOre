@@ -194,7 +194,7 @@
   "geore.configuration.generateBlackQuartzGeore": "ブラッククォーツGeOreの生成",
   "geore.configuration.generateBlackQuartzGeore.tooltip": "ブラッククォーツGeOreを生成するか［デフォルト値：false］",
   "geore.configuration.generateBuddingAncientDebris": "古代の残骸GeOreの生成",
-  "geore.configuration.generateBuddingAncientDebris.tooltip": "Generate Budding Ancient Debris［デフォルト値：true］",
+  "geore.configuration.generateBuddingAncientDebris.tooltip": "古代の残骸GeOreを生成するか［デフォルト値：true］",
   "geore.configuration.generateCoalGeore": "石炭GeOreの生成",
   "geore.configuration.generateCoalGeore.tooltip": "石炭GeOreを生成するか［デフォルト値：true］",
   "geore.configuration.generateCopperGeore": "銅GeOreの生成",
