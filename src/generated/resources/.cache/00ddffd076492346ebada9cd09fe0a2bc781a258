@@ -1,5 +1,5 @@
-// 1.20.1	2023-10-11T18:47:10.0463548	Tags for minecraft:block mod id geore
-5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/create/tags/blocks/non_movable.json
+// 1.20.1	2026-01-31T02:26:55.3527819	Tags for minecraft:block mod id geore
+e81511719951055bdd94a650364eab4b7a8bd376 data/create/tags/blocks/non_movable.json
 e1a70bd5d84ca732479f61a6d35fe8502bf0d858 data/forge/tags/blocks/budding.json
 f97818d31cd591c4ef50a00b7e46473ee458a144 data/forge/tags/blocks/buds.json
 c4a594ed42bb4b557d97ed15f3c66590cb5429c5 data/forge/tags/blocks/buds/geore_coal.json
@@ -29,7 +29,8 @@ af605b701da956dd63448fa3a1bd6181c1b6b485 data/forge/tags/blocks/clusters/geore_q
 dcbecc36bbb81bef85b3c30a6d98bae1b656fdda data/forge/tags/blocks/clusters/geore_sapphire.json
 9251d565604f062108f4ee17e7ef7e217e01c236 data/forge/tags/blocks/clusters/geore_topaz.json
 04cb9054efb8eefe00ce86c9897b492a293ec0c2 data/forge/tags/blocks/clusters/geore_zinc.json
-5be177bd60a317fe8e61b8ea332ad1ab8915be4e data/forge/tags/blocks/relocation_not_supported.json
+e81511719951055bdd94a650364eab4b7a8bd376 data/forge/tags/blocks/relocation_not_supported.json
+e1a70bd5d84ca732479f61a6d35fe8502bf0d858 data/geore/tags/blocks/budding_geore.json
 140ca360d2d7c35706e7709903b8bdab6317de2c data/geore/tags/blocks/storage_blocks/geore_coal.json
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/blocks/storage_blocks/geore_copper.json
 eef63965e0366006fb0db2f3652df728496fe2f1 data/geore/tags/blocks/storage_blocks/geore_diamond.json

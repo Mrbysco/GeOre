@@ -529,6 +529,7 @@ public class GeOreDatagen {
 			super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
 		}
 
+		public static final TagKey<Block> BUDDING_GEORE = modTag("geore", "budding_geore");
 		public static final TagKey<Block> RELOCATION_NOT_SUPPORTED = forgeTag("relocation_not_supported");
 		public static final TagKey<Block> NON_MOVABLE = modTag("create", "non_movable");
 
@@ -546,32 +547,8 @@ public class GeOreDatagen {
 
 		@Override
 		protected void addTags(HolderLookup.Provider provider) {
-			this.tag(RELOCATION_NOT_SUPPORTED)
-					.add(GeOreRegistry.COAL_GEORE.getBudding().get())
-					.add(GeOreRegistry.COPPER_GEORE.getBudding().get())
-					.add(GeOreRegistry.DIAMOND_GEORE.getBudding().get())
-					.add(GeOreRegistry.EMERALD_GEORE.getBudding().get())
-					.add(GeOreRegistry.GOLD_GEORE.getBudding().get())
-					.add(GeOreRegistry.IRON_GEORE.getBudding().get())
-					.add(GeOreRegistry.LAPIS_GEORE.getBudding().get())
-					.add(GeOreRegistry.QUARTZ_GEORE.getBudding().get())
-					.add(GeOreRegistry.REDSTONE_GEORE.getBudding().get())
-					.add(GeOreRegistry.RUBY_GEORE.getBudding().get())
-					.add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get())
-					.add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
-			this.tag(NON_MOVABLE)
-					.add(GeOreRegistry.COAL_GEORE.getBudding().get())
-					.add(GeOreRegistry.COPPER_GEORE.getBudding().get())
-					.add(GeOreRegistry.DIAMOND_GEORE.getBudding().get())
-					.add(GeOreRegistry.EMERALD_GEORE.getBudding().get())
-					.add(GeOreRegistry.GOLD_GEORE.getBudding().get())
-					.add(GeOreRegistry.IRON_GEORE.getBudding().get())
-					.add(GeOreRegistry.LAPIS_GEORE.getBudding().get())
-					.add(GeOreRegistry.QUARTZ_GEORE.getBudding().get())
-					.add(GeOreRegistry.REDSTONE_GEORE.getBudding().get())
-					.add(GeOreRegistry.RUBY_GEORE.getBudding().get())
-					.add(GeOreRegistry.SAPPHIRE_GEORE.getBudding().get())
-					.add(GeOreRegistry.TOPAZ_GEORE.getBudding().get());
+			this.tag(RELOCATION_NOT_SUPPORTED).addTag(BUDDING_GEORE);
+			this.tag(NON_MOVABLE).addTag(BUDDING_GEORE);
 
 			this.addMineable(GeOreRegistry.COAL_GEORE);
 			this.addMineable(GeOreRegistry.COPPER_GEORE);
@@ -641,6 +618,7 @@ public class GeOreDatagen {
 			this.tag(clustersTag).add(blockReg.getCluster().get());
 			this.tag(CLUSTERS).addTag(clustersTag);
 			this.tag(BUDDING).add(blockReg.getBudding().get());
+			this.tag(BUDDING_GEORE).add(blockReg.getBudding().get());
 
 			TagKey<Block> blockTag = modTag(Reference.MOD_ID, "storage_blocks/" + "geore_" + blockReg.getName());
 			this.tag(blockTag).add(blockReg.getBlock().get());
