@@ -6,9 +6,9 @@
   "refmap": "geore.refmap.json",
   "target": "@env(DEFAULT)",
   "mixins": [
-	"PlayerMixin"
+    "PlayerMixin"
   ],
   "injectors": {
-	"defaultRequire": 1
+    "defaultRequire": 1
   }
 }
