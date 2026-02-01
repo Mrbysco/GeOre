@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:monazite_shard"
-  },
-  "result": {
-    "tag": "c:dusts/monazite"
-  }
+  "ingredient": "geore:monazite_shard",
+  "result": "#c:dusts/monazite"
 }

@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:gold_shard"
-  },
+  "ingredient": "geore:gold_shard",
   "result": {
     "count": 1,
     "id": "minecraft:gold_ingot"

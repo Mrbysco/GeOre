@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:iron_shard"
-  },
+  "ingredient": "geore:iron_shard",
   "result": {
     "count": 1,
     "id": "minecraft:iron_ingot"

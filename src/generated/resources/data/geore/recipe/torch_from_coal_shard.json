@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "tag": "c:rods/wooden"
-    },
-    "X": {
-      "item": "geore:coal_shard"
-    }
+    "#": "#c:rods/wooden",
+    "X": "geore:coal_shard"
   },
   "pattern": [
     "X",

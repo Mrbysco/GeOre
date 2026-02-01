@@ -6,24 +6,22 @@ import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
-import javax.annotation.Nullable;
 import java.util.concurrent.CompletableFuture;
 
 public class GeOreBlockTagsProvider extends BlockTagsProvider {
-	public GeOreBlockTagsProvider(PackOutput packOutput, CompletableFuture<Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-		super(packOutput, lookupProvider, Reference.MOD_ID, existingFileHelper);
+	public GeOreBlockTagsProvider(PackOutput packOutput, CompletableFuture<Provider> lookupProvider) {
+		super(packOutput, lookupProvider, Reference.MOD_ID);
 	}
 
 	private static final TagKey<Block> BUDDING_GEORE = modTag("budding_geore");
-	public static final TagKey<Block> NON_MOVABLE = BlockTags.create(ResourceLocation.fromNamespaceAndPath("create", "non_movable"));
+	public static final TagKey<Block> NON_MOVABLE = BlockTags.create(Identifier.fromNamespaceAndPath("create", "non_movable"));
 
 	private static TagKey<Block> modTag(String name) {
 		return BlockTags.create(Reference.modLoc(name));

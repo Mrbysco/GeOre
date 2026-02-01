@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:sapphire_shard"
-  },
-  "result": {
-    "tag": "c:gems/sapphire"
-  }
+  "ingredient": "geore:sapphire_shard",
+  "result": "#c:gems/sapphire"
 }

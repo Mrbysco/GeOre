@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.2,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:lapis_shard"
-  },
+  "ingredient": "geore:lapis_shard",
   "result": {
     "count": 1,
     "id": "minecraft:lapis_lazuli"

@@ -6,20 +6,17 @@ import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.data.BlockTagsProvider;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.common.data.ItemTagsProvider;
 
 import java.util.concurrent.CompletableFuture;
 
 public class GeOreItemTagsProvider extends ItemTagsProvider {
-	public GeOreItemTagsProvider(PackOutput packOutput, CompletableFuture<Provider> lookupProvider,
-	                             BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper) {
-		super(packOutput, lookupProvider, blockTagsProvider.contentsGetter(), Reference.MOD_ID, existingFileHelper);
+	public GeOreItemTagsProvider(PackOutput packOutput, CompletableFuture<Provider> lookupProvider) {
+		super(packOutput, lookupProvider, Reference.MOD_ID);
 	}
 
 	public static final TagKey<Item> GEORE_BUDDING = modTag("geore_budding");

@@ -15,7 +15,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nonnull;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class GeOreBlockReg {
 	protected final String name;
@@ -71,41 +71,41 @@ public class GeOreBlockReg {
 	}
 
 	public GeOreBlockReg(String name, MapColor color, int spyglassHex) {
-		this(name, color, () -> new Item(new Item.Properties()), spyglassHex);
+		this(name, color, Item::new, spyglassHex);
 	}
 
-	public GeOreBlockReg(String name, MapColor color, Supplier<Item> customShard, int spyglassHex) {
+	public GeOreBlockReg(String name, MapColor color, Function<Item.Properties, ? extends Item> customShard, int spyglassHex) {
 		this.name = name;
-		block = GeOreRegistry.BLOCKS.register(name + "_block", () -> new AmethystBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(color).strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops()));
-		GeOreRegistry.ITEMS.register(getBlock().getId().getPath(), () -> new BlockItem(getBlock().get(), new Item.Properties()));
+		block = GeOreRegistry.BLOCKS.registerBlock(name + "_block", AmethystBlock::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_BLOCK).mapColor(color).strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops());
+		GeOreRegistry.ITEMS.registerItem(getBlock().getId().getPath(), (properties) -> new BlockItem(getBlock().get(), properties.useBlockDescriptionPrefix()));
 
-		large_bud = GeOreRegistry.BLOCKS.register("large_" + name + "_bud", () -> new AmethystClusterBlock(5, 3,
-				BlockBehaviour.Properties.ofFullCopy(Blocks.LARGE_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 4)));
-		GeOreRegistry.ITEMS.register(getLargeBud().getId().getPath(), () -> new BlockItem(getLargeBud().get(), new Item.Properties()));
+		large_bud = GeOreRegistry.BLOCKS.registerBlock("large_" + name + "_bud", (properties) -> new AmethystClusterBlock(5, 3, properties),
+				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.LARGE_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 4));
+		GeOreRegistry.ITEMS.registerItem(getLargeBud().getId().getPath(), (properties) -> new BlockItem(getLargeBud().get(), properties.useBlockDescriptionPrefix()));
 
-		medium_bud = GeOreRegistry.BLOCKS.register("medium_" + name + "_bud", () -> new AmethystClusterBlock(4, 3,
-				BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 2)));
-		GeOreRegistry.ITEMS.register(getMediumBud().getId().getPath(), () -> new BlockItem(getMediumBud().get(), new Item.Properties()));
+		medium_bud = GeOreRegistry.BLOCKS.registerBlock("medium_" + name + "_bud", (properties) -> new AmethystClusterBlock(4, 3, properties),
+				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 2));
+		GeOreRegistry.ITEMS.registerItem(getMediumBud().getId().getPath(), (properties) -> new BlockItem(getMediumBud().get(), properties.useBlockDescriptionPrefix()));
 
-		small_bud = GeOreRegistry.BLOCKS.register("small_" + name + "_bud", () -> new AmethystClusterBlock(3, 4,
-				BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 1)));
-		GeOreRegistry.ITEMS.register(getSmallBud().getId().getPath(), () -> new BlockItem(getSmallBud().get(), new Item.Properties()));
+		small_bud = GeOreRegistry.BLOCKS.registerBlock("small_" + name + "_bud", (properties) -> new AmethystClusterBlock(3, 4, properties),
+				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 1));
+		GeOreRegistry.ITEMS.registerItem(getSmallBud().getId().getPath(), (properties) -> new BlockItem(getSmallBud().get(), properties.useBlockDescriptionPrefix()));
 
-		cluster = GeOreRegistry.BLOCKS.register(name + "_cluster", () -> new AmethystClusterBlock(7, 3,
-				BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 5)));
-		GeOreRegistry.ITEMS.register(getCluster().getId().getPath(), () -> new BlockItem(getCluster().get(), new Item.Properties()));
+		cluster = GeOreRegistry.BLOCKS.registerBlock(name + "_cluster", (properties) -> new AmethystClusterBlock(7, 3, properties),
+				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).mapColor(color).noOcclusion().randomTicks().sound(SoundType.AMETHYST_CLUSTER).strength(1.5F).lightLevel((state) -> 5));
+		GeOreRegistry.ITEMS.registerItem(getCluster().getId().getPath(), (properties) -> new BlockItem(getCluster().get(), properties.useBlockDescriptionPrefix()));
 
-		budding = GeOreRegistry.BLOCKS.register("budding_" + name, () ->
-				new BuddingGeoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
-						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
-		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties()));
+		budding = GeOreRegistry.BLOCKS.registerBlock("budding_" + name, (properties) ->
+						new BuddingGeoreBlock(properties, getSmallBud(), getMediumBud(), getLargeBud(), getCluster()),
+				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops());
+		GeOreRegistry.ITEMS.registerItem(getBudding().getId().getPath(), (properties) -> new BlockItem(getBudding().get(), properties.useBlockDescriptionPrefix()));
 
-		tinted_glass = GeOreRegistry.BLOCKS.register(name + "_tinted_glass", () ->
-				new TintedGlassBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.TINTED_GLASS).mapColor(color).strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
-		GeOreRegistry.ITEMS.register(getTintedGlass().getId().getPath(), () -> new BlockItem(getTintedGlass().get(), new Item.Properties()));
+		tinted_glass = GeOreRegistry.BLOCKS.registerBlock(name + "_tinted_glass", TintedGlassBlock::new, () ->
+				BlockBehaviour.Properties.ofFullCopy(Blocks.TINTED_GLASS).mapColor(color).strength(0.3F).sound(SoundType.GLASS).noOcclusion());
+		GeOreRegistry.ITEMS.registerItem(getTintedGlass().getId().getPath(), (properties) -> new BlockItem(getTintedGlass().get(), properties.useBlockDescriptionPrefix()));
 
-		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);
+		shard = GeOreRegistry.ITEMS.registerItem(name + "_shard", customShard);
 
-		spyglass = GeOreRegistry.ITEMS.register(name + "_spyglass", () -> new GeoreSpyglassItem(new Item.Properties(), spyglassHex));
+		spyglass = GeOreRegistry.ITEMS.registerItem(name + "_spyglass", (properties) -> new GeoreSpyglassItem(properties, spyglassHex));
 	}
 }

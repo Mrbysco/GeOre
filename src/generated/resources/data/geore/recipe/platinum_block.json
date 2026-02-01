@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:platinum_shard"
-    }
+    "S": "geore:platinum_shard"
   },
   "pattern": [
     "SS",

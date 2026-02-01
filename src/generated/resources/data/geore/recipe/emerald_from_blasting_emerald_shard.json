@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 1.0,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:emerald_shard"
-  },
+  "ingredient": "geore:emerald_shard",
   "result": {
     "count": 1,
     "id": "minecraft:emerald"

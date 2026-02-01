@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "S": {
-      "item": "geore:black_quartz_shard"
-    }
+    "G": "minecraft:glass",
+    "S": "geore:black_quartz_shard"
   },
   "pattern": [
     " S ",

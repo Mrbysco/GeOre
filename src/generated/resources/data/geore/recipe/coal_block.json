@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:coal_shard"
-    }
+    "S": "geore:coal_shard"
   },
   "pattern": [
     "SS",

@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:tungsten_shard"
-  },
-  "result": {
-    "tag": "c:ingots/tungsten"
-  }
+  "ingredient": "geore:tungsten_shard",
+  "result": "#c:ingots/tungsten"
 }

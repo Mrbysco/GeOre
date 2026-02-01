@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "#": {
-      "item": "geore:quartz_shard"
-    },
-    "X": {
-      "item": "minecraft:copper_ingot"
-    }
+    "#": "geore:quartz_shard",
+    "X": "minecraft:copper_ingot"
   },
   "pattern": [
     " # ",

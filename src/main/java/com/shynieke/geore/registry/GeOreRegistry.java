@@ -15,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class GeOreRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
@@ -23,7 +23,7 @@ public class GeOreRegistry {
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
 	private static final List<GeOreBlockReg> GEORES = new ArrayList<>();
 
-	public static final GeOreBlockReg COAL_GEORE = createGeOre("coal", MapColor.COLOR_BLACK, () -> new CoalShardItem(new Item.Properties()), 0x2e2e2e);
+	public static final GeOreBlockReg COAL_GEORE = createGeOre("coal", MapColor.COLOR_BLACK, CoalShardItem::new, 0x2e2e2e);
 	public static final GeOreBlockReg COPPER_GEORE = createGeOre("copper", MapColor.COLOR_ORANGE, 0xc26b4c);
 	public static final GeOreBlockReg DIAMOND_GEORE = createGeOre("diamond", MapColor.DIAMOND, 0x239698);
 	public static final GeOreBlockReg EMERALD_GEORE = createGeOre("emerald", MapColor.EMERALD, 0x1c9829);
@@ -55,14 +55,14 @@ public class GeOreRegistry {
 	public static final GeOreBlockReg VIBRANIUM_GEORE = createGeOre("vibranium", MapColor.COLOR_GREEN, 0x26de88);
 	public static final GeOreBlockReg UNOBTAINIUM_GEORE = createGeOre("unobtainium", MapColor.COLOR_PURPLE, 0xa82ce3);
 
-	private static GeOreBlockReg createGeOre(String name, MapColor mapColor, Supplier<Item> item, int color) {
+	private static GeOreBlockReg createGeOre(String name, MapColor mapColor, Function<Item.Properties, ? extends Item> item, int color) {
 		GeOreBlockReg geOre = new GeOreBlockReg(name, mapColor, item, color);
 		GEORES.add(geOre);
 		return geOre;
 	}
 
 	private static GeOreBlockReg createGeOre(String name, MapColor mapColor, int color) {
-		return createGeOre(name, mapColor, () -> new Item(new Item.Properties()), color);
+		return createGeOre(name, mapColor, Item::new, color);
 	}
 
 	public static List<GeOreBlockReg> getGeOres() {

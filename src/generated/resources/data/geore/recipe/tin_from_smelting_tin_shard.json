@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:tin_shard"
-  },
-  "result": {
-    "tag": "c:ingots/tin"
-  }
+  "ingredient": "geore:tin_shard",
+  "result": "#c:ingots/tin"
 }

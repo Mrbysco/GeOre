@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "S": {
-      "item": "geore:silver_shard"
-    }
+    "G": "minecraft:glass",
+    "S": "geore:silver_shard"
   },
   "pattern": [
     " S ",

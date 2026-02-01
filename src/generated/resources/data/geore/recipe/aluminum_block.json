@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:aluminum_shard"
-    }
+    "S": "geore:aluminum_shard"
   },
   "pattern": [
     "SS",

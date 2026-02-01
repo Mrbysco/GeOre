@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:allthemodium_shard"
-    }
+    "S": "geore:allthemodium_shard"
   },
   "pattern": [
     "SS",

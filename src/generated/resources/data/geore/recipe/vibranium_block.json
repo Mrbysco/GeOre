@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:vibranium_shard"
-    }
+    "S": "geore:vibranium_shard"
   },
   "pattern": [
     "SS",

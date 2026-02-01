@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/spyglass",
-  "textures": {
-    "layer0": "geore:item/silver_spyglass"
-  }
-}

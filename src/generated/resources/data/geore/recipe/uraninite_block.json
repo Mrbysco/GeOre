@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:uraninite_shard"
-    }
+    "S": "geore:uraninite_shard"
   },
   "pattern": [
     "SS",

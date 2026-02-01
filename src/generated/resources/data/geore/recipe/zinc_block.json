@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:zinc_shard"
-    }
+    "S": "geore:zinc_shard"
   },
   "pattern": [
     "SS",

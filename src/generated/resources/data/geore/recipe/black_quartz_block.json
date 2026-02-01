@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:black_quartz_shard"
-    }
+    "S": "geore:black_quartz_shard"
   },
   "pattern": [
     "SS",

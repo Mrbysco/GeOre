@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:tin_shard"
-    }
+    "S": "geore:tin_shard"
   },
   "pattern": [
     "SS",

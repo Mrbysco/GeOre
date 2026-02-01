@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "S": {
-      "item": "geore:vibranium_shard"
-    }
+    "G": "minecraft:glass",
+    "S": "geore:vibranium_shard"
   },
   "pattern": [
     " S ",

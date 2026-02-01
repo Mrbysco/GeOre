@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:osmium_shard"
-  },
-  "result": {
-    "tag": "c:ingots/osmium"
-  }
+  "ingredient": "geore:osmium_shard",
+  "result": "#c:ingots/osmium"
 }

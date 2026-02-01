@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:copper_shard"
-  },
+  "ingredient": "geore:copper_shard",
   "result": {
     "count": 1,
     "id": "minecraft:copper_ingot"

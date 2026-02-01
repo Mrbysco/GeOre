@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:lead_shard"
-  },
-  "result": {
-    "tag": "c:ingots/lead"
-  }
+  "ingredient": "geore:lead_shard",
+  "result": "#c:ingots/lead"
 }

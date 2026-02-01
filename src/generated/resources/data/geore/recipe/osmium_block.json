@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:osmium_shard"
-    }
+    "S": "geore:osmium_shard"
   },
   "pattern": [
     "SS",

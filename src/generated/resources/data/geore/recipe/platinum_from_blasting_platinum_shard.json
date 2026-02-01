@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:platinum_shard"
-  },
-  "result": {
-    "tag": "c:ingots/platinum"
-  }
+  "ingredient": "geore:platinum_shard",
+  "result": "#c:ingots/platinum"
 }

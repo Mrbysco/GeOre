@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "S": {
-      "item": "geore:uranium_shard"
-    }
+    "G": "minecraft:glass",
+    "S": "geore:uranium_shard"
   },
   "pattern": [
     " S ",

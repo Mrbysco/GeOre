@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:ruby_shard"
-    }
+    "S": "geore:ruby_shard"
   },
   "pattern": [
     "SS",

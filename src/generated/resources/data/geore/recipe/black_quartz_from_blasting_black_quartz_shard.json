@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:black_quartz_shard"
-  },
-  "result": {
-    "tag": "c:gems/black_quartz"
-  }
+  "ingredient": "geore:black_quartz_shard",
+  "result": "#c:gems/black_quartz"
 }

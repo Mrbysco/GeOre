@@ -4,9 +4,7 @@
   "cookingtime": 200,
   "experience": 1.0,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:diamond_shard"
-  },
+  "ingredient": "geore:diamond_shard",
   "result": {
     "count": 1,
     "id": "minecraft:diamond"

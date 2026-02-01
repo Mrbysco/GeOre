@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:silver_shard"
-  },
-  "result": {
-    "tag": "c:ingots/silver"
-  }
+  "ingredient": "geore:silver_shard",
+  "result": "#c:ingots/silver"
 }

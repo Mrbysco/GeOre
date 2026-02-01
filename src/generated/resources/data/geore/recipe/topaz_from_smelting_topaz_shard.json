@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:topaz_shard"
-  },
-  "result": {
-    "tag": "c:gems/topaz"
-  }
+  "ingredient": "geore:topaz_shard",
+  "result": "#c:gems/topaz"
 }

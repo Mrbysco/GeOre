@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:nickel_shard"
-    }
+    "S": "geore:nickel_shard"
   },
   "pattern": [
     "SS",

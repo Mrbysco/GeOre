@@ -2,7 +2,7 @@ package com.shynieke.geore.datagen.server;
 
 import com.shynieke.geore.registry.GeOreBlockReg;
 import com.shynieke.geore.registry.GeOreRegistry;
-import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.advancements.criterion.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.HolderLookup.Provider;
 import net.minecraft.core.WritableRegistry;
@@ -49,7 +49,7 @@ public class GeOreLootProvider extends LootTableProvider {
 		@Override
 		protected void generate() {
 			for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
-				switch(reg.getName()) {
+				switch (reg.getName()) {
 					case "ancient_debris" -> addHarderGeOreTables(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 					case "allthemodium" -> addHarderGeOreTables(GeOreRegistry.ALLTHEMODIUM_GEORE);
 					case "vibranium" -> addHarderGeOreTables(GeOreRegistry.VIBRANIUM_GEORE);
@@ -66,7 +66,9 @@ public class GeOreLootProvider extends LootTableProvider {
 							LootItem.lootTableItem(blockReg.getShard().get())
 									.apply(SetItemCountFunction.setCount(ConstantValue.exactly(4.0F)))
 									.apply(ApplyBonusCount.addOreBonusCount(enchantmentLookup.getOrThrow(Enchantments.FORTUNE)))
-									.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(ItemTags.CLUSTER_MAX_HARVESTABLES)))
+									.when(MatchTool.toolMatches(ItemPredicate.Builder.item().of(
+											this.registries.lookupOrThrow(Registries.ITEM), ItemTags.CLUSTER_MAX_HARVESTABLES
+									)))
 									.otherwise(applyExplosionDecay(block, LootItem.lootTableItem(blockReg.getShard().get())
 											.apply(SetItemCountFunction.setCount(ConstantValue.exactly(2.0F)))))));
 			this.dropWhenSilkTouch(blockReg.getSmallBud().get());

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "#": {
-      "item": "geore:ancient_debris_shard"
-    }
+    "#": "geore:ancient_debris_shard"
   },
   "pattern": [
     "###",

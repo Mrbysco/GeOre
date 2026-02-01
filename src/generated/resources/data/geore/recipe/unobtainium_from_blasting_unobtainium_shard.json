@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:unobtainium_block"
-  },
-  "result": {
-    "tag": "c:nuggets/unobtainium"
-  }
+  "ingredient": "geore:unobtainium_block",
+  "result": "#c:nuggets/unobtainium"
 }

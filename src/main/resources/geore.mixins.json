@@ -5,9 +5,9 @@
   "package": "com.shynieke.geore.mixin",
   "target": "@env(DEFAULT)",
   "mixins": [
-	"PlayerMixin"
+    "PlayerMixin"
   ],
   "injectors": {
-	"defaultRequire": 1
+    "defaultRequire": 1
   }
 }

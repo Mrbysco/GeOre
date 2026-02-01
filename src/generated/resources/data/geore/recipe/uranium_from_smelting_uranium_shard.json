@@ -13,10 +13,6 @@
   "cookingtime": 200,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:uranium_shard"
-  },
-  "result": {
-    "tag": "c:ingots/uranium"
-  }
+  "ingredient": "geore:uranium_shard",
+  "result": "#c:ingots/uranium"
 }

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "S": {
-      "item": "geore:redstone_shard"
-    }
+    "S": "geore:redstone_shard"
   },
   "pattern": [
     "SS",

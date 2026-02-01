@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:vibranium_block"
-  },
-  "result": {
-    "tag": "c:nuggets/vibranium"
-  }
+  "ingredient": "geore:vibranium_block",
+  "result": "#c:nuggets/vibranium"
 }

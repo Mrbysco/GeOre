@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.2,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:quartz_shard"
-  },
+  "ingredient": "geore:quartz_shard",
   "result": {
     "count": 1,
     "id": "minecraft:quartz"

@@ -4,9 +4,7 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:redstone_shard"
-  },
+  "ingredient": "geore:redstone_shard",
   "result": {
     "count": 1,
     "id": "minecraft:redstone"

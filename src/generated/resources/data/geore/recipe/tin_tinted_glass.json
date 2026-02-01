@@ -2,12 +2,8 @@
   "type": "minecraft:crafting_shaped",
   "category": "building",
   "key": {
-    "G": {
-      "item": "minecraft:glass"
-    },
-    "S": {
-      "item": "geore:tin_shard"
-    }
+    "G": "minecraft:glass",
+    "S": "geore:tin_shard"
   },
   "pattern": [
     " S ",

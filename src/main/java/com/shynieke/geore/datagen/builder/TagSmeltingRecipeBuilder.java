@@ -7,15 +7,19 @@ import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.Criterion;
-import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.advancements.criterion.RecipeUnlockedTrigger;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import org.jetbrains.annotations.Nullable;
 
@@ -63,10 +67,17 @@ public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 	}
 
 	public Item getResult() {
-		return this.result.getItems()[0].getItem();
+		return result.getValues().size() > 0 ? result.getValues().get(0).value() : Items.EGG;
 	}
 
-	public void save(RecipeOutput recipeOutput, ResourceLocation id) {
+	/**
+	 * Method that takes in a Identifier instead of a ResourceKey
+	 */
+	public void save(RecipeOutput recipeOutput, Identifier id) {
+		save(recipeOutput, ResourceKey.create(Registries.RECIPE, id));
+	}
+
+	public void save(RecipeOutput recipeOutput, ResourceKey<Recipe<?>> id) {
 		this.ensureValid(id);
 		Advancement.Builder advancement$builder = recipeOutput.advancement()
 				.addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
@@ -79,10 +90,10 @@ public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 		else if (this.serializer == GeOreRecipes.TAG_FURNACE_SERIALIZER.get())
 			recipe = new TagFurnaceRecipe(CookingBookCategory.MISC, this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.cookingTime);
 		if (recipe != null)
-			recipeOutput.accept(id, recipe, advancement$builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
+			recipeOutput.accept(id, recipe, advancement$builder.build(id.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/")));
 	}
 
-	private void ensureValid(ResourceLocation id) {
+	private void ensureValid(ResourceKey<Recipe<?>> id) {
 		if (this.criteria.isEmpty()) {
 			throw new IllegalStateException("No way of obtaining recipe " + id);
 		}

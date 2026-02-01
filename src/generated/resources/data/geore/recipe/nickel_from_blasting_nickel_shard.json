@@ -13,10 +13,6 @@
   "cookingtime": 100,
   "experience": 0.7,
   "group": "geore",
-  "ingredient": {
-    "item": "geore:nickel_shard"
-  },
-  "result": {
-    "tag": "c:ingots/nickel"
-  }
+  "ingredient": "geore:nickel_shard",
+  "result": "#c:ingots/nickel"
 }

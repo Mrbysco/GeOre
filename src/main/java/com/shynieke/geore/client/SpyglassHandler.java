@@ -6,9 +6,7 @@ import com.shynieke.geore.item.GeoreSpyglassItem;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.util.FastColor;
-import net.minecraft.util.FastColor.ARGB32;
+import net.minecraft.util.ARGB;
 import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 
@@ -22,8 +20,8 @@ public class SpyglassHandler {
 		Player player = minecraft.player;
 
 		if (player != null && player.isUsingItem() && player.getUseItem().getItem() instanceof GeoreSpyglassItem georeSpyglassItem) {
-			int color = ARGB32.color(FastColor.as8BitChannel(GeOreConfig.CLIENT.spyglassIntensity.get().floatValue()), georeSpyglassItem.getOverlayHex());
-			graphics.fill(RenderType.guiOverlay(), 0, 0, graphics.guiWidth(), graphics.guiHeight(), -90, color);
+			int color = ARGB.color(ARGB.as8BitChannel(GeOreConfig.CLIENT.spyglassIntensity.get().floatValue()), georeSpyglassItem.getOverlayHex());
+			graphics.fill(0, 0, graphics.guiWidth(), graphics.guiHeight(), color);
 		}
 	}
 }
