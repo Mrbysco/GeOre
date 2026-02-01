@@ -1,0 +1,33 @@
+{
+  "values": [
+    "geore:budding_coal",
+    "geore:budding_copper",
+    "geore:budding_diamond",
+    "geore:budding_emerald",
+    "geore:budding_gold",
+    "geore:budding_iron",
+    "geore:budding_lapis",
+    "geore:budding_quartz",
+    "geore:budding_redstone",
+    "geore:budding_ancient_debris",
+    "geore:budding_ruby",
+    "geore:budding_sapphire",
+    "geore:budding_topaz",
+    "geore:budding_zinc",
+    "geore:budding_uraninite",
+    "geore:budding_black_quartz",
+    "geore:budding_monazite",
+    "geore:budding_aluminum",
+    "geore:budding_lead",
+    "geore:budding_nickel",
+    "geore:budding_osmium",
+    "geore:budding_platinum",
+    "geore:budding_silver",
+    "geore:budding_tin",
+    "geore:budding_tungsten",
+    "geore:budding_uranium",
+    "geore:budding_allthemodium",
+    "geore:budding_vibranium",
+    "geore:budding_unobtainium"
+  ]
+}
