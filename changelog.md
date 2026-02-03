@@ -1,3 +1,19 @@
-* Introduce `geore:budding_geore` block tag
-* Reference `geore:budding_geore` block tag the `forge:relocation_not_supported` and `create:non_movable` block tag
-  ( This will allow datapacks to disable the inability to move budding geore blocks by overwriting the `geore:budding_geore` tag )
+* Backport modded ore support from 1.21.1 to 1.20.1
+
+List of backported ores:
+* Ancient Debris
+* Uraninite
+* Black Quartz
+* Monzanite
+* Aluminum
+* Lead
+* Nickel
+* Osmium
+* Platinum
+* Silver
+* Tin
+* Tungsten
+* Uranium
+* AllTheModium
+* Vibranium
+* Unobtainium
