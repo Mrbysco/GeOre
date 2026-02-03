@@ -1,0 +1,33 @@
+{
+  "values": [
+    "#geore:geore_blocks/coal",
+    "#geore:geore_blocks/copper",
+    "#geore:geore_blocks/diamond",
+    "#geore:geore_blocks/emerald",
+    "#geore:geore_blocks/gold",
+    "#geore:geore_blocks/iron",
+    "#geore:geore_blocks/lapis",
+    "#geore:geore_blocks/quartz",
+    "#geore:geore_blocks/redstone",
+    "#geore:geore_blocks/ancient_debris",
+    "#geore:geore_blocks/ruby",
+    "#geore:geore_blocks/sapphire",
+    "#geore:geore_blocks/topaz",
+    "#geore:geore_blocks/zinc",
+    "#geore:geore_blocks/uraninite",
+    "#geore:geore_blocks/black_quartz",
+    "#geore:geore_blocks/monazite",
+    "#geore:geore_blocks/aluminum",
+    "#geore:geore_blocks/lead",
+    "#geore:geore_blocks/nickel",
+    "#geore:geore_blocks/osmium",
+    "#geore:geore_blocks/platinum",
+    "#geore:geore_blocks/silver",
+    "#geore:geore_blocks/tin",
+    "#geore:geore_blocks/tungsten",
+    "#geore:geore_blocks/uranium",
+    "#geore:geore_blocks/allthemodium",
+    "#geore:geore_blocks/vibranium",
+    "#geore:geore_blocks/unobtainium"
+  ]
+}

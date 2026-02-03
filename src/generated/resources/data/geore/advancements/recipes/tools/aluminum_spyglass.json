@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_aluminumgeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:aluminum_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:aluminum_spyglass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_aluminumgeore_shard",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:aluminum_spyglass"
+    ]
+  },
+  "sends_telemetry_event": false
+}

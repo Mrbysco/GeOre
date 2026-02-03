@@ -5,6 +5,7 @@ import com.shynieke.geore.client.SpyglassHandler;
 import com.shynieke.geore.config.GeOreConfig;
 import com.shynieke.geore.features.GeOreFeatures;
 import com.shynieke.geore.registry.GeOreModifiers;
+import com.shynieke.geore.registry.GeOreRecipes;
 import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -32,6 +33,7 @@ public class GeOre {
 		GeOreRegistry.ITEMS.register(eventBus);
 		GeOreRegistry.CREATIVE_MODE_TABS.register(eventBus);
 		GeOreModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
+		GeOreRecipes.RECIPE_SERIALIZERS.register(eventBus);
 
 		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
 			ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GeOreConfig.clientSpec);

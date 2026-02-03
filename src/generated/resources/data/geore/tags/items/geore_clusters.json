@@ -1,0 +1,33 @@
+{
+  "values": [
+    "#geore:geore_clusters/coal",
+    "#geore:geore_clusters/copper",
+    "#geore:geore_clusters/diamond",
+    "#geore:geore_clusters/emerald",
+    "#geore:geore_clusters/gold",
+    "#geore:geore_clusters/iron",
+    "#geore:geore_clusters/lapis",
+    "#geore:geore_clusters/quartz",
+    "#geore:geore_clusters/redstone",
+    "#geore:geore_clusters/ancient_debris",
+    "#geore:geore_clusters/ruby",
+    "#geore:geore_clusters/sapphire",
+    "#geore:geore_clusters/topaz",
+    "#geore:geore_clusters/zinc",
+    "#geore:geore_clusters/uraninite",
+    "#geore:geore_clusters/black_quartz",
+    "#geore:geore_clusters/monazite",
+    "#geore:geore_clusters/aluminum",
+    "#geore:geore_clusters/lead",
+    "#geore:geore_clusters/nickel",
+    "#geore:geore_clusters/osmium",
+    "#geore:geore_clusters/platinum",
+    "#geore:geore_clusters/silver",
+    "#geore:geore_clusters/tin",
+    "#geore:geore_clusters/tungsten",
+    "#geore:geore_clusters/uranium",
+    "#geore:geore_clusters/allthemodium",
+    "#geore:geore_clusters/vibranium",
+    "#geore:geore_clusters/unobtainium"
+  ]
+}

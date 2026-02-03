@@ -4,12 +4,15 @@
     {
       "conditions": [
         {
-          "type": "forge:mod_loaded",
-          "modid": "gemsandcrystals"
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:gems/ruby"
+          }
         }
       ],
       "recipe": {
-        "type": "minecraft:smelting",
+        "type": "geore:furnace",
         "category": "misc",
         "cookingtime": 200,
         "experience": 0.7,
@@ -17,7 +20,9 @@
         "ingredient": {
           "item": "geore:ruby_shard"
         },
-        "result": "gemsandcrystals:ruby"
+        "result": {
+          "tag": "forge:gems/ruby"
+        }
       }
     }
   ]

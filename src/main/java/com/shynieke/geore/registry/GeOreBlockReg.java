@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.AmethystBlock;
 import net.minecraft.world.level.block.AmethystClusterBlock;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.TintedGlassBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.RegistryObject;
@@ -23,8 +24,9 @@ public class GeOreBlockReg {
 	protected final RegistryObject<AmethystClusterBlock> large_bud;
 	protected final RegistryObject<AmethystClusterBlock> medium_bud;
 	protected final RegistryObject<AmethystClusterBlock> small_bud;
+	protected final RegistryObject<TintedGlassBlock> tinted_glass;
 	protected final RegistryObject<Item> shard;
-	protected final RegistryObject<Item> spyglass;
+	protected final RegistryObject<GeoreSpyglassItem> spyglass;
 
 	@Nonnull
 	public String getName() {
@@ -59,8 +61,12 @@ public class GeOreBlockReg {
 		return shard;
 	}
 
-	public RegistryObject<Item> getSpyglass() {
+	public RegistryObject<GeoreSpyglassItem> getSpyglass() {
 		return spyglass;
+	}
+
+	public RegistryObject<TintedGlassBlock> getTintedGlass() {
+		return tinted_glass;
 	}
 
 	public GeOreBlockReg(String name, MapColor color, int spyglassHex) {
@@ -92,6 +98,10 @@ public class GeOreBlockReg {
 				new BuddingGeoreBlock(BlockBehaviour.Properties.copy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
 						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
 		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties()));
+
+		tinted_glass = GeOreRegistry.BLOCKS.register(name + "_tinted_glass", () ->
+				new TintedGlassBlock(BlockBehaviour.Properties.copy(Blocks.TINTED_GLASS).mapColor(color).strength(0.3F).sound(SoundType.GLASS).noOcclusion()));
+		GeOreRegistry.ITEMS.register(getTintedGlass().getId().getPath(), () -> new BlockItem(getTintedGlass().get(), new Item.Properties()));
 
 		shard = GeOreRegistry.ITEMS.register(name + "_shard", customShard);
 

@@ -17,10 +17,26 @@ public enum ConfigFeature {
 	QUARTZ_GEORE("quartz", GeOreConfig.COMMON.generateQuartzGeore),
 	QUARTZ_NETHER_GEORE("quartz_nether", GeOreConfig.COMMON.generateQuartzInNetherGeore),
 	REDSTONE_GEORE("redstone", GeOreConfig.COMMON.generateRedstoneGeore),
+	ANCIENT_DEBRIS_GEORE("ancient_debris", GeOreConfig.COMMON.generateBuddingAncientDebris),
 	RUBY_GEORE("ruby", GeOreConfig.COMMON.generateRubyGeore),
 	SAPPHIRE_GEORE("sapphire", GeOreConfig.COMMON.generateSapphireGeore),
 	TOPAZ_GEORE("topaz", GeOreConfig.COMMON.generateTopazGeore),
-	ZINC_GEORE("zinc", GeOreConfig.COMMON.generateZincGeore);
+	ZINC_GEORE("zinc", GeOreConfig.COMMON.generateZincGeore),
+	URANINITE_GEORE("uraninite", GeOreConfig.COMMON.generateUraniniteGeore),
+	BLACK_QUARTZ_GEORE("black_quartz", GeOreConfig.COMMON.generateBlackQuartzGeore),
+	MONAZITE_GEORE("monazite", GeOreConfig.COMMON.generateMonaziteGeore),
+	ALUMINUM_GEORE("aluminum", GeOreConfig.COMMON.generateAluminumGeore),
+	LEAD_GEORE("lead", GeOreConfig.COMMON.generateLeadGeore),
+	NICKEL_GEORE("nickel", GeOreConfig.COMMON.generateNickelGeore),
+	OSMIUM_GEORE("osmium", GeOreConfig.COMMON.generateOsmiumGeore),
+	PLATINUM_GEORE("platinum", GeOreConfig.COMMON.generatePlatinumGeore),
+	SILVER_GEORE("silver", GeOreConfig.COMMON.generateSilverGeore),
+	TIN_GEORE("tin", GeOreConfig.COMMON.generateTinGeore),
+	TUNGSTEN_GEORE("tungsten", GeOreConfig.COMMON.generateTungstenGeore),
+	URANIUM_GEORE("uranium", GeOreConfig.COMMON.generateUraniumGeore),
+	ALLTHEMODIUM_GEORE("allthemodium", GeOreConfig.COMMON.generateAllthemodiumGeore),
+	VIBRANIUM_GEORE("vibranium", GeOreConfig.COMMON.generateVibraniumGeore),
+	UNOBTAINIUM_GEORE("unobtainium", GeOreConfig.COMMON.generateUnobtainiumGeore);
 
 	public final String name;
 	public final Supplier<Boolean> configValue;
@@ -34,7 +50,6 @@ public enum ConfigFeature {
 		return configValue.get();
 	}
 
-	@Nullable
 	public static ConfigFeature getByName(@Nullable String value) {
 		for (ConfigFeature captcha : values()) {
 			if (captcha.name.equals(value)) {

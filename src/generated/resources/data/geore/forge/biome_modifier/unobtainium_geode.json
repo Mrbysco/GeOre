@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_end",
+  "enabledConfig": "unobtainium",
+  "features": "geore:unobtainium_geode",
+  "step": "local_modifications"
+}

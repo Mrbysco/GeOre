@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_overworld",
+  "enabledConfig": "uraninite",
+  "features": "geore:uraninite_geode",
+  "step": "local_modifications"
+}

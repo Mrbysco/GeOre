@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:uraninite_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_uraninitegeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:uraninite_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_uraninitegeore_shard",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:uraninite_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

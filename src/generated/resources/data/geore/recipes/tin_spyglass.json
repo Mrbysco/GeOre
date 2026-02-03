@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "geore:tin_shard"
+    },
+    "X": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    " # ",
+    " X ",
+    " X "
+  ],
+  "result": {
+    "item": "geore:tin_spyglass"
+  },
+  "show_notification": true
+}

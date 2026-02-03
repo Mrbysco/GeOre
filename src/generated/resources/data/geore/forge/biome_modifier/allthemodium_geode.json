@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#geore:is_deep_dark",
+  "enabledConfig": "allthemodium",
+  "features": "geore:allthemodium_geode",
+  "step": "local_modifications"
+}

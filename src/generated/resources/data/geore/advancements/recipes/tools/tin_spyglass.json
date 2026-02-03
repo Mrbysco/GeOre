@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:tin_spyglass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tingeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:tin_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tingeore_shard",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:tin_spyglass"
+    ]
+  },
+  "sends_telemetry_event": false
+}

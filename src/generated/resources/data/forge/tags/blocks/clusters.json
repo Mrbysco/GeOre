@@ -9,9 +9,25 @@
     "#forge:clusters/geore_lapis",
     "#forge:clusters/geore_quartz",
     "#forge:clusters/geore_redstone",
+    "#forge:clusters/geore_ancient_debris",
     "#forge:clusters/geore_ruby",
     "#forge:clusters/geore_sapphire",
     "#forge:clusters/geore_topaz",
-    "#forge:clusters/geore_zinc"
+    "#forge:clusters/geore_zinc",
+    "#forge:clusters/geore_uraninite",
+    "#forge:clusters/geore_black_quartz",
+    "#forge:clusters/geore_monazite",
+    "#forge:clusters/geore_aluminum",
+    "#forge:clusters/geore_lead",
+    "#forge:clusters/geore_nickel",
+    "#forge:clusters/geore_osmium",
+    "#forge:clusters/geore_platinum",
+    "#forge:clusters/geore_silver",
+    "#forge:clusters/geore_tin",
+    "#forge:clusters/geore_tungsten",
+    "#forge:clusters/geore_uranium",
+    "#forge:clusters/geore_allthemodium",
+    "#forge:clusters/geore_vibranium",
+    "#forge:clusters/geore_unobtainium"
   ]
 }

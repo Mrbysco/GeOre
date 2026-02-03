@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:tungsten_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_tungstengeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "geore:tungsten_shard"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_tungstengeore_shard",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:tungsten_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}

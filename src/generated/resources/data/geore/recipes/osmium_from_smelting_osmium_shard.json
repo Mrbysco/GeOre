@@ -1,0 +1,29 @@
+{
+  "type": "forge:conditional",
+  "recipes": [
+    {
+      "conditions": [
+        {
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:ingots/osmium"
+          }
+        }
+      ],
+      "recipe": {
+        "type": "geore:furnace",
+        "category": "misc",
+        "cookingtime": 200,
+        "experience": 0.7,
+        "group": "geore",
+        "ingredient": {
+          "item": "geore:osmium_shard"
+        },
+        "result": {
+          "tag": "forge:ingots/osmium"
+        }
+      }
+    }
+  ]
+}

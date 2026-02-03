@@ -9,9 +9,25 @@
     "#forge:buds/geore_lapis",
     "#forge:buds/geore_quartz",
     "#forge:buds/geore_redstone",
+    "#forge:buds/geore_ancient_debris",
     "#forge:buds/geore_ruby",
     "#forge:buds/geore_sapphire",
     "#forge:buds/geore_topaz",
-    "#forge:buds/geore_zinc"
+    "#forge:buds/geore_zinc",
+    "#forge:buds/geore_uraninite",
+    "#forge:buds/geore_black_quartz",
+    "#forge:buds/geore_monazite",
+    "#forge:buds/geore_aluminum",
+    "#forge:buds/geore_lead",
+    "#forge:buds/geore_nickel",
+    "#forge:buds/geore_osmium",
+    "#forge:buds/geore_platinum",
+    "#forge:buds/geore_silver",
+    "#forge:buds/geore_tin",
+    "#forge:buds/geore_tungsten",
+    "#forge:buds/geore_uranium",
+    "#forge:buds/geore_allthemodium",
+    "#forge:buds/geore_vibranium",
+    "#forge:buds/geore_unobtainium"
   ]
 }

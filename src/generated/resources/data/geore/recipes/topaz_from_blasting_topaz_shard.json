@@ -4,12 +4,15 @@
     {
       "conditions": [
         {
-          "type": "forge:mod_loaded",
-          "modid": "gemsandcrystals"
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:gems/topaz"
+          }
         }
       ],
       "recipe": {
-        "type": "minecraft:blasting",
+        "type": "geore:blasting",
         "category": "misc",
         "cookingtime": 100,
         "experience": 0.7,
@@ -17,7 +20,9 @@
         "ingredient": {
           "item": "geore:topaz_shard"
         },
-        "result": "gemsandcrystals:topaz"
+        "result": {
+          "tag": "forge:gems/topaz"
+        }
       }
     }
   ]

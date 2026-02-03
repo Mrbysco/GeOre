@@ -4,12 +4,15 @@
     {
       "conditions": [
         {
-          "type": "forge:mod_loaded",
-          "modid": "gemsandcrystals"
+          "type": "forge:not",
+          "value": {
+            "type": "forge:tag_empty",
+            "tag": "forge:gems/sapphire"
+          }
         }
       ],
       "recipe": {
-        "type": "minecraft:blasting",
+        "type": "geore:blasting",
         "category": "misc",
         "cookingtime": 100,
         "experience": 0.7,
@@ -17,7 +20,9 @@
         "ingredient": {
           "item": "geore:sapphire_shard"
         },
-        "result": "gemsandcrystals:sapphire"
+        "result": {
+          "tag": "forge:gems/sapphire"
+        }
       }
     }
   ]

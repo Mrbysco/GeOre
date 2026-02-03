@@ -1,0 +1,33 @@
+{
+  "values": [
+    "#geore:geore_shards/coal",
+    "#geore:geore_shards/copper",
+    "#geore:geore_shards/diamond",
+    "#geore:geore_shards/emerald",
+    "#geore:geore_shards/gold",
+    "#geore:geore_shards/iron",
+    "#geore:geore_shards/lapis",
+    "#geore:geore_shards/quartz",
+    "#geore:geore_shards/redstone",
+    "#geore:geore_shards/ancient_debris",
+    "#geore:geore_shards/ruby",
+    "#geore:geore_shards/sapphire",
+    "#geore:geore_shards/topaz",
+    "#geore:geore_shards/zinc",
+    "#geore:geore_shards/uraninite",
+    "#geore:geore_shards/black_quartz",
+    "#geore:geore_shards/monazite",
+    "#geore:geore_shards/aluminum",
+    "#geore:geore_shards/lead",
+    "#geore:geore_shards/nickel",
+    "#geore:geore_shards/osmium",
+    "#geore:geore_shards/platinum",
+    "#geore:geore_shards/silver",
+    "#geore:geore_shards/tin",
+    "#geore:geore_shards/tungsten",
+    "#geore:geore_shards/uranium",
+    "#geore:geore_shards/allthemodium",
+    "#geore:geore_shards/vibranium",
+    "#geore:geore_shards/unobtainium"
+  ]
+}
