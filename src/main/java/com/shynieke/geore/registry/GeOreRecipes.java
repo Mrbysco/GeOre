@@ -12,6 +12,6 @@ import java.util.function.Supplier;
 public class GeOreRecipes {
 	public static final DeferredRegister<RecipeSerializer<?>> RECIPE_SERIALIZERS = DeferredRegister.create(Registries.RECIPE_SERIALIZER, Reference.MOD_ID);
 
-	public static final Supplier<RecipeSerializer<TagFurnaceRecipe>> TAG_FURNACE_SERIALIZER = RECIPE_SERIALIZERS.register("furnace", TagFurnaceRecipe.Serializer::new);
-	public static final Supplier<RecipeSerializer<TagBlastingRecipe>> TAG_BLASTING_SERIALIZER = RECIPE_SERIALIZERS.register("blasting", TagBlastingRecipe.Serializer::new);
+	public static final Supplier<RecipeSerializer<TagFurnaceRecipe>> TAG_FURNACE_SERIALIZER = RECIPE_SERIALIZERS.register("furnace", () -> TagFurnaceRecipe.SERIALIZER);
+	public static final Supplier<RecipeSerializer<TagBlastingRecipe>> TAG_BLASTING_SERIALIZER = RECIPE_SERIALIZERS.register("blasting", () -> TagBlastingRecipe.SERIALIZER);
 }

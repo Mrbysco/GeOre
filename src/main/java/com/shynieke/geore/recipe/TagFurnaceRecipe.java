@@ -4,15 +4,16 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import com.shynieke.geore.registry.GeOreRecipes;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
-import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeBookCategories;
 import net.minecraft.world.item.crafting.RecipeBookCategory;
 import net.minecraft.world.item.crafting.RecipeSerializer;
@@ -25,11 +26,39 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
  * Taken from the Grinder repository from Noobanidus <3
  */
 public class TagFurnaceRecipe extends AbstractCookingRecipe {
-	protected final Ingredient resultIngredient;
+	private static final MapCodec<TagFurnaceRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
+			instance -> instance.group(
+							Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
+							AbstractCookingRecipe.CookingBookInfo.MAP_CODEC.forGetter(o -> o.bookInfo),
+							Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
+							Ingredient.CODEC.fieldOf("result").forGetter(recipe -> recipe.output),
+							Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(AbstractCookingRecipe::experience),
+							Codec.INT.fieldOf("cookingtime").orElse(100).forGetter(AbstractCookingRecipe::cookingTime)
+					)
+					.apply(instance, TagFurnaceRecipe::new)
+	);
+	private static final StreamCodec<RegistryFriendlyByteBuf, TagFurnaceRecipe> STREAM_CODEC = StreamCodec.composite(
+			Recipe.CommonInfo.STREAM_CODEC,
+			o -> o.commonInfo,
+			TagFurnaceRecipe.CookingBookInfo.STREAM_CODEC,
+			o -> o.bookInfo,
+			Ingredient.CONTENTS_STREAM_CODEC,
+			TagFurnaceRecipe::input,
+			Ingredient.CONTENTS_STREAM_CODEC,
+			TagFurnaceRecipe::output,
+			ByteBufCodecs.FLOAT,
+			TagFurnaceRecipe::experience,
+			ByteBufCodecs.INT,
+			TagFurnaceRecipe::cookingTime,
+			TagFurnaceRecipe::new
+	);
+	public static final RecipeSerializer<TagFurnaceRecipe> SERIALIZER = new RecipeSerializer<>(MAP_CODEC, STREAM_CODEC);
 
-	public TagFurnaceRecipe(CookingBookCategory category, String groupIn, Ingredient ingredientIn, Ingredient resultIn, float experienceIn, int cookTimeIn) {
-		super(groupIn, category, ingredientIn, ItemStack.EMPTY, experienceIn, cookTimeIn);
-		this.resultIngredient = resultIn;
+	protected final Ingredient output;
+
+	public TagFurnaceRecipe(Recipe.CommonInfo commonInfo, CookingBookInfo bookInfo, Ingredient ingredientIn, Ingredient resultIn, float experienceIn, int cookTimeIn) {
+		super(commonInfo, bookInfo, ingredientIn, null, experienceIn, cookTimeIn);
+		this.output = resultIn;
 	}
 
 	@Override
@@ -50,73 +79,23 @@ public class TagFurnaceRecipe extends AbstractCookingRecipe {
 		};
 	}
 
-	public Ingredient getIngredient() {
-		return input();
-	}
-
-	public Ingredient getResultIngredient() {
-		return resultIngredient;
+	public Ingredient output() {
+		return output;
 	}
 
 	@Override
-	public ItemStack assemble(SingleRecipeInput input, HolderLookup.Provider registryAccess) {
-		return this.result().copy();
+	public ItemStack assemble(SingleRecipeInput input) {
+		return this.result().create();
 	}
 
 	@Override
-	public ItemStack result() {
-		return resultIngredient.getValues().size() > 0 ? new ItemStack(resultIngredient.getValues().get(0)) : ItemStack.EMPTY;
+	public ItemStackTemplate result() {
+		return output.getValues().size() > 0 ? new ItemStackTemplate(output.getValues().get(0)) : null;
 	}
 
 	@Override
 	public RecipeSerializer<TagFurnaceRecipe> getSerializer() {
 		return GeOreRecipes.TAG_FURNACE_SERIALIZER.get();
-	}
-
-	public static class Serializer implements RecipeSerializer<TagFurnaceRecipe> {
-		public static final MapCodec<TagFurnaceRecipe> CODEC = RecordCodecBuilder.mapCodec(
-				instance -> instance.group(
-								CookingBookCategory.CODEC.fieldOf("category").orElse(CookingBookCategory.MISC).forGetter(AbstractCookingRecipe::category),
-								Codec.STRING.optionalFieldOf("group", "").forGetter(SingleItemRecipe::group),
-								Ingredient.CODEC.fieldOf("ingredient").forGetter(SingleItemRecipe::input),
-								Ingredient.CODEC.fieldOf("result").forGetter(recipe -> recipe.resultIngredient),
-								Codec.FLOAT.fieldOf("experience").orElse(0.0F).forGetter(AbstractCookingRecipe::experience),
-								Codec.INT.fieldOf("cookingtime").orElse(100).forGetter(AbstractCookingRecipe::cookingTime)
-						)
-						.apply(instance, TagFurnaceRecipe::new)
-		);
-		public static final StreamCodec<RegistryFriendlyByteBuf, TagFurnaceRecipe> STREAM_CODEC = StreamCodec.of(
-				Serializer::toNetwork, Serializer::fromNetwork
-		);
-
-		@Override
-		public MapCodec<TagFurnaceRecipe> codec() {
-			return CODEC;
-		}
-
-		@Override
-		public StreamCodec<RegistryFriendlyByteBuf, TagFurnaceRecipe> streamCodec() {
-			return STREAM_CODEC;
-		}
-
-		public static TagFurnaceRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
-			String s = buffer.readUtf();
-			CookingBookCategory cookingbookcategory = buffer.readEnum(CookingBookCategory.class);
-			Ingredient ingredient = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-			Ingredient result = Ingredient.CONTENTS_STREAM_CODEC.decode(buffer);
-			float f = buffer.readFloat();
-			int i = buffer.readVarInt();
-			return new TagFurnaceRecipe(cookingbookcategory, s, ingredient, result, f, i);
-		}
-
-		public static void toNetwork(RegistryFriendlyByteBuf buffer, TagFurnaceRecipe recipe) {
-			buffer.writeUtf(recipe.group());
-			buffer.writeEnum(recipe.category());
-			Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.getIngredient());
-			Ingredient.CONTENTS_STREAM_CODEC.encode(buffer, recipe.getResultIngredient());
-			buffer.writeFloat(recipe.experience());
-			buffer.writeVarInt(recipe.cookingTime());
-		}
 	}
 }
 

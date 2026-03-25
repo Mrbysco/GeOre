@@ -6,7 +6,6 @@
   "group": "geore",
   "ingredient": "geore:iron_shard",
   "result": {
-    "count": 1,
     "id": "minecraft:iron_ingot"
   }
 }

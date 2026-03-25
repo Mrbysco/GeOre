@@ -6,7 +6,6 @@
   "group": "geore",
   "ingredient": "geore:copper_shard",
   "result": {
-    "count": 1,
     "id": "minecraft:copper_ingot"
   }
 }

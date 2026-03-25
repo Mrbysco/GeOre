@@ -15,16 +15,17 @@ import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStackTemplate;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 	private final RecipeCategory category;
@@ -34,8 +35,7 @@ public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 	private final float experience;
 	private final int cookingTime;
 	private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
-	@Nullable
-	private String group;
+	private String group = "";
 	private final RecipeSerializer<? extends AbstractCookingRecipe> serializer;
 
 	private TagSmeltingRecipeBuilder(RecipeCategory category, CookingBookCategory bookCategory, Ingredient result, Ingredient ingredient, float xp, int cookingTime, RecipeSerializer<? extends AbstractCookingRecipe> serializer) {
@@ -61,9 +61,14 @@ public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 		return this;
 	}
 
-	public TagSmeltingRecipeBuilder group(@Nullable String group) {
+	public TagSmeltingRecipeBuilder group(String group) {
 		this.group = group;
 		return this;
+	}
+
+	@Override
+	public ResourceKey<Recipe<?>> defaultId() {
+		return RecipeBuilder.getDefaultRecipeId(new ItemStackTemplate(getResult()));
 	}
 
 	public Item getResult() {
@@ -86,9 +91,13 @@ public class TagSmeltingRecipeBuilder implements RecipeBuilder {
 		this.criteria.forEach(advancement$builder::addCriterion);
 		AbstractCookingRecipe recipe = null;
 		if (this.serializer == GeOreRecipes.TAG_BLASTING_SERIALIZER.get())
-			recipe = new TagBlastingRecipe(this.bookCategory, this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.cookingTime);
+			recipe = new TagBlastingRecipe(RecipeBuilder.createCraftingCommonInfo(true),
+					new AbstractCookingRecipe.CookingBookInfo(this.bookCategory, Objects.requireNonNullElse(this.group, "")),
+					this.ingredient, this.result, this.experience, this.cookingTime);
 		else if (this.serializer == GeOreRecipes.TAG_FURNACE_SERIALIZER.get())
-			recipe = new TagFurnaceRecipe(CookingBookCategory.MISC, this.group == null ? "" : this.group, this.ingredient, this.result, this.experience, this.cookingTime);
+			recipe = new TagFurnaceRecipe(RecipeBuilder.createCraftingCommonInfo(true),
+					new AbstractCookingRecipe.CookingBookInfo(CookingBookCategory.MISC, this.group),
+					this.ingredient, this.result, this.experience, this.cookingTime);
 		if (recipe != null)
 			recipeOutput.accept(id, recipe, advancement$builder.build(id.identifier().withPrefix("recipes/" + this.category.getFolderName() + "/")));
 	}

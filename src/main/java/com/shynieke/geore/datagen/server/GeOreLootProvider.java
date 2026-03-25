@@ -17,7 +17,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.ValidationContext;
+import net.minecraft.world.level.storage.loot.ValidationContextSource;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
@@ -101,9 +101,7 @@ public class GeOreLootProvider extends LootTableProvider {
 	}
 
 	@Override
-	protected void validate(@NotNull WritableRegistry<LootTable> writableregistry,
-	                        @NotNull ValidationContext validationcontext,
-	                        @NotNull ProblemReporter.Collector problemreporter$collector) {
-		super.validate(writableregistry, validationcontext, problemreporter$collector);
+	protected void validate(WritableRegistry<LootTable> tables, ValidationContextSource validationContext, ProblemReporter.Collector problems) {
+		super.validate(tables, validationContext, problems);
 	}
 }

@@ -6,7 +6,6 @@
   "group": "geore",
   "ingredient": "geore:lapis_shard",
   "result": {
-    "count": 1,
     "id": "minecraft:lapis_lazuli"
   }
 }

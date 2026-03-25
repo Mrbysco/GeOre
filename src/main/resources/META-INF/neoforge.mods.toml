@@ -17,13 +17,13 @@ This mod takes heavy inspiration of the vanilla amethyst geode feature and appli
 [[dependencies.geore]]
 modId="minecraft"
 type="REQUIRED"
-versionRange="[1.21.11,1.22)"
+versionRange="[26.1,)"
 ordering="NONE"
 side="BOTH"
 [[dependencies.geore]]
 modId="neoforge"
 type="REQUIRED"
-versionRange="[21.11.0-beta,)"
+versionRange="[26.1.0.0-alpha,)"
 ordering="NONE"
 side="BOTH"
 [[mixins]]

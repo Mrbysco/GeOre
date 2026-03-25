@@ -2,7 +2,7 @@ plugins {
     id 'idea'
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.140'
+    id 'net.neoforged.moddev' version '2.0.141'
     id 'net.darkhax.curseforgegradle' version '1.1.28'
     id 'com.modrinth.minotaur' version "2.+"
 }
@@ -14,7 +14,7 @@ base {
 }
 
 // Mojang ships Java 21 to end users in 1.20.5+, so your mod should target Java 21.
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
 neoForge {
     // Specify the version of NeoForge to use.
@@ -26,7 +26,7 @@ neoForge {
     }
 
     // This line is optional. Access Transformers are automatically detected
-    // accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
+    accessTransformers = project.files('src/main/resources/META-INF/accesstransformer.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
@@ -100,34 +100,24 @@ repositories {
     maven {
         url = "https://maven.blamejared.com"
     }
-//    maven {
-//        url "https://cursemaven.com"
-//        content {
-//            includeGroup "curse.maven"
-//        }
-//    }
 }
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neo_version}"
-
-    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
-
-    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
-
-//    compileOnly "curse.maven:gems-and-crystals-334162:4766843"
+//    compileOnly "mezz.jei:jei-${jei_minecraft}-common-api:${jei_version}"
+//    compileOnly "mezz.jei:jei-${jei_minecraft}-neoforge-api:${jei_version}"
+//
+//    localRuntime "mezz.jei:jei-${jei_minecraft}-neoforge:${jei_version}"
 }
 
 jar {
     manifest {
         attributes([
                 "Specification-Title"     : "${mod_id}",
-                "Specification-Vendor"    : "ShyNieke",
+                "Specification-Vendor"    : "Mrbysco",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "ShyNieke",
+                "Implementation-Vendor"   : "Mrbysco",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
@@ -163,7 +153,7 @@ if (System.getenv().CURSEFORGE_KEY) {
         mainFile.releaseType = 'beta'
         mainFile.addModLoader("NeoForge")
         mainFile.addGameVersion("${mc_version}")
-        mainFile.addJavaVersion("Java 21")
+        mainFile.addJavaVersion("Java 25")
         mainFile.addEnvironment('Server', 'Client')
 
         mainFile.changelog = file("$project.rootDir/changelog.md")

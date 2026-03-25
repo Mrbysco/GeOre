@@ -8,7 +8,6 @@ import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
 import net.minecraft.client.data.models.MultiVariant;
 import net.minecraft.client.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.client.data.models.model.ModelTemplate;
 import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.client.data.models.model.TextureMapping;
 import net.minecraft.client.data.models.model.TexturedModel;
@@ -27,9 +26,7 @@ public class GeOreModelProvider extends ModelProvider {
 		}
 	}
 
-	public static final ModelTemplate TRANSLUCENT_CUBE_ALL = ModelTemplates.CUBE_ALL.extend().renderType("translucent").build();
-	public static final ModelTemplate CUTOUT_CROSS = ModelTemplates.CROSS.extend().renderType("cutout").build();
-	public static final TexturedModel.Provider TRANSLUCENT_CUBE = TexturedModel.createDefault(TextureMapping::cube, TRANSLUCENT_CUBE_ALL);
+	public static final TexturedModel.Provider TRANSLUCENT_CUBE = TexturedModel.createDefault(TextureMapping::cube, ModelTemplates.CUBE_ALL);
 
 	protected void generateGeoreModels(BlockModelGenerators blockModels, ItemModelGenerators itemModels, GeOreBlockReg blockReg) {
 		itemModels.generateFlatItem(blockReg.getShard().get(), ModelTemplates.FLAT_ITEM);
@@ -46,7 +43,7 @@ public class GeOreModelProvider extends ModelProvider {
 	}
 
 	public void createAmethystCluster(BlockModelGenerators blockModels, Block amethystBlock) {
-		MultiVariant multivariant = BlockModelGenerators.plainVariant(CUTOUT_CROSS.create(amethystBlock, TextureMapping.cross(amethystBlock), blockModels.modelOutput));
+		MultiVariant multivariant = BlockModelGenerators.plainVariant(ModelTemplates.CROSS.create(amethystBlock, TextureMapping.cross(amethystBlock), blockModels.modelOutput));
 		blockModels.blockStateOutput.accept(MultiVariantGenerator.dispatch(amethystBlock, multivariant).with(BlockModelGenerators.ROTATIONS_COLUMN_WITH_FACING));
 	}
 }

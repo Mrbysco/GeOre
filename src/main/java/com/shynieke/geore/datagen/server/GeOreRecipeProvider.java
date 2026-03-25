@@ -19,6 +19,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.CookingBookCategory;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
@@ -161,13 +162,13 @@ public class GeOreRecipeProvider extends RecipeProvider {
 	}
 
 	private void smeltToOre(GeOreBlockReg blockReg, float xp, ItemLike item, RecipeOutput output) {
-		SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 200)
+		SimpleCookingRecipeBuilder.smelting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, CookingBookCategory.MISC, item, xp, 200)
 				.group("geore")
 				.unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 				.save(output, Reference.modLoc(
 						BuiltInRegistries.ITEM.getKey(item.asItem()).getPath() + "_from_smelting_" + blockReg.getShard().getId().getPath()
 				).toString());
-		SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, item, xp, 100)
+		SimpleCookingRecipeBuilder.blasting(Ingredient.of(blockReg.getShard().get()), RecipeCategory.MISC, CookingBookCategory.MISC, item, xp, 100)
 				.group("geore"
 				).unlockedBy("has_" + blockReg.getName() + "geore_shard", has(blockReg.getShard().get()))
 				.save(output, Reference.modLoc(

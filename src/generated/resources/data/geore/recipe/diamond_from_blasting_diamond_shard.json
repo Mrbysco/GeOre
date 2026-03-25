@@ -6,7 +6,6 @@
   "group": "geore",
   "ingredient": "geore:diamond_shard",
   "result": {
-    "count": 1,
     "id": "minecraft:diamond"
   }
 }
