@@ -1,1 +1,1 @@
-* Initial update to 26.1
+* Fix spyglass models not rendering correctly in hand
