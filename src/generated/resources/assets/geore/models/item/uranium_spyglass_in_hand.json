@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/spyglass_in_hand",
+  "textures": {
+    "spyglass": "geore:item/uranium_spyglass_model"
+  }
+}
