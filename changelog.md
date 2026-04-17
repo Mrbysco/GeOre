@@ -1,1 +1,1 @@
-* Add fallback result item for the tag furnace/blasting recipes
+* Add fallback result item for the tag furnace/blasting recipes 
