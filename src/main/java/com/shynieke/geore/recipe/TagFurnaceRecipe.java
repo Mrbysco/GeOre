@@ -91,7 +91,7 @@ public class TagFurnaceRecipe extends AbstractCookingRecipe {
 
 	@Override
 	public ItemStackTemplate result() {
-		return output.getValues().size() > 0 ? new ItemStackTemplate(output.getValues().get(0)) : null;
+		return output.getValues().size() > 0 ? new ItemStackTemplate(output.getValues().get(0)) : new ItemStackTemplate(Items.EGG);
 	}
 
 	@Override
