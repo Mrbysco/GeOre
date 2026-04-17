@@ -56,9 +56,10 @@ public class TagFurnaceRecipe extends AbstractCookingRecipe {
 
 	protected final Ingredient output;
 
-	public TagFurnaceRecipe(Recipe.CommonInfo commonInfo, CookingBookInfo bookInfo, Ingredient ingredientIn, Ingredient resultIn, float experienceIn, int cookTimeIn) {
-		super(commonInfo, bookInfo, ingredientIn, null, experienceIn, cookTimeIn);
-		this.output = resultIn;
+	public TagFurnaceRecipe(Recipe.CommonInfo commonInfo, CookingBookInfo bookInfo, Ingredient ingredientIn,
+	                        Ingredient result, float experienceIn, int cookTimeIn) {
+		super(commonInfo, bookInfo, ingredientIn, new ItemStackTemplate(Items.EGG), experienceIn, cookTimeIn);
+		this.output = result;
 	}
 
 	@Override

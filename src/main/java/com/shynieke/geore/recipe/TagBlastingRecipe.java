@@ -58,10 +58,11 @@ public class TagBlastingRecipe extends AbstractCookingRecipe {
 	protected final Recipe.CommonInfo commonInfo;
 	protected final Ingredient output;
 
-	public TagBlastingRecipe(Recipe.CommonInfo commonInfo, CookingBookInfo bookInfo, Ingredient ingredientIn, Ingredient resultIn, float experienceIn, int cookTimeIn) {
-		super(commonInfo, bookInfo, ingredientIn, null, experienceIn, cookTimeIn);
+	public TagBlastingRecipe(Recipe.CommonInfo commonInfo, CookingBookInfo bookInfo, Ingredient ingredientIn,
+	                         Ingredient resultin, float experienceIn, int cookTimeIn) {
+		super(commonInfo, bookInfo, ingredientIn, new ItemStackTemplate(Items.EGG), experienceIn, cookTimeIn);
 		this.commonInfo = commonInfo;
-		this.output = resultIn;
+		this.output = resultin;
 	}
 
 	@Override
