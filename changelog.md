@@ -1,1 +1,1 @@
-* Fix spyglass models not rendering correctly in hand
+* Add fallback result item for the tag furnace/blasting recipes
