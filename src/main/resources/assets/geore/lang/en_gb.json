@@ -1,0 +1,13 @@
+{
+  "block.geore.aluminum_block": "Block Of Aluminium Geore",
+  "block.geore.aluminum_cluster": "Aluminium Geore Cluster",
+  "block.geore.aluminum_tinted_glass": "Aluminium Tinted Glass",
+  "block.geore.budding_aluminum": "Budding Aluminium Geore",
+  "block.geore.large_aluminum_bud": "Large Aluminium Geore Bud",
+  "block.geore.medium_aluminum_bud": "Medium Aluminium Geore Bud",
+  "block.geore.small_aluminum_bud": "Small Aluminium Geore Bud",
+  "geore.configuration.generateAluminumGeore": "Generate Aluminium GeOre",
+  "geore.configuration.generateAluminumGeore.tooltip": "Generate Aluminium GeOre [Default: false]",
+  "item.geore.aluminum_shard": "Aluminium Geore Shard",
+  "item.geore.aluminum_spyglass": "Aluminium Geore Spyglass"
+}
