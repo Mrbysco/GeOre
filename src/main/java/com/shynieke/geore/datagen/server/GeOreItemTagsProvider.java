@@ -26,6 +26,7 @@ public class GeOreItemTagsProvider extends ItemTagsProvider {
 	public static final TagKey<Item> GEORE_LARGE_BUDS = modTag("geore_large_buds");
 	public static final TagKey<Item> GEORE_SHARDS = modTag("geore_shards");
 	public static final TagKey<Item> GEORE_BLOCKS = modTag("geore_blocks");
+	public static final TagKey<Item> SPYGLASSES = modTag("spyglasses");
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -36,6 +37,7 @@ public class GeOreItemTagsProvider extends ItemTagsProvider {
 			this.addGeore(reg);
 			this.addStorage(reg);
 			this.tag(Tags.Items.GLASS_BLOCKS_TINTED).add(reg.getTintedGlass().get().asItem());
+			this.tag(SPYGLASSES).add(reg.getSpyglass().get());
 		}
 
 		this.tag(Tags.Items.BUDDING_BLOCKS).addTag(GEORE_BUDDING);
