@@ -1,4 +1,4 @@
-// 26.1.2	2026-04-14T23:52:58.104144	Tags for minecraft:item mod id geore
+// 26.1.2	2026-05-06T00:20:02.5222803	Tags for minecraft:item mod id geore
 236c14ee69fd5783a167648a11cf45b5703d103c data/c/tags/item/budding_blocks.json
 4b87ab032e803a2bd25f544cfb8f16295c7a43f8 data/c/tags/item/buds.json
 a1e8d7e6adfd4c477ce56b02761a626c7c1f4659 data/c/tags/item/clusters.json
@@ -184,6 +184,7 @@ faac28c483e95e6bef7cdc038c9b6d7d463765c7 data/geore/tags/item/geore_small_buds/u
 1b903d49a099fc917bfcfbb208dfa6baeeeaf3c8 data/geore/tags/item/geore_small_buds/uranium.json
 efd88184d1d1e70f18a005aca81515d5fc916fdc data/geore/tags/item/geore_small_buds/vibranium.json
 0fb5c9e61f9e58d5f6d53e62e3b09a8b791cfedd data/geore/tags/item/geore_small_buds/zinc.json
+4c38e44796c630175c6d46dd8c23c8bcedd3e484 data/geore/tags/item/spyglasses.json
 fd486360235203c405e164fc1087db6800ff5425 data/geore/tags/item/storage_blocks/geore_allthemodium.json
 8da2b705e355098a33712a91f6793bee00e1793c data/geore/tags/item/storage_blocks/geore_aluminum.json
 a19478e83bee228d7fb0148bc3a295d7a834a8fe data/geore/tags/item/storage_blocks/geore_ancient_debris.json

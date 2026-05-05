@@ -1,0 +1,33 @@
+{
+  "values": [
+    "geore:coal_spyglass",
+    "geore:copper_spyglass",
+    "geore:diamond_spyglass",
+    "geore:emerald_spyglass",
+    "geore:gold_spyglass",
+    "geore:iron_spyglass",
+    "geore:lapis_spyglass",
+    "geore:quartz_spyglass",
+    "geore:redstone_spyglass",
+    "geore:ancient_debris_spyglass",
+    "geore:ruby_spyglass",
+    "geore:sapphire_spyglass",
+    "geore:topaz_spyglass",
+    "geore:zinc_spyglass",
+    "geore:uraninite_spyglass",
+    "geore:black_quartz_spyglass",
+    "geore:monazite_spyglass",
+    "geore:aluminum_spyglass",
+    "geore:lead_spyglass",
+    "geore:nickel_spyglass",
+    "geore:osmium_spyglass",
+    "geore:platinum_spyglass",
+    "geore:silver_spyglass",
+    "geore:tin_spyglass",
+    "geore:tungsten_spyglass",
+    "geore:uranium_spyglass",
+    "geore:allthemodium_spyglass",
+    "geore:vibranium_spyglass",
+    "geore:unobtainium_spyglass"
+  ]
+}
