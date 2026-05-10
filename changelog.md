@@ -1,1 +1,1 @@
-* Change the class the smelting/blasting recipe extends
+* Change the class the smelting/blasting recipe extends 
