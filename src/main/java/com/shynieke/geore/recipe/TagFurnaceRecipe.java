@@ -25,7 +25,7 @@ import net.minecraft.world.item.crafting.SmeltingRecipe;
 /**
  * Taken from the Grinder repository from Noobanidus <3
  */
-public class TagFurnaceRecipe extends AbstractCookingRecipe {
+public class TagFurnaceRecipe extends SmeltingRecipe {
 	private static final MapCodec<TagFurnaceRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(
 							Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
@@ -95,8 +95,9 @@ public class TagFurnaceRecipe extends AbstractCookingRecipe {
 	}
 
 	@Override
-	public RecipeSerializer<TagFurnaceRecipe> getSerializer() {
-		return GeOreRecipes.TAG_FURNACE_SERIALIZER.get();
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public RecipeSerializer<SmeltingRecipe> getSerializer() {
+		return (RecipeSerializer<SmeltingRecipe>) (RecipeSerializer) GeOreRecipes.TAG_FURNACE_SERIALIZER.get();
 	}
 }
 

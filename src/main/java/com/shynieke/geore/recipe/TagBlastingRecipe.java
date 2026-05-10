@@ -26,7 +26,7 @@ import net.minecraft.world.item.crafting.SingleRecipeInput;
 /**
  * Taken from the Grinder repository from Noobanidus <3
  */
-public class TagBlastingRecipe extends AbstractCookingRecipe {
+public class TagBlastingRecipe extends BlastingRecipe {
 	private static final MapCodec<TagBlastingRecipe> MAP_CODEC = RecordCodecBuilder.mapCodec(
 			instance -> instance.group(
 							Recipe.CommonInfo.MAP_CODEC.forGetter(o -> o.commonInfo),
@@ -98,8 +98,9 @@ public class TagBlastingRecipe extends AbstractCookingRecipe {
 	}
 
 	@Override
-	public RecipeSerializer<TagBlastingRecipe> getSerializer() {
-		return GeOreRecipes.TAG_BLASTING_SERIALIZER.get();
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public RecipeSerializer<BlastingRecipe> getSerializer() {
+		return (RecipeSerializer<BlastingRecipe>) (RecipeSerializer) GeOreRecipes.TAG_BLASTING_SERIALIZER.get();
 	}
 }
 
