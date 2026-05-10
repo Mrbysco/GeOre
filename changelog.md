@@ -1,1 +1,1 @@
-* Add `geore:spyglasses` item tag
+* Change the class the smelting/blasting recipe extends
