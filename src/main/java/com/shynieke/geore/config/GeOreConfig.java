@@ -45,6 +45,7 @@ public class GeOreConfig {
 		public final ModConfigSpec.BooleanValue generateRedstoneGeore;
 		public final ModConfigSpec.BooleanValue generateBuddingAncientDebris;
 		public final ModConfigSpec.BooleanValue disablePistonPushForBuddingGeOre;
+		public final ModConfigSpec.BooleanValue disableImmovability;
 		//Mod support
 		public final ModConfigSpec.BooleanValue generateRubyGeore;
 		public final ModConfigSpec.BooleanValue generateSapphireGeore;
@@ -117,6 +118,10 @@ public class GeOreConfig {
 			disablePistonPushForBuddingGeOre = builder
 					.comment("Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]")
 					.define("disablePistonPushForBuddingGeOre", false);
+
+			disableImmovability = builder
+					.comment("Disable immovability of Budding GeOre blocks (Enables a built-in datapack) [Default: false]")
+					.define("disableImmovability", false);
 
 			builder.pop();
 			builder.comment("Modded Generation settings")

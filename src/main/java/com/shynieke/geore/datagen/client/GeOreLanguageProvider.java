@@ -64,6 +64,7 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addConfig("generateRedstoneGeore", "Generate Redstone GeOre", "Generate Redstone GeOre [Default: true]");
 		addConfig("generateBuddingAncientDebris", "Generate Budding Ancient Debris", "Generate Budding Ancient Debris [Default: true]");
 		addConfig("disablePistonPushForBuddingGeOre", "Disable Piston Push For Budding GeOre", "Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]");
+		addConfig("disableImmovability", "Disable Immovability", "Disable immovability of Budding GeOre blocks (Enables a built-in datapack) [Default: false]");
 
 		addConfig("ModdedGeneration", "Modded Generation", "Modded Generation Settings");
 		addConfig("generateRubyGeore", "Generate Ruby GeOre", "Generate Ruby GeOre [Default: false]");
