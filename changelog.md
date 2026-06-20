@@ -1,1 +1,1 @@
-* Change the class the smelting/blasting recipe extends 
+* Add config option `disableImmovability`, setting it to true will enable a built-in datapack that removes the budding GeOre from the `c:relocation_not_supported` and `create:non_movable` tags
