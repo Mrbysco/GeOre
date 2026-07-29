@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-17T01:57:28.5123431	Block Models: geore
+// 1.21.1	2026-07-28T10:48:33.1392996	Block Models: geore
 04d2b7a25db712cd2c1f05caf628214a3b8e5b28 assets/geore/models/block/allthemodium_block.json
 1b90e68187cbd5deb2709a16eeb01c3c8ff938c5 assets/geore/models/block/allthemodium_cluster.json
 211acbafbc44fdb6a2a8a543ddbb60446a2f8b63 assets/geore/models/block/allthemodium_tinted_glass.json
@@ -19,6 +19,7 @@ bdc7892462f2eb80de9be9ebd9da9b99dd2f7c5c assets/geore/models/block/budding_coal.
 19345ff787e43f0e1cdfccef994dbdcd70553468 assets/geore/models/block/budding_copper.json
 a83a9d0ba8d430d5d1e74ab0bac3ebc034f2b98e assets/geore/models/block/budding_diamond.json
 2e8574a1a523f0ced571f77ce5f89f0f7ba1337c assets/geore/models/block/budding_emerald.json
+b3cd9812ae5390f73d2e185212d2d9aebd02baa2 assets/geore/models/block/budding_glowstone.json
 14b8fb3108f9baeef80f0b35c14d6e1bc6ff0987 assets/geore/models/block/budding_gold.json
 0757ca2327a5363861d76130a8f08408e185264e assets/geore/models/block/budding_iron.json
 1c08296d5663397f10133656dbaea0fd80055419 assets/geore/models/block/budding_lapis.json
@@ -52,6 +53,9 @@ c3d9e1c6da7df7bc49827291847ae008cb556797 assets/geore/models/block/diamond_tinte
 88a66c2d31c4faff737f1ae84e24e131298604e8 assets/geore/models/block/emerald_block.json
 1c5e0de862fa11ad19a8cf9b8a2fb707531cfa4d assets/geore/models/block/emerald_cluster.json
 9830b431105190ac1e9dbc0f8daacec24ba415c6 assets/geore/models/block/emerald_tinted_glass.json
+d4773e4b81d26c6e9201e0f69c10702ec7b20e42 assets/geore/models/block/glowstone_block.json
+4f5ab2decf5148111b192e1b6c18046952ca17e8 assets/geore/models/block/glowstone_cluster.json
+3dd36217fe6881a627559f5fc9268647df897c55 assets/geore/models/block/glowstone_tinted_glass.json
 e5ab04a1958b6253142ceb4a9b337fda49cccac3 assets/geore/models/block/gold_block.json
 6c0453cfda3f5b9db9f109acbd85292a36513fe5 assets/geore/models/block/gold_cluster.json
 a25a1400a69d716f7b79a2a8aa82ebacf5e9c41e assets/geore/models/block/gold_tinted_glass.json
@@ -69,6 +73,7 @@ a1a434ef0057900348bd85755327641de898db92 assets/geore/models/block/large_black_q
 237a5ac50a5730356b0896f1f3c3d8943f15b2bd assets/geore/models/block/large_copper_bud.json
 6e4a284858905b76579e9ffaa537c78ede911efb assets/geore/models/block/large_diamond_bud.json
 f9ad07bf3d7358fdbe86825cfa2069e8d1e55490 assets/geore/models/block/large_emerald_bud.json
+4b75ebbb4e4445191bc28299a5acb1d5f5a25553 assets/geore/models/block/large_glowstone_bud.json
 9d4b002116c1b16e4429a59fe5e7e7b8727a55d4 assets/geore/models/block/large_gold_bud.json
 77d1cf4063898a0439dfb815b9336cbc0ba4e6b2 assets/geore/models/block/large_iron_bud.json
 59ffd1a147b041b88d794fa98229b42a3722cd4d assets/geore/models/block/large_lapis_bud.json
@@ -101,6 +106,7 @@ c006167d293d8f13a4394368a3c0f4849a54d50d assets/geore/models/block/medium_black_
 9c0d788f20bc881145280cf9ef5d7f137447b707 assets/geore/models/block/medium_copper_bud.json
 224afb70846388b321787332dfc3bbf79ebffbf2 assets/geore/models/block/medium_diamond_bud.json
 00256446a0dc0ad088b7fe60e5130e49a377d4f9 assets/geore/models/block/medium_emerald_bud.json
+ccd4387a0b7fb2048ae22aab4a9d07fdc1dceb2d assets/geore/models/block/medium_glowstone_bud.json
 a3efc25d5116464955d6e2af3f566dbcd0d5e56a assets/geore/models/block/medium_gold_bud.json
 a09e20b109841c88f9c40164247bd4c5ef707563 assets/geore/models/block/medium_iron_bud.json
 245081893e19f6478d68cc276e0c14ed511069dc assets/geore/models/block/medium_lapis_bud.json
@@ -157,6 +163,7 @@ e1513af2ee7171706decf03fac74763ed0b38977 assets/geore/models/block/small_coal_bu
 726db5ea68a387bf637ebf43004071b02deb4fc9 assets/geore/models/block/small_copper_bud.json
 09b01cee07931dc8aa533839665fc70851f9d243 assets/geore/models/block/small_diamond_bud.json
 faeeade55d083154fe4b3e760c1eda876199668e assets/geore/models/block/small_emerald_bud.json
+2ef9d91027676dae5a99b27055543be51dec7874 assets/geore/models/block/small_glowstone_bud.json
 a58ccdacc19ba5b2d77ee88fc887b52f4c0c1e66 assets/geore/models/block/small_gold_bud.json
 961afd4c5ba96aa5dbd4cb53ab3876d75bdb7bae assets/geore/models/block/small_iron_bud.json
 647f68c5fc799752bed93b953129267b13320a0e assets/geore/models/block/small_lapis_bud.json

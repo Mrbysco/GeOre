@@ -52,6 +52,7 @@ public class GeOreRecipeProvider extends RecipeProvider {
 		generateRecipe(GeOreRegistry.LAPIS_GEORE, 0.2F, Items.LAPIS_LAZULI, output);
 		generateRecipe(GeOreRegistry.QUARTZ_GEORE, 0.2F, Items.QUARTZ, output);
 		generateRecipe(GeOreRegistry.REDSTONE_GEORE, 0.7F, Items.REDSTONE, output);
+		generateRecipe(GeOreRegistry.GLOWSTONE_GEORE, 0.7F, Items.GLOWSTONE_DUST, output);
 
 		generateRecipes(GeOreRegistry.ANCIENT_DEBRIS_GEORE, output);
 		ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.ANCIENT_DEBRIS)

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_glowstonegeore_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "geore:glowstone_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "geore:glowstone_spyglass"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_glowstonegeore_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "geore:glowstone_spyglass"
+    ]
+  }
+}

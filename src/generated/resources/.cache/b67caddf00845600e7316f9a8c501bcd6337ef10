@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-17T01:58:45.9714668	Item Models: geore
+// 1.21.1	2026-07-28T10:48:33.1470662	Item Models: geore
 553e43801949912e0aac8a2ce314db370698b08a assets/geore/models/item/allthemodium_block.json
 c293db5b6d50379a2fda97b618797c561c10a75e assets/geore/models/item/allthemodium_cluster.json
 f39eaebc9e496919e2f677bc1e2e946c907e5ff4 assets/geore/models/item/allthemodium_shard.json
@@ -35,6 +35,7 @@ b55378d816c5a399fb4625da0208ace7d8929c8f assets/geore/models/item/budding_black_
 b0a92c4a637c6c48c9728460fd52a76d1948ffc7 assets/geore/models/item/budding_copper.json
 cbea5bbab6857a8015a7eb8f1c553893affc4bcf assets/geore/models/item/budding_diamond.json
 5804fab527d378a71133f597602392369ee9a02e assets/geore/models/item/budding_emerald.json
+8d7e946e2b3fe5e8bf52322112abf32f14b8ec1c assets/geore/models/item/budding_glowstone.json
 0b7bf46436eaf9ffd13aeaf71d920f1f28818e6e assets/geore/models/item/budding_gold.json
 33f0dc06fbcf8a2fc1be77f41f1d63189cf73a65 assets/geore/models/item/budding_iron.json
 19dddca65ff90959e5aeadfc473acdc3c5d31cd3 assets/geore/models/item/budding_lapis.json
@@ -84,6 +85,13 @@ d41818686ff1c5dee46ee91f98d58fb755235f3f assets/geore/models/item/diamond_spygla
 1ac0c10ca82a33831f33e5ecca5cc3167cdc9458 assets/geore/models/item/emerald_spyglass_gui.json
 145c85444dd5c432e152fb0ecdcee25092a59b15 assets/geore/models/item/emerald_spyglass_in_hand.json
 eeb6300c12dc29798a3607c2db2b644354b0b13b assets/geore/models/item/emerald_tinted_glass.json
+6ee274db9dfb312b936322818a3bef852451414d assets/geore/models/item/glowstone_block.json
+0dc2169e4b57afa5e5e34b1ff890416ab965e00f assets/geore/models/item/glowstone_cluster.json
+bb8f2b20daabf45fe3e9500507a735ad4e4eac46 assets/geore/models/item/glowstone_shard.json
+734510ceecc5bb0fb35b64ea92f368cd1cf4d1f1 assets/geore/models/item/glowstone_spyglass.json
+ec53c9d8a1ead0e383df00af7aba9b2c2ff3835b assets/geore/models/item/glowstone_spyglass_gui.json
+54f106b252b660b86f08e1ea0db98a141099da31 assets/geore/models/item/glowstone_spyglass_in_hand.json
+b246cd13f9f6b3d1cae075ddde89c967992ac403 assets/geore/models/item/glowstone_tinted_glass.json
 97c5ae93373691fb8f98b8a726907938dd8fd2e1 assets/geore/models/item/gold_block.json
 e5e50ca2bf7e9da34b2c6067d302c02329500b72 assets/geore/models/item/gold_cluster.json
 0410a2122fa4a6c4d57a911782a10d80cb7a5bb3 assets/geore/models/item/gold_shard.json
@@ -113,6 +121,7 @@ dd325627009ca9aba33ead508b1b8bd06d0b3a79 assets/geore/models/item/large_coal_bud
 5e48c71460743f48738714cc4dc3fb0fec706533 assets/geore/models/item/large_copper_bud.json
 e4e7900deaab51b07e2cb282f82c7163961c5fbf assets/geore/models/item/large_diamond_bud.json
 99a6332eee7d0868b48b789e89d06abbd08a379a assets/geore/models/item/large_emerald_bud.json
+a3356d355e8c316ead7c273f0d26207ef84eb074 assets/geore/models/item/large_glowstone_bud.json
 aa3fc85103c889742ade639a6ec38e35211695f4 assets/geore/models/item/large_gold_bud.json
 ce0b2c396ade0bc581381d907eedbdce77c4ba70 assets/geore/models/item/large_iron_bud.json
 8f463dbc118823bf945f2faf9cc14765ee81943f assets/geore/models/item/large_lapis_bud.json
@@ -149,6 +158,7 @@ e1e8192053bcc07fcd5e0ee8daa311642d761500 assets/geore/models/item/medium_ancient
 f05243e56c41b9116a3adac7dcdf35d7ff35b5c2 assets/geore/models/item/medium_copper_bud.json
 5a89da2c65593e62a673dbc5a1979ca3832e55bf assets/geore/models/item/medium_diamond_bud.json
 fc50d135c9a18d75f4ea107922cb84e42d5fed72 assets/geore/models/item/medium_emerald_bud.json
+d809e328b48364164ccad8378d510898da0f2514 assets/geore/models/item/medium_glowstone_bud.json
 7b3aa0ae65bdd91dc61e604b704b77f2ed2c0375 assets/geore/models/item/medium_gold_bud.json
 a594a586c281fc866c07bb72999ec65d26d68a2c assets/geore/models/item/medium_iron_bud.json
 e7430c098c5e04f50990699d21c52d40789d5064 assets/geore/models/item/medium_lapis_bud.json
@@ -241,6 +251,7 @@ c0157c8c5a7b1fa3d5b86f3e2c1a556cb89ed20e assets/geore/models/item/small_coal_bud
 419f84648167ab14322c24d1b32caf91db3e4d93 assets/geore/models/item/small_copper_bud.json
 15cba300924d8e5e64ff27550d77b4fe82c5352b assets/geore/models/item/small_diamond_bud.json
 55376b6dbc304b89a49e2ca7aacb63235fc03c82 assets/geore/models/item/small_emerald_bud.json
+3191e476008fa59097a0f7beeb2241839609aa75 assets/geore/models/item/small_glowstone_bud.json
 69fc6841a1fc3a13174aed7e9f5926886b58d98e assets/geore/models/item/small_gold_bud.json
 b6881df0a721f95b065fe88711001ed465ff632e assets/geore/models/item/small_iron_bud.json
 8514ddb7cbd143e8ad442d164e72e768f79d0133 assets/geore/models/item/small_lapis_bud.json

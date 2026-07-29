@@ -27,6 +27,7 @@ public class GeOreConfiguredFeatures {
 		GeOreFeatures.LAPIS_GEORE.setupConfigured(context, GeOreRegistry.LAPIS_GEORE);
 		GeOreFeatures.QUARTZ_GEORE.setupConfigured(context, GeOreRegistry.QUARTZ_GEORE);
 		GeOreFeatures.REDSTONE_GEORE.setupConfigured(context, GeOreRegistry.REDSTONE_GEORE);
+		GeOreFeatures.GLOWSTONE_GEORE.setupConfigured(context, GeOreRegistry.GLOWSTONE_GEORE);
 		GeOreFeatures.RUBY_GEORE.setupConfigured(context, GeOreRegistry.RUBY_GEORE);
 		GeOreFeatures.SAPPHIRE_GEORE.setupConfigured(context, GeOreRegistry.SAPPHIRE_GEORE);
 		GeOreFeatures.TOPAZ_GEORE.setupConfigured(context, GeOreRegistry.TOPAZ_GEORE);

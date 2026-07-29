@@ -16,6 +16,7 @@ public class GeOreFeatures {
 	public static GeOreFeatureReg LAPIS_GEORE = new GeOreFeatureReg("lapis", GeOreRegistry.LAPIS_GEORE);
 	public static GeOreFeatureReg QUARTZ_GEORE = new GeOreFeatureReg("quartz", GeOreRegistry.QUARTZ_GEORE);
 	public static GeOreFeatureReg REDSTONE_GEORE = new GeOreFeatureReg("redstone", GeOreRegistry.REDSTONE_GEORE);
+	public static GeOreFeatureReg GLOWSTONE_GEORE = new GeOreFeatureReg("glowstone", GeOreRegistry.GLOWSTONE_GEORE);
 
 	public static GeOreFeatureReg RUBY_GEORE = new GeOreFeatureReg("ruby", GeOreRegistry.RUBY_GEORE);
 	public static GeOreFeatureReg SAPPHIRE_GEORE = new GeOreFeatureReg("sapphire", GeOreRegistry.SAPPHIRE_GEORE);
