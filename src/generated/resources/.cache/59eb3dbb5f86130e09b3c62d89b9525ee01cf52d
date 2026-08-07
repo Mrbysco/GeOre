@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-06T22:37:49.1018038	Loot Tables
+// 1.21.1	2026-07-28T10:48:33.1379039	Loot Tables
 1157dad72f4fd9a68a494c53d4a4a0fe16b3beb5 data/geore/loot_table/blocks/allthemodium_block.json
 1450d3e869bba878da7d11a06069c94986e7ca4a data/geore/loot_table/blocks/allthemodium_cluster.json
 1fe6ad0b136fd6153855ada5ae547b5a279739ec data/geore/loot_table/blocks/allthemodium_tinted_glass.json
@@ -19,6 +19,7 @@ abd6e08ffd80fce156f45db4e400dcb2378930e3 data/geore/loot_table/blocks/budding_al
 cb744aab0e7c2c50c6117677189114fbbae4f53f data/geore/loot_table/blocks/budding_copper.json
 e6156b8e8391770bdfd0932e63bb1709ec74d4fd data/geore/loot_table/blocks/budding_diamond.json
 7079ff1e80c6343ee6187f60a6d981b7adacfa84 data/geore/loot_table/blocks/budding_emerald.json
+ad83988ae88eee9872b7584c78a64ba334851cef data/geore/loot_table/blocks/budding_glowstone.json
 7ea7e4e6c5dc00f3893ddfc155bcb1a46ae17edf data/geore/loot_table/blocks/budding_gold.json
 7d6e2aab368323788457e5a415fedc7a4f520be0 data/geore/loot_table/blocks/budding_iron.json
 d10299dbe3b1fbf21f08080cf0e820c41be68b13 data/geore/loot_table/blocks/budding_lapis.json
@@ -52,6 +53,9 @@ df38451c64cc3b924051873beacb9a6d2ccbac38 data/geore/loot_table/blocks/diamond_ti
 7f4c23a9a0c43d1ce402a8690d785f0f0a0621f6 data/geore/loot_table/blocks/emerald_block.json
 57824ca039d08c6c05548cc19586eb283e8c8bba data/geore/loot_table/blocks/emerald_cluster.json
 c52c60e1a3a01ac266f561159d513bfa6b0355fc data/geore/loot_table/blocks/emerald_tinted_glass.json
+f0e7b1760265703e17907b9cff20b38c467210f9 data/geore/loot_table/blocks/glowstone_block.json
+ba3c792f64f954b14d1e6ccb244c40a25bad5b69 data/geore/loot_table/blocks/glowstone_cluster.json
+06b625bab88446a028ddaa7e1eebe8f1e6c5882f data/geore/loot_table/blocks/glowstone_tinted_glass.json
 5c3dc917247a5140c662065850f18b1114647ee3 data/geore/loot_table/blocks/gold_block.json
 d7425cd282b7f229bfce05985a3e6bc5812cb44d data/geore/loot_table/blocks/gold_cluster.json
 e5a5fd3d11aa4eb3962800a5f8f1af5512f79675 data/geore/loot_table/blocks/gold_tinted_glass.json
@@ -69,6 +73,7 @@ e148ea4676adf5b729459680c9f09ae901767d1a data/geore/loot_table/blocks/large_coal
 3f3d1e2f531be6c83313215154bf5e5e6c54c5b9 data/geore/loot_table/blocks/large_copper_bud.json
 42c1b4e22f0f4c627470139814253ed30360ea51 data/geore/loot_table/blocks/large_diamond_bud.json
 f0c5eae09914948390c1203eb0160996bd0dd655 data/geore/loot_table/blocks/large_emerald_bud.json
+03667cee5e08083502b25558a99a5183c1064bba data/geore/loot_table/blocks/large_glowstone_bud.json
 bd0b598c392fdf9e2efd5e201d213211341b2a86 data/geore/loot_table/blocks/large_gold_bud.json
 4cc883c6a0a3c3a515cf57f73db953498bb1757f data/geore/loot_table/blocks/large_iron_bud.json
 dbf02410d0205339b8d4178c13e681f0a46ef3af data/geore/loot_table/blocks/large_lapis_bud.json
@@ -101,6 +106,7 @@ cf8b38edaf66931b9338c0d586d1fa9d926e2dca data/geore/loot_table/blocks/medium_bla
 10b16c435fcaddd0b02e9ab703b8a60599e8062f data/geore/loot_table/blocks/medium_copper_bud.json
 4e1feb37fe952f036cb4e75dc47e907da0d1e81b data/geore/loot_table/blocks/medium_diamond_bud.json
 ddc4ded481900841becb3b71af785f6faab9ca41 data/geore/loot_table/blocks/medium_emerald_bud.json
+7aa36b9e4be615cc67a22861faa2a0e787901ffe data/geore/loot_table/blocks/medium_glowstone_bud.json
 ed83a914e1c28cdaabf93533d8dbc1766b8c4975 data/geore/loot_table/blocks/medium_gold_bud.json
 4692a35be33e8b95e32a0753456ad4089934bc42 data/geore/loot_table/blocks/medium_iron_bud.json
 da9cf0a19b2b3d3b24ce2290bcc09c2b0f40e0e7 data/geore/loot_table/blocks/medium_lapis_bud.json
@@ -157,6 +163,7 @@ d8fd60d9f2a83fe844b18dea4718cdef7937d9fb data/geore/loot_table/blocks/small_coal
 17e1031322dcf72a44c2ca0178b429400d80889c data/geore/loot_table/blocks/small_copper_bud.json
 a1fe2bd569fa536db9783ed1d3e3678485e7043f data/geore/loot_table/blocks/small_diamond_bud.json
 91b468fbf6464be7cc12cb65b04fa39a7222b747 data/geore/loot_table/blocks/small_emerald_bud.json
+b8a268757c89fa9ac1442f2c87311619cc517b9a data/geore/loot_table/blocks/small_glowstone_bud.json
 607556f28e7d60a4d803ba2c15ce7104f0363b85 data/geore/loot_table/blocks/small_gold_bud.json
 8bf91d609e0e1fd55a09b8f83d44adef93f396de data/geore/loot_table/blocks/small_iron_bud.json
 37cd26c71b59edb05466f99c2c660bd54af40226 data/geore/loot_table/blocks/small_lapis_bud.json

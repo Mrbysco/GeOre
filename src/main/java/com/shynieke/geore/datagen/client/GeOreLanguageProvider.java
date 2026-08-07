@@ -24,6 +24,7 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		generateLang("Lapis", GeOreRegistry.LAPIS_GEORE);
 		generateLang("Quartz", GeOreRegistry.QUARTZ_GEORE);
 		generateLang("Redstone", GeOreRegistry.REDSTONE_GEORE);
+		generateLang("Glowstone", GeOreRegistry.GLOWSTONE_GEORE);
 		generateLang("Ancient Debris", GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 		generateLang("Ruby", GeOreRegistry.RUBY_GEORE);
 		generateLang("Sapphire", GeOreRegistry.SAPPHIRE_GEORE);
@@ -62,6 +63,7 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addConfig("generateQuartzGeore", "Generate Quartz GeOre", "Generate Quartz GeOre [Default: true]");
 		addConfig("generateQuartzInNetherGeore", "Generate Quartz In Nether GeOre", "Generate Quartz In Nether GeOre [Default: true]");
 		addConfig("generateRedstoneGeore", "Generate Redstone GeOre", "Generate Redstone GeOre [Default: true]");
+		addConfig("generateGlowstoneGeore", "Generate Glowstone GeOre", "Generate Glowstone GeOre [Default: false]");
 		addConfig("generateBuddingAncientDebris", "Generate Budding Ancient Debris", "Generate Budding Ancient Debris [Default: true]");
 		addConfig("disablePistonPushForBuddingGeOre", "Disable Piston Push For Budding GeOre", "Disable piston push for budding GeOre (Overrides the vanilla behavior of breaking the block upon being pushed) [Default: false]");
 

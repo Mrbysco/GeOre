@@ -34,6 +34,7 @@ public class GeOreBiomeModifiers {
 		GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "quartz");
 		GeOreFeatures.QUARTZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_NETHER, "quartz_nether");
 		GeOreFeatures.REDSTONE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "redstone");
+		GeOreFeatures.GLOWSTONE_GEORE.setupBiomeModifier(context, BiomeTags.IS_NETHER, "glowstone");
 		GeOreFeatures.RUBY_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "ruby");
 		GeOreFeatures.SAPPHIRE_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "sapphire");
 		GeOreFeatures.TOPAZ_GEORE.setupBiomeModifier(context, BiomeTags.IS_OVERWORLD, "topaz");

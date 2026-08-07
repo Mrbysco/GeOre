@@ -27,6 +27,7 @@ public class GeOrePlacedFeatures {
 		GeOreFeatures.LAPIS_GEORE.setupPlaced(context, 210, 6, 30);
 		GeOreFeatures.QUARTZ_GEORE.setupPlaced(context, 150, 6, 30);
 		GeOreFeatures.REDSTONE_GEORE.setupPlaced(context, 240, 6, 30);
+		GeOreFeatures.GLOWSTONE_GEORE.setupPlaced(context, 180, 6, 30);
 		GeOreFeatures.RUBY_GEORE.setupPlaced(context, 240, 6, 30);
 		GeOreFeatures.SAPPHIRE_GEORE.setupPlaced(context, 240, 6, 30);
 		GeOreFeatures.TOPAZ_GEORE.setupPlaced(context, 240, 6, 30);

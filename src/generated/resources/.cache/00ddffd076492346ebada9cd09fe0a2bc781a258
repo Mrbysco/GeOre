@@ -1,11 +1,11 @@
-// 1.21.1	2026-02-01T23:01:39.3740256	Tags for minecraft:block mod id geore
+// 1.21.1	2026-07-28T10:48:33.1359033	Tags for minecraft:block mod id geore
 e81511719951055bdd94a650364eab4b7a8bd376 data/create/tags/block/non_movable.json
-7f116c98def73174b5b2a3a82d93a27fb5a43aed data/c/tags/block/budding_blocks.json
-9c1dc9acce794b87eabd8a2422190916e4c54e78 data/c/tags/block/buds.json
-e755544dd75e3821fe424b3d6b8c70fca2d9ff37 data/c/tags/block/clusters.json
-afd259d149e7310fad1fc8157e16abbd195fc368 data/c/tags/block/glass_blocks/tinted.json
+7ba20650e7375e4f76a0c5e2edf8f161e5753e35 data/c/tags/block/budding_blocks.json
+d08fd91a58ca8d50037c3757763500d2166c4e9f data/c/tags/block/buds.json
+6a4465ce2f6e919a9f2d956057c78d43b924de85 data/c/tags/block/clusters.json
+4216c96b7e48321c1b51a0d814e77315c047f648 data/c/tags/block/glass_blocks/tinted.json
 e81511719951055bdd94a650364eab4b7a8bd376 data/c/tags/block/relocation_not_supported.json
-7f116c98def73174b5b2a3a82d93a27fb5a43aed data/geore/tags/block/budding_geore.json
+7ba20650e7375e4f76a0c5e2edf8f161e5753e35 data/geore/tags/block/budding_geore.json
 1f92f9edc5bd469cee3e210cac42d388b13a4617 data/geore/tags/block/buds/geore_allthemodium.json
 3f4c58b51ae0dd4ab9bd2bf3435985cb71a47cba data/geore/tags/block/buds/geore_aluminum.json
 7b6019a113b1d9d65416de463ae029bea67bef0d data/geore/tags/block/buds/geore_ancient_debris.json
@@ -14,6 +14,7 @@ c4a594ed42bb4b557d97ed15f3c66590cb5429c5 data/geore/tags/block/buds/geore_coal.j
 c309d5c194dcb7411fc5bad16e0bce8a1307582d data/geore/tags/block/buds/geore_copper.json
 70d3a07d5d6984be2a7289491c9d265ab8763b65 data/geore/tags/block/buds/geore_diamond.json
 b1904063d86890d0e2c61d71c76e965c9e6be28c data/geore/tags/block/buds/geore_emerald.json
+4d1fec786704e1351ca85151a9eb2f7bb877e180 data/geore/tags/block/buds/geore_glowstone.json
 dbfdd34edda4d59ccf727428f543a05de7c4f671 data/geore/tags/block/buds/geore_gold.json
 f4dab078f7e626490bf8f042787818a60ab43b6c data/geore/tags/block/buds/geore_iron.json
 9600fdd8fb822b77b099b2d995f2467c65b9b569 data/geore/tags/block/buds/geore_lapis.json
@@ -43,6 +44,7 @@ db7aab9d4ca6c40b3e022319fc4cca16f4c3a24a data/geore/tags/block/clusters/geore_co
 ad5301ed706783fbc0b238f3daf2dc12cc6719de data/geore/tags/block/clusters/geore_copper.json
 7767b62aa95b439e6e1355a66ca8078492f6399b data/geore/tags/block/clusters/geore_diamond.json
 1090eff74bf5fe8dae92850c2403f937e3bc728a data/geore/tags/block/clusters/geore_emerald.json
+f659bd681c45587c4e29ccb90413217ca95ef502 data/geore/tags/block/clusters/geore_glowstone.json
 9f0b53b896502b4a9e7038bff35bddef7003c589 data/geore/tags/block/clusters/geore_gold.json
 34d2fd0074881538b9dd8d13709826f715e238b2 data/geore/tags/block/clusters/geore_iron.json
 69e6594da770eb38077104c17b0952720f54b35b data/geore/tags/block/clusters/geore_lapis.json
@@ -72,6 +74,7 @@ a19478e83bee228d7fb0148bc3a295d7a834a8fe data/geore/tags/block/storage_blocks/ge
 3850720cdba712582173e9cba7b838f83066774f data/geore/tags/block/storage_blocks/geore_copper.json
 eef63965e0366006fb0db2f3652df728496fe2f1 data/geore/tags/block/storage_blocks/geore_diamond.json
 f790c0ffe0e68c7b868c8747d9f2418cec0a6ce8 data/geore/tags/block/storage_blocks/geore_emerald.json
+0635cac28725e1719be277cfb0d7d58804e06427 data/geore/tags/block/storage_blocks/geore_glowstone.json
 e0fe6345aaf8d8c1797edad60da64c353d407ebf data/geore/tags/block/storage_blocks/geore_gold.json
 eef8a77b7e457975de4ef6758d4ac272b1c60b62 data/geore/tags/block/storage_blocks/geore_iron.json
 86bb12cf0b9a02cfdbd46bd35f051916732b8988 data/geore/tags/block/storage_blocks/geore_lapis.json
@@ -93,5 +96,5 @@ f0ee3e10d608d0b8a2a07aa1bf5e1bd9a5be8312 data/geore/tags/block/storage_blocks/ge
 2ad476422f8b56ee962b75fbe9a55f5851af2a8f data/geore/tags/block/storage_blocks/geore_uranium.json
 a63b6b337be0db14044e19230f683dabdcee56b3 data/geore/tags/block/storage_blocks/geore_vibranium.json
 bc1a41f5c1b6f099b3c5ff1f6fc0de18d23bd093 data/geore/tags/block/storage_blocks/geore_zinc.json
-0c99556ea71743ab1ab98b50870e369041730a94 data/minecraft/tags/block/crystal_sound_blocks.json
-cadfe2296a2102992cf310c701804bc279769830 data/minecraft/tags/block/mineable/pickaxe.json
+af4ef5a12f219795217ae779d2752c50dcbba3ef data/minecraft/tags/block/crystal_sound_blocks.json
+ba9160d271edcfa9e51e923c8a10279125c36822 data/minecraft/tags/block/mineable/pickaxe.json

@@ -43,6 +43,7 @@ public class GeOreConfig {
 		public final ModConfigSpec.BooleanValue generateQuartzGeore;
 		public final ModConfigSpec.BooleanValue generateQuartzInNetherGeore;
 		public final ModConfigSpec.BooleanValue generateRedstoneGeore;
+		public final ModConfigSpec.BooleanValue generateGlowstoneGeore;
 		public final ModConfigSpec.BooleanValue generateBuddingAncientDebris;
 		public final ModConfigSpec.BooleanValue disablePistonPushForBuddingGeOre;
 		//Mod support
@@ -109,6 +110,10 @@ public class GeOreConfig {
 			generateRedstoneGeore = builder
 					.comment("Generate Redstone GeOre [Default: true]")
 					.define("generateRedstoneGeore", true);
+			
+			generateGlowstoneGeore = builder
+					.comment("Generate Glowstone GeOre [Default: false]")
+					.define("generateGlowstoneGeOre", false);
 
 			generateBuddingAncientDebris = builder
 					.comment("Generate Budding Ancient Debris [Default: true]")

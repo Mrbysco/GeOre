@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-17T01:50:30.4734691	Registries
+// 1.21.1	2026-07-28T11:31:35.5992315	Registries
 39eeeb4e625ca25432002f506ba4f7d0b1a0612a data/geore/neoforge/biome_modifier/allthemodium_geode.json
 e46df2ee4f7b79b3665e5af8a785cbf5aa8ae3b7 data/geore/neoforge/biome_modifier/aluminum_geode.json
 afb50bcf4eeeec2c284a0118bc2700b22cb66d36 data/geore/neoforge/biome_modifier/black_quartz_geode.json
@@ -7,6 +7,7 @@ e81698ff548235fe1a3de0075ae98bc76183aa6c data/geore/neoforge/biome_modifier/budd
 3a1a241afb25dc4650ae0065a56fe11e6beb5b00 data/geore/neoforge/biome_modifier/copper_geode.json
 0ab88c5001734523aafe6a0599287c2ddcf83ac6 data/geore/neoforge/biome_modifier/diamond_geode.json
 3dad0dfab0f4e5955271d3d048ac6e02e1b6ee7b data/geore/neoforge/biome_modifier/emerald_geode.json
+c2c742293a0a32e1633c96ead55386cad54662fb data/geore/neoforge/biome_modifier/glowstone_geode.json
 da17288eeb2e953491e8478290cb0b2c58cc4dd3 data/geore/neoforge/biome_modifier/gold_geode.json
 123c211eaa448000baa97169108dc30f8f355fdd data/geore/neoforge/biome_modifier/iron_geode.json
 25ff246bd89b3e0a8604c3c3646763b757d289ba data/geore/neoforge/biome_modifier/lapis_geode.json
@@ -37,6 +38,7 @@ ce38de4e562fd178659d8f0f4b2c8ea7582db571 data/geore/worldgen/configured_feature/
 97f5f18166280e19c9fb93cdf84dcf9869ea0b90 data/geore/worldgen/configured_feature/copper_geode.json
 48b822e4a72c573abafab52bb16a3bb73e54703c data/geore/worldgen/configured_feature/diamond_geode.json
 826130672f2d2b689c370643299f5df16effb970 data/geore/worldgen/configured_feature/emerald_geode.json
+14c0279eb0cc6b2406ae9aa6cba25c884b2438e3 data/geore/worldgen/configured_feature/glowstone_geode.json
 4d7913e9d06a04d0c94a072e2a487b0607f54e47 data/geore/worldgen/configured_feature/gold_geode.json
 4b1fa5a2e9a667188d3ffdd2da7bc21678a86511 data/geore/worldgen/configured_feature/iron_geode.json
 f31d59408f5989dbefe38228e730d80ba57a6e45 data/geore/worldgen/configured_feature/lapis_geode.json
@@ -66,6 +68,7 @@ c16114ffa205efe651a57846714ac0ffbcc8f7c8 data/geore/worldgen/placed_feature/budd
 950d083ab88a3b00d0d62173dc3d29a107779571 data/geore/worldgen/placed_feature/copper_geode.json
 f082f0df5dd7ddba903a4a3494633645091b9e26 data/geore/worldgen/placed_feature/diamond_geode.json
 00d6de2d8000e36d1ba0b9e3a0d000fe7229b836 data/geore/worldgen/placed_feature/emerald_geode.json
+aa7a959a1c356eb1a7eeeb316d8041af540fe326 data/geore/worldgen/placed_feature/glowstone_geode.json
 1895092567586a7294ffa109dda21b5c85f280be data/geore/worldgen/placed_feature/gold_geode.json
 6649750aa630cf76d1f2110a0998a7c76ed3bc11 data/geore/worldgen/placed_feature/iron_geode.json
 c14fa17809e8d61602aabc29c42ef681fd5ef1bb data/geore/worldgen/placed_feature/lapis_geode.json

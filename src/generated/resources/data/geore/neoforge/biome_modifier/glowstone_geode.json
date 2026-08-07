@@ -1,0 +1,7 @@
+{
+  "type": "geore:add_config_features",
+  "biomes": "#minecraft:is_overworld",
+  "enabledConfig": "glowstone",
+  "features": "geore:glowstone_geode",
+  "step": "local_modifications"
+}
