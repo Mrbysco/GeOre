@@ -2,8 +2,9 @@
   "feature": "geore:lead_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 230
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 230,
+      "ore": "lead"
     },
     {
       "type": "minecraft:in_square"

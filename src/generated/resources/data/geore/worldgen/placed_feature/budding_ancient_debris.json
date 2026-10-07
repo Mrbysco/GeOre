@@ -20,8 +20,9 @@
       "type": "minecraft:biome"
     },
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 3
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 3,
+      "ore": "ancient_debris"
     }
   ]
 }

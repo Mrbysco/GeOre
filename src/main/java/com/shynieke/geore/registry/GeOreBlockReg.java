@@ -97,7 +97,7 @@ public class GeOreBlockReg {
 
 		budding = GeOreRegistry.BLOCKS.register("budding_" + name, () ->
 				new BuddingGeoreBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops(),
-						getSmallBud(), getMediumBud(), getLargeBud(), getCluster()));
+						getSmallBud(), getMediumBud(), getLargeBud(), getCluster(), name));
 		GeOreRegistry.ITEMS.register(getBudding().getId().getPath(), () -> new BlockItem(getBudding().get(), new Item.Properties()));
 
 		tinted_glass = GeOreRegistry.BLOCKS.register(name + "_tinted_glass", () ->

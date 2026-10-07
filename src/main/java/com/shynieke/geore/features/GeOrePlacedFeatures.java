@@ -1,6 +1,7 @@
 package com.shynieke.geore.features;
 
 import com.shynieke.geore.Reference;
+import com.shynieke.geore.worldgen.ConfigurableRarityFilter;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -51,7 +52,7 @@ public class GeOrePlacedFeatures {
 
 		Holder<ConfiguredFeature<?, ?>> buddingAncientDebris = holdergetter.getOrThrow(GeOreConfiguredFeatures.ANCIENT_DEBRIS_CONFIGURED_KEY);
 		PlacementUtils.register(context, ANCIENT_DEBRIS_PLACEMENT_KEY, buddingAncientDebris,
-				InSquarePlacement.spread(), PlacementUtils.RANGE_8_8, BiomeFilter.biome(), RarityFilter.onAverageOnceEvery(3));
+				InSquarePlacement.spread(), PlacementUtils.RANGE_8_8, BiomeFilter.biome(), new ConfigurableRarityFilter("ancient_debris", 3));
 
 	}
 

@@ -30,6 +30,7 @@ public class GeOre {
 		GeOreRegistry.BLOCKS.register(eventBus);
 		GeOreRegistry.ITEMS.register(eventBus);
 		GeOreRegistry.CREATIVE_MODE_TABS.register(eventBus);
+		GeOreRegistry.PLACEMENT_MODIFIER_TYPES.register(eventBus);
 		GeOreRecipes.RECIPE_SERIALIZERS.register(eventBus);
 		GeOreModifiers.BIOME_MODIFIER_SERIALIZERS.register(eventBus);
 

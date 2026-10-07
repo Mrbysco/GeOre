@@ -6,6 +6,9 @@ import net.neoforged.fml.event.config.ModConfigEvent;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class GeOreConfig {
 	public static class Client {
 		public final ModConfigSpec.DoubleValue spyglassIntensity;
@@ -33,6 +36,16 @@ public class GeOreConfig {
 
 
 	public static class Common {
+		private static final String[] GEORE_NAMES = {
+				"coal", "copper", "diamond", "emerald", "gold", "iron", "lapis", "quartz", "redstone", "glowstone",
+				"ancient_debris", "ruby", "sapphire", "topaz", "zinc", "uraninite", "black_quartz", "monazite",
+				"aluminum", "lead", "nickel", "osmium", "platinum", "silver", "tin", "tungsten", "uranium",
+				"allthemodium", "vibranium", "unobtainium"
+		};
+
+		public final Map<String, ModConfigSpec.DoubleValue> growthRate = new LinkedHashMap<>();
+		public final Map<String, ModConfigSpec.DoubleValue> geodeSpawnRate = new LinkedHashMap<>();
+
 		public final ModConfigSpec.BooleanValue generateCoalGeore;
 		public final ModConfigSpec.BooleanValue generateCopperGeore;
 		public final ModConfigSpec.BooleanValue generateDiamondGeore;
@@ -204,6 +217,33 @@ public class GeOreConfig {
 					.define("generateUnobtainiumGeore", false);
 
 			builder.pop();
+			builder.comment("Per-ore balancing settings. Values are rate factors; 1 keeps the vanilla GeOre rate.")
+					.push("Balancing");
+
+			builder.comment("Growth rate factor. 0.2 is five times slower and 5 is five times faster. [Default: 1.0]")
+					.push("Growth");
+			for (String name : GEORE_NAMES) {
+				growthRate.put(name, builder.defineInRange(name, 1.0, 0.01, 5.0));
+			}
+			builder.pop();
+
+			builder.comment("Geode spawn rate factor. 0.2 is five times rarer and 5 is five times more common. [Default: 1.0]")
+					.push("GeodeSpawnRate");
+			for (String name : GEORE_NAMES) {
+				geodeSpawnRate.put(name, builder.defineInRange(name, 1.0, 0.01, 5.0));
+			}
+			builder.pop();
+			builder.pop();
+		}
+
+		public double getGrowthRate(String name) {
+			ModConfigSpec.DoubleValue value = growthRate.get(name);
+			return value == null ? 1.0 : value.get();
+		}
+
+		public double getGeodeSpawnRate(String name) {
+			ModConfigSpec.DoubleValue value = geodeSpawnRate.get(name);
+			return value == null ? 1.0 : value.get();
 		}
 	}
 

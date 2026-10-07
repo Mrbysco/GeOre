@@ -87,6 +87,10 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addConfig("generateAllthemodiumGeore", "Generate Allthemodium GeOre", "Generate Allthemodium GeOre [Default: false]");
 		addConfig("generateVibraniumGeore", "Generate Vibranium GeOre", "Generate Vibranium GeOre [Default: false]");
 		addConfig("generateUnobtainiumGeore", "Generate Unobtainium GeOre", "Generate Unobtainium GeOre [Default: false]");
+
+		addConfig("Balancing", "Balancing", "Per-ore balancing settings");
+		addConfig("Growth", "Growth", "Growth rate factor. 0.2 is five times slower and 5 is five times faster. 1 is the default rate.");
+		addConfig("GeodeSpawnRate", "Geode Spawn Rate", "Geode spawn rate factor. 0.2 is five times rarer and 5 is five times more common. 1 is the default rate.");
 	}
 
 	public void generateLang(String name, GeOreBlockReg blockReg) {

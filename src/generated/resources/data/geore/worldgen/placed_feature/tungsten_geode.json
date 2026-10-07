@@ -2,8 +2,9 @@
   "feature": "geore:tungsten_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 290
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 290,
+      "ore": "tungsten"
     },
     {
       "type": "minecraft:in_square"

@@ -2,8 +2,9 @@
   "feature": "geore:platinum_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 300
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 300,
+      "ore": "platinum"
     },
     {
       "type": "minecraft:in_square"

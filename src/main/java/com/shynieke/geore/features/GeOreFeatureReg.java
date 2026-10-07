@@ -2,6 +2,7 @@ package com.shynieke.geore.features;
 
 import com.shynieke.geore.datagen.GeOreBiomeModifiers;
 import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
+import com.shynieke.geore.worldgen.ConfigurableRarityFilter;
 import com.shynieke.geore.registry.GeOreBlockReg;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -75,7 +76,7 @@ public class GeOreFeatureReg {
 		HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 		Holder<ConfiguredFeature<?, ?>> geodeHolder = holdergetter.getOrThrow(GEODE_CONFIGURED_KEY);
 		PlacementUtils.register(context, GEODE_PLACEMENT_KEY, geodeHolder,
-				RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(),
+				new ConfigurableRarityFilter(NAME, rarity), InSquarePlacement.spread(),
 				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(aboveBottom), VerticalAnchor.absolute(absolute)), BiomeFilter.biome());
 	}
 
