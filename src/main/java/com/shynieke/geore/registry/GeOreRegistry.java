@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -22,9 +23,9 @@ public class GeOreRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
-	public static final DeferredRegister<net.minecraft.world.level.levelgen.placement.PlacementModifierType<?>> PLACEMENT_MODIFIER_TYPES =
+	public static final DeferredRegister<PlacementModifierType<?>> PLACEMENT_MODIFIER_TYPES =
 			DeferredRegister.create(Registries.PLACEMENT_MODIFIER_TYPE, Reference.MOD_ID);
-	public static final DeferredHolder<net.minecraft.world.level.levelgen.placement.PlacementModifierType<?>, net.minecraft.world.level.levelgen.placement.PlacementModifierType<ConfigurableRarityFilter>> CONFIGURABLE_RARITY_FILTER =
+	public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<ConfigurableRarityFilter>> CONFIGURABLE_RARITY_FILTER =
 			PLACEMENT_MODIFIER_TYPES.register("configurable_rarity_filter", () -> ConfigurableRarityFilter.TYPE);
 	private static final List<GeOreBlockReg> GEORES = new ArrayList<>();
 
