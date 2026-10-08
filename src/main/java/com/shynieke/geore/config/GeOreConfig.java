@@ -37,7 +37,7 @@ public class GeOreConfig {
 
 	public static class Common {
 		private static final String[] GEORE_NAMES = {
-				"coal", "copper", "diamond", "emerald", "gold", "iron", "lapis", "quartz", "redstone", "glowstone",
+				"coal", "copper", "diamond", "emerald", "gold", "iron", "lapis", "quartz", "redstone",
 				"ancient_debris", "ruby", "sapphire", "topaz", "zinc", "uraninite", "black_quartz", "monazite",
 				"aluminum", "lead", "nickel", "osmium", "platinum", "silver", "tin", "tungsten", "uranium",
 				"allthemodium", "vibranium", "unobtainium"
