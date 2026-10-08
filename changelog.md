@@ -1,1 +1,1 @@
-* Fix cluster hitboxes
+* Added config for GeOre growth speed and generation rate config option (Courtesy of [Fiverka21](https://github.com/Mrbysco/GeOre/pull/31))
