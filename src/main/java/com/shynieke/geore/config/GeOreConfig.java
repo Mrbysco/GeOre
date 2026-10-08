@@ -241,7 +241,7 @@ public class GeOreConfig {
 			return value == null ? 1.0 : value.get();
 		}
 
-		public double getGeodeSpawnRate(String name) {
+		public double getGeOreSpawnRate(String name) {
 			ModConfigSpec.DoubleValue value = geodeSpawnRate.get(name);
 			return value == null ? 1.0 : value.get();
 		}

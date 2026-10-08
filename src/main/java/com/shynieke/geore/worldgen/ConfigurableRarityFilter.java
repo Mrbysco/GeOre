@@ -37,7 +37,7 @@ public class ConfigurableRarityFilter extends PlacementFilter {
 
 	@Override
 	protected boolean shouldPlace(PlacementContext context, RandomSource random, BlockPos pos) {
-		double spawnRate = GeOreConfig.COMMON.getGeodeSpawnRate(ore);
+		double spawnRate = GeOreConfig.COMMON.getGeOreSpawnRate(ore);
 		return random.nextDouble() < spawnRate / baseChance;
 	}
 
