@@ -227,8 +227,8 @@ public class GeOreConfig {
 			}
 			builder.pop();
 
-			builder.comment("Geode spawn rate factor. 0.2 is five times rarer and 5 is five times more common. [Default: 1.0]")
-					.push("GeodeSpawnRate");
+			builder.comment("GeOre spawn rate factor. 0.2 is five times rarer and 5 is five times more common. [Default: 1.0]")
+					.push("GeOreSpawnRate");
 			for (String name : GEORE_NAMES) {
 				geodeSpawnRate.put(name, builder.defineInRange(name, 1.0, 0.01, 5.0));
 			}
