@@ -12,7 +12,6 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
 public class GeOrePlacedFeatures {
 	public static final ResourceKey<PlacedFeature> ANCIENT_DEBRIS_PLACEMENT_KEY = createPlacedKey("budding_ancient_debris");

@@ -123,7 +123,7 @@ public class GeOreConfig {
 			generateRedstoneGeore = builder
 					.comment("Generate Redstone GeOre [Default: true]")
 					.define("generateRedstoneGeore", true);
-			
+
 			generateGlowstoneGeore = builder
 					.comment("Generate Glowstone GeOre [Default: false]")
 					.define("generateGlowstoneGeOre", false);

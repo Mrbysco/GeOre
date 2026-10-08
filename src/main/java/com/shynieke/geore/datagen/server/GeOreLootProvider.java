@@ -49,7 +49,7 @@ public class GeOreLootProvider extends LootTableProvider {
 		@Override
 		protected void generate() {
 			for (GeOreBlockReg reg : GeOreRegistry.getGeOres()) {
-				switch(reg.getName()) {
+				switch (reg.getName()) {
 					case "ancient_debris" -> addHarderGeOreTables(GeOreRegistry.ANCIENT_DEBRIS_GEORE);
 					case "allthemodium" -> addHarderGeOreTables(GeOreRegistry.ALLTHEMODIUM_GEORE);
 					case "vibranium" -> addHarderGeOreTables(GeOreRegistry.VIBRANIUM_GEORE);
