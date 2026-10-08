@@ -2,8 +2,9 @@
   "feature": "geore:copper_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 90
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 90,
+      "ore": "copper"
     },
     {
       "type": "minecraft:in_square"

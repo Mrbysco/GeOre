@@ -2,8 +2,9 @@
   "feature": "geore:zinc_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 140
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 140,
+      "ore": "zinc"
     },
     {
       "type": "minecraft:in_square"

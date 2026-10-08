@@ -96,7 +96,7 @@ public class GeOreBlockReg {
 		GeOreRegistry.ITEMS.registerItem(getCluster().getId().getPath(), (properties) -> new BlockItem(getCluster().get(), properties.useBlockDescriptionPrefix()));
 
 		budding = GeOreRegistry.BLOCKS.registerBlock("budding_" + name, (properties) ->
-						new BuddingGeoreBlock(properties, getSmallBud(), getMediumBud(), getLargeBud(), getCluster()),
+						new BuddingGeoreBlock(properties, getSmallBud(), getMediumBud(), getLargeBud(), getCluster(), name),
 				() -> BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST).mapColor(color).randomTicks().strength(1.5F).sound(SoundType.AMETHYST).requiresCorrectToolForDrops());
 		GeOreRegistry.ITEMS.registerItem(getBudding().getId().getPath(), (properties) -> new BlockItem(getBudding().get(), properties.useBlockDescriptionPrefix()));
 

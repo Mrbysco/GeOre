@@ -6,6 +6,8 @@ import com.shynieke.geore.registry.GeOreRegistry;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.LanguageProvider;
 
+import java.util.Locale;
+
 public class GeOreLanguageProvider extends LanguageProvider {
 	public GeOreLanguageProvider(PackOutput packOutput) {
 		super(packOutput, Reference.MOD_ID, "en_us");
@@ -86,6 +88,18 @@ public class GeOreLanguageProvider extends LanguageProvider {
 		addConfig("generateAllthemodiumGeore", "Generate Allthemodium GeOre", "Generate Allthemodium GeOre [Default: false]");
 		addConfig("generateVibraniumGeore", "Generate Vibranium GeOre", "Generate Vibranium GeOre [Default: false]");
 		addConfig("generateUnobtainiumGeore", "Generate Unobtainium GeOre", "Generate Unobtainium GeOre [Default: false]");
+
+		addConfig("Balancing", "Balancing", "Per-ore balancing settings");
+		addConfig("Growth", "Growth", "Growth rate factor. 0.2 is five times slower and 5 is five times faster. 1 is the default rate.");
+		addConfig("GeOreSpawnRate", "GeOre Spawn Rate", "GeOre spawn rate factor. 0.2 is five times rarer and 5 is five times more common. 1 is the default rate.");
+		for (GeOreBlockReg geOre : GeOreRegistry.getGeOres()) {
+			String oreName = geOre.getName().replace('_', ' ');
+			String displayName = oreName.substring(0, 1).toUpperCase(Locale.ROOT) + oreName.substring(1);
+			addConfig("Balancing.Growth." + geOre.getName(), displayName + " Growth Rate",
+					"Growth rate factor for " + displayName + " GeOre. 0.2 is five times slower and 5 is five times faster. [Default: 1.0]");
+			addConfig("Balancing.GeOreSpawnRate." + geOre.getName(), displayName + " GeOre Spawn Rate",
+					"Spawn rate factor for " + displayName + " GeOre. 0.2 is five times rarer and 5 is five times more common. [Default: 1.0]");
+		}
 	}
 
 	public void generateLang(String name, GeOreBlockReg blockReg) {

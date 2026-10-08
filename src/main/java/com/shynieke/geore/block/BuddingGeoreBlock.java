@@ -20,20 +20,24 @@ public class BuddingGeoreBlock extends BuddingAmethystBlock {
 	private final Supplier<? extends AmethystClusterBlock> mediumSupplier;
 	private final Supplier<? extends AmethystClusterBlock> largeSupplier;
 	private final Supplier<? extends AmethystClusterBlock> clusterSupplier;
+	private final String oreName;
 
 	public BuddingGeoreBlock(Properties properties, Supplier<? extends AmethystClusterBlock> smallSupplier,
 	                         Supplier<? extends AmethystClusterBlock> mediumSupplier,
 	                         Supplier<? extends AmethystClusterBlock> largeSupplier,
-	                         Supplier<? extends AmethystClusterBlock> clusterSupplier) {
+	                         Supplier<? extends AmethystClusterBlock> clusterSupplier,
+	                         String oreName) {
 		super(properties);
 		this.smallSupplier = smallSupplier;
 		this.mediumSupplier = mediumSupplier;
 		this.largeSupplier = largeSupplier;
 		this.clusterSupplier = clusterSupplier;
+		this.oreName = oreName;
 	}
 
 	public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-		if (random.nextInt(5) == 0) {
+		double growthRate = GeOreConfig.COMMON.getGrowthRate(oreName);
+		if (random.nextFloat() < growthRate / 5.0) {
 			Direction direction = DIRECTIONS[random.nextInt(DIRECTIONS.length)];
 			BlockPos blockpos = pos.relative(direction);
 			BlockState blockstate = level.getBlockState(blockpos);

@@ -13,3 +13,12 @@ This mod takes heavy inspiration of the vanilla amethyst geode feature and appli
 
 ## Downloads ##
 Downloads will be located on [CurseForge](https://www.curseforge.com/minecraft/mc-mods/geore)
+
+## Balancing configuration ##
+
+Server owners can tune each ore in `config/geore-common.toml` under `Balancing`:
+
+* `Growth`: rate factor for budding GeOre growth. `1` keeps the default rate; `0.2` makes growth five times slower; `5` makes it five times faster.
+* `GeodeSpawnRate`: rate factor for geode generation during chunk generation. `1` keeps the default rate; `0.2` makes that ore's geodes five times rarer; `5` makes them five times more common.
+
+Both settings are available for every GeOre, including Ancient Debris and ores supplied by supported mods.

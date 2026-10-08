@@ -2,8 +2,9 @@
   "feature": "geore:ruby_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 240
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 240,
+      "ore": "ruby"
     },
     {
       "type": "minecraft:in_square"

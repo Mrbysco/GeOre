@@ -2,8 +2,9 @@
   "feature": "geore:gold_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 180
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 180,
+      "ore": "gold"
     },
     {
       "type": "minecraft:in_square"
