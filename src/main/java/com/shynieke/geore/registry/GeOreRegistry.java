@@ -2,12 +2,14 @@ package com.shynieke.geore.registry;
 
 import com.shynieke.geore.Reference;
 import com.shynieke.geore.item.CoalShardItem;
+import com.shynieke.geore.worldgen.ConfigurableRarityFilter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -21,6 +23,10 @@ public class GeOreRegistry {
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(Reference.MOD_ID);
 	public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(Reference.MOD_ID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, Reference.MOD_ID);
+	public static final DeferredRegister<PlacementModifierType<?>> PLACEMENT_MODIFIER_TYPES =
+			DeferredRegister.create(Registries.PLACEMENT_MODIFIER_TYPE, Reference.MOD_ID);
+	public static final DeferredHolder<PlacementModifierType<?>, PlacementModifierType<ConfigurableRarityFilter>> CONFIGURABLE_RARITY_FILTER =
+			PLACEMENT_MODIFIER_TYPES.register("configurable_rarity_filter", () -> ConfigurableRarityFilter.TYPE);
 	private static final List<GeOreBlockReg> GEORES = new ArrayList<>();
 
 	public static final GeOreBlockReg COAL_GEORE = createGeOre("coal", MapColor.COLOR_BLACK, () -> new CoalShardItem(new Item.Properties()), 0x2e2e2e);

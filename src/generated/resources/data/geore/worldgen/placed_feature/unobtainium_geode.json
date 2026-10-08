@@ -2,8 +2,9 @@
   "feature": "geore:unobtainium_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 400
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 400,
+      "ore": "unobtainium"
     },
     {
       "type": "minecraft:in_square"

@@ -2,8 +2,9 @@
   "feature": "geore:quartz_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 150
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 150,
+      "ore": "quartz"
     },
     {
       "type": "minecraft:in_square"

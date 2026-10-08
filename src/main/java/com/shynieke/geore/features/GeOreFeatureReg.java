@@ -3,6 +3,7 @@ package com.shynieke.geore.features;
 import com.shynieke.geore.datagen.GeOreBiomeModifiers;
 import com.shynieke.geore.modifier.AddConfigFeatureBiomeModifier;
 import com.shynieke.geore.registry.GeOreBlockReg;
+import com.shynieke.geore.worldgen.ConfigurableRarityFilter;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
@@ -31,7 +32,6 @@ import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
 import net.minecraft.world.level.levelgen.placement.InSquarePlacement;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 
 import java.util.List;
@@ -75,7 +75,7 @@ public class GeOreFeatureReg {
 		HolderGetter<ConfiguredFeature<?, ?>> holdergetter = context.lookup(Registries.CONFIGURED_FEATURE);
 		Holder<ConfiguredFeature<?, ?>> geodeHolder = holdergetter.getOrThrow(GEODE_CONFIGURED_KEY);
 		PlacementUtils.register(context, GEODE_PLACEMENT_KEY, geodeHolder,
-				RarityFilter.onAverageOnceEvery(rarity), InSquarePlacement.spread(),
+				new ConfigurableRarityFilter(NAME, rarity), InSquarePlacement.spread(),
 				HeightRangePlacement.uniform(VerticalAnchor.aboveBottom(aboveBottom), VerticalAnchor.absolute(absolute)), BiomeFilter.biome());
 	}
 

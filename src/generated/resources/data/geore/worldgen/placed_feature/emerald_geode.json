@@ -2,8 +2,9 @@
   "feature": "geore:emerald_geode",
   "placement": [
     {
-      "type": "minecraft:rarity_filter",
-      "chance": 420
+      "type": "geore:configurable_rarity_filter",
+      "base_chance": 420,
+      "ore": "emerald"
     },
     {
       "type": "minecraft:in_square"
